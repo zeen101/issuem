@@ -1,0 +1,675 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: IssueM\n"
+"POT-Creation-Date: 2013-02-09 21:21-0500\n"
+"PO-Revision-Date: 2013-03-13 13:57+0100\n"
+"Last-Translator: \n"
+"Language-Team: Jonas Paulsson <jonas.paulsson@furuboda.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language: Swedish\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: issuem-cats-taxonomy.php:11 issuem-cats-taxonomy.php:21
+#: ../issuem/issuem-cats-taxonomy.php:11 ../issuem/issuem-cats-taxonomy.php:21
+msgid "Issue Categories"
+msgstr "Tidningskategorier"
+
+#: issuem-cats-taxonomy.php:12 ../issuem/issuem-cats-taxonomy.php:12
+msgid "Issue Category"
+msgstr "Tidningskategori"
+
+#: issuem-cats-taxonomy.php:13 ../issuem/issuem-cats-taxonomy.php:13
+msgid "Search Issue Categories"
+msgstr "Sök Tidningskategorier"
+
+#: issuem-cats-taxonomy.php:14 ../issuem/issuem-cats-taxonomy.php:14
+msgid "All Issue Categories"
+msgstr "Alla Tidningskategorier"
+
+#: issuem-cats-taxonomy.php:15 ../issuem/issuem-cats-taxonomy.php:15
+msgid "Parent Issue Category"
+msgstr "Förälder till Tidningskategori"
+
+#: issuem-cats-taxonomy.php:16 ../issuem/issuem-cats-taxonomy.php:16
+msgid "Parent Issue Category:"
+msgstr "Förälder till Tidningskategori:"
+
+#: issuem-cats-taxonomy.php:17 ../issuem/issuem-cats-taxonomy.php:17
+msgid "Edit Issue Category"
+msgstr "Editera Tidningskategori"
+
+#: issuem-cats-taxonomy.php:18 ../issuem/issuem-cats-taxonomy.php:18
+msgid "Update Issue Category"
+msgstr "Updatera Tidningskategori"
+
+#: issuem-cats-taxonomy.php:19 ../issuem/issuem-cats-taxonomy.php:19
+msgid "Add New Issue Category"
+msgstr "Lägg till Tidningskategori"
+
+#: issuem-cats-taxonomy.php:20 ../issuem/issuem-cats-taxonomy.php:20
+msgid "New Issue Category"
+msgstr "Ny Tidningskategori"
+
+#: issuem-cats-taxonomy.php:50 issuem-cats-taxonomy.php:71
+#: issuem-cats-taxonomy.php:87 ../issuem/issuem-cats-taxonomy.php:50
+#: ../issuem/issuem-cats-taxonomy.php:71 ../issuem/issuem-cats-taxonomy.php:87
+msgid "Category Order"
+msgstr "Kategoriordning"
+
+#: issuem-functions.php:436 issuem-shortcodes.php:368
+#: issuem-shortcodes.php:482 ../issuem/issuem-functions.php:436
+#: ../issuem/issuem-shortcodes.php:368 ../issuem/issuem-shortcodes.php:482
+#, php-format
+msgid "By %s"
+msgstr "Av %s"
+
+#: issuem-post-type.php:19 issuem-post-type.php:30
+#: ../issuem/issuem-post-type.php:19 ../issuem/issuem-post-type.php:30
+msgid "Articles"
+msgstr "Tidningsartiklar"
+
+#: issuem-post-type.php:20 ../issuem/issuem-post-type.php:20
+msgid "Article"
+msgstr "Tidningsartikel"
+
+#: issuem-post-type.php:21 issuem-post-type.php:22
+#: ../issuem/issuem-post-type.php:21 ../issuem/issuem-post-type.php:22
+msgid "Add New Article"
+msgstr "Lägg till ny Tidningsartikel"
+
+#: issuem-post-type.php:23 ../issuem/issuem-post-type.php:23
+msgid "Edit Article"
+msgstr "Editera Tidningsartikel"
+
+#: issuem-post-type.php:24 ../issuem/issuem-post-type.php:24
+msgid "New Article"
+msgstr "Ny Tidningsartikel"
+
+#: issuem-post-type.php:25 ../issuem/issuem-post-type.php:25
+msgid "View Article"
+msgstr "Visa Tidningsartikel"
+
+#: issuem-post-type.php:26 ../issuem/issuem-post-type.php:26
+msgid "Search Articles"
+msgstr "Sök Tidningsartiklar"
+
+#: issuem-post-type.php:27 ../issuem/issuem-post-type.php:27
+msgid "No articles found"
+msgstr "Inga Tidningsartiklar funnna"
+
+#: issuem-post-type.php:28 ../issuem/issuem-post-type.php:28
+msgid "No articles found in trash"
+msgstr "Inga Tidningsartiklar funna i papperskorgen"
+
+#: issuem-post-type.php:36 ../issuem/issuem-post-type.php:36
+msgid "IssueM Articles"
+msgstr "IssueM Tidningsartiklar"
+
+#: issuem-post-type.php:81 ../issuem/issuem-post-type.php:81
+msgid "Teaser Text"
+msgstr "Teaser Text"
+
+#: issuem-post-type.php:84 ../issuem/issuem-post-type.php:84
+msgid "IssueM Author Name"
+msgstr "IssueM Författarnamn"
+
+#: issuem-post-type.php:87 ../issuem/issuem-post-type.php:87
+msgid "Featured Rotator Options"
+msgstr "Featured Rotator Inställningar"
+
+#: issuem-post-type.php:88 ../issuem/issuem-post-type.php:88
+msgid "Set as Featured Rotator Article"
+msgstr "Sätt som Featured Rotator artikel"
+
+#: issuem-post-type.php:90 ../issuem/issuem-post-type.php:90
+msgid "Featured  Thumbnail Options"
+msgstr "Featured Thumbnal inställningar"
+
+#: issuem-post-type.php:91 ../issuem/issuem-post-type.php:91
+msgid "Set as Featured Thumbnail Article"
+msgstr "Sätt som Featured Thumbnail artikel"
+
+#: issuem-shortcodes.php:157 issuem-shortcodes.php:304
+#: ../issuem/issuem-shortcodes.php:157 ../issuem/issuem-shortcodes.php:304
+msgid "Issue Management by "
+msgstr "Tiddningsnummerhantering av"
+
+#: issuem-shortcodes.php:163 ../issuem/issuem-shortcodes.php:163
+msgid "No articles Found"
+msgstr "Inga artiklar funna"
+
+#: issuem-shortcodes.php:520 ../issuem/issuem-shortcodes.php:520
+msgid "Keyword or Phrase:"
+msgstr "Nyckelord eller fras:"
+
+#: issuem-shortcodes.php:521 ../issuem/issuem-shortcodes.php:521
+msgid "Search"
+msgstr "Sök"
+
+#: issuem-shortcodes.php:526 ../issuem/issuem-shortcodes.php:526
+msgid "Issue:"
+msgstr "Tidningsnummer:"
+
+#: issuem-shortcodes.php:526 ../issuem/issuem-shortcodes.php:526
+msgid "Use the Control or Command/Apple key to select multiple issues"
+msgstr "Använd Ctrl-tangentern för att välja flera tidningsnummer"
+
+#: issuem-shortcodes.php:534 issuem-shortcodes.php:561
+#: ../issuem/issuem-shortcodes.php:534 ../issuem/issuem-shortcodes.php:561
+msgid "Search All"
+msgstr "Sök alla"
+
+#: issuem-shortcodes.php:553 ../issuem/issuem-shortcodes.php:553
+msgid "Category:"
+msgstr "Kategori"
+
+#: issuem-shortcodes.php:553 ../issuem/issuem-shortcodes.php:553
+msgid "Use the Control or Command/Apple key to select multiple categories"
+msgstr "Använd Ctrl-tangenten för att välja flera kategorier"
+
+#: issuem-shortcodes.php:637 ../issuem/issuem-shortcodes.php:637
+msgid "No results were found for your request."
+msgstr "Inga resultat hittades för din förfårgan"
+
+#: issuem-tags-taxonomy.php:11 issuem-tags-taxonomy.php:21
+#: ../issuem/issuem-tags-taxonomy.php:11 ../issuem/issuem-tags-taxonomy.php:21
+msgid "Issue Tags"
+msgstr "Tidningstaggar"
+
+#: issuem-tags-taxonomy.php:12 ../issuem/issuem-tags-taxonomy.php:12
+msgid "Issue Tag"
+msgstr "Tidningstagg"
+
+#: issuem-tags-taxonomy.php:13 ../issuem/issuem-tags-taxonomy.php:13
+msgid "Search Issue Tags"
+msgstr "Sök Tidningstaggar"
+
+#: issuem-tags-taxonomy.php:14 ../issuem/issuem-tags-taxonomy.php:14
+msgid "All Issue Tags"
+msgstr "Alla Tidningstaggar"
+
+#: issuem-tags-taxonomy.php:15 ../issuem/issuem-tags-taxonomy.php:15
+msgid "Parent Issue Tag"
+msgstr "Förälderns Tidningstagg"
+
+#: issuem-tags-taxonomy.php:16 ../issuem/issuem-tags-taxonomy.php:16
+msgid "Parent Issue Tag:"
+msgstr "Förälderns Tidningstagg:"
+
+#: issuem-tags-taxonomy.php:17 ../issuem/issuem-tags-taxonomy.php:17
+msgid "Edit Issue Tag"
+msgstr "Editera Tidningstagg"
+
+#: issuem-tags-taxonomy.php:18 ../issuem/issuem-tags-taxonomy.php:18
+msgid "Update Issue Tag"
+msgstr "Uppdatera Tidningstagg\v"
+
+#: issuem-tags-taxonomy.php:19 ../issuem/issuem-tags-taxonomy.php:19
+msgid "Add New Issue Tag"
+msgstr "Lägg till ny Tidningstagg"
+
+#: issuem-tags-taxonomy.php:20 ../issuem/issuem-tags-taxonomy.php:20
+msgid "New Issue Tag"
+msgstr "Ny Tidningstagg"
+
+#: issuem-taxonomy.php:11 issuem-taxonomy.php:21
+#: ../issuem/issuem-taxonomy.php:11 ../issuem/issuem-taxonomy.php:21
+msgid "Issues"
+msgstr "Tidningsnummer"
+
+#: issuem-taxonomy.php:12 ../issuem/issuem-taxonomy.php:12
+msgid "Issue"
+msgstr "Tidningsnummer"
+
+#: issuem-taxonomy.php:13 ../issuem/issuem-taxonomy.php:13
+msgid "Search Issues"
+msgstr "Sök Tidningsnummer"
+
+#: issuem-taxonomy.php:14 ../issuem/issuem-taxonomy.php:14
+msgid "All Issues"
+msgstr "Alla Tidningsnummer"
+
+#: issuem-taxonomy.php:15 ../issuem/issuem-taxonomy.php:15
+msgid "Parent Issues"
+msgstr "Förälderns Tidningsnummer"
+
+#: issuem-taxonomy.php:16 ../issuem/issuem-taxonomy.php:16
+msgid "Parent Issues:"
+msgstr "Förälderns Tidningsnummer:"
+
+#: issuem-taxonomy.php:17 ../issuem/issuem-taxonomy.php:17
+msgid "Edit Issues"
+msgstr "Editera Tidningsnummer"
+
+#: issuem-taxonomy.php:18 ../issuem/issuem-taxonomy.php:18
+msgid "Update Issues"
+msgstr "Uppdatera Tidningsnummer"
+
+#: issuem-taxonomy.php:19 ../issuem/issuem-taxonomy.php:19
+msgid "Add New Issues"
+msgstr "Lägg till Tidningsnummer"
+
+#: issuem-taxonomy.php:20 ../issuem/issuem-taxonomy.php:20
+msgid "New Issue"
+msgstr "Nytt Tidningsnummer"
+
+#: issuem-taxonomy.php:49 issuem-taxonomy.php:121 issuem-taxonomy.php:166
+#: ../issuem/issuem-taxonomy.php:49 ../issuem/issuem-taxonomy.php:121
+#: ../issuem/issuem-taxonomy.php:166
+msgid "Issue Order"
+msgstr "Tidningsnummerordning"
+
+#: issuem-taxonomy.php:49 issuem-taxonomy.php:116 issuem-taxonomy.php:161
+#: ../issuem/issuem-taxonomy.php:49 ../issuem/issuem-taxonomy.php:116
+#: ../issuem/issuem-taxonomy.php:161
+msgid "Issue Status"
+msgstr "Tidningsnummrets status"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "Draft"
+msgstr "Utkast"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "Live"
+msgstr "Live"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "PDF Archive"
+msgstr "Pdf-arkiv"
+
+#: issuem-taxonomy.php:182 ../issuem/issuem-taxonomy.php:182
+msgid "Remove Cover Image"
+msgstr "Ta bort omslagsbild"
+
+#: issuem-taxonomy.php:193 ../issuem/issuem-taxonomy.php:193
+msgid "Cover Image"
+msgstr "Omslagsbild"
+
+#: issuem-taxonomy.php:208 ../issuem/issuem-taxonomy.php:208
+msgid "View PDF Version"
+msgstr "Visa PDF-version"
+
+#: issuem-taxonomy.php:209 ../issuem/issuem-taxonomy.php:209
+msgid "Remove PDF Version"
+msgstr "Ta bort PDF-version"
+
+#: issuem-taxonomy.php:220 ../issuem/issuem-taxonomy.php:220
+msgid "PDF Version"
+msgstr "PDF-version"
+
+#: issuem-taxonomy.php:225 ../issuem/issuem-taxonomy.php:225
+msgid "External Link"
+msgstr "Extern länk"
+
+#: issuem-widgets.php:21 ../issuem/issuem-widgets.php:21
+msgid "Displays the active IssueM Issue details"
+msgstr "Visa detaljerna för det aktiva IssueM Tidningsnummret"
+
+#: issuem-widgets.php:22 ../issuem/issuem-widgets.php:22
+msgid "IssueM Active Issue"
+msgstr "Aktivt IssueM Tidningsnummer"
+
+#: issuem-widgets.php:113 ../issuem/issuem-widgets.php:113
+msgid "Display Issue Title?"
+msgstr "Visa Tidningnummrets titel"
+
+#: issuem-widgets.php:118 ../issuem/issuem-widgets.php:118
+msgid "Display Issue Cover Image?"
+msgstr "Visa Tidningsnummrets omslagsbild?"
+
+#: issuem-widgets.php:123 ../issuem/issuem-widgets.php:123
+msgid "Display Issue PDF Link?"
+msgstr "Visa Tidningsnummrets PDF-Länk?"
+
+#: issuem-widgets.php:130 issuem-widgets.php:362
+#: ../issuem/issuem-widgets.php:130 ../issuem/issuem-widgets.php:362
+msgid "You have to create a issue before you can use this widget."
+msgstr ""
+"Du måste skapa ett Tidningsnummer innan du kan använda den här widget:en."
+
+#: issuem-widgets.php:152 ../issuem/issuem-widgets.php:152
+msgid "Sidebar widget to display the current articles."
+msgstr "Sidebar widget som visar de aktuella artiklarna."
+
+#: issuem-widgets.php:154 ../issuem/issuem-widgets.php:154
+msgid "IssueM Article List"
+msgstr "IssueM Artikellista"
+
+#: issuem-widgets.php:300 ../issuem/issuem-widgets.php:300
+msgid "Title:"
+msgstr "Titel:"
+
+#: issuem-widgets.php:305 ../issuem/issuem-widgets.php:305
+msgid "Number of Articles to Show:"
+msgstr "Antal artiklar att visa:"
+
+#: issuem-widgets.php:320 ../issuem/issuem-widgets.php:320
+msgid "Select Category to Display:"
+msgstr "Välj vilken kategori som ska visas:"
+
+#: issuem-widgets.php:322 ../issuem/issuem-widgets.php:322
+msgid "All Categories"
+msgstr "Alla kategorier"
+
+#: issuem-widgets.php:345 ../issuem/issuem-widgets.php:345
+msgid "Select Sort Order:"
+msgstr "Välj sorteringsordning:"
+
+#: issuem-widgets.php:354 ../issuem/issuem-widgets.php:354
+msgid "Article Format:"
+msgstr "Artikelformat:"
+
+#: issuem-widgets.php:357 ../issuem/issuem-widgets.php:357
+msgid "See IssueM Help for details on article formatting"
+msgstr "Visa IssueMs hjälp för artikelformatering"
+
+#: issuem.php:123 ../issuem/issuem.php:123
+msgid ""
+"Please enter your IssueM API key in the <a href=\"/wp-admin/edit.php?"
+"post_type=article&page=issuem\">IssueM Settings</a> to continue to get "
+"support and upgrades."
+msgstr ""
+"Mata in din IssueM API-nyckel i <a href=\"/wp-admin/edit.php?"
+"post_type=article&page=issuem\">IssueM inställningar</a> för att fortsätta "
+"få support och uppgraderingar."
+
+#: issuem.php:235 ../issuem/issuem.php:235
+msgid "Download PDF"
+msgstr "Ladda ner PDF"
+
+#: issuem.php:236 ../issuem/issuem.php:236
+msgid "PDF Only"
+msgstr "Endast PDF"
+
+#: issuem.php:413 ../issuem/issuem.php:413
+msgid "IssueM Settings Updated."
+msgstr "IssueM inställningar uppdaterade."
+
+#: issuem.php:427 ../issuem/issuem.php:427
+msgid "IssueM General Settings"
+msgstr "IssueM Allmänna inställningar"
+
+#: issuem.php:433 issuem.php:439 ../issuem/issuem.php:433
+#: ../issuem/issuem.php:439
+msgid "IssueM API Key"
+msgstr "IssueM API-nyckel"
+
+#: issuem.php:443 ../issuem/issuem.php:443
+msgid "Verify IssueM API"
+msgstr "Verifiera IssueM API"
+
+#: issuem.php:450 issuem.php:575 issuem.php:594 ../issuem/issuem.php:450
+#: ../issuem/issuem.php:575 ../issuem/issuem.php:594
+msgid "Save Settings"
+msgstr "Spara inställningar"
+
+#: issuem.php:461 ../issuem/issuem.php:461
+msgid "IssueM Administrator Options"
+msgstr "IssueM administratörsinställningar"
+
+#: issuem.php:468 ../issuem/issuem.php:468
+msgid "Page for Articles"
+msgstr "Sida för Tidningsartiklar"
+
+#: issuem.php:469 ../issuem/issuem.php:469
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Välj &mdash;"
+
+#: issuem.php:473 ../issuem/issuem.php:473
+msgid "CSS Style"
+msgstr "CSS Stil"
+
+#: issuem.php:476 ../issuem/issuem.php:476
+msgid "Default"
+msgstr "Standard"
+
+#: issuem.php:477 ../issuem/issuem.php:477
+msgid "None"
+msgstr "Ingen"
+
+#: issuem.php:483 ../issuem/issuem.php:483
+msgid "PDF Download Link Title"
+msgstr "Titel för PDF nerladdningslänk"
+
+#: issuem.php:488 ../issuem/issuem.php:488
+msgid "PDF Only Title"
+msgstr "Titel för endast PDF"
+
+#: issuem.php:493 ../issuem/issuem.php:493
+msgid "PDF Link Target"
+msgstr "PDF Link Target"
+
+#: issuem.php:496 ../issuem/issuem.php:496
+msgid "Open in New Window/Tab"
+msgstr "Öppna i Nytt fönster/flik"
+
+#: issuem.php:497 ../issuem/issuem.php:497
+msgid "Open in Same Window/Tab"
+msgstr "Öppna i samma fönster/flik"
+
+#: issuem.php:503 ../issuem/issuem.php:503
+msgid "Cover Image Size"
+msgstr "Omlagsbildens storlek"
+
+#: issuem.php:505 issuem.php:512 issuem.php:519 ../issuem/issuem.php:505
+#: ../issuem/issuem.php:512 ../issuem/issuem.php:519
+msgid "Width"
+msgstr "Bredd"
+
+#: issuem.php:505 issuem.php:512 issuem.php:519 ../issuem/issuem.php:505
+#: ../issuem/issuem.php:512 ../issuem/issuem.php:519
+msgid "Height"
+msgstr "Höjd"
+
+#: issuem.php:510 ../issuem/issuem.php:510
+msgid "Featured Rotator Image Size"
+msgstr "Featured Rotator bildstorlek"
+
+#: issuem.php:517 ../issuem/issuem.php:517
+msgid "Featured Thumbnail Image Size"
+msgstr "Featured Thumbnail bildstorlek"
+
+#: issuem.php:524 ../issuem/issuem.php:524
+msgid "Default Issue Image"
+msgstr "Standard omslagsbild"
+
+#: issuem.php:528 ../issuem/issuem.php:528
+msgid "Remove Custom Default Issue Image"
+msgstr "Ta bort egen standard omslagsbild"
+
+#: issuem.php:534 ../issuem/issuem.php:534
+msgid "Show Byline for Featured Rotator"
+msgstr "Visa Byline för Featured Rotator"
+
+#: issuem.php:539 ../issuem/issuem.php:539
+msgid "Show Byline for Featured Thumbnails"
+msgstr "Visa Byline för Featured Thumbnails"
+
+#: issuem.php:544 ../issuem/issuem.php:544
+msgid "Display Byline As"
+msgstr "VIsa Byline som"
+
+#: issuem.php:556 ../issuem/issuem.php:556
+msgid "Use IssueM Author Name instead of WordPress Author"
+msgstr "Använd IssueM författarnamn istället för Wordpress författare"
+
+#: issuem.php:561 ../issuem/issuem.php:561
+msgid "Use Default WordPress Category and Tag Taxonomies"
+msgstr "Använd Wordpress standard Kategorier och Taggar"
+
+#: issuem.php:566 ../issuem/issuem.php:566
+msgid "Enable IssueM Migration Tool"
+msgstr "Aktivera IssueM migrationsverktyg"
+
+#: issuem.php:586 ../issuem/issuem.php:586
+msgid "IssueM Article Format"
+msgstr "IssueM artikelformat"
+
+#: issuem.php:625 issuem.php:1490 ../issuem/issuem.php:625
+#: ../issuem/issuem.php:1490
+msgid "IssueM Help"
+msgstr "IssueM Hjälp"
+
+#: issuem.php:631 ../issuem/issuem.php:631
+msgid "[issuem_articles] - Articles Shortcode"
+msgstr "[issuem_articles] - Shortcode för atiklar"
+
+#: issuem.php:659 ../issuem/issuem.php:659
+msgid "[issuem_featured_rotator] - Featured Rotator Shortcode"
+msgstr "[issuem_featured_rotator] - Featured Rotator Shortcode"
+
+#: issuem.php:687 ../issuem/issuem.php:687
+msgid "[issuem_featured_thumbnails] - Featured Thumbnails Shortcode"
+msgstr "[issuem_featured_thumbnails] - Featured Thumbnails Shortcode"
+
+#: issuem.php:715 ../issuem/issuem.php:715
+msgid "[issuem_archives] - IssueM Archive Issues"
+msgstr "[issuem_archives] - IssueM arkiv för Tidningsnummer"
+
+#: issuem.php:768 ../issuem/issuem.php:768
+msgid "Custom Cover Image Size"
+msgstr "Egen omslagsbildsstorlek"
+
+#: issuem.php:804 issuem.php:1493 ../issuem/issuem.php:804
+#: ../issuem/issuem.php:1493
+msgid "IssueM Migration Tool"
+msgstr "IssueM migrationsverktyg"
+
+#: issuem.php:818 issuem.php:1025 ../issuem/issuem.php:818
+#: ../issuem/issuem.php:1025
+msgid "copied"
+msgstr "kopierats"
+
+#: issuem.php:872 issuem.php:1079 ../issuem/issuem.php:872
+#: ../issuem/issuem.php:1079
+msgid "moved"
+msgstr "flyttats"
+
+#: issuem.php:904 ../issuem/issuem.php:904
+#, php-format
+msgid "Your post has successfully been %s."
+msgstr "Ditt inlägg har %s."
+
+#: issuem.php:910 ../issuem/issuem.php:910
+msgid "Post Being Migrated: "
+msgstr "Inlägg som migreras:"
+
+#: issuem.php:919 issuem.php:1222 ../issuem/issuem.php:919
+#: ../issuem/issuem.php:1222
+msgid "Select an Issue"
+msgstr "Välj ett Tidningsnummer"
+
+#: issuem.php:937 ../issuem/issuem.php:937
+msgid "ERROR: You must select an issue for migration."
+msgstr "ERROR: Du måste välja ett Tidningsnummer för migrering."
+
+#: issuem.php:948 ../issuem/issuem.php:948
+msgid "Select IssueM Categories"
+msgstr "Välj IssueM kategorier"
+
+#: issuem.php:962 issuem.php:984 ../issuem/issuem.php:962
+#: ../issuem/issuem.php:984
+msgid "Select multiple by holding down the CTRL key on your keyboard."
+msgstr "Välj flera genom att hålla nere CTL-tangenten på ditt tangentbord."
+
+#: issuem.php:970 ../issuem/issuem.php:970
+msgid "Select IssueM Tags"
+msgstr "Välj IssueM taggar"
+
+#: issuem.php:992 ../issuem/issuem.php:992
+msgid "Copy Post?"
+msgstr "Kopiera inlägg?"
+
+#: issuem.php:993 ../issuem/issuem.php:993
+msgid ""
+"By checking this box, the original post will not be moved but duplicated as "
+"an article in IssueM."
+msgstr ""
+"Kryssar du i denna rutan så kommer originalinlägget inte att flyttas utan "
+"kopieras till en Tidningsartikel i IssueM."
+
+#: issuem.php:1002 ../issuem/issuem.php:1002
+msgid "Migrate Post"
+msgstr "Migrera inlägg"
+
+#: issuem.php:1088 ../issuem/issuem.php:1088
+#, php-format
+msgid "Your post <em>%s</em> has successfully been %s."
+msgstr "Ditt inlägg <em>%s</em> har %s."
+
+#: issuem.php:1099 ../issuem/issuem.php:1099
+msgid "Select Post Type:"
+msgstr "Välj inläggstyp:"
+
+#: issuem.php:1166 issuem.php:1219 ../issuem/issuem.php:1166
+#: ../issuem/issuem.php:1219
+msgid "Page:"
+msgstr "Sida:"
+
+#: issuem.php:1174 issuem.php:1210 ../issuem/issuem.php:1174
+#: ../issuem/issuem.php:1210
+msgid "Post Title"
+msgstr "Sidtitel"
+
+#: issuem.php:1175 issuem.php:1211 ../issuem/issuem.php:1175
+#: ../issuem/issuem.php:1211
+msgid "Author"
+msgstr "Författare"
+
+#: issuem.php:1176 issuem.php:1212 ../issuem/issuem.php:1176
+#: ../issuem/issuem.php:1212
+msgid "Date"
+msgstr "Datum"
+
+#: issuem.php:1187 ../issuem/issuem.php:1187
+#, php-format
+msgid "%s ago"
+msgstr "%s sedan"
+
+#: issuem.php:1189 ../issuem/issuem.php:1189
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+#: issuem.php:1193 ../issuem/issuem.php:1193
+msgid "Unpublished"
+msgstr "Opublicerad"
+
+#: issuem.php:1200 ../issuem/issuem.php:1200
+msgid "(no title)"
+msgstr "(ingen titel)"
+
+#: issuem.php:1237 ../issuem/issuem.php:1237
+msgid "Copy Posts?"
+msgstr "Kopiera inlägg?"
+
+#: issuem.php:1238 ../issuem/issuem.php:1238
+msgid ""
+"By checking this box, the original posts will not be moved but duplicated as "
+"articles in IssueM."
+msgstr ""
+"Kryssar du i denna rutan så kommer originalinläggen inte att flyttas utan "
+"kopieras till en Tidningsartiklar i IssueM."
+
+#: issuem.php:1448 ../issuem/issuem.php:1448
+msgid "Dismiss"
+msgstr "Avfärda"
+
+#: issuem.php:1488 ../issuem/issuem.php:1488
+msgid "IssueM Settings"
+msgstr "IssueM Inställningar"
+
+#: issuem.php:1493 ../issuem/issuem.php:1493
+msgid "Migration Tool"
+msgstr "Migreringsverktyg"
+
+#: issuem.php:1518 ../issuem/issuem.php:1518
+msgid "Please fill in your API key."
+msgstr "Fyll i din API-nyckel."

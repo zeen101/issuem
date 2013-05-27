@@ -1,0 +1,36 @@
+/* CSS Document */
+
+table#issuem_administrator_options {
+	width: 100%;	
+}
+
+#issuem_administrator_options tr th, #issuem_administrator_options tr td {
+	vertical-align: top;
+	padding-bottom: 25px;
+}
+
+#issuem_administrator_options tr th {
+	padding-top: 5px;
+}
+
+div#issuem_rss_item {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 12px;
+    line-height: 19px;
+    margin: 15px 0 20px 0;
+    padding: 10px 0 10px 75px;
+    text-align: center;
+    border-color: #E6DB55;
+    color: #555555;
+	min-height: 64px;
+	background: #FFFBCC url( '../images/issuem-64x64.png' ) no-repeat 10px;
+}
+
+div#issuem_rss_item a {
+	text-decoration: none;
+	font-weight: bold;
+}

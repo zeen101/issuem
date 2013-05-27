@@ -1,0 +1,670 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: IssueM Spanish\n"
+"POT-Creation-Date: 2013-02-09 21:21-0500\n"
+"PO-Revision-Date: 2013-02-17 16:35-0500\n"
+"Last-Translator: \n"
+"Language-Team: IssueM <help@issuem.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: IssueM <help@issuem.com>\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Language: es_MX\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: issuem-cats-taxonomy.php:11 issuem-cats-taxonomy.php:21
+#: ../issuem/issuem-cats-taxonomy.php:11 ../issuem/issuem-cats-taxonomy.php:21
+msgid "Issue Categories"
+msgstr "Categorías de publicación"
+
+#: issuem-cats-taxonomy.php:12 ../issuem/issuem-cats-taxonomy.php:12
+msgid "Issue Category"
+msgstr "Categoría de publicación"
+
+#: issuem-cats-taxonomy.php:13 ../issuem/issuem-cats-taxonomy.php:13
+msgid "Search Issue Categories"
+msgstr "Buscar categorías de edición"
+
+#: issuem-cats-taxonomy.php:14 ../issuem/issuem-cats-taxonomy.php:14
+msgid "All Issue Categories"
+msgstr "Todas las categorías de edición"
+
+#: issuem-cats-taxonomy.php:15 ../issuem/issuem-cats-taxonomy.php:15
+msgid "Parent Issue Category"
+msgstr "Categoría de edición padre"
+
+#: issuem-cats-taxonomy.php:16
+msgid "Parent Issue Category:"
+msgstr "Cattegoría de edición padre"
+
+#: issuem-cats-taxonomy.php:17 ../issuem/issuem-cats-taxonomy.php:17
+msgid "Edit Issue Category"
+msgstr "Editar categoría de edición"
+
+#: issuem-cats-taxonomy.php:18 ../issuem/issuem-cats-taxonomy.php:18
+msgid "Update Issue Category"
+msgstr "Actualizar categoría de edición"
+
+#: issuem-cats-taxonomy.php:19 ../issuem/issuem-cats-taxonomy.php:19
+msgid "Add New Issue Category"
+msgstr "Añadir nueva categoría de edición"
+
+#: issuem-cats-taxonomy.php:20 ../issuem/issuem-cats-taxonomy.php:20
+msgid "New Issue Category"
+msgstr "Nueva categoría de edición"
+
+#: issuem-cats-taxonomy.php:50 issuem-cats-taxonomy.php:71
+#: issuem-cats-taxonomy.php:87 ../issuem/issuem-cats-taxonomy.php:50
+#: ../issuem/issuem-cats-taxonomy.php:71 ../issuem/issuem-cats-taxonomy.php:87
+msgid "Category Order"
+msgstr "Orden de categoría"
+
+#: issuem-functions.php:436 issuem-shortcodes.php:368
+#: issuem-shortcodes.php:482 ../issuem/issuem-functions.php:436
+#: ../issuem/issuem-shortcodes.php:368 ../issuem/issuem-shortcodes.php:482
+#, php-format
+msgid "By %s"
+msgstr "Por %s"
+
+#: issuem-post-type.php:19 issuem-post-type.php:30
+#: ../issuem/issuem-post-type.php:19 ../issuem/issuem-post-type.php:30
+msgid "Articles"
+msgstr "Artículos"
+
+#: issuem-post-type.php:20 ../issuem/issuem-post-type.php:20
+msgid "Article"
+msgstr "Artículo"
+
+#: issuem-post-type.php:21 issuem-post-type.php:22
+#: ../issuem/issuem-post-type.php:21 ../issuem/issuem-post-type.php:22
+msgid "Add New Article"
+msgstr "Añadir nuevo artículo"
+
+#: issuem-post-type.php:23 ../issuem/issuem-post-type.php:23
+msgid "Edit Article"
+msgstr "Editar artículo"
+
+#: issuem-post-type.php:24 ../issuem/issuem-post-type.php:24
+msgid "New Article"
+msgstr "Nuevo artículo"
+
+#: issuem-post-type.php:25 ../issuem/issuem-post-type.php:25
+msgid "View Article"
+msgstr "Ver artículo"
+
+#: issuem-post-type.php:26 ../issuem/issuem-post-type.php:26
+msgid "Search Articles"
+msgstr "Buscar artículos"
+
+#: issuem-post-type.php:27 ../issuem/issuem-post-type.php:27
+msgid "No articles found"
+msgstr "No se han encontrado artículos"
+
+#: issuem-post-type.php:28 ../issuem/issuem-post-type.php:28
+msgid "No articles found in trash"
+msgstr "No se han encontrado artículos en la papelera"
+
+#: issuem-post-type.php:36 ../issuem/issuem-post-type.php:36
+msgid "IssueM Articles"
+msgstr "Artículos de IssueM"
+
+#: issuem-post-type.php:81 ../issuem/issuem-post-type.php:81
+msgid "Teaser Text"
+msgstr "Texto de gancho"
+
+#: issuem-post-type.php:84 ../issuem/issuem-post-type.php:84
+msgid "IssueM Author Name"
+msgstr "IssueM nombre del autor"
+
+#: issuem-post-type.php:87 ../issuem/issuem-post-type.php:87
+msgid "Featured Rotator Options"
+msgstr "Opciones de la galería de destacados"
+
+#: issuem-post-type.php:88 ../issuem/issuem-post-type.php:88
+msgid "Set as Featured Rotator Article"
+msgstr "Establece como artículo destacado"
+
+#: issuem-post-type.php:90 ../issuem/issuem-post-type.php:90
+msgid "Featured  Thumbnail Options"
+msgstr "Opciones para la miniatura de destacados"
+
+#: issuem-post-type.php:91 ../issuem/issuem-post-type.php:91
+msgid "Set as Featured Thumbnail Article"
+msgstr "Establece como miniatura del artículo destacado"
+
+#: issuem-shortcodes.php:157 issuem-shortcodes.php:304
+#: ../issuem/issuem-shortcodes.php:157 ../issuem/issuem-shortcodes.php:304
+msgid "Issue Management by "
+msgstr "Edición gestionada por "
+
+#: issuem-shortcodes.php:163 ../issuem/issuem-shortcodes.php:163
+msgid "No articles Found"
+msgstr "No se han encontrado artículos"
+
+#: issuem-shortcodes.php:520 ../issuem/issuem-shortcodes.php:520
+msgid "Keyword or Phrase:"
+msgstr "Palabra clave o frase"
+
+#: issuem-shortcodes.php:521 ../issuem/issuem-shortcodes.php:521
+msgid "Search"
+msgstr "Buscar"
+
+#: issuem-shortcodes.php:526 ../issuem/issuem-shortcodes.php:526
+msgid "Issue:"
+msgstr "Edición:"
+
+#: issuem-shortcodes.php:526 ../issuem/issuem-shortcodes.php:526
+msgid "Use the Control or Command/Apple key to select multiple issues"
+msgstr "Utiliza la tecla Control o Comando para seleccionar varias ediciones"
+
+#: issuem-shortcodes.php:534 issuem-shortcodes.php:561
+#: ../issuem/issuem-shortcodes.php:534 ../issuem/issuem-shortcodes.php:561
+msgid "Search All"
+msgstr "Buscar todos"
+
+#: issuem-shortcodes.php:553 ../issuem/issuem-shortcodes.php:553
+msgid "Category:"
+msgstr "Categoría"
+
+#: issuem-shortcodes.php:553 ../issuem/issuem-shortcodes.php:553
+msgid "Use the Control or Command/Apple key to select multiple categories"
+msgstr "Utiliza la tecla Control o Comando para seleccionar varias categorías"
+
+#: issuem-shortcodes.php:637 ../issuem/issuem-shortcodes.php:637
+msgid "No results were found for your request."
+msgstr "Tu consulta no ha generado ningún resultado"
+
+#: issuem-tags-taxonomy.php:11 issuem-tags-taxonomy.php:21
+#: ../issuem/issuem-tags-taxonomy.php:11 ../issuem/issuem-tags-taxonomy.php:21
+msgid "Issue Tags"
+msgstr "Etiquetas de edición"
+
+#: issuem-tags-taxonomy.php:12 ../issuem/issuem-tags-taxonomy.php:12
+msgid "Issue Tag"
+msgstr "Etiqueta de edición"
+
+#: issuem-tags-taxonomy.php:13 ../issuem/issuem-tags-taxonomy.php:13
+msgid "Search Issue Tags"
+msgstr "Buscar etiquetas de edición"
+
+#: issuem-tags-taxonomy.php:14 ../issuem/issuem-tags-taxonomy.php:14
+msgid "All Issue Tags"
+msgstr "Todas las etiquetas de edición"
+
+#: issuem-tags-taxonomy.php:15 ../issuem/issuem-tags-taxonomy.php:15
+msgid "Parent Issue Tag"
+msgstr "Etiqueta de edición padre"
+
+#: issuem-tags-taxonomy.php:16 ../issuem/issuem-tags-taxonomy.php:16
+msgid "Parent Issue Tag:"
+msgstr "Etiqueta de edición padre"
+
+#: issuem-tags-taxonomy.php:17 ../issuem/issuem-tags-taxonomy.php:17
+msgid "Edit Issue Tag"
+msgstr "Edita etiqueta de edición"
+
+#: issuem-tags-taxonomy.php:18 ../issuem/issuem-tags-taxonomy.php:18
+msgid "Update Issue Tag"
+msgstr "Actualiza etiqueta de edición"
+
+#: issuem-tags-taxonomy.php:19 ../issuem/issuem-tags-taxonomy.php:19
+msgid "Add New Issue Tag"
+msgstr "Añade nueva etiqueta de edición"
+
+#: issuem-tags-taxonomy.php:20 ../issuem/issuem-tags-taxonomy.php:20
+msgid "New Issue Tag"
+msgstr "Nueva etiqueta de edición"
+
+#: issuem-taxonomy.php:11 issuem-taxonomy.php:21
+#: ../issuem/issuem-taxonomy.php:11 ../issuem/issuem-taxonomy.php:21
+msgid "Issues"
+msgstr "Ediciones"
+
+#: issuem-taxonomy.php:12 ../issuem/issuem-taxonomy.php:12
+msgid "Issue"
+msgstr "Edición"
+
+#: issuem-taxonomy.php:13 ../issuem/issuem-taxonomy.php:13
+msgid "Search Issues"
+msgstr "Buscar ediciones"
+
+#: issuem-taxonomy.php:14 ../issuem/issuem-taxonomy.php:14
+msgid "All Issues"
+msgstr "Todas las ediciones"
+
+#: issuem-taxonomy.php:15 ../issuem/issuem-taxonomy.php:15
+msgid "Parent Issues"
+msgstr "Ediciones padre"
+
+#: issuem-taxonomy.php:16 ../issuem/issuem-taxonomy.php:16
+msgid "Parent Issues:"
+msgstr "Ediciones padre"
+
+#: issuem-taxonomy.php:17 ../issuem/issuem-taxonomy.php:17
+msgid "Edit Issues"
+msgstr "Editar ediciones"
+
+#: issuem-taxonomy.php:18 ../issuem/issuem-taxonomy.php:18
+msgid "Update Issues"
+msgstr "Actualiza ediciones"
+
+#: issuem-taxonomy.php:19 ../issuem/issuem-taxonomy.php:19
+msgid "Add New Issues"
+msgstr "Añade nuevas ediciones"
+
+#: issuem-taxonomy.php:20 ../issuem/issuem-taxonomy.php:20
+msgid "New Issue"
+msgstr "Nueva edición"
+
+#: issuem-taxonomy.php:49 issuem-taxonomy.php:121 issuem-taxonomy.php:166
+#: ../issuem/issuem-taxonomy.php:49 ../issuem/issuem-taxonomy.php:121
+#: ../issuem/issuem-taxonomy.php:166
+msgid "Issue Order"
+msgstr "Orden de ediciones"
+
+#: issuem-taxonomy.php:49 issuem-taxonomy.php:116 issuem-taxonomy.php:161
+#: ../issuem/issuem-taxonomy.php:49 ../issuem/issuem-taxonomy.php:116
+#: ../issuem/issuem-taxonomy.php:161
+msgid "Issue Status"
+msgstr "Estado de edición"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "Draft"
+msgstr "Borrador"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "Live"
+msgstr "Activa"
+
+#: issuem-taxonomy.php:132 ../issuem/issuem-taxonomy.php:132
+msgid "PDF Archive"
+msgstr "Archivo de PDF"
+
+#: issuem-taxonomy.php:182 ../issuem/issuem-taxonomy.php:182
+msgid "Remove Cover Image"
+msgstr "Borrar imagen de portada"
+
+#: issuem-taxonomy.php:193 ../issuem/issuem-taxonomy.php:193
+msgid "Cover Image"
+msgstr "Imagen de portada"
+
+#: issuem-taxonomy.php:208 ../issuem/issuem-taxonomy.php:208
+msgid "View PDF Version"
+msgstr "Ver versión PDF"
+
+#: issuem-taxonomy.php:209 ../issuem/issuem-taxonomy.php:209
+msgid "Remove PDF Version"
+msgstr "Borrar versión PDF"
+
+#: issuem-taxonomy.php:220 ../issuem/issuem-taxonomy.php:220
+msgid "PDF Version"
+msgstr "Versión PDF"
+
+#: issuem-taxonomy.php:225 ../issuem/issuem-taxonomy.php:225
+msgid "External Link"
+msgstr "Enlace externo"
+
+#: issuem-widgets.php:21 ../issuem/issuem-widgets.php:21
+msgid "Displays the active IssueM Issue details"
+msgstr "Muestra los detalles de la edición IssueM activa"
+
+#: issuem-widgets.php:22 ../issuem/issuem-widgets.php:22
+msgid "IssueM Active Issue"
+msgstr "Usuarios de IssueM activos"
+
+#: issuem-widgets.php:113 ../issuem/issuem-widgets.php:113
+msgid "Display Issue Title?"
+msgstr "Muestra título de edición"
+
+#: issuem-widgets.php:118 ../issuem/issuem-widgets.php:118
+msgid "Display Issue Cover Image?"
+msgstr "Muestra imagen de portada de edicón"
+
+#: issuem-widgets.php:123 ../issuem/issuem-widgets.php:123
+msgid "Display Issue PDF Link?"
+msgstr "Muestra enlace versión PDF"
+
+#: issuem-widgets.php:130 issuem-widgets.php:362
+#: ../issuem/issuem-widgets.php:130 ../issuem/issuem-widgets.php:362
+msgid "You have to create a issue before you can use this widget."
+msgstr "Debes crear una edición antes de poder usar este widget."
+
+#: issuem-widgets.php:152 ../issuem/issuem-widgets.php:152
+msgid "Sidebar widget to display the current articles."
+msgstr "Widget de la barra lateral para mostrar artículos actuales"
+
+#: issuem-widgets.php:154 ../issuem/issuem-widgets.php:154
+msgid "IssueM Article List"
+msgstr "Lista de artículos de IssueM"
+
+#: issuem-widgets.php:300 ../issuem/issuem-widgets.php:300
+msgid "Title:"
+msgstr "Título:"
+
+#: issuem-widgets.php:305 ../issuem/issuem-widgets.php:305
+msgid "Number of Articles to Show:"
+msgstr "Número de artículos a mostrar:"
+
+#: issuem-widgets.php:320 ../issuem/issuem-widgets.php:320
+msgid "Select Category to Display:"
+msgstr "Selecciona categoría a mostrar:"
+
+#: issuem-widgets.php:322 ../issuem/issuem-widgets.php:322
+msgid "All Categories"
+msgstr "Todas las categorías"
+
+#: issuem-widgets.php:345 ../issuem/issuem-widgets.php:345
+msgid "Select Sort Order:"
+msgstr "Selecciona orden:"
+
+#: issuem-widgets.php:354 ../issuem/issuem-widgets.php:354
+msgid "Article Format:"
+msgstr "Formato de artículo"
+
+#: issuem-widgets.php:357 ../issuem/issuem-widgets.php:357
+msgid "See IssueM Help for details on article formatting"
+msgstr "Consulta la ayuda de IssueM para detalles sobre formato de artículo"
+
+#: issuem.php:123 ../issuem/issuem.php:123
+msgid ""
+"Please enter your IssueM API key in the <a href=\"/wp-admin/edit.php?"
+"post_type=article&page=issuem\">IssueM Settings</a> to continue to get "
+"support and upgrades."
+msgstr ""
+"Introduce tu clave de la API IssueM en <a href=\"/wp-admin/edit.php?"
+"post_type=article&page=issuem\">la configuración de IssueM</a> para "
+"continuar recibiendo soporte y actualizaciones."
+
+#: issuem.php:235 ../issuem/issuem.php:235
+msgid "Download PDF"
+msgstr "Descarga PDF"
+
+#: issuem.php:236 ../issuem/issuem.php:236
+msgid "PDF Only"
+msgstr "Solo PDF"
+
+#: issuem.php:413 ../issuem/issuem.php:413
+msgid "IssueM Settings Updated."
+msgstr "Configuración de IssueM actualizada"
+
+#: issuem.php:427 ../issuem/issuem.php:427
+msgid "IssueM General Settings"
+msgstr "Configuración general de IssueM"
+
+#: issuem.php:433 issuem.php:439 ../issuem/issuem.php:433
+#: ../issuem/issuem.php:439
+msgid "IssueM API Key"
+msgstr "Clave de la API IssueM"
+
+#: issuem.php:443 ../issuem/issuem.php:443
+msgid "Verify IssueM API"
+msgstr "Verifica la API IssueM"
+
+#: issuem.php:450 issuem.php:575 issuem.php:594 ../issuem/issuem.php:450
+#: ../issuem/issuem.php:575 ../issuem/issuem.php:594
+msgid "Save Settings"
+msgstr "Guardar configuración"
+
+#: issuem.php:461 ../issuem/issuem.php:461
+msgid "IssueM Administrator Options"
+msgstr "Opciones del Administrador de IssueM"
+
+#: issuem.php:468 ../issuem/issuem.php:468
+msgid "Page for Articles"
+msgstr "Página para Artículos"
+
+#: issuem.php:469 ../issuem/issuem.php:469
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Selecciona &mdash;"
+
+#: issuem.php:473 ../issuem/issuem.php:473
+msgid "CSS Style"
+msgstr "CSS Style"
+
+#: issuem.php:476 ../issuem/issuem.php:476
+msgid "Default"
+msgstr "Por defecto"
+
+#: issuem.php:477 ../issuem/issuem.php:477
+msgid "None"
+msgstr "Ninguno"
+
+#: issuem.php:483 ../issuem/issuem.php:483
+msgid "PDF Download Link Title"
+msgstr "Título del enlace al PDF"
+
+#: issuem.php:488 ../issuem/issuem.php:488
+msgid "PDF Only Title"
+msgstr "Título de solo PDF"
+
+#: issuem.php:493 ../issuem/issuem.php:493
+msgid "PDF Link Target"
+msgstr "Destino del enlace PDF"
+
+#: issuem.php:496 ../issuem/issuem.php:496
+msgid "Open in New Window/Tab"
+msgstr "Abrir en una nueva ventada/pestaña"
+
+#: issuem.php:497 ../issuem/issuem.php:497
+msgid "Open in Same Window/Tab"
+msgstr "Abrir en la misma ventana/pestaña"
+
+#: issuem.php:503 ../issuem/issuem.php:503
+msgid "Cover Image Size"
+msgstr "Tamaño de la imagen de portada"
+
+#: issuem.php:505 issuem.php:512 issuem.php:519 ../issuem/issuem.php:505
+#: ../issuem/issuem.php:512 ../issuem/issuem.php:519
+msgid "Width"
+msgstr "Ancho"
+
+#: issuem.php:505 issuem.php:512 issuem.php:519 ../issuem/issuem.php:505
+#: ../issuem/issuem.php:512 ../issuem/issuem.php:519
+msgid "Height"
+msgstr "Alto"
+
+#: issuem.php:510 ../issuem/issuem.php:510
+msgid "Featured Rotator Image Size"
+msgstr "Tamaño de la galería de destacados"
+
+#: issuem.php:517 ../issuem/issuem.php:517
+msgid "Featured Thumbnail Image Size"
+msgstr "Tamaño de la miniatura de destacados"
+
+#: issuem.php:524 ../issuem/issuem.php:524
+msgid "Default Issue Image"
+msgstr "Imagen de edición por defecto"
+
+#: issuem.php:528 ../issuem/issuem.php:528
+msgid "Remove Custom Default Issue Image"
+msgstr "Borrar imagen personalizada de edición por defecto"
+
+#: issuem.php:534 ../issuem/issuem.php:534
+msgid "Show Byline for Featured Rotator"
+msgstr "Muestra nombre del autor en la galería de destacados"
+
+#: issuem.php:539 ../issuem/issuem.php:539
+msgid "Show Byline for Featured Thumbnails"
+msgstr "Muestra nombre del autor en miniaturas de destacados"
+
+#: issuem.php:544 ../issuem/issuem.php:544
+msgid "Display Byline As"
+msgstr "Muestra nombre de autor como"
+
+#: issuem.php:556 ../issuem/issuem.php:556
+msgid "Use IssueM Author Name instead of WordPress Author"
+msgstr "Usar nombre IssueM Autor en lugar de Autor WordPress"
+
+#: issuem.php:561 ../issuem/issuem.php:561
+msgid "Use Default WordPress Category and Tag Taxonomies"
+msgstr "Utiliza las categorías y etiquetas por defecto de Wordpress"
+
+#: issuem.php:566 ../issuem/issuem.php:566
+msgid "Enable IssueM Migration Tool"
+msgstr "Activa la herramienta de migración de IssueM"
+
+#: issuem.php:586 ../issuem/issuem.php:586
+msgid "IssueM Article Format"
+msgstr "Formato de artículo de IssueM"
+
+#: issuem.php:625 issuem.php:1490 ../issuem/issuem.php:625
+#: ../issuem/issuem.php:1490
+msgid "IssueM Help"
+msgstr "Ayuda de IssueM"
+
+#: issuem.php:631 ../issuem/issuem.php:631
+msgid "[issuem_articles] - Articles Shortcode"
+msgstr "[issuem_articles] - Shortcode de artículos"
+
+#: issuem.php:659 ../issuem/issuem.php:659
+msgid "[issuem_featured_rotator] - Featured Rotator Shortcode"
+msgstr "[issuem_featured_rotator] - Shortcode de galería de destacados"
+
+#: issuem.php:687 ../issuem/issuem.php:687
+msgid "[issuem_featured_thumbnails] - Featured Thumbnails Shortcode"
+msgstr "[issuem_featured_thumbnails] - Shortcode de miniaturas de destacados"
+
+#: issuem.php:715 ../issuem/issuem.php:715
+msgid "[issuem_archives] - IssueM Archive Issues"
+msgstr "[issuem_archives] - Archivo de ediciones de IssueM"
+
+#: issuem.php:768 ../issuem/issuem.php:768
+msgid "Custom Cover Image Size"
+msgstr "Tamaño de la imagen de portada personalizada"
+
+#: issuem.php:804 issuem.php:1493 ../issuem/issuem.php:804
+#: ../issuem/issuem.php:1493
+msgid "IssueM Migration Tool"
+msgstr "Herramienta de migración de IssueM"
+
+#: issuem.php:818 issuem.php:1025 ../issuem/issuem.php:818
+#: ../issuem/issuem.php:1025
+msgid "copied"
+msgstr "copiado"
+
+#: issuem.php:872 issuem.php:1079 ../issuem/issuem.php:872
+#: ../issuem/issuem.php:1079
+msgid "moved"
+msgstr "movido"
+
+#: issuem.php:904 ../issuem/issuem.php:904
+#, php-format
+msgid "Your post has successfully been %s."
+msgstr "To entrada ha sido %s correctamente"
+
+#: issuem.php:910 ../issuem/issuem.php:910
+msgid "Post Being Migrated: "
+msgstr "Entradas siendo migradas: "
+
+#: issuem.php:919 issuem.php:1222 ../issuem/issuem.php:919
+#: ../issuem/issuem.php:1222
+msgid "Select an Issue"
+msgstr "Selecciona una edición"
+
+#: issuem.php:937 ../issuem/issuem.php:937
+msgid "ERROR: You must select an issue for migration."
+msgstr "ERROR: Debes seleccionar una edición para migrar."
+
+#: issuem.php:948 ../issuem/issuem.php:948
+msgid "Select IssueM Categories"
+msgstr "Selecciona Categorías de IssueM"
+
+#: issuem.php:962 issuem.php:984 ../issuem/issuem.php:962
+#: ../issuem/issuem.php:984
+msgid "Select multiple by holding down the CTRL key on your keyboard."
+msgstr "Selecciona varios con la tecla CTRL"
+
+#: issuem.php:970 ../issuem/issuem.php:970
+msgid "Select IssueM Tags"
+msgstr "Selecciona Etiquetas de IssueM"
+
+#: issuem.php:992 ../issuem/issuem.php:992
+msgid "Copy Post?"
+msgstr "¿Copiar entrada?"
+
+#: issuem.php:993 ../issuem/issuem.php:993
+msgid ""
+"By checking this box, the original post will not be moved but duplicated as "
+"an article in IssueM."
+msgstr ""
+"Marcando esta opción, la entrada original no se moverá sino duplicará como "
+"artículo en IssueM."
+
+#: issuem.php:1002 ../issuem/issuem.php:1002
+msgid "Migrate Post"
+msgstr "Migrar entrada"
+
+#: issuem.php:1088 ../issuem/issuem.php:1088
+#, php-format
+msgid "Your post <em>%s</em> has successfully been %s."
+msgstr "Tu entrada <em>%s</em> ha sido %s correctamente."
+
+#: issuem.php:1099 ../issuem/issuem.php:1099
+msgid "Select Post Type:"
+msgstr "Selecciona tipo de entrada:"
+
+#: issuem.php:1166 issuem.php:1219 ../issuem/issuem.php:1166
+#: ../issuem/issuem.php:1219
+msgid "Page:"
+msgstr "Página:"
+
+#: issuem.php:1174 issuem.php:1210 ../issuem/issuem.php:1174
+#: ../issuem/issuem.php:1210
+msgid "Post Title"
+msgstr "Título de entrada"
+
+#: issuem.php:1175 issuem.php:1211 ../issuem/issuem.php:1175
+#: ../issuem/issuem.php:1211
+msgid "Author"
+msgstr "Autor"
+
+#: issuem.php:1176 issuem.php:1212 ../issuem/issuem.php:1176
+#: ../issuem/issuem.php:1212
+msgid "Date"
+msgstr "Fecha"
+
+#: issuem.php:1187 ../issuem/issuem.php:1187
+#, php-format
+msgid "%s ago"
+msgstr "hace %s"
+
+#: issuem.php:1189 ../issuem/issuem.php:1189
+msgid "Y/m/d"
+msgstr "d/m/Y"
+
+#: issuem.php:1193 ../issuem/issuem.php:1193
+msgid "Unpublished"
+msgstr "Sin publicar"
+
+#: issuem.php:1200 ../issuem/issuem.php:1200
+msgid "(no title)"
+msgstr "(sin título)"
+
+#: issuem.php:1237 ../issuem/issuem.php:1237
+msgid "Copy Posts?"
+msgstr "Copiar entradas?"
+
+#: issuem.php:1238 ../issuem/issuem.php:1238
+msgid ""
+"By checking this box, the original posts will not be moved but duplicated as "
+"articles in IssueM."
+msgstr ""
+"Marcando esta opción, las entradas originales no se moverán sino duplicarán "
+"como artículos en IssueM."
+
+#: issuem.php:1448 ../issuem/issuem.php:1448
+msgid "Dismiss"
+msgstr "Descartar"
+
+#: issuem.php:1488 ../issuem/issuem.php:1488
+msgid "IssueM Settings"
+msgstr "Configuración de IssueM"
+
+#: issuem.php:1493 ../issuem/issuem.php:1493
+msgid "Migration Tool"
+msgstr "Herramienta de migración"
+
+#: issuem.php:1518 ../issuem/issuem.php:1518
+msgid "Please fill in your API key."
+msgstr "Introduce tu clave de API"
