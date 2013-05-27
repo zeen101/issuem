@@ -493,6 +493,27 @@ if ( !function_exists( 'issuem_dot_com_rss_feed_check' ) ) {
 	
 }
 
+if ( !function_exists( 'issuem_api_request' ) ) { 
+
+	/**
+	 * Helper function used to send API requests to IssueM.com
+	 *
+	 * HT: Glenn Ansley @ iThemes.com
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param int $args Arguments to pass to API request
+	 */
+    function issuem_api_request( $args ) { 
+	
+		global $dl_plugin_issuem;
+	
+		$dl_plugin_issuem->issuem_api_request( $args );
+	
+    }   
+	
+}
+
 if ( !function_exists( 'wp_print_r' ) ) { 
 
 	/**

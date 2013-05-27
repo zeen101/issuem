@@ -15,13 +15,14 @@ Author URI: http://issuem.com/
 Tags: 
 */
 
-define( 'ISSUEM_VERSION' , '1.2.0' );
-define( 'ISSUEM_DB_VERSION', '1.0.0' );
-define( 'ISSUEM_API_URL', 'http://api.issuem.com' );
-define( 'ISSUEM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_REL_DIR', dirname( ISSUEM_PLUGIN_BASENAME ) );
+define( 'ISSUEM_PLUGIN_SLUG', 		'issuem' );
+define( 'ISSUEM_VERSION', 			'1.2.0' );
+define( 'ISSUEM_DB_VERSION', 		'1.0.0' );
+define( 'ISSUEM_API_URL', 			'http://api.issuem.com' );
+define( 'ISSUEM_PLUGIN_URL', 		plugin_dir_url( __FILE__ ) );
+define( 'ISSUEM_PLUGIN_PATH', 		plugin_dir_path( __FILE__ ) );
+define( 'ISSUEM_PLUGIN_BASENAME', 	plugin_basename( __FILE__ ) );
+define( 'ISSUEM_PLUGIN_REL_DIR', 	dirname( ISSUEM_PLUGIN_BASENAME ) );
 
 /**
  * Instantiate IssueM class, require helper files

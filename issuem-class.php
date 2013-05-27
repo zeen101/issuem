@@ -943,7 +943,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 */
 		function issuem_plugins_api( $false, $action, $args ) {
 		
-			$plugin_slug = ISSUEM_PLUGIN_BASENAME;
+			$plugin_slug = ISSUEM_PLUGIN_SLUG;
 			
 			// Check if this plugins API is about this plugin
 			if( $args->slug != $plugin_slug )
@@ -979,7 +979,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		
 			// The transient contains the 'checked' information
 			// Now append to it information form your own API
-			$plugin_slug = ISSUEM_PLUGIN_BASENAME;
+			$plugin_slug = ISSUEM_PLUGIN_SLUG;
 				
 			// POST data to send to your API
 			$args = array(
@@ -991,8 +991,8 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			$response = $this->issuem_api_request( $args );
 							
 			// If there is a new version, modify the transient
-			if( version_compare( $response->new_version, $transient->checked[$plugin_slug], '>' ) )
-				 $transient->response[$plugin_slug] = $response;
+			if( version_compare( $response->new_version, $transient->checked[ISSUEM_PLUGIN_BASENAME], '>' ) )
+				 $transient->response[ISSUEM_PLUGIN_BASENAME] = $response;
 				
 			return $transient;
 			
