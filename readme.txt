@@ -13,25 +13,14 @@ Many sites use WordPress for as a magazine or news manager. There are dozens of 
 
 The IssueM plugin makes a distinction between WordPress' blogging platform and creates a new level of Articles which are associated with Issues. Issues can be drafted until they are ready for release, yet still visible on the site for Administrators, Editors, Authors, and Contributors. IssueM gives you hassle-free control over your issue based sites. IssueM also has a simple to use WordPress shortcode system, making it simple to integrate into your existing theme. Now you have the freedom to pick a theme that fits your site's needs without compromising on the flexibility of the functionality of your site.
 
-You can follow this plugins development on [GitHub](
+You can follow this plugins development on [GitHub](https://github.com/IssueM/issuem)
 
-Features of the plugin include:
+Premium Add-ons Available:
+Leaky Paywall w/ Stripe Integration - Charge your customers to view your IssueM articles!
+Post Migration Tool - Convert your old blog posts into Issue based Articles!
+Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
 
-Cart system for purchasing multiple downloads at once
-Complete promotional code system
-Many payment gateways. PayPal and Manual are included by default with Stripe, PayPal Pro, PayPal Express, and others available as add-ons
-Complete payment history
-User purchase history and ability to redownload files
-Multiple files per downloadable product
-Variable prices for multiple price options per product
-Customizable purchase receipts
-Earnings and sales charts
-Detailed purchase and file download logs
-Data export options for CSV and PDF
-Extensible with many add-ons
-Developer friendly with dozens of actions and filters
-
-More information at Easy Digital Downloads.com.
+For support, demos and premium add-ons, please visit [IssueM.com](http://issuem.com/).
 
 == Installation ==
 
