@@ -947,7 +947,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			
 			// Check if this plugins API is about this plugin
 			if( $args->slug != $plugin_slug )
-				return false;
+				return $false;
 				
 			// POST data to send to your API
 			$args = array(
@@ -991,8 +991,9 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			$response = $this->issuem_api_request( $args );
 							
 			// If there is a new version, modify the transient
-			if( version_compare( $response->new_version, $transient->checked[ISSUEM_PLUGIN_BASENAME], '>' ) )
-				 $transient->response[ISSUEM_PLUGIN_BASENAME] = $response;
+			if ( isset( $response->new_version ) )
+				if( version_compare( $response->new_version, $transient->checked[ISSUEM_PLUGIN_BASENAME], '>' ) )
+					$transient->response[ISSUEM_PLUGIN_BASENAME] = $response;
 				
 			return $transient;
 			
@@ -1021,7 +1022,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 				return false;
 				
 			$response = unserialize( wp_remote_retrieve_body( $request ) );
-			
+									
 			$this->api_status( $response );
 			
 			if ( is_object( $response ) )

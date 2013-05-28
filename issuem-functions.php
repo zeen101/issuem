@@ -508,7 +508,7 @@ if ( !function_exists( 'issuem_api_request' ) ) {
 	
 		global $dl_plugin_issuem;
 	
-		$dl_plugin_issuem->issuem_api_request( $args );
+		return $dl_plugin_issuem->issuem_api_request( $args );
 	
     }   
 	
