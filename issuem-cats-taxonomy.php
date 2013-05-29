@@ -208,7 +208,7 @@ if ( !function_exists( 'issuem_article_categories_edit_form_fields' ) ) {
 	 * @since 1.0.0
 	 * @todo misnamed originaly, should reallly be issuem_article_categories
 	 */
-	function issuem_issue_categories_edit_form_fields( $tag, $taxonomy ) {
+	function issuem_article_categories_edit_form_fields( $tag, $taxonomy ) {
 	   
 		$article_cat_meta = get_option( 'issuem_issue_categories_' . $tag->term_id . '_meta' );
 		
