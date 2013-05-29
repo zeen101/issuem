@@ -175,7 +175,7 @@ if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
 	
 }
 
-if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
+if ( !function_exists( 'issuem_issue_taxonomy_add_form_fields' ) )  {
 	
 	/**
 	 * Outputs HTML for new form fields in Issues
@@ -203,7 +203,7 @@ if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
 
 }
 
-if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
+if ( !function_exists( 'get_issuem_issue_statuses' ) )  {
 	
 	/**
 	 * Outputs HTML for IssueM Issue statuses
@@ -231,7 +231,7 @@ if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
 
 }
 
-if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
+if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 	
 	/**
 	 * Outputs HTML for new form fields in Issue (on Edit form)
