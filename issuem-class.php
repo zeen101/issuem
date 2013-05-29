@@ -946,7 +946,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			$plugin_slug = ISSUEM_PLUGIN_SLUG;
 			
 			// Check if this plugins API is about this plugin
-			if( $args->slug != $plugin_slug )
+			if( !isset( $args->slug ) || $args->slug != $plugin_slug )
 				return $false;
 				
 			// POST data to send to your API
