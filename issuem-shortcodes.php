@@ -16,7 +16,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 	 * @param array $atts Arguments passed through shortcode
 	 * @return string HTML output of IssueM Articles
 	 */
-	function do_issuem_articles( $atts ) {
+	function do_issuem_articles( $atts, $article_format = NULL ) {
 		
 		global $post;
 		
@@ -26,13 +26,11 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 		$post__in = array();
 		
 		$defaults = array(
-			'show_excerpt'			=> 1,
-			'show_content'			=> 0,
 			'posts_per_page'    	=> -1,
 			'offset'            	=> 0,
 			'orderby'           	=> 'menu_order',
 			'order'             	=> 'DESC',
-			'article_format'		=> $issuem_settings['article_format'],
+			'article_format'		=> empty( $article_format ) ? $issuem_settings['article_format'] : $article_format,
 			'show_featured'			=> 1,
 			'issue'					=> get_active_issuem_issue(),
 			'article_category'		=> 'all',
@@ -406,8 +404,6 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 		$issuem_settings = get_issuem_settings();
 		
 		$defaults = array(
-			'show_excerpt'		=> 1,
-			'show_content'		=> 0,
 			'posts_per_page'    => -1,
 			'offset'            => 0,
 			'orderby'           => 'menu_order',
@@ -446,7 +442,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 					if ( $issuem_settings['show_featured_byline'] ) {
 						
-						if ( isset( $issuem_settings['issuem_author_name'] ) && false !== $issuem_settings['issuem_author_name'] ) {
+						if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
 							
 							$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
 						
@@ -578,7 +574,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 						
 						if ( $issuem_settings['show_thumbnail_byline'] ) {
 						
-							if ( isset( $issuem_settings['issuem_author_name'] ) && false !== $issuem_settings['issuem_author_name'] ) {
+							if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
 								
 								$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
 							

@@ -190,7 +190,10 @@ class IssueM_Article_List extends WP_Widget {
 		
 		global $post;
 		
-		$current_post_id = $post->ID;
+		if ( !empty( $post->ID ) )
+			$current_post_id = $post->ID;
+		else
+			$current_post_id = 0;
 	
 		$issuem_settings = get_issuem_settings();
 			

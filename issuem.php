@@ -39,7 +39,7 @@ function issuem_plugins_loaded() {
 		global $dl_plugin_issuem;
 		
 		$dl_plugin_issuem = new IssueM();
-		$issuem_settings = $dl_plugin_issuem->get_issuem_settings();
+		$issuem_settings = $dl_plugin_issuem->get_settings();
 		
 		require_once( 'issuem-post-type.php' );
 		require_once( 'issuem-taxonomy.php' );

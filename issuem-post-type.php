@@ -111,7 +111,7 @@ if ( !function_exists( 'issuem_article_meta_box' ) ) {
                     			
 				<tr><td><label for="teaser_text"><?php _e( 'Teaser Text', 'issuem' ); ?></label></td><td><input class="regular-text" type="text" name="teaser_text" value="<?php echo $teaser_text; ?>" /></td></tr>
 	
-				<?php if ( isset( $issuem_settings['issuem_author_name'] ) && false !== $issuem_settings['issuem_author_name'] ) { ?>
+				<?php if ( !empty( $issuem_settings['issuem_author_name'] ) ) { ?>
 				<tr><td><label for="featured_thumb"><?php _e( 'IssueM Author Name', 'issuem' ); ?></label></td><td><input class="regular-text" type="text" name="issuem_author_name" value="<?php echo $issuem_author_name; ?>" /></td></tr>
 				<?php } ?>
 				

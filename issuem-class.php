@@ -26,9 +26,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @uses add_image_size() Sets image sizes for IssueM
 		 * @uses add_action() Calls 'admin_init' hook on $this->upgrade
 		 * @uses add_action() Calls 'admin_notices' hook on $this->issuem_notification
-		 * @uses add_action() Calls 'admin_enqueue_scripts' hook on $this->issuem_admin_wp_enqueue_scripts
-		 * @uses add_action() Calls 'admin_print_styles' hook on $this->issuem_admin_wp_print_styles
-		 * @uses add_action() Calls 'wp_enqueue_scripts' hook on $this->issuem_frontend_scripts
+		 * @uses add_action() Calls 'admin_enqueue_scripts' hook on $this->admin_wp_enqueue_scripts
+		 * @uses add_action() Calls 'admin_print_styles' hook on $this->admin_wp_print_styles
+		 * @uses add_action() Calls 'wp_enqueue_scripts' hook on $this->frontend_scripts
 		 * @uses add_filter() Calls 'plugins_api' hook on $this->issuem_plugins_api
 		 * @uses add_filter() Calls 'pre_set_site_transient_update_plugins' hook on $this->issuem_update_plugins
 		 * @uses add_filter() Calls 'views_edit-article' hook on $this->add_issuem_articles_to_tag_query
@@ -37,21 +37,21 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 */
 		function IssueM() {
 			
-			$issuem_settings = $this->get_issuem_settings();
+			$settings = $this->get_settings();
 			
-			add_image_size( 'issuem-cover-image', apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ), apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ), true );
-			add_image_size( 'issuem-featured-rotator-image', apply_filters( 'issuem-featured-rotator-image-width', $issuem_settings['featured_image_width'] ), apply_filters( 'issuem-featured-rotator-image-height', $issuem_settings['featured_image_height'] ), true );
-			add_image_size( 'issuem-featured-thumb-image', apply_filters( 'issuem-featured-thumb-image-width', $issuem_settings['featured_thumb_width'] ), apply_filters( 'issuem-featured-thumb-image-height', $issuem_settings['featured_thumb_height'] ), true );
+			add_image_size( 'issuem-cover-image', apply_filters( 'issuem-cover-image-width', $settings['cover_image_width'] ), apply_filters( 'issuem-cover-image-height', $settings['cover_image_height'] ), true );
+			add_image_size( 'issuem-featured-rotator-image', apply_filters( 'issuem-featured-rotator-image-width', $settings['featured_image_width'] ), apply_filters( 'issuem-featured-rotator-image-height', $settings['featured_image_height'] ), true );
+			add_image_size( 'issuem-featured-thumb-image', apply_filters( 'issuem-featured-thumb-image-width', $settings['featured_thumb_width'] ), apply_filters( 'issuem-featured-thumb-image-height', $settings['featured_thumb_height'] ), true );
 		
 			add_action( 'admin_init', array( $this, 'upgrade' ) );
-			add_action( 'admin_menu', array( $this, 'issuem_admin_menu' ) );
+			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_action( 'admin_notices', array( $this, 'issuem_notification' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'issuem_admin_wp_enqueue_scripts' ) );
-			add_action( 'admin_print_styles', array( $this, 'issuem_admin_wp_print_styles' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'issuem_frontend_scripts' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_wp_enqueue_scripts' ) );
+			add_action( 'admin_print_styles', array( $this, 'admin_wp_print_styles' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 			add_action( 'wp_ajax_verify', array( $this, 'issuem_api_ajax_verify' ) );
 			
-			if ( empty( $issuem_settings['issuem_API'] ) ) {
+			if ( empty( $settings['issuem_API'] ) ) {
 			
 				update_option( 'issuem_api_error_received', true );
 				update_option( 'issuem_api_error_message', __( 'You can enter your IssueM API key in the <a href="/wp-admin/edit.php?post_type=article&page=issuem">IssueM Settings</a> to continue to get access to premium support and add-ons.', 'issuem' ) );
@@ -68,14 +68,14 @@ if ( ! class_exists( 'IssueM' ) ) {
 			}
 			
 			register_activation_hook( __FILE__, array( $this, 'issuem_flush_rewrite_rules' ) );
-			register_deactivation_hook( __FILE__, array( $this, 'issuem_deactivation' ) );
+			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
 			add_filter( 'views_edit-article', array( $this, 'display_issuem_dot_com_rss_item' ) );
 			
-			if ( isset( $issuem_settings['issuem_author_name'] ) && false !== $issuem_settings['issuem_author_name'] && !is_admin() ) 
-				add_filter( 'the_author', array( $this, 'issuem_the_author' ) );
+			if ( !empty( $settings['issuem_author_name'] ) && !is_admin() ) 
+				add_filter( 'the_author', array( $this, 'the_author' ) );
 			
-			if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			if ( !empty( $settings['use_wp_taxonomies'] ) ) 
 				add_action( 'pre_get_posts', array( $this, 'add_issuem_articles_to_tag_query' ) );
 			
 		}
@@ -86,7 +86,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 *
 		 */
-		function issuem_activation() {
+		function activation() {
 					
 			// ATTENTION: This is *only* done during plugin activation hook in this example!
 			// You should *NEVER EVER* do this on every page load!!
@@ -100,7 +100,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.1.1
 		 *
 		 */
-		function issuem_deactivation() {
+		function deactivation() {
 			
 			// Clear the IssueM RSS reader if there is a schedule
 			if ( wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
@@ -113,11 +113,11 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		function issuem_admin_menu() {
+		function admin_menu() {
 							
-			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Settings', 'issuem' ), __( 'IssueM Settings', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem', array( $this, 'issuem_settings_page' ) );
+			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Settings', 'issuem' ), __( 'IssueM Settings', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem', array( $this, 'settings_page' ) );
 		
-			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'issuem_help_page' ) );
+			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
 			
 		}
 		
@@ -151,14 +151,20 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @param string $wp_author WordPress Author name
 		 * @return string Author Name
 		 */
-		function issuem_the_author( $wp_author ) {
+		function the_author( $wp_author ) {
 		
 			global $post;
 			
-			if ( $author_name = get_post_meta( $post->ID, '_issuem_author_name', true ) )
-				return $author_name;
-			else
-				return $wp_author;
+			if ( !empty( $post->ID ) ) {
+					
+				if ( $author_name = get_post_meta( $post->ID, '_issuem_author_name', true ) )
+					return $author_name;
+				else
+					return $wp_author;
+				
+			}
+			
+			return $wp_author;
 			
 		}
 	
@@ -183,7 +189,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 * @uses wp_enqueue_style() to enqueue CSS files
 		 */
-		function issuem_admin_wp_print_styles() {
+		function admin_wp_print_styles() {
 		
 			global $hook_suffix;
 			
@@ -199,7 +205,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 * @uses wp_enqueue_script() to enqueue JS files
 		 */
-		function issuem_admin_wp_enqueue_scripts( $hook_suffix ) {
+		function admin_wp_enqueue_scripts( $hook_suffix ) {
 			
 			//echo "<h4>$hook_suffix</h4>";
 			
@@ -223,20 +229,24 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @uses wp_enqueue_script() to enqueue JS files
 		 * @uses wp_enqueue_style() to enqueue CSS files
 		 */
-		function issuem_frontend_scripts() {
+		function frontend_scripts() {
 			
-			$issuem_settings = $this->get_issuem_settings();
+			$settings = $this->get_settings();
+			
+			if ( apply_filters( 'enqueue_issuem_styles', 'true' ) ) {
 		
-			switch( $issuem_settings['css_style'] ) {
-				
-				case 'none' :
-					break;
-				
-				case 'default' :
-				default : 
-					wp_enqueue_style( 'issuem_style', ISSUEM_PLUGIN_URL . '/css/issuem.css', '', ISSUEM_VERSION );
-					break;
+				switch( $settings['css_style'] ) {
 					
+					case 'none' :
+						break;
+					
+					case 'default' :
+					default : 
+						wp_enqueue_style( 'issuem_style', ISSUEM_PLUGIN_URL . '/css/issuem.css', '', ISSUEM_VERSION );
+						break;
+						
+				}
+			
 			}
 			
 			wp_enqueue_script( 'jquery-issuem-flexslider', ISSUEM_PLUGIN_URL . '/js/jquery.flexslider-min.js', array( 'jquery' ), ISSUEM_VERSION );
@@ -251,7 +261,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 *
 		 * @return array IssueM settings, merged with defaults.
 \		 */
-		function get_issuem_settings() {
+		function get_settings() {
 			
 			$defaults = array( 
 								'issuem_API' 			=> '', 
@@ -281,9 +291,22 @@ if ( ! class_exists( 'IssueM' ) ) {
 		
 			$defaults = apply_filters( 'issuem_default_settings', $defaults );
 		
-			$issuem_settings = get_option( 'issuem' );
+			$settings = get_option( 'issuem' );
 			
-			return wp_parse_args( $issuem_settings, $defaults );
+			return wp_parse_args( $settings, $defaults );
+			
+		}
+		
+		/**
+		 * Update IssueM settings
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array IssueM settings
+\		 */
+		function update_settings( $settings ) {
+		
+			update_option( 'issuem', $settings );
 			
 		}
 		
@@ -293,76 +316,76 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0
 		 * @todo perform the save function earlier
 		 */
-		function issuem_settings_page() {
+		function settings_page() {
 			
 			// Get the user options
-			$issuem_settings = $this->get_issuem_settings();
+			$settings = $this->get_settings();
 			
 			if ( isset( $_REQUEST['remove_default_issue_image'] ) ) {
 				
 				wp_delete_attachment( $_REQUEST['remove_default_issue_image'] );
 				
-				unset( $issuem_settings['default_issue_image'] );
-				unset( $issuem_settings['custom_image_used'] );
+				unset( $settings['default_issue_image'] );
+				unset( $settings['custom_image_used'] );
 				
-				update_option( 'issuem', $issuem_settings );
+				$this->update_settings( $settings );
 					
-				$issuem_settings = $this->get_issuem_settings();
+				$settings = $this->get_settings();
 			
 			}
 			
 			if ( isset( $_REQUEST['update_issuem_settings'] ) ) {
 				
 				if ( isset( $_REQUEST['issuem_API'] ) )
-					$issuem_settings['issuem_API'] = $_REQUEST['issuem_API'];
+					$settings['issuem_API'] = $_REQUEST['issuem_API'];
 					
 				if ( isset( $_REQUEST['page_for_articles'] ) )
-					$issuem_settings['page_for_articles'] = $_REQUEST['page_for_articles'];
+					$settings['page_for_articles'] = $_REQUEST['page_for_articles'];
 					
 				if ( isset( $_REQUEST['css_style'] ) )
-					$issuem_settings['css_style'] = $_REQUEST['css_style'];
+					$settings['css_style'] = $_REQUEST['css_style'];
 				
 				if ( isset( $_REQUEST['pdf_title'] ) )
-					$issuem_settings['pdf_title'] = $_REQUEST['pdf_title'];
+					$settings['pdf_title'] = $_REQUEST['pdf_title'];
 				
 				if ( isset( $_REQUEST['pdf_only_title'] ) )
-					$issuem_settings['pdf_only_title'] = $_REQUEST['pdf_only_title'];
+					$settings['pdf_only_title'] = $_REQUEST['pdf_only_title'];
 					
 				if ( isset( $_REQUEST['pdf_open_target'] ) )
-					$issuem_settings['pdf_open_target'] = $_REQUEST['pdf_open_target'];
+					$settings['pdf_open_target'] = $_REQUEST['pdf_open_target'];
 				
 				if ( isset( $_REQUEST['article_format'] ) )
-					$issuem_settings['article_format'] = $_REQUEST['article_format'];
+					$settings['article_format'] = $_REQUEST['article_format'];
 				
 				if ( isset( $_REQUEST['cover_image_width'] ) )
-					$issuem_settings['cover_image_width'] = $_REQUEST['cover_image_width'];
+					$settings['cover_image_width'] = $_REQUEST['cover_image_width'];
 				else
-					unset( $issuem_settings['cover_image_width'] );
+					unset( $settings['cover_image_width'] );
 				
 				if ( isset( $_REQUEST['cover_image_height'] ) )
-					$issuem_settings['cover_image_height'] = $_REQUEST['cover_image_height'];
+					$settings['cover_image_height'] = $_REQUEST['cover_image_height'];
 				else
-					unset( $issuem_settings['cover_image_height'] );
+					unset( $settings['cover_image_height'] );
 				
 				if ( isset( $_REQUEST['featured_image_width'] ) )
-					$issuem_settings['featured_image_width'] = $_REQUEST['featured_image_width'];
+					$settings['featured_image_width'] = $_REQUEST['featured_image_width'];
 				else
-					unset( $issuem_settings['featured_image_width'] );
+					unset( $settings['featured_image_width'] );
 				
 				if ( isset( $_REQUEST['featured_image_height'] ) )
-					$issuem_settings['featured_image_height'] = $_REQUEST['featured_image_height'];
+					$settings['featured_image_height'] = $_REQUEST['featured_image_height'];
 				else
-					unset( $issuem_settings['featured_image_height'] );
+					unset( $settings['featured_image_height'] );
 				
 				if ( isset( $_REQUEST['featured_thumb_width'] ) )
-					$issuem_settings['featured_thumb_width'] = $_REQUEST['featured_thumb_width'];
+					$settings['featured_thumb_width'] = $_REQUEST['featured_thumb_width'];
 				else
-					unset( $issuem_settings['featured_thumb_width'] );
+					unset( $settings['featured_thumb_width'] );
 				
 				if ( isset( $_REQUEST['featured_thumb_height'] ) )
-					$issuem_settings['featured_thumb_height'] = $_REQUEST['featured_thumb_height'];
+					$settings['featured_thumb_height'] = $_REQUEST['featured_thumb_height'];
 				else
-					unset( $issuem_settings['featured_thumb_height'] );
+					unset( $settings['featured_thumb_height'] );
 					
 				if ( isset( $_FILES['default_issue_image'] ) && !empty( $_FILES['default_issue_image']['name'] ) ) {
 		
@@ -377,35 +400,35 @@ if ( ! class_exists( 'IssueM' ) ) {
 					}
 					
 					list( $src, $width, $height ) = wp_get_attachment_image_src( $id, 'issuem-cover-image' );
-					$issuem_settings['custom_image_used'] = $id;
-					$issuem_settings['default_issue_image'] = $src;
+					$settings['custom_image_used'] = $id;
+					$settings['default_issue_image'] = $src;
 					
 				}
 				
 				if ( isset( $_REQUEST['show_featured_byline'] ) )
-					$issuem_settings['show_featured_byline'] = $_REQUEST['show_featured_byline'];
+					$settings['show_featured_byline'] = $_REQUEST['show_featured_byline'];
 				else
-					unset( $issuem_settings['show_featured_byline'] );
+					unset( $settings['show_featured_byline'] );
 				
 				if ( isset( $_REQUEST['show_thumbnail_byline'] ) )
-					$issuem_settings['show_thumbnail_byline'] = $_REQUEST['show_thumbnail_byline'];
+					$settings['show_thumbnail_byline'] = $_REQUEST['show_thumbnail_byline'];
 				else
-					unset( $issuem_settings['show_thumbnail_byline'] );
+					unset( $settings['show_thumbnail_byline'] );
 				
 				if ( isset( $_REQUEST['display_byline_as'] ) )
-					$issuem_settings['display_byline_as'] = $_REQUEST['display_byline_as'];
+					$settings['display_byline_as'] = $_REQUEST['display_byline_as'];
 				
 				if ( isset( $_REQUEST['issuem_author_name'] ) )
-					$issuem_settings['issuem_author_name'] = $_REQUEST['issuem_author_name'];
+					$settings['issuem_author_name'] = $_REQUEST['issuem_author_name'];
 				else
-					unset( $issuem_settings['issuem_author_name'] );
+					unset( $settings['issuem_author_name'] );
 				
 				if ( isset( $_REQUEST['use_wp_taxonomies'] ) )
-					$issuem_settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
+					$settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
 				else
-					unset( $issuem_settings['use_wp_taxonomies'] );
+					unset( $settings['use_wp_taxonomies'] );
 				
-				update_option( 'issuem', $issuem_settings );
+				$this->update_settings( $settings );
 					
 				// It's not pretty, but the easiest way to get the menu to refresh after save...
 				?>
@@ -449,7 +472,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'IssueM API Key', 'issuem' ); ?></th>
                                 <td class="leenkme_plugin_name">
-                                <input type="text" id="api" class="regular-text" name="issuem_API" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['issuem_API'] ) ); ?>" />
+                                <input type="text" id="api" class="regular-text" name="issuem_API" value="<?php echo htmlspecialchars( stripcslashes( $settings['issuem_API'] ) ); ?>" />
                                 
                                 <input type="button" class="button" name="verify_issuem_api" id="verify" value="<?php _e( 'Verify IssueM API', 'issuem' ) ?>" />
                                 <?php wp_nonce_field( 'verify', 'issuem_verify_wpnonce' ); ?>
@@ -477,35 +500,45 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
-                                <td><?php echo wp_dropdown_pages( array( 'name' => 'page_for_articles', 'echo' => 0, 'show_option_none' => __( '&mdash; Select &mdash;' ), 'option_none_value' => '0', 'selected' => $issuem_settings['page_for_articles'] ) ); ?></td>
+                                <td><?php echo wp_dropdown_pages( array( 'name' => 'page_for_articles', 'echo' => 0, 'show_option_none' => __( '&mdash; Select &mdash;' ), 'option_none_value' => '0', 'selected' => $settings['page_for_articles'] ) ); ?></td>
                             </tr>
                         
+                        	<?php if ( apply_filters( 'enqueue_issuem_styles', true ) ) { ?>
+                            
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'CSS Style', 'issuem' ); ?></th>
                                 <td>
 								<select id='css_style' name='css_style'>
-									<option value='default' <?php selected( 'default', $issuem_settings['css_style'] ); ?> ><?php _e( 'Default', 'issuem' ); ?></option>
-									<option value='none' <?php selected( 'none', $issuem_settings['css_style'] ); ?> ><?php _e( 'None', 'issuem' ); ?></option>
+                                <?php
+								$css_styles = $this->get_css_styles();
+								foreach ( $css_styles as $slug => $name ) {
+									?>
+									<option value='<?php echo $slug; ?>' <?php selected( $slug, $settings['css_style'] ); ?> ><?php echo $name; ?></option>
+                                    <?php
+								}
+								?>
 								</select>
                                 </td>
                             </tr>
                             
+                            <?php } ?>
+                            
                             <tr>
                                 <th rowspan="1"> <?php _e( 'PDF Download Link Title', 'issuem' ); ?></th>
-                                <td><input type="text" id="pdf_title" class="regular-text" name="pdf_title" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['pdf_title'] ) ); ?>" /></td>
+                                <td><input type="text" id="pdf_title" class="regular-text" name="pdf_title" value="<?php echo htmlspecialchars( stripcslashes( $settings['pdf_title'] ) ); ?>" /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'PDF Only Title', 'issuem' ); ?></th>
-                                <td><input type="text" id="pdf_only_title" class="regular-text" name="pdf_only_title" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['pdf_only_title'] ) ); ?>" /></td>
+                                <td><input type="text" id="pdf_only_title" class="regular-text" name="pdf_only_title" value="<?php echo htmlspecialchars( stripcslashes( $settings['pdf_only_title'] ) ); ?>" /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'PDF Link Target', 'issuem' ); ?></th>
                                 <td>
 								<select id='pdf_open_target' name='pdf_open_target'>
-									<option value='_blank' <?php selected( '_blank', $issuem_settings['pdf_open_target'] ); ?> ><?php _e( 'Open in New Window/Tab', 'issuem' ); ?></option>
-									<option value='_self' <?php selected( '_self', $issuem_settings['pdf_open_target'] ); ?> ><?php _e( 'Open in Same Window/Tab', 'issuem' ); ?></option>
+									<option value='_blank' <?php selected( '_blank', $settings['pdf_open_target'] ); ?> ><?php _e( 'Open in New Window/Tab', 'issuem' ); ?></option>
+									<option value='_self' <?php selected( '_self', $settings['pdf_open_target'] ); ?> ><?php _e( 'Open in Same Window/Tab', 'issuem' ); ?></option>
 								</select>
                                 </td>
                             </tr>
@@ -513,29 +546,29 @@ if ( ! class_exists( 'IssueM' ) ) {
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Cover Image Size', 'issuem' ); ?></th>
                                 <td>
-                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="cover_image_width" class="small-text" name="cover_image_width" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['cover_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="cover_image_height" class="small-text" name="cover_image_height" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['cover_image_height'] ) ); ?>" />px
+                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="cover_image_width" class="small-text" name="cover_image_width" value="<?php echo htmlspecialchars( stripcslashes( $settings['cover_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="cover_image_height" class="small-text" name="cover_image_height" value="<?php echo htmlspecialchars( stripcslashes( $settings['cover_image_height'] ) ); ?>" />px
                                 </td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Featured Rotator Image Size', 'issuem' ); ?></th>
                                 <td>
-                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_image_width" class="small-text" name="featured_image_width" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['featured_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_image_height" class="small-text" name="featured_image_height" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['featured_image_height'] ) ); ?>" />px
+                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_image_width" class="small-text" name="featured_image_width" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_image_height" class="small-text" name="featured_image_height" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_image_height'] ) ); ?>" />px
                                 </td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Featured Thumbnail Image Size', 'issuem' ); ?></th>
                                 <td>
-                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_thumb_width" class="small-text" name="featured_thumb_width" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['featured_thumb_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_thumb_height" class="small-text" name="featured_thumb_height" value="<?php echo htmlspecialchars( stripcslashes( $issuem_settings['featured_thumb_height'] ) ); ?>" />px
+                                <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_thumb_width" class="small-text" name="featured_thumb_width" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_thumb_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_thumb_height" class="small-text" name="featured_thumb_height" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_thumb_height'] ) ); ?>" />px
                                 </td>
                             </tr>
                             
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Default Issue Image', 'issuem' ); ?></th>
-                                <td><input type="file" id="default_issue_image" class="regular-text" name="default_issue_image" value="" /><p><img src="<?php echo $issuem_settings['default_issue_image']; ?>" /></p>
+                                <td><input type="file" id="default_issue_image" class="regular-text" name="default_issue_image" value="" /><p><img src="<?php echo $settings['default_issue_image']; ?>" /></p>
                                 
-                                <?php if ( 0 < $issuem_settings['custom_image_used'] ) { ?>
+                                <?php if ( 0 < $settings['custom_image_used'] ) { ?>
                                 <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ) . '">' . __( 'Remove Custom Default Issue Image', 'issuem' ); ?></a></p>
                                 <?php } ?>
                                 </td>
@@ -543,34 +576,34 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Show Byline for Featured Rotator', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_featured_byline" name="show_featured_byline" <?php checked( $issuem_settings['show_featured_byline'] || 'on' == $issuem_settings['show_featured_byline'] ); ?>" /></td>
+                                <td><input type="checkbox" id="show_featured_byline" name="show_featured_byline" <?php checked( $settings['show_featured_byline'] || 'on' == $settings['show_featured_byline'] ); ?>" /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Show Byline for Featured Thumbnails', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" <?php checked( $issuem_settings['show_thumbnail_byline'] || 'on' == $issuem_settings['show_thumbnail_byline'] ); ?>" /></td>
+                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" <?php checked( $settings['show_thumbnail_byline'] || 'on' == $settings['show_thumbnail_byline'] ); ?>" /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Display Byline As', 'issuem' ); ?></th>
                                 <td>
                                 <select id="display_byline_as" name="display_byline_as" >
-                                	<option value="user_firstlast" <?php selected( 'user_firstlast' == $issuem_settings['display_byline_as'] ); ?>>First & Last Name</option>
-                                	<option value="user_firstname" <?php selected( 'user_firstname' == $issuem_settings['display_byline_as'] ); ?>>First Name</option>
-                                	<option value="user_lastname" <?php selected( 'user_lastname' == $issuem_settings['display_byline_as'] ); ?>>Last Name</option>
-                                	<option value="display_name" <?php selected( 'display_name' == $issuem_settings['display_byline_as'] ); ?>>Display Name</option>
+                                	<option value="user_firstlast" <?php selected( 'user_firstlast' == $settings['display_byline_as'] ); ?>>First & Last Name</option>
+                                	<option value="user_firstname" <?php selected( 'user_firstname' == $settings['display_byline_as'] ); ?>>First Name</option>
+                                	<option value="user_lastname" <?php selected( 'user_lastname' == $settings['display_byline_as'] ); ?>>Last Name</option>
+                                	<option value="display_name" <?php selected( 'display_name' == $settings['display_byline_as'] ); ?>>Display Name</option>
                                 </select>
                                 </td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $issuem_settings['issuem_author_name'] || 'on' == $issuem_settings['issuem_author_name'] ); ?>" /></td>
+                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $issuem_settings['use_wp_taxonomies'] || 'on' == $issuem_settings['use_wp_taxonomies'] ); ?>" /></td>
+                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /></td>
                             </tr>
                             
                         </table>
@@ -593,7 +626,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                         <div class="inside">
                         
-                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $issuem_settings['article_format'] ) ); ?></textarea>
+                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
                         
                                                   
                         <p class="submit">
@@ -649,9 +682,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * Outputs the IssueM settings page
 		 *
 		 * @since 1.0.0
-		 * @uses do_action() On 'issuem_help_page' for addons
+		 * @uses do_action() On 'help_page' for addons
 		 */
-		function issuem_help_page() {
+		function help_page() {
 			
 			// Display HTML
 			?>
@@ -830,10 +863,10 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 */
 		function upgrade() {
 			
-			$issuem_settings = $this->get_issuem_settings();
+			$settings = $this->get_settings();
 			
-			if ( isset( $issuem_settings['version'] ) )
-				$old_version = $issuem_settings['version'];
+			if ( isset( $settings['version'] ) )
+				$old_version = $settings['version'];
 			else
 				$old_version = 0;
 				
@@ -848,8 +881,8 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			if ( version_compare( $old_version, '1.2.0', '<' ) )
 				$this->upgrade_to_1_2_0();
 
-			$issuem_settings['version'] = ISSUEM_VERSION;
-			update_option( 'issuem', $issuem_settings );
+			$settings['version'] = ISSUEM_VERSION;
+			$this->update_settings( $settings );
 			
 		}
 		
@@ -1008,12 +1041,12 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 */
 		function issuem_api_request( $args ) {
 			
-			$issuem_settings = $this->get_issuem_settings();
+			$settings = $this->get_settings();
 			
 			$args['site'] = network_site_url();
 			
 			if ( !isset( $args['api'] ) )
-				$args['api'] = apply_filters( 'issuem_api_key', $issuem_settings['issuem_API'] );
+				$args['api'] = apply_filters( 'issuem_api_key', $settings['issuem_API'] );
 			
 			// Send request									
 			$request = wp_remote_post( ISSUEM_API_URL, array( 'body' => $args ) );
@@ -1053,6 +1086,23 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 				delete_option( 'issuem_api_error_message_version_dismissed' );
 				
 			}
+			
+		}
+		
+		/**
+		 * Returns the style available with IssueM
+		 *
+		 * @since 1.0.0
+		 * @uses apply_filters on 'issuem_css_styles' hook, for extending IssueM
+		 */
+		function get_css_styles() {
+		
+			$styles = array(
+				'default'	=> __( 'Default', 'issuem' ),
+				'none'		=> __( 'None', 'issuem' ),
+			);
+			
+			return apply_filters( 'issuem_css_styles', $styles );
 			
 		}
 		
