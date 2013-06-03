@@ -77,6 +77,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			if ( !empty( $settings['use_wp_taxonomies'] ) ) 
 				add_action( 'pre_get_posts', array( $this, 'add_issuem_articles_to_tag_query' ) );
+				
+			if ( !is_admin() )
+				add_action( 'pre_get_posts', array( $this, 'remove_draft_issues_from_main_query' ) );
 			
 		}
 		
@@ -175,12 +178,45 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 *
 		 * @param object $query WordPress Query Object
 \		 */
-		function add_issuem_articles_to_tag_query( &$query ) {
+		function add_issuem_articles_to_tag_query( $query ) {
 		
 		   if ( $query->is_main_query()
 			 && ( $query->is_tag() || $query->is_category() ) )
 			 $query->set( 'post_type', array( 'post', 'article' ) );
 		   
+		}
+		
+		/**
+		 * Modifies WordPress query to remove draft Issues from queries
+		 * Except for users with permission to see drafts
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param object $query WordPress Query Object
+\		 */
+		function remove_draft_issues_from_main_query( $query ) {
+			
+			if ( !is_admin() && $query->is_main_query() 
+				&& !current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) {
+								
+				if ( empty( $query->tax_query->queries ) ) {
+				
+					$term_ids = get_issuem_draft_issues();	
+					
+					$query->set( 'tax_query', array(
+							array(
+								'taxonomy' => 'issuem_issue',
+								'field' => 'id',
+								'terms' => $term_ids,
+								'operator' => 'NOT IN'
+							),
+						) 
+					);
+				
+				}
+			
+			}
+			
 		}
 		
 		/**

@@ -389,3 +389,31 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 	add_action( 'edited_issuem_issue', 'save_issuem_issue_meta', 10, 2 );
 
 }
+
+
+if ( !function_exists( 'get_issuem_draft_issues' ) )  {
+	
+	/**
+	 * Outputs array of Issue Terms IDs for IssueM Issue statuses set to Draft
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array Draft Issues
+	 */
+	function get_issuem_draft_issues() {
+		
+		global $wpdb;
+		
+		$term_ids = array();
+		
+		$term_option_names = $wpdb->get_col( 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE "issuem_issue_%_meta" AND option_value LIKE "%Draft%"' );
+		
+		foreach( $term_option_names as $name )
+			if ( preg_match( '/issuem_issue_(\d+)_meta/', $name, $matches ) )
+				$term_ids[] = $matches[1];
+		
+		return $term_ids;
+		
+	}
+
+}
