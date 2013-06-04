@@ -177,7 +177,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 *
 		 * @param object $query WordPress Query Object
-\		 */
+		 */
 		function add_issuem_articles_to_tag_query( $query ) {
 		
 		   if ( $query->is_main_query()
@@ -193,28 +193,40 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.2.0
 		 *
 		 * @param object $query WordPress Query Object
-\		 */
+		 */
 		function remove_draft_issues_from_main_query( $query ) {
-			
-			if ( !is_admin() && $query->is_main_query() 
+						
+			if ( !is_admin() && $query->is_main_query()
 				&& !current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) {
-								
-				if ( empty( $query->tax_query->queries ) ) {
 				
-					$term_ids = get_issuem_draft_issues();	
+				$term_ids = get_issuem_draft_issues();	
+				
+				$draft_issues = array(
+					'taxonomy' => 'issuem_issue',
+					'field' => 'id',
+					'terms' => $term_ids,
+					'operator' => 'NOT IN',
+				);
+				
+				if ( !$query->is_tax() ) {
 					
 					$query->set( 'tax_query', array(
-							array(
-								'taxonomy' => 'issuem_issue',
-								'field' => 'id',
-								'terms' => $term_ids,
-								'operator' => 'NOT IN'
-							),
+							$draft_issues,
 						) 
 					);
 				
+				} else {
+				
+					$term_ids = get_issuem_draft_issues();	
+				
+					$tax_query = $query->tax_query->queries;
+					$tax_query[] = $draft_issues;
+					$tax_query['relation'] = 'AND';
+				
+					$query->set( 'tax_query', $tax_query );
+					
 				}
-			
+							
 			}
 			
 		}
