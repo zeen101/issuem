@@ -317,12 +317,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'pdf_title'				=> __( 'Download PDF', 'issuem' ),
 								'pdf_only_title'		=> __( 'PDF Only', 'issuem' ),
 								'pdf_open_target'		=> '_blank',
-								'cover_image_width'		=> 130,
-								'cover_image_height'	=> 165,
-								'featured_image_width'	=> 480,
-								'featured_image_height'	=> 320,
-								'featured_thumb_width'	=> 150,
-								'featured_thumb_height'	=> 100,
+								'cover_image_width'		=> 200,
+								'cover_image_height'	=> 268,
+								'featured_image_width'	=> 600,
+								'featured_image_height'	=> 338,
+								'featured_thumb_width'	=> 160,
+								'featured_thumb_height'	=> 120,
 								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_PLUGIN_URL . '/images/archive-image-unavailable.jpg' ),
 								'custom_image_used'		=> 0,
 								'show_featured_byline'	=> '',
@@ -332,7 +332,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'use_wp_taxonomies'		=> '',
 								'article_format'		=> 	'<p class="issuem_article_category">%CATEGORY[1]%</p>' . "\n" .
 															'<p><a class="issuem_article_link" href="%URL%">%TITLE%</a></p>' . "\n" .
-															'<p class="issuem_article_content">%TEASER%</p>' . "\n" .
+															'<p class="issuem_article_content">%EXCERPT%</p>' . "\n" .
 															'<p class="issuem_article_byline">%BYLINE%</p>' . "\n",
 								'css_style'				=> 'default',
 							);

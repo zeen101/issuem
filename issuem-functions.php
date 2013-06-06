@@ -376,6 +376,20 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 		}
 		
+		if ( preg_match( '/%FEATURE_IMAGE%/i', $string, $matches ) ) {
+		
+			$image = get_the_post_thumbnail( $post->ID );
+			$string = preg_replace( '/%FEATURE_IMAGE%/i', $image, $string );	
+					
+		}
+		
+		if ( preg_match( '/%ISSUEM_FEATURE_THUMB%/i', $string, $matches ) ) {
+		
+			$image = get_the_post_thumbnail( $post->ID, 'issuem-featured-thumb-image' );
+			$string = preg_replace( '/%ISSUEM_FEATURE_THUMB%/i', $image, $string );	
+					
+		}
+		
 		if ( preg_match( '/%BYLINE%/i', $string, $matches ) ) {
 
 			if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
