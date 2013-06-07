@@ -325,8 +325,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'featured_thumb_height'	=> 120,
 								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_PLUGIN_URL . '/images/archive-image-unavailable.jpg' ),
 								'custom_image_used'		=> 0,
-								'show_featured_byline'	=> '',
-								'show_thumbnail_byline'	=> '',
 								'display_byline_as'		=> 'user_firstlast',
 								'issuem_author_name'	=> '',
 								'use_wp_taxonomies'		=> '',
@@ -452,16 +450,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$settings['default_issue_image'] = $src;
 					
 				}
-				
-				if ( isset( $_REQUEST['show_featured_byline'] ) )
-					$settings['show_featured_byline'] = $_REQUEST['show_featured_byline'];
-				else
-					unset( $settings['show_featured_byline'] );
-				
-				if ( isset( $_REQUEST['show_thumbnail_byline'] ) )
-					$settings['show_thumbnail_byline'] = $_REQUEST['show_thumbnail_byline'];
-				else
-					unset( $settings['show_thumbnail_byline'] );
 				
 				if ( isset( $_REQUEST['display_byline_as'] ) )
 					$settings['display_byline_as'] = $_REQUEST['display_byline_as'];
@@ -620,16 +608,6 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ) . '">' . __( 'Remove Custom Default Issue Image', 'issuem' ); ?></a></p>
                                 <?php } ?>
                                 </td>
-                            </tr>
-                        
-                        	<tr>
-                                <th rowspan="1"> <?php _e( 'Show Byline for Featured Rotator', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_featured_byline" name="show_featured_byline" <?php checked( $settings['show_featured_byline'] || 'on' == $settings['show_featured_byline'] ); ?>" /></td>
-                            </tr>
-                        
-                        	<tr>
-                                <th rowspan="1"> <?php _e( 'Show Byline for Featured Thumbnails', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" <?php checked( $settings['show_thumbnail_byline'] || 'on' == $settings['show_thumbnail_byline'] ); ?>" /></td>
                             </tr>
                         
                         	<tr>

@@ -409,6 +409,9 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'orderby'           => 'menu_order',
 			'order'             => 'DESC',
 			'issue'				=> get_active_issuem_issue(),
+			'show_title'		=> true,
+			'show_teaser'		=> true,
+			'show_byline'		=> false,
 		);
 		
 		// Merge defaults with passed atts
@@ -440,20 +443,19 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $article->ID ), 'issuem-featured-rotator-image' );
 					
-					if ( $issuem_settings['show_featured_byline'] ) {
-						
-						if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
-							
-							$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
-						
-						} else {
+					if ( !empty( $show_title ) ) 
+						$title = get_the_title( $article->ID );
+					else
+						$title = '';
 					
-							if ( 'user_firstlast' == $issuem_settings['display_byline_as'] )
-								$author_name = get_the_author_meta( 'user_firstname', $article->post_author ) . ' ' . get_the_author_meta( 'user_lastname', $article->post_author );
-							else
-								$author_name = get_the_author_meta( $issuem_settings['display_byline_as'], $article->post_author );
-							
-						}
+					if ( !empty( $show_teaser ) ) 
+						$teaser = get_post_meta( $article->ID, '_teaser_text', true );
+					else
+						$teaser = '';
+					
+					if ( !empty( $show_byline ) ) {
+
+						$author_name = get_issuem_author_name( $article );
 						
 						$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) );
 					
@@ -463,9 +465,11 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						
 					}
 					
+					$caption = $title . ' ' . $teaser . ' ' . $byline;
+					
 					$results .= '<li>';
-					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . ' ' . $byline . '" /></a>';
-					$results .= '<span class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . get_post_meta( $article->ID, '_teaser_text', true ) . ' ' . $byline . '</span>';
+					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
+					$results .= '<span class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . $caption . '</span>';
 					$results .= '</li>';
 					
 				}
@@ -573,19 +577,8 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 						}
 						
 						if ( $issuem_settings['show_thumbnail_byline'] ) {
-						
-							if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
-								
-								$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
 							
-							} else {
-				
-								if ( 'user_firstlast' == $issuem_settings['display_byline_as'] )
-									$author_name = get_the_author_meta( 'user_firstname', $article->post_author ) . ' ' . get_the_author_meta( 'user_lastname', $article->post_author );
-								else
-									$author_name = get_the_author_meta( $issuem_settings['display_byline_as'], $article->post_author );
-								
-							}
+							$author_name = get_issuem_author_name( $article );
 							
 							$results .= '<span class="featured-thumb-byline">' . sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) ) . '</span>';
 							

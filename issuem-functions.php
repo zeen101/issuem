@@ -392,26 +392,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		
 		if ( preg_match( '/%BYLINE%/i', $string, $matches ) ) {
 
-			if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
-				
-				$author_name = get_post_meta( $post->ID, '_issuem_author_name', true );
-				$author_name = 'test';
-			
-			} else {
-	
-				if ( 'user_firstlast' == $issuem_settings['display_byline_as'] ) {
-					
-					if ( $first_name = get_the_author_meta( 'user_firstname', $post->post_author ) && $lastname = get_the_author_meta( 'user_lastname', $post->post_author ) )
-						$author_name = $first_name . ' ' . $lastname;
-					else
-						$author_name = '';
-				
-				} else
-					$author_name = get_the_author_meta( $issuem_settings['display_byline_as'], $post->post_author );
-							
-				$author_name = ( !empty( $author_name ) ) ? $author_name : get_the_author_meta( 'display_name', $post->post_author );
-				$author_name = '<a class="url fn n" href="' . esc_url( get_author_posts_url( $post->post_author ) ) . '" title="' . esc_attr( $author_name ) . '" rel="me">' . $author_name . '</a>';
-			}
+			$author_name = get_issuem_author_name( $post );
 			
 			$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
 				
@@ -425,6 +406,50 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		
 	}
 
+}
+
+if ( !function_exists( 'get_issuem_settings' ) ) {
+
+	/**
+	 * Helper function to get IssueM settings for current site
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return mixed Value set for the issuem options.
+	 */
+	function get_issuem_author_name( $article ) {
+		
+		$issuem_settings = get_issuem_settings();
+	
+		if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
+			
+			$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
+		
+		} else {
+		
+			if ( 'user_firstlast' == $issuem_settings['display_byline_as'] ) {
+				
+				if ( $first_name = get_the_author_meta( 'user_firstname', $article->post_author ) && $lastname = get_the_author_meta( 'user_lastname', $article->post_author ) )
+					$author_name = $first_name . ' ' . $lastname;
+				else
+					$author_name = '';
+			
+			} else {
+				
+				$author_name = get_the_author_meta( $issuem_settings['display_byline_as'], $article->post_author );
+						
+			}
+			
+			$author_name = ( !empty( $author_name ) ) ? $author_name : get_the_author_meta( 'display_name', $article->post_author );
+				
+			$author_name = '<a class="url fn n" href="' . esc_url( get_author_posts_url( $article->post_author ) ) . '" title="' . esc_attr( $author_name ) . '" rel="me">' . $author_name . '</a>';
+			
+		}
+		
+		return $author_name;
+		
+	}
+	
 }
 
 if ( !function_exists( 'get_issuem_settings' ) ) {
