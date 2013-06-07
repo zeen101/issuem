@@ -21,13 +21,13 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 		$issues = array();
 		
 		$issuem_issues = get_terms( 'issuem_issue' );
-		
+						
 		foreach ( $issuem_issues as $issue ) {
 				
 			$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
 			
 			// If issue is not a Draft, add it to the archive array;
-			if ( 'Draft' !== $issue_meta['issue_status'] ) {
+			if ( !empty( $issue_meta['issue_status'] ) && ( 'Draft' !== $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
 				
 				switch( $orderby ) {
 					
@@ -57,7 +57,7 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 			$issues = array_merge( $issues_no_issue_order, $issues );
 		
 		krsort( $issues );
-		
+				
 		return array_shift( $issues );
 		
 	}
@@ -135,7 +135,7 @@ if ( !function_exists( 'get_issuem_issue_slug' ) ) {
 		if ( !$id ) {
 			
 			$issue = get_term_by( 'id', get_newest_issuem_issue_id(), 'issuem_issue' );
-			
+						
 			return $issue->slug;
 			
 		} else {
