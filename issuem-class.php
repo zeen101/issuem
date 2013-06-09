@@ -53,8 +53,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			if ( empty( $settings['issuem_API'] ) ) {
 			
-				update_option( 'issuem_api_error_received', true );
-				update_option( 'issuem_api_error_message', __( 'You can enter your IssueM API key in the <a href="/wp-admin/edit.php?post_type=article&page=issuem">IssueM Settings</a> to continue to get access to premium support and add-ons.', 'issuem' ) );
+				update_option( 'issuem_nag', __( 'You can enter your IssueM API key in the <a href="/wp-admin/edit.php?post_type=article&page=issuem">IssueM Settings</a> to continue to get access to premium support and add-ons.', 'issuem' ) );
 				
 			} else {
 	
@@ -62,8 +61,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				add_filter( 'plugins_api', array( $this, 'issuem_plugins_api' ), 10, 3 );
 				add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'issuem_update_plugins' ) );
 				
-				delete_option( 'issuem_api_error_received' );
-				delete_option( 'issuem_api_error_message' );
+				delete_option( 'issuem_nag' );
 				
 			}
 			
@@ -905,7 +903,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			}
 			
 			if ( version_compare( $old_version, '1.2.0', '<' ) )
-				$this->upgrade_to_1_2_0();
+				$this->upgrade_to_1_2_0( $old_version );
 
 			$settings['version'] = ISSUEM_VERSION;
 			$this->update_settings( $settings );
@@ -917,7 +915,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 *
 		 * @since 1.2.0
 		 */
-		function upgrade_to_1_2_0() {
+		function upgrade_to_1_2_0( $old_version ) {
 			
 			$role = get_role('administrator');
 			if ($role !== NULL)
@@ -987,6 +985,12 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 				$role->add_cap('delete_articles');
 				// Issues
 				$role->add_cap('edit_issues');
+				
+			if ( 0 != $old_version ) {
+			
+				update_option( 'issuem_nag', 'Attention IssueM Subscribers! We have launched a new version of IssueM and split out the Advanced Search and Migration Tool into their own plugins. If you were using either of these functions in your previous version of IssueM, you will need to download them from your account at <a href="http://issuem.com/">IssueM</a> and install them on your site. Sorry for any inconvenience this may have caused you and thank you for your continued support!' );
+				
+			}
 				
 		}
 		
@@ -1102,14 +1106,12 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		
 			if ( 1 < $response->account_status ) {
 				
-				update_option( 'issuem_api_error_received', true );
-				update_option( 'issuem_api_error_message', $response->response );
+				update_option( 'issuem_nag', $response->response );
 				
 			} else {
 			
-				delete_option( 'issuem_api_error_received' );
-				delete_option( 'issuem_api_error_message' );
-				delete_option( 'issuem_api_error_message_version_dismissed' );
+				delete_option( 'issuem_nag' );
+				delete_option( 'issuem_nag_version_dismissed' );
 				
 			}
 			
@@ -1140,15 +1142,15 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 */
 		function issuem_notification() {
 			
-			if ( isset( $_REQUEST['remove_issuem_api_error_message'] ) ) {
+			if ( isset( $_REQUEST['remove_issuem_nag'] ) ) {
 				
-				delete_option( 'issuem_api_error_message' );
-				update_option( 'issuem_api_error_message_version_dismissed', ISSUEM_VERSION );
+				delete_option( 'issuem_nag' );
+				update_option( 'issuem_nag_version_dismissed', ISSUEM_VERSION );
 				
 			}
 		
-			if ( ( $notification = get_option( 'issuem_api_error_message' ) ) && version_compare( get_option( 'issuem_api_error_message_version_dismissed' ), ISSUEM_VERSION, '<' ) )
-				echo '<div class="update-nag">' . $notification . '<br /><a href="' . add_query_arg( 'remove_issuem_api_error_message', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></div>';
+			if ( ( $notification = get_option( 'issuem_nag' ) ) && version_compare( get_option( 'issuem_nag_version_dismissed' ), ISSUEM_VERSION, '<' ) )
+				echo '<div class="update-nag">' . $notification . '<br /><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></div>';
 		 
 		}
 		
