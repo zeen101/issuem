@@ -988,7 +988,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 				
 			if ( 0 != $old_version ) {
 			
-				update_option( 'issuem_nag', 'Attention IssueM Subscribers! We have launched a new version of IssueM and split out the Advanced Search and Migration Tool into their own plugins. If you were using either of these functions in your previous version of IssueM, you will need to download them from your account at <a href="http://issuem.com/">IssueM</a> and install them on your site. Sorry for any inconvenience this may have caused you and thank you for your continued support!' );
+				update_option( 'issuem_nag', '<strong>Attention IssueM Subscribers!</strong> We have launched a new version of IssueM and split out the Advanced Search and Migration Tool into their own plugins. If you were using either of these functions in your previous version of IssueM, you will need to download them from your account at <a href="http://issuem.com/">IssueM</a> and install them on your site.<br />Sorry for any inconvenience this may have caused you and thank you for your continued support!' );
 				
 			}
 				
@@ -1150,7 +1150,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			}
 		
 			if ( ( $notification = get_option( 'issuem_nag' ) ) && version_compare( get_option( 'issuem_nag_version_dismissed' ), ISSUEM_VERSION, '<' ) )
-				echo '<div class="update-nag">' . $notification . '<br /><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></div>';
+				echo '<div class="update-nag"><p>' . $notification . '</p><p><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></p></div>';
 		 
 		}
 		
