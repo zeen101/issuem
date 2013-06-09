@@ -49,21 +49,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_wp_enqueue_scripts' ) );
 			add_action( 'admin_print_styles', array( $this, 'admin_wp_print_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
-			add_action( 'wp_ajax_verify', array( $this, 'issuem_api_ajax_verify' ) );
-			
-			if ( empty( $settings['issuem_API'] ) ) {
-			
-				update_option( 'issuem_nag', __( 'You can enter your IssueM API key in the <a href="/wp-admin/edit.php?post_type=article&page=issuem">IssueM Settings</a> to continue to get access to premium support and add-ons.', 'issuem' ) );
-				
-			} else {
-	
-				//Premium Plugin Filters
-				add_filter( 'plugins_api', array( $this, 'issuem_plugins_api' ), 10, 3 );
-				add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'issuem_update_plugins' ) );
-				
-				delete_option( 'issuem_nag' );
-				
-			}
 			
 			register_activation_hook( __FILE__, array( $this, 'issuem_flush_rewrite_rules' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
@@ -241,7 +226,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			if ( 'article_page_issuem' == $hook_suffix 
 				|| ( 'edit.php' == $hook_suffix && isset( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
-				wp_enqueue_style( 'issuem_admin_style', ISSUEM_PLUGIN_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
+				wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
 			
 		}
 	
@@ -258,13 +243,13 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Hack for edit-tags to include the "enctype=multipart/form-data" argument in the edit tags HTML form, 
 		 	// for uploading issue cover images
 			if ( 'edit-tags.php' == $hook_suffix && isset( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] )
-				wp_enqueue_script( 'issuem_issue-custom-tax-hacks', ISSUEM_PLUGIN_URL . '/js/issuem_issue-custom-tax-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_script( 'issuem_issue-custom-tax-hacks', ISSUEM_URL . '/js/issuem_issue-custom-tax-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
 				
 			if ( 'post.php' == $hook_suffix )
-				wp_enqueue_script( 'issuem_issue-edit-article-hacks', ISSUEM_PLUGIN_URL . '/js/issuem_issue-edit-article-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_script( 'issuem_issue-edit-article-hacks', ISSUEM_URL . '/js/issuem_issue-edit-article-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
 				
 			if ( 'article_page_issuem' == $hook_suffix )
-				wp_enqueue_script( 'issuem-admin', ISSUEM_PLUGIN_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
 			
 		}
 			
@@ -288,15 +273,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 					
 					case 'default' :
 					default : 
-						wp_enqueue_style( 'issuem_style', ISSUEM_PLUGIN_URL . '/css/issuem.css', '', ISSUEM_VERSION );
+						wp_enqueue_style( 'issuem_style', ISSUEM_URL . '/css/issuem.css', '', ISSUEM_VERSION );
 						break;
 						
 				}
 			
 			}
 			
-			wp_enqueue_script( 'jquery-issuem-flexslider', ISSUEM_PLUGIN_URL . '/js/jquery.flexslider-min.js', array( 'jquery' ), ISSUEM_VERSION );
-			wp_enqueue_style( 'jquery-issuem-flexslider', ISSUEM_PLUGIN_URL . '/css/flexslider.css', '', ISSUEM_VERSION );
+			wp_enqueue_script( 'jquery-issuem-flexslider', ISSUEM_URL . '/js/jquery.flexslider-min.js', array( 'jquery' ), ISSUEM_VERSION );
+			wp_enqueue_style( 'jquery-issuem-flexslider', ISSUEM_URL . '/css/flexslider.css', '', ISSUEM_VERSION );
 		
 		}
 		
@@ -310,7 +295,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 		function get_settings() {
 			
 			$defaults = array( 
-								'issuem_API' 			=> '', 
 								'page_for_articles'		=> 0,
 								'pdf_title'				=> __( 'Download PDF', 'issuem' ),
 								'pdf_only_title'		=> __( 'PDF Only', 'issuem' ),
@@ -321,7 +305,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'featured_image_height'	=> 338,
 								'featured_thumb_width'	=> 160,
 								'featured_thumb_height'	=> 120,
-								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_PLUGIN_URL . '/images/archive-image-unavailable.jpg' ),
+								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_URL . '/images/archive-image-unavailable.jpg' ),
 								'custom_image_used'		=> 0,
 								'display_byline_as'		=> 'user_firstlast',
 								'issuem_author_name'	=> '',
@@ -380,9 +364,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			if ( isset( $_REQUEST['update_issuem_settings'] ) ) {
 				
-				if ( isset( $_REQUEST['issuem_API'] ) )
-					$settings['issuem_API'] = $_REQUEST['issuem_API'];
-					
 				if ( isset( $_REQUEST['page_for_articles'] ) )
 					$settings['page_for_articles'] = $_REQUEST['page_for_articles'];
 					
@@ -493,34 +474,6 @@ if ( ! class_exists( 'IssueM' ) ) {
                 <form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
             
                     <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
-                    
-                    <div id="api-key" class="postbox">
-                    
-                        <div class="handlediv" title="Click to toggle"><br /></div>
-                        
-                        <h3 class="hndle"><span><?php _e( 'IssueM API Key', 'issuem' ); ?></span></h3>
-                        
-                        <div class="inside">
-                        
-                        <table id="issuem_api_key">
-                        	<tr>
-                                <th rowspan="1"> <?php _e( 'IssueM API Key', 'issuem' ); ?></th>
-                                <td class="leenkme_plugin_name">
-                                <input type="text" id="api" class="regular-text" name="issuem_API" value="<?php echo htmlspecialchars( stripcslashes( $settings['issuem_API'] ) ); ?>" />
-                                
-                                <input type="button" class="button" name="verify_issuem_api" id="verify" value="<?php _e( 'Verify IssueM API', 'issuem' ) ?>" />
-                                <?php wp_nonce_field( 'verify', 'issuem_verify_wpnonce' ); ?>
-                                </td>
-                            </tr>
-                        </table>
-                                                  
-                        <p class="submit">
-                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-                        </p>
-                        
-                        </div>
-                        
-                    </div>
                     
                     <div id="modules" class="postbox">
                     
@@ -669,37 +622,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 			</div>
 			<?php
 			
-		}
-
-		/**
-		 * Called by wp_ajax_verify action
-		 * Used to verify the IssueM API key
-		 *
-		 * @since 1.0.0
-		 */
-		function issuem_api_ajax_verify() {
-		
-			check_ajax_referer( 'verify' );
-						
-			if ( isset( $_REQUEST['issuem_API'] ) ) {
-						
-				// POST data to send to your API
-				$args = array(
-					'action' 	=> 'verify-api',
-					'api'		=> $_REQUEST['issuem_API']
-				);
-					
-				// Send request for detailed information
-				$response = $this->issuem_api_request( $args );
-				
-				die( $response->response );
-		
-			} else {
-		
-				die( __( 'Please fill in your API key.', 'issuem' ) );
-		
-			}
-		
 		}
 		
 		/**
@@ -995,103 +917,46 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		}
 		
 		/**
-		 * Gets IssueM Plugin information for WordPress Updates
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param bool $false
-		 * @param string $action
-		 * @param array $args Array of arguments to pass to the API request
-		 * @return object $response
-		 */
-		function issuem_plugins_api( $false, $action, $args ) {
-		
-			$plugin_slug = ISSUEM_PLUGIN_SLUG;
-			
-			// Check if this plugins API is about this plugin
-			if( !isset( $args->slug ) || $args->slug != $plugin_slug )
-				return $false;
-				
-			// POST data to send to your API
-			$args = array(
-				'action'	=> 'get-plugin-information',
-				'slug'		=> $plugin_slug,
-			);
-				
-			// Send request for detailed information
-			$response = $this->issuem_api_request( $args );
-				
-			return $response;
-			
-		}
-		
-		/**
-		 * Gets IssueM Plugin information for WordPress Updates
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param object $transient
-		 * @return object $transient
-		 */
-		function issuem_update_plugins( $transient ) {
-			
-			// Check if the transient contains the 'checked' information
-    		// If no, just return its value without hacking it
-			if ( empty( $transient->checked ) )
-				return $transient;
-		
-			// The transient contains the 'checked' information
-			// Now append to it information form your own API
-			$plugin_slug = ISSUEM_PLUGIN_SLUG;
-				
-			// POST data to send to your API
-			$args = array(
-				'action'	=> 'check-latest-version',
-				'slug'		=> $plugin_slug
-			);
-			
-			// Send request checking for an update
-			$response = $this->issuem_api_request( $args );
-							
-			// If there is a new version, modify the transient
-			if ( isset( $response->new_version ) )
-				if( version_compare( $response->new_version, $transient->checked[ISSUEM_PLUGIN_BASENAME], '>' ) )
-					$transient->response[ISSUEM_PLUGIN_BASENAME] = $response;
-				
-			return $transient;
-			
-		}
-		
-		/**
 		 * API Request sent and processed by the IssueM API
 		 *
 		 * @since 1.0.0
 		 *
 		 * @param array $args Arguments to send to the IssueM API
 		 */
-		function issuem_api_request( $args ) {
-			
+		function issuem_api_request( $_action, $_data ) {
+				
 			$settings = $this->get_settings();
-			
-			$args['site'] = network_site_url();
-			
-			if ( !isset( $args['api'] ) )
-				$args['api'] = apply_filters( 'issuem_api_key', $settings['issuem_API'] );
-			
-			// Send request									
-			$request = wp_remote_post( ISSUEM_API_URL, array( 'body' => $args ) );
-			
-			if ( is_wp_error( $request ) || 200 != wp_remote_retrieve_response_code( $request ) )
+	
+			$api_params = array(
+				'edd_action' 	=> 'get_version',
+				'name' 			=> $_data['name'],
+				'slug' 			=> $_data['slug'],
+				'license' 		=> $_data['license'],
+				'author'		=> 'IssueM Development Team',
+			);
+			$request = wp_remote_post( 
+				ISSUEM_STORE_URL, 
+				array( 
+					'timeout' => 15, 
+					'sslverify' => false, 
+					'body' => $api_params 
+				) 
+			);
+	
+			if ( !is_wp_error( $request ) ) {
+				
+				$request = json_decode( wp_remote_retrieve_body( $request ) );
+				
+				if( $request )
+					$request->sections = maybe_unserialize( $request->sections );
+					
+				return $request;
+				
+			} else {
+				
 				return false;
 				
-			$response = unserialize( wp_remote_retrieve_body( $request ) );
-									
-			$this->api_status( $response );
-			
-			if ( is_object( $response ) )
-				return $response;
-			else
-				return false;
+			}
 
 		}
 		

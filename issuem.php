@@ -15,14 +15,16 @@ Author URI: http://issuem.com/
 Tags: 
 */
 
-define( 'ISSUEM_PLUGIN_SLUG', 		'issuem' );
-define( 'ISSUEM_VERSION', 			'1.2.0' );
-define( 'ISSUEM_DB_VERSION', 		'1.0.0' );
-define( 'ISSUEM_API_URL', 			'http://api.issuem.com' );
-define( 'ISSUEM_PLUGIN_URL', 		plugin_dir_url( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_PATH', 		plugin_dir_path( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_BASENAME', 	plugin_basename( __FILE__ ) );
-define( 'ISSUEM_PLUGIN_REL_DIR', 	dirname( ISSUEM_PLUGIN_BASENAME ) );
+if ( !defined( 'ISSUEM_STORE_URL' ) )
+	define( 'ISSUEM_STORE_URL', 					'http://dev.issuem.com' );
+	
+define( 'ISSUEM_SLUG', 			'issuem' );
+define( 'ISSUEM_VERSION', 		'1.2.0' );
+define( 'ISSUEM_DB_VERSION', 	'1.0.0' );
+define( 'ISSUEM_URL', 			plugin_dir_url( __FILE__ ) );
+define( 'ISSUEM_PATH', 			plugin_dir_path( __FILE__ ) );
+define( 'ISSUEM_BASENAME', 		plugin_basename( __FILE__ ) );
+define( 'ISSUEM_REL_DIR', 		dirname( ISSUEM_BASENAME ) );
 
 /**
  * Instantiate IssueM class, require helper files
@@ -57,7 +59,7 @@ function issuem_plugins_loaded() {
 		require_once( 'issuem-feeds.php' );
 			
 		//Internationalization
-		load_plugin_textdomain( 'issuem', false, ISSUEM_PLUGIN_REL_DIR . '/i18n/' );
+		load_plugin_textdomain( 'issuem', false, ISSUEM_REL_DIR . '/i18n/' );
 		
 		do_action( 'issuem_loaded' );
 			

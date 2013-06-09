@@ -568,13 +568,14 @@ if ( !function_exists( 'issuem_api_request' ) ) {
 	 *
 	 * @since 1.2.0
 	 *
-	 * @param int $args Arguments to pass to API request
+	 * @param string $action Action to pass to API request
+	 * @param array $args Arguments to pass to API request
 	 */
-    function issuem_api_request( $args ) { 
+    function issuem_api_request( $action, $args ) { 
 	
 		global $dl_plugin_issuem;
 	
-		return $dl_plugin_issuem->issuem_api_request( $args );
+		return $dl_plugin_issuem->issuem_api_request( $action, $args );
 	
     }   
 	

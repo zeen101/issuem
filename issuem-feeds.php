@@ -17,7 +17,7 @@ if ( !function_exists( 'do_issuem_feed_rdf' ) ) {
 				
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 			
-			load_template( ISSUEM_PLUGIN_PATH . '/feed-templates/feed-rdf.php' );
+			load_template( ISSUEM_PATH . '/feed-templates/feed-rdf.php' );
 			
 			remove_action( 'do_feed_rdf', 'do_feed_rdf', 10, 1 );
 			
@@ -44,7 +44,7 @@ if ( !function_exists( 'do_issuem_feed_atom' ) ) {
 		
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 		
-			load_template( ISSUEM_PLUGIN_PATH . '/feed-templates/feed-atom.php' );
+			load_template( ISSUEM_PATH . '/feed-templates/feed-atom.php' );
 			
 			remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
 			
@@ -66,7 +66,7 @@ if ( !function_exists( 'do_issuem_feed_rss' ) ) {
 				
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 			
-			load_template( ISSUEM_PLUGIN_PATH . '/feed-templates/feed-rss.php' );
+			load_template( ISSUEM_PATH . '/feed-templates/feed-rss.php' );
 			
 			remove_action( 'do_feed_rss', 'do_feed_rss', 10, 1 );
 			
@@ -93,7 +93,7 @@ if ( !function_exists( 'do_issuem_feed_rss2' ) ) {
 		
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 		
-			load_template( ISSUEM_PLUGIN_PATH . '/feed-templates/feed-rss2.php' );
+			load_template( ISSUEM_PATH . '/feed-templates/feed-rss2.php' );
 			
 			remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
 			

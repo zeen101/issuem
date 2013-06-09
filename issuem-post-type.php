@@ -57,7 +57,7 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 			'has_archive' 			=> true,
 			'rewrite' 				=> array( 'slug' => 'article' ),
 			'taxonomies'			=> $taxonomies,
-			'menu_icon'				=> ISSUEM_PLUGIN_URL . '/images/issuem-16x16.png'
+			'menu_icon'				=> ISSUEM_URL . '/images/issuem-16x16.png'
 			);
 	
 		register_post_type( 'article', $args );
