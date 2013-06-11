@@ -363,7 +363,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 			else
 				$image_line = '<img src="' . $default_image . '" />';
 				
-			$results .= '<p><a style="display: block; width: ' . apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ) . 'px; height: ' . apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ) . 'px;" href="' . $issue_url . '">' . $image_line . '</a>';
+			$results .= '<p><a class="featured_archives_cover" style="width: ' . apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ) . 'px; height: ' . apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ) . 'px;" href="' . $issue_url . '">' . $image_line . '</a>';
 			$results .= '<br /><a href="' . $issue_url . '">' . $issue_array[0]->name . '</a>';
 			$results .= '<br />' . $pdf_line;
 		
@@ -465,7 +465,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						
 					}
 					
-					$caption = $title . ' ' . $teaser . ' ' . $byline;
+					$caption = '<span class="featured_slider_title">' . $title . '</span> <span class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline>' . $byline . '</span>';
 					
 					$results .= '<li>';
 					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
