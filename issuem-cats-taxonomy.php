@@ -13,7 +13,6 @@ if ( !function_exists( 'create_issuem_cats_taxonomy' ) ) {
 	 *
 	 * @since 1.0.0
 	 * @todo misnamed originaly, should reallly be issuem_article_categories
-	 * @uses register_taxonomy()
 	 */
 	function create_issuem_cats_taxonomy() {
 		

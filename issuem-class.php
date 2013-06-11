@@ -6,13 +6,13 @@
  * @since 1.0.0
  */
 
-/**
- * This class registers the main issuem functionality
- *
- * @since 1.0.0
- */
 if ( ! class_exists( 'IssueM' ) ) {
 	
+	/**
+	 * This class registers the main issuem functionality
+	 *
+	 * @since 1.0.0
+	 */
 	class IssueM {
 		
 		/**
@@ -22,18 +22,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 *
 		 * @todo Move the the_author filter to a more appopriate place
 		 * @todo Move the pre_get_posts filter to a more appopriate place
-		 *
-		 * @uses add_image_size() Sets image sizes for IssueM
-		 * @uses add_action() Calls 'admin_init' hook on $this->upgrade
-		 * @uses add_action() Calls 'admin_notices' hook on $this->issuem_notification
-		 * @uses add_action() Calls 'admin_enqueue_scripts' hook on $this->admin_wp_enqueue_scripts
-		 * @uses add_action() Calls 'admin_print_styles' hook on $this->admin_wp_print_styles
-		 * @uses add_action() Calls 'wp_enqueue_scripts' hook on $this->frontend_scripts
-		 * @uses add_filter() Calls 'plugins_api' hook on $this->issuem_plugins_api
-		 * @uses add_filter() Calls 'pre_set_site_transient_update_plugins' hook on $this->issuem_update_plugins
-		 * @uses add_filter() Calls 'views_edit-article' hook on $this->add_issuem_articles_to_tag_query
-		 * @uses the_author() Calls 'the_author' hook on $this->issuem_the_author
-		 * @uses add_action() Calls 'pre_get_posts' hook on $this->add_issuem_articles_to_tag_query
 		 */
 		function IssueM() {
 			

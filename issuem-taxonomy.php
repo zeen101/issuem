@@ -12,7 +12,6 @@ if ( !function_exists( 'create_issuem_cats_taxonomy' ) ) {
 	 * Registers IssueM Issue Taxonomy
 	 *
 	 * @since 1.0.0
-	 * @uses register_taxonomy()
 	 */
 	function create_issue_taxonomy() {
 		

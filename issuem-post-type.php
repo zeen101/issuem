@@ -12,7 +12,6 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 	 * Registers Article Post type for IssueM
 	 *
 	 * @since 1.0.0
-	 * @uses register_post_type()
 	 */
 	function create_article_post_type()  {
 				
@@ -73,7 +72,6 @@ if ( !function_exists( 'add_issuem_articles_metaboxes' ) ) {
 	 * Registers metaboxes for IssueM Articles
 	 *
 	 * @since 1.0.0
-\	 * @uses add_meta_box()
 	 */
 	function add_issuem_articles_metaboxes() {
 		

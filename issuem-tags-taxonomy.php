@@ -13,7 +13,6 @@ if ( !function_exists( 'create_issuem_tags_taxonomy' ) ) {
 	 *
 	 * @since 1.0.0
 	 * @todo misnamed originaly, should reallly be issuem_article_tags
-	 * @uses register_taxonomy()
 	 */
 	function create_issuem_tags_taxonomy() {
 		

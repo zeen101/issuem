@@ -432,7 +432,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 		
 		if ( $featured_articles ) :
 			
-			$results .= '<div id="issuem-featured-article-slideshowholder">';
+			$results .= '<div id="issuem-featured-article-slideshowholder">'; 
 			$results .= '<div class="flexslider">';
 			$results .= '<ul class="slides">';
 		
@@ -465,21 +465,21 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						
 					}
 					
-					$caption = '<span class="featured_slider_title">' . $title . '</span> <span class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline>' . $byline . '</span>';
+					$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
 					
 					$results .= '<li>';
 					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
-					$results .= '<span class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . $caption . '</span>';
+					$results .= '<div class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . $caption . '</div>';
 					$results .= '</li>';
 					
 				}
 				
 			}
 			
-			$results .= '</ul>';
-			$results .= '</div>';
-			$results .= '</div>';
-			
+			$results .= '</ul>';  //slides
+			$results .= '</div>'; //flexslider
+			$results .= '</div>'; //issuem-featured-article-slideshowholder
+					
 			$results .= "<script type='text/javascript'>
 						jQuery( window ).load( function(){
 						  jQuery( '.flexslider' ).flexslider({
