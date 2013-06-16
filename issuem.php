@@ -21,7 +21,7 @@ Tags:
  * @since 1.2.0
  */
 if ( !defined( 'ISSUEM_STORE_URL' ) )
-	define( 'ISSUEM_STORE_URL', 					'http://dev.issuem.com' );
+	define( 'ISSUEM_STORE_URL', 					'http://issuem.com' );
 	
 define( 'ISSUEM_SLUG', 			'issuem' );
 define( 'ISSUEM_VERSION', 		'1.2.0' );
