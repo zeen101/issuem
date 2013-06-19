@@ -66,6 +66,30 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 
 }
 
+if ( !function_exists( 'issuem_article_add_post_thumbnails' ) ) {
+	
+	function issuem_article_add_post_thumbnails() {
+		
+		$supported_post_types = get_theme_support( 'post-thumbnails' );
+		
+		if( false === $supported_post_types )  {
+			
+			$post_types = array( 'article' );
+			add_theme_support( 'post-thumbnails', $post_types ); 
+			           
+		} else if ( is_array( $supported_post_types ) ) {
+			
+			$post_types = $supported_post_types[0];
+			$post_types[] = 'article';
+			add_theme_support( 'post-thumbnails', $post_types ); 
+
+		} 
+	
+	}
+	add_action( 'after_setup_theme', 'issuem_article_add_post_thumbnails', 99 );
+	
+}
+
 if ( !function_exists( 'add_issuem_articles_metaboxes' ) ) {
 		
 	/**
