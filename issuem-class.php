@@ -61,10 +61,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 *
 		 */
 		function activation() {
-					
-			// ATTENTION: This is *only* done during plugin activation hook in this example!
-			// You should *NEVER EVER* do this on every page load!!
-			flush_rewrite_rules();
+			
+			 add_option( 'issuem_flush_rewrite_rules', 'true' );
 			
 		}
 	
@@ -79,6 +77,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Clear the IssueM RSS reader if there is a schedule
 			if ( wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
 				wp_clear_scheduled_hook( 'issuem_dot_com_rss_feed_check' );
+				
+			 delete_option( 'issuem_flush_rewrite_rules' );
 			
 		}
 			

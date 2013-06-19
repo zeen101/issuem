@@ -61,6 +61,15 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 	
 		register_post_type( 'article', $args );
 		
+		if ( 'true' === get_option( 'issuem_flush_rewrite_rules' ) ) {
+			
+			// ATTENTION: This is *only* done during plugin activation hook in this example!
+			// You should *NEVER EVER* do this on every page load!!
+			flush_rewrite_rules();
+			delete_option( 'issuem_flush_rewrite_rules' );
+			
+		}
+		
 	}
 	add_action( 'init', 'create_article_post_type' );
 

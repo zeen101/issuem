@@ -20,6 +20,8 @@ Leaky Paywall w/ Stripe Integration - Charge your customers to view your IssueM 
 Post Migration Tool - Convert your old blog posts into Issue based Articles!
 Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
 
+Also, be sure to check out our [free IssueM Magazine theme](https://issuem.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
+
 For support, demos and premium add-ons, please visit [IssueM.com](http://issuem.com/).
 
 == Installation ==
@@ -41,6 +43,10 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.1 =
+* Added function/hook to add featured image to article post type, if not supported by theme
+* Rewrote flush rewrite rules activation hook for better performance
+
 = 1.2.0 =
 * OpenSourceInitiative Release!
 
