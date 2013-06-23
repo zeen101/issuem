@@ -10,7 +10,7 @@ Plugin Name: IssueM
 Plugin URI: http://issuem.com/
 Description: A feature rich magazine and newspaper issue manager plugin for WordPress.
 Author: IssueM Development Team
-Version: .9
+Version: 1.2.0
 Author URI: http://issuem.com/
 Tags: 
 */
