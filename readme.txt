@@ -46,6 +46,7 @@ You must have:
 = 1.2.1 =
 * Added function/hook to add featured image to article post type, if not supported by theme
 * Rewrote flush rewrite rules activation hook for better performance
+* HEY STUPID DO THAT THING WITH THE ARTICLE PAGE TOO!
 
 = 1.2.0 =
 * OpenSourceInitiative Release!
