@@ -43,6 +43,10 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.2 =
+* Fixed bug in displaying WordPress author as First & Last name
+* Fixed some PHP docblock
+
 = 1.2.1 =
 * Added function/hook to add featured image to article post type, if not supported by theme
 * Rewrote flush rewrite rules activation hook for better performance

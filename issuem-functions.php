@@ -408,14 +408,15 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 
 }
 
-if ( !function_exists( 'get_issuem_settings' ) ) {
+if ( !function_exists( 'get_issuem_author_name' ) ) {
 
 	/**
-	 * Helper function to get IssueM settings for current site
+	 * Function to get Article's Author Name
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return mixed Value set for the issuem options.
+	 * @param object WordPress Post/Article object
+	 * @return string Value set for the issuem options.
 	 */
 	function get_issuem_author_name( $article ) {
 		
@@ -429,8 +430,8 @@ if ( !function_exists( 'get_issuem_settings' ) ) {
 		
 			if ( 'user_firstlast' == $issuem_settings['display_byline_as'] ) {
 				
-				if ( $first_name = get_the_author_meta( 'user_firstname', $article->post_author ) && $lastname = get_the_author_meta( 'user_lastname', $article->post_author ) )
-					$author_name = $first_name . ' ' . $lastname;
+				if ( ( $first_name = get_the_author_meta( 'user_firstname', $article->post_author ) ) && ( $last_name = get_the_author_meta( 'user_lastname', $article->post_author ) ) )
+					$author_name = $first_name . ' ' . $last_name;
 				else
 					$author_name = '';
 			
