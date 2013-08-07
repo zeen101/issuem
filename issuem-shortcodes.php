@@ -354,9 +354,9 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				$pdf_line = '&nbsp;';
 				
 			}
-			
+						
 			if ( isset( $issue_meta['external_link'] ) && !empty( $issue_meta['external_link'] ) )
-				$issue_url = apply_filters( 'archive_issue_url_external_link', $issue_url, $issue_meta['external_link'] );
+				$issue_url = apply_filters( 'archive_issue_url_external_link', $issue_meta['external_link'], $issue_url );
 	
 			if ( isset( $issue_array[1]['cover_image'] ) )
 				$image_line = wp_get_attachment_image( $issue_array[1]['cover_image'], 'issuem-cover-image' );

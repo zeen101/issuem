@@ -44,6 +44,7 @@ You must have:
 
 == Changelog ==
 = 1.2.2 =
+* Fixed bug in Extrenal Link setting for Issues
 * Fixed bug in displaying WordPress author as First & Last name
 * Fixed some PHP docblock
 
