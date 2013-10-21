@@ -10,7 +10,7 @@ Plugin Name: IssueM
 Plugin URI: http://issuem.com/
 Description: A feature rich magazine and newspaper issue manager plugin for WordPress.
 Author: IssueM Development Team
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://issuem.com/
 Tags: 
 */
@@ -24,7 +24,7 @@ if ( !defined( 'ISSUEM_STORE_URL' ) )
 	define( 'ISSUEM_STORE_URL', 					'http://issuem.com' );
 	
 define( 'ISSUEM_SLUG', 			'issuem' );
-define( 'ISSUEM_VERSION', 		'1.2.2' );
+define( 'ISSUEM_VERSION', 		'1.2.3' );
 define( 'ISSUEM_DB_VERSION', 	'1.0.0' );
 define( 'ISSUEM_URL', 			plugin_dir_url( __FILE__ ) );
 define( 'ISSUEM_PATH', 			plugin_dir_path( __FILE__ ) );
@@ -52,7 +52,7 @@ function issuem_plugins_loaded() {
 		require_once( 'issuem-taxonomy.php' );
 		require_once( 'issuem-functions.php' );
 		
-		if ( !isset( $issuem_settings['use_wp_taxonomies'] ) || empty( $issuem_settings['use_wp_taxonomies'] ) ) { 
+		if ( empty( $issuem_settings['use_wp_taxonomies'] ) ) { 
 			// Don't load these if we don't have too
 			require_once( 'issuem-cats-taxonomy.php' );
 			require_once( 'issuem-tags-taxonomy.php' );

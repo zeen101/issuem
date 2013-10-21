@@ -73,14 +73,14 @@ class IssueM_Active_Issue extends WP_Widget {
 		
 			$issue_url = add_query_arg( 'issue', $issue, $article_page );
 		
-			if ( isset( $meta_options['cover_image'] ) && !empty( $meta_options['cover_image'] ) )
+			if ( !empty( $meta_options['cover_image'] ) )
 				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', $issue_url, $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image' ) . '</a></p>';
 			else
 				$out .= '<p class="issuem_widget_issue_cover_image"><img src="' . $issuem_settings['default_issue_image'] . '" /></p>';
 				
 		}
 		
-		if ( 'on' == $instance['display_pdf_link'] && isset( $meta_options['pdf_version'] ) && !empty( $meta_options['pdf_version'] ) )
+		if ( 'on' == $instance['display_pdf_link'] && !empty( $meta_options['pdf_version'] ) )
 			$out .= '<p><a class="issuem_widget_issue_pdf_link" target="_blank" href="' . wp_get_attachment_url( $meta_options['pdf_version'] ) . '">' . $issuem_settings['pdf_title'] . '</a></p>';
 		
 		if ( ! empty( $out ) ) {
@@ -220,9 +220,9 @@ class IssueM_Article_List extends WP_Widget {
 			'terms' 	=> get_active_issuem_issue()
 		);
 		
-		if ( isset( $instance['article_category'] ) && 'all' != $instance['article_category'] ) {
+		if ( !empty( $instance['article_category'] ) && 'all' != $instance['article_category'] ) {
 			
-			if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
 				$cat_type = 'category';
 			else
 				$cat_type = 'issuem_issue_categories';
@@ -347,7 +347,7 @@ class IssueM_Article_List extends WP_Widget {
 	        </p>
 			<?php
 		
-			if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
 				$cat_type = 'category';
 			else
 				$cat_type = 'issuem_issue_categories';
@@ -480,9 +480,9 @@ class IssueM_Article_Categories extends WP_Widget {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 		$title = esc_attr( $instance['title'] );
-		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
-		$hierarchical = isset( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : false;
-		$dropdown = isset( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : false;
+		$count = !empty($instance['count']) ? (bool) $instance['count'] :false;
+		$hierarchical = !empty( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : false;
+		$dropdown = !empty( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : false;
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>

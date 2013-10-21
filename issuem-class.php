@@ -213,7 +213,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			global $hook_suffix;
 			
 			if ( 'article_page_issuem' == $hook_suffix 
-				|| ( 'edit.php' == $hook_suffix && isset( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
+				|| ( 'edit.php' == $hook_suffix && !empty( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
 				wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
 			
 		}
@@ -230,7 +230,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			// Hack for edit-tags to include the "enctype=multipart/form-data" argument in the edit tags HTML form, 
 		 	// for uploading issue cover images
-			if ( 'edit-tags.php' == $hook_suffix && isset( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] )
+			if ( 'edit-tags.php' == $hook_suffix && !empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] )
 				wp_enqueue_script( 'issuem_issue-custom-tax-hacks', ISSUEM_URL . '/js/issuem_issue-custom-tax-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
 				
 			if ( 'post.php' == $hook_suffix )
@@ -338,7 +338,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Get the user options
 			$settings = $this->get_settings();
 			
-			if ( isset( $_REQUEST['remove_default_issue_image'] ) ) {
+			if ( !empty( $_REQUEST['remove_default_issue_image'] ) ) {
 				
 				wp_delete_attachment( $_REQUEST['remove_default_issue_image'] );
 				
@@ -351,60 +351,60 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			}
 			
-			if ( isset( $_REQUEST['update_issuem_settings'] ) ) {
+			if ( !empty( $_REQUEST['update_issuem_settings'] ) ) {
 				
-				if ( isset( $_REQUEST['page_for_articles'] ) )
+				if ( !empty( $_REQUEST['page_for_articles'] ) )
 					$settings['page_for_articles'] = $_REQUEST['page_for_articles'];
 				
-				if ( isset( $_REQUEST['page_for_archives'] ) )
+				if ( !empty( $_REQUEST['page_for_archives'] ) )
 					$settings['page_for_archives'] = $_REQUEST['page_for_archives'];
 					
-				if ( isset( $_REQUEST['css_style'] ) )
+				if ( !empty( $_REQUEST['css_style'] ) )
 					$settings['css_style'] = $_REQUEST['css_style'];
 				
-				if ( isset( $_REQUEST['pdf_title'] ) )
+				if ( !empty( $_REQUEST['pdf_title'] ) )
 					$settings['pdf_title'] = $_REQUEST['pdf_title'];
 				
-				if ( isset( $_REQUEST['pdf_only_title'] ) )
+				if ( !empty( $_REQUEST['pdf_only_title'] ) )
 					$settings['pdf_only_title'] = $_REQUEST['pdf_only_title'];
 					
-				if ( isset( $_REQUEST['pdf_open_target'] ) )
+				if ( !empty( $_REQUEST['pdf_open_target'] ) )
 					$settings['pdf_open_target'] = $_REQUEST['pdf_open_target'];
 				
-				if ( isset( $_REQUEST['article_format'] ) )
+				if ( !empty( $_REQUEST['article_format'] ) )
 					$settings['article_format'] = $_REQUEST['article_format'];
 				
-				if ( isset( $_REQUEST['cover_image_width'] ) )
+				if ( !empty( $_REQUEST['cover_image_width'] ) )
 					$settings['cover_image_width'] = $_REQUEST['cover_image_width'];
 				else
 					unset( $settings['cover_image_width'] );
 				
-				if ( isset( $_REQUEST['cover_image_height'] ) )
+				if ( !empty( $_REQUEST['cover_image_height'] ) )
 					$settings['cover_image_height'] = $_REQUEST['cover_image_height'];
 				else
 					unset( $settings['cover_image_height'] );
 				
-				if ( isset( $_REQUEST['featured_image_width'] ) )
+				if ( !empty( $_REQUEST['featured_image_width'] ) )
 					$settings['featured_image_width'] = $_REQUEST['featured_image_width'];
 				else
 					unset( $settings['featured_image_width'] );
 				
-				if ( isset( $_REQUEST['featured_image_height'] ) )
+				if ( !empty( $_REQUEST['featured_image_height'] ) )
 					$settings['featured_image_height'] = $_REQUEST['featured_image_height'];
 				else
 					unset( $settings['featured_image_height'] );
 				
-				if ( isset( $_REQUEST['featured_thumb_width'] ) )
+				if ( !empty( $_REQUEST['featured_thumb_width'] ) )
 					$settings['featured_thumb_width'] = $_REQUEST['featured_thumb_width'];
 				else
 					unset( $settings['featured_thumb_width'] );
 				
-				if ( isset( $_REQUEST['featured_thumb_height'] ) )
+				if ( !empty( $_REQUEST['featured_thumb_height'] ) )
 					$settings['featured_thumb_height'] = $_REQUEST['featured_thumb_height'];
 				else
 					unset( $settings['featured_thumb_height'] );
 					
-				if ( isset( $_FILES['default_issue_image'] ) && !empty( $_FILES['default_issue_image']['name'] ) ) {
+				if ( !empty( $_FILES['default_issue_image']['name'] ) ) {
 		
 					require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
 					$id = media_handle_upload( 'default_issue_image', 0 ); //post id of Client Files page  
@@ -422,15 +422,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 					
 				}
 				
-				if ( isset( $_REQUEST['display_byline_as'] ) )
+				if ( !empty( $_REQUEST['display_byline_as'] ) )
 					$settings['display_byline_as'] = $_REQUEST['display_byline_as'];
 				
-				if ( isset( $_REQUEST['issuem_author_name'] ) )
+				if ( !empty( $_REQUEST['issuem_author_name'] ) )
 					$settings['issuem_author_name'] = $_REQUEST['issuem_author_name'];
 				else
 					unset( $settings['issuem_author_name'] );
 				
-				if ( isset( $_REQUEST['use_wp_taxonomies'] ) )
+				if ( !empty( $_REQUEST['use_wp_taxonomies'] ) )
 					$settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
 				else
 					unset( $settings['use_wp_taxonomies'] );
@@ -448,7 +448,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 			}
 			
-			if ( isset( $_POST['update_issuem_settings'] ) || isset( $_GET['settings_saved'] ) ) {
+			if ( !empty( $_POST['update_issuem_settings'] ) || !empty( $_GET['settings_saved'] ) ) {
 				
 				// update settings notification ?>
 				<div class="updated"><p><strong><?php _e( 'IssueM Settings Updated.', 'issuem' );?></strong></p></div>
@@ -807,7 +807,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 			
 			$settings = $this->get_settings();
 			
-			if ( isset( $settings['version'] ) )
+			if ( !empty( $settings['version'] ) )
 				$old_version = $settings['version'];
 			else
 				$old_version = 0;
@@ -1003,7 +1003,7 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 */
 		function issuem_notification() {
 			
-			if ( isset( $_REQUEST['remove_issuem_nag'] ) ) {
+			if ( !empty( $_REQUEST['remove_issuem_nag'] ) ) {
 				
 				delete_option( 'issuem_nag' );
 				update_option( 'issuem_nag_version_dismissed', ISSUEM_VERSION );

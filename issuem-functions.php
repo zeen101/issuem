@@ -191,9 +191,9 @@ if ( !function_exists( 'get_active_issuem_issue' ) ) {
 	 */
 	function get_active_issuem_issue() {
 	
-		if ( isset( $_COOKIE['issuem_issue'] ) )
+		if ( !empty( $_COOKIE['issuem_issue'] ) )
 			return $_COOKIE['issuem_issue'];
-		else if ( isset( $_GET['issue'] ) )
+		else if ( !empty( $_GET['issue'] ) )
 			return $_GET['issue'];
 		else
 			return get_issuem_issue_slug();
@@ -211,7 +211,7 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 	 */
 	function set_issuem_cookie() {
 		
-		if ( isset( $_GET['issue'] ) ) {
+		if ( !empty( $_GET['issue'] ) ) {
 		
 			$_COOKIE['issuem_issue'] = $_GET['issue'];
 			setcookie( 'issuem_issue', $_GET['issue'], time() + 3600, '/' );
@@ -227,7 +227,7 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 				$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
 				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
 			
-			} else if ( isset( $wp_query->post_type ) && 'article' != $wp_query->post_type ) {
+			} else if ( !empty( $wp_query->post_type ) && 'article' != $wp_query->post_type ) {
 			
 				unset( $_COOKIE['issuem_issue'] );
 				setcookie( 'issuem_issue', '', 1, '/' );
@@ -254,7 +254,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		
 		$issuem_settings = get_issuem_settings();
 		
-		if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) ) {
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) {
 			
 			$tags = 'post_tag';
 			$cats = 'category';	

@@ -75,7 +75,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 			$issuem_issue
 		);
 		
-		if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
 			$cat_type = 'category';
 		else
 			$cat_type = 'issuem_issue_categories';
@@ -152,7 +152,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 			
 		} else {
 			
-			if ( isset( $article_category ) && 'all' !== $article_category ) {
+			if ( !empty( $article_category ) && 'all' !== $article_category ) {
 					
 				$category = array(
 					'taxonomy' 	=> $cat_type,
@@ -282,7 +282,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				switch( $orderby ) {
 					
 					case "issue_order":
-						if ( isset( $issue_meta['issue_order'] ) && !empty( $issue_meta['issue_order'] ) )
+						if ( !empty( $issue_meta['issue_order'] ) )
 							$archives[ $issue_meta['issue_order'] ] = array( $issue, $issue_meta );
 						else 
 							$archives_no_issue_order[] = array( $issue, $issue_meta );
@@ -330,9 +330,9 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 		
 			$issue_url = add_query_arg( 'issue', $issue_array[0]->slug, $article_page );
 				
-			if ( ( isset( $issue_array[1]['pdf_version'] ) && !empty( $issue_array[1]['pdf_version'] ) ) ) {
+			if ( !empty( $issue_array[1]['pdf_version'] ) || !empty( $issue_meta['external_pdf_link'] ) ) {
 				
-				$pdf_url = empty( $issue_meta['external_link'] ) ? wp_get_attachment_url( $issue_array[1]['pdf_version'] ) : $issue_meta['external_link'];
+				$pdf_url = empty( $issue_meta['external_pdf_link'] ) ? wp_get_attachment_url( $issue_array[1]['pdf_version'] ) : $issue_meta['external_pdf_link'];
 				
 				$pdf_line = '<a href="' . $pdf_url . '" target="' . $issuem_settings['pdf_open_target'] . '">';
 				
@@ -351,14 +351,14 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				
 			} else {
 			
-				$pdf_line = '&nbsp;';
+				$pdf_line = apply_filters( 'issuem_pdf_version', '&nbsp;', $pdf_title, $issue_array[0] );
 				
 			}
 						
-			if ( isset( $issue_meta['external_link'] ) && !empty( $issue_meta['external_link'] ) )
+			if ( !empty( $issue_meta['external_link'] ) )
 				$issue_url = apply_filters( 'archive_issue_url_external_link', $issue_meta['external_link'], $issue_url );
 	
-			if ( isset( $issue_array[1]['cover_image'] ) )
+			if ( !empty( $issue_array[1]['cover_image'] ) )
 				$image_line = wp_get_attachment_image( $issue_array[1]['cover_image'], 'issuem-cover-image' );
 			else
 				$image_line = '<img src="' . $default_image . '" />';

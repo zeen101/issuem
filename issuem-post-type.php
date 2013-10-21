@@ -17,7 +17,7 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 				
 		$issuem_settings = get_issuem_settings();
 		
-		if ( isset( $issuem_settings['use_wp_taxonomies'] ) && !empty( $issuem_settings['use_wp_taxonomies'] ) )
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) )
 			$taxonomies = array( 'category', 'post_tag' );
 		else
 			$taxonomies = array( 'issuem_issue_categories', 'issuem_issue_tags' );
@@ -181,22 +181,22 @@ if ( !function_exists( 'save_issuem_article_meta' ) ) {
 		if ( isset( $_REQUEST['_inline_edit'] ) || isset( $_REQUEST['doing_wp_cron'] ) )
 			return;
 			
-		if ( isset( $_POST['teaser_text'] ) && !empty( $_POST['teaser_text'] ) )
+		if ( !empty( $_POST['teaser_text'] ) )
 			update_post_meta( $post_id, '_teaser_text', $_POST['teaser_text'] );
 		else
 			delete_post_meta( $post_id, '_teaser_text' );
 			
-		if ( isset( $_POST['featured_rotator'] ) && !empty( $_POST['featured_rotator'] ) )
+		if ( !empty( $_POST['featured_rotator'] ) )
 			update_post_meta( $post_id, '_featured_rotator', $_POST['featured_rotator'] );
 		else
 			delete_post_meta( $post_id, '_featured_rotator' );
 			
-		if ( isset( $_POST['featured_thumb'] ) && !empty( $_POST['featured_thumb'] ) )
+		if ( !empty( $_POST['featured_thumb'] ) )
 			update_post_meta( $post_id, '_featured_thumb', $_POST['featured_thumb'] );
 		else
 			delete_post_meta( $post_id, '_featured_thumb' );
 			
-		if ( isset( $_POST['issuem_author_name'] ) && !empty( $_POST['issuem_author_name'] ) )
+		if ( !empty( $_POST['issuem_author_name'] ) )
 			update_post_meta( $post_id, '_issuem_author_name', $_POST['issuem_author_name'] );
 		else
 			delete_post_meta( $post_id, '_issuem_author_name' );

@@ -116,8 +116,8 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 		global $hook_suffix;
 		
 		if ( 'edit-tags.php' == $hook_suffix && in_array( 'issuem_issue', $taxonomies ) 
-				&& ( !isset( $_GET['orderby'] ) && isset( $args['orderby'] ) 
-						|| ( isset( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) ) {
+				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] ) 
+						|| ( !empty( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) ) {
 				
 			$sort = array();
 			$no_sort = array();
@@ -126,7 +126,7 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 				
 				$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
 			
-				if ( isset( $issue_meta['issue_order'] ) && !empty( $issue_meta['issue_order'] ) )
+				if ( !empty( $issue_meta['issue_order'] ) )
 					$sort[ $issue_meta['issue_order'] ] = $issue;
 				else 
 					$no_sort[] = $issue;
@@ -240,11 +240,12 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 	function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 		
 		$defaults = array(
-						'issue_status'	=> '',
-						'issue_order'	=> '',
-						'cover_image'	=> '',
-						'pdf_version'	=> '',
-						'external_link'	=> '',
+						'issue_status'		=> '',
+						'issue_order'		=> '',
+						'cover_image'		=> '',
+						'pdf_version'		=> '',
+						'external_link'		=> '',
+						'external_pdf_link'	=> '',
 					);
 		$issue_meta = get_option( 'issuem_issue_' . $tag->term_id . '_meta' );
 		$issue_meta = wp_parse_args( $issue_meta, $defaults );
@@ -262,7 +263,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		</tr>
 		
 		<?php
-			if ( isset( $_GET['remove_cover_image'] ) ) {
+			if ( !empty( $_GET['remove_cover_image'] ) ) {
 			
 				wp_delete_attachment( $issue_meta['cover_image'] );
 				$issue_meta['cover_image'] = '';
@@ -270,7 +271,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 				
 			}
 		
-			if ( isset( $issue_meta['cover_image'] ) && !empty( $issue_meta['cover_image'] ) ) {
+			if ( !empty( $issue_meta['cover_image'] ) ) {
 			
 				$view_image = '<p>' . wp_get_attachment_image( $issue_meta['cover_image'], 'issuem-cover-image' ) . '</p>';
 				$remove_image = '<p><a href="?' . http_build_query( wp_parse_args( array( 'remove_cover_image' => $issue_meta['cover_image'] ), $_GET ) ) . '">' . __( 'Remove Cover Image', 'issuem' ) . '</a></p>';
@@ -289,7 +290,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		</tr>
 		
 		<?php
-			if ( isset( $_GET['remove_pdf_version'] ) ) {
+			if ( !empty( $_GET['remove_pdf_version'] ) ) {
 			
 				wp_delete_attachment( $issue_meta['pdf_version'] );
 				$issue_meta['pdf_version'] = '';
@@ -297,7 +298,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 				
 			}
 		
-			if ( isset( $issue_meta['pdf_version'] ) && !empty( $issue_meta['pdf_version'] ) ) {
+			if ( !empty( $issue_meta['pdf_version'] ) ) {
 			
 				$view_pdf = '<p><a target="_blank" href="' . wp_get_attachment_url( $issue_meta['pdf_version'] ) . '">' . __( 'View PDF Version', 'issuem' ) . '</a></p>';
 				$remove_pdf = '<p><a href="?' . http_build_query( wp_parse_args( array( 'remove_pdf_version' => $issue_meta['pdf_version'] ), $_GET ) ) . '">' . __( 'Remove PDF Version', 'issuem' ) . '</a></p>';
@@ -311,14 +312,27 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		?>
 		
 		<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'PDF Version', 'issuem' ); ?></th>
-		<td><input type="file" name="pdf_version" id="pdf_version" value="" /><?php echo $view_pdf . $remove_pdf; ?></td>
+		<th valign="top" scope="row"><?php _e( 'External Issue Link', 'issuem' ); ?></th>
+		<td><input type="text" name="external_link" id="external_link" value="<?php echo $issue_meta['external_link'] ?>" />
+		<p class="description">Leave empty if you do not want your issue to link to an external source.</p>
+		</td>
 		</tr>
 		
 		<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'External Link', 'issuem' ); ?></th>
-		<td><input type="text" name="external_link" id="external_link" value="<?php echo $issue_meta['external_link'] ?>" />
-		<p class="description">Leave empty if you do not want your issue to link to an external source.</p>
+		<th valign="top" scope="row"><?php _e( 'PDF Version', 'issuem' ); ?></th>
+		<td>
+        <input type="file" name="pdf_version" id="pdf_version" value="" />
+		<?php 
+		echo $view_pdf . $remove_pdf; 
+		echo apply_filters( 'issuem_pdf_version', '', __( 'Issue-to-PDF Generated PDF', 'issuem' ), $tag );
+		?>
+        </td>
+		</tr>
+		
+		<tr class="form-field">
+		<th valign="top" scope="row"><?php _e( 'External PDF Link', 'issuem' ); ?></th>
+		<td><input type="text" name="external_pdf_link" id="external_pdf_link" value="<?php echo $issue_meta['external_pdf_link'] ?>" />
+		<p class="description">Leave empty if you do not want your PDF to link to an external source.</p>
 		</td>
 		</tr>
 		
@@ -344,13 +358,13 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 	
 		$issue_meta = get_option( 'issuem_issue_' . $term_id . '_meta' );
 		
-		if ( isset( $_POST['issue_status'] ) ) 
+		if ( !empty( $_POST['issue_status'] ) ) 
 			$issue_meta['issue_status'] = $_POST['issue_status'];
 		
-		if ( isset( $_POST['issue_order'] ) ) 
+		if ( !empty( $_POST['issue_order'] ) ) 
 			$issue_meta['issue_order'] = $_POST['issue_order'];
 		
-		if ( isset( $_FILES['cover_image'] ) && !empty( $_FILES['cover_image']['name'] ) ) {
+		if ( !empty( $_FILES['cover_image']['name'] ) ) {
 			
 			require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
 			$id = media_handle_upload( 'cover_image', 0 ); //post id of Client Files page  
@@ -364,7 +378,7 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 			
 		}
 		
-		if ( isset( $_FILES['pdf_version'] ) && !empty( $_FILES['pdf_version']['name'] ) ) {
+		if ( !empty( $_FILES['pdf_version']['name'] ) ) {
 			
 			require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
 			$id = media_handle_upload( 'pdf_version', 0 ); //post id of Client Files page  
@@ -378,8 +392,8 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 			
 		}
 		
-		if ( isset( $_POST['external_link'] ) ) 
-			$issue_meta['external_link'] = $_POST['external_link'];
+		$issue_meta['external_link'] = !empty( $_POST['external_link'] ) ? $_POST['external_link'] : '';
+		$issue_meta['external_pdf_link'] = !empty( $_POST['external_pdf_link'] ) ? $_POST['external_pdf_link'] : '';
 	
 		update_option( 'issuem_issue_' . $term_id . '_meta', $issue_meta );
 		

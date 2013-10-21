@@ -119,8 +119,8 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 		global $hook_suffix;
 		
 		if ( 'edit-tags.php' == $hook_suffix && in_array( 'issuem_issue_categories', $taxonomies ) 
-				&& ( !isset( $_GET['orderby'] ) && isset( $args['orderby'] ) 
-						|| ( isset( $args['orderby'] ) && 'category_order' == $args['orderby'] ) ) ) {
+				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] ) 
+						|| ( !empty( $args['orderby'] ) && 'category_order' == $args['orderby'] ) ) ) {
 				
 			$sort = array();
 			$no_sort = array();
@@ -129,7 +129,7 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 				
 				$issue_meta = get_option( 'issuem_issue_categories_' . $issue->term_id . '_meta' );
 			
-				if ( isset( $issue_meta['category_order'] ) && !empty( $issue_meta['category_order'] ) )
+				if ( !empty( $issue_meta['category_order'] ) )
 					$sort[ $issue_meta['category_order'] ] = $issue;
 				else 
 					$no_sort[] = $issue;
@@ -240,7 +240,7 @@ if ( !function_exists( 'save_issuem_article_categories_meta' ) ) {
 	
 		$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term_id . '_meta' );
 		
-		if ( isset( $_POST['category_order'] ) ) 
+		if ( !empty( $_POST['category_order'] ) ) 
 			$issue_cat_meta['category_order'] = $_POST['category_order'];
 			
 		update_option( 'issuem_issue_categories_' . $term_id . '_meta', $issue_cat_meta );
