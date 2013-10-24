@@ -5,24 +5,33 @@ Requires at least: 3.3
 Tested up to: 3.6
 Stable tag: 1.2.3
 
-The world first and easiest to use Issue Managing plugin for WordPress.
+Turn WordPress into an issue based publisher for your news or magazine site.
 
 == Description ==
 
-Many sites use WordPress for as a magazine or news manager. There are dozens of themes out there geared to making WordPress "look" like a issue based site. But [IssueM](http://issuem.com/) is the first plugin that truly takes the Issue based system to the next level in WordPress.
+Many sites use WordPress for as a magazine or news manager. There are many themes geared to making WordPress "look" like a issue based site. But [IssueM](http://issuem.com/) is the first plugin that truly takes the Issue based system to the next level in WordPress.
 
-The IssueM plugin makes a distinction between WordPress' blogging platform and creates a new level of Articles which are associated with Issues. Issues can be drafted until they are ready for release, yet still visible on the site for Administrators, Editors, Authors, and Contributors. IssueM gives you hassle-free control over your issue based sites. IssueM also has a simple to use WordPress shortcode system, making it simple to integrate into your existing theme. Now you have the freedom to pick a theme that fits your site's needs without compromising on the flexibility of the functionality of your site.
+The IssueM plugin makes a distinction between WordPress's blogging platform and creates a new level of Articles (post type) which are associated with Issues. Issues can be drafted until they are ready for release, yet still visible on the site for Administrators, Editors, Authors, and Contributors. IssueM gives you hassle-free control over your issue based sites. IssueM also has a simple to use WordPress shortcode system, making it simple to integrate into your existing theme. Now you have the freedom to pick a theme that fits your site's needs without compromising on the flexibility of the functionality of your site.
+
+Examples of issue based sites. Make sure you check out the issue archives:
+[Magazine site] (http://dartmouthalumnimagazine.com/)
+[News site] (http://middleburycampus.com/)
 
 You can follow this plugins development on [GitHub](https://github.com/IssueM/issuem)
 
-Premium Add-ons Available:
-Leaky Paywall w/ Stripe Integration - Charge your customers to view your IssueM articles!
-Post Migration Tool - Convert your old blog posts into Issue based Articles!
-Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
+Add-ons Available:
 
-Also, be sure to check out our [free IssueM Magazine theme](https://issuem.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
+- Leaky Paywall for WordPress - The leaky paywall method was pioneered by the NYTimes and is now embraced by the publishing industry. Works with blog posts, pages and/or articles.
 
-For support, demos and premium add-ons, please visit [IssueM.com](http://issuem.com/).
+- Issue-to-PDF Tool: Automatically outputs each issue as a PDF
+
+- Post Migration Tool - Convert some or all your blog posts into Issues (sell or use your issues promotionally).
+
+- Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues.
+
+- More Add-Ons available in our [Marketplace] (http://issuem.com/extend/)
+
+For support, demos, premium add-ons, or to leave us a comment, please visit [IssueM.com](http://issuem.com/).
 
 == Installation ==
 
