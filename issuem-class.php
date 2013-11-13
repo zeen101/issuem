@@ -299,6 +299,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'display_byline_as'		=> 'user_firstlast',
 								'issuem_author_name'	=> '',
 								'use_wp_taxonomies'		=> '',
+                                'use_issue_tax_links'   => '',
 								'article_format'		=> 	'<p class="issuem_article_category">%CATEGORY[1]%</p>' . "\n" .
 															'<p><a class="issuem_article_link" href="%URL%">%TITLE%</a></p>' . "\n" .
 															'<p class="issuem_article_content">%EXCERPT%</p>' . "\n" .
@@ -434,7 +435,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
 				else
 					unset( $settings['use_wp_taxonomies'] );
-				
+
+                if ( !empty( $_REQUEST['use_issue_tax_links'] ) )
+                    $settings['use_issue_tax_links'] = $_REQUEST['use_issue_tax_links'];
+                else
+                    unset( $settings['use_issue_tax_links'] );
+
 				$this->update_settings( $settings );
 					
 				// It's not pretty, but the easiest way to get the menu to refresh after save...
@@ -577,6 +583,11 @@ if ( ! class_exists( 'IssueM' ) ) {
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></th>
                                 <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /></td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /></td>
                             </tr>
                             
                         </table>
