@@ -37,6 +37,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_wp_enqueue_scripts' ) );
 			add_action( 'admin_print_styles', array( $this, 'admin_wp_print_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+			add_action( 'restrict_manage_posts', array( $this, 'add_taxomony_filters' ) );
 			
 			register_activation_hook( __FILE__, array( $this, 'issuem_flush_rewrite_rules' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
@@ -1026,6 +1027,35 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
 		 
 		}
 		
+
+		/**
+		 * Filter the admin articles list by available issues.
+		 * Called by restrict_manage_posts
+		 *
+		 * @since 1.2.4
+		 */
+		function add_taxomony_filters() {
+
+			global $typenow;
+			$taxonomies = array( 'issuem_issue' );
+			if ( $typenow == 'article' ) {
+				foreach ( $taxonomies as $tax_slug ) {
+					$tax_object = get_taxonomy( $tax_slug );
+					$tax_name = $tax_obj->labels->name;
+					$terms = get_terms( $tax_slug );
+					if ( count( $terms ) > 0 ) {
+						echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+						echo "<option value=''>Show All $tax_name</option>";
+						foreach ($terms as $term) {
+							echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
+						}
+						echo "</select>";
+					}
+				}
+			}
+
+		}
+
 	}
 	
 }
