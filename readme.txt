@@ -16,11 +16,11 @@ The IssueM plugin makes a distinction between WordPress' blogging platform and c
 You can follow this plugins development on [GitHub](https://github.com/IssueM/issuem)
 
 Premium Add-ons Available:
-Leaky Paywall w/ Stripe Integration - Charge your customers to view your IssueM articles!
+Leaky Paywall w/ Stripe and PayPal Integration - Charge your customers to view your blog posts and/or IssueM articles. Find out more at http://LeakyPW.com
 Post Migration Tool - Convert your old blog posts into Issue based Articles!
 Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
 
-Also, be sure to check out our [free IssueM Magazine theme](https://issuem.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
+Also, be sure to check out our [IssueM Magazine theme](https://issuem.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
 
 For support, demos and premium add-ons, please visit [IssueM.com](http://issuem.com/).
 
