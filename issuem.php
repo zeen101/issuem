@@ -44,6 +44,7 @@ function issuem_plugins_loaded() {
 
 	require_once( 'issuem-templates.php' );
 	require_once( 'issuem-class.php' );
+	require_once( 'view-classes/issuem-class-article.php' );
 
 	// Instantiate the Pigeon Pack class
 	if ( class_exists( 'IssueM' ) ) {

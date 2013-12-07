@@ -433,73 +433,25 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 		
 		$featured_articles = get_posts( $args );
 		
-		if ( $featured_articles ) :
-			
-			$results .= '<div id="issuem-featured-article-slideshowholder">'; 
-			$results .= '<div class="flexslider">';
-			$results .= '<ul class="slides">';
-		
-			/* start the loop */
-			foreach( $featured_articles as $article ) {
-				
-				if ( has_post_thumbnail( $article->ID ) ) {
-					
-					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $article->ID ), 'issuem-featured-rotator-image' );
-					
-					if ( !empty( $show_title ) ) 
-						$title = get_the_title( $article->ID );
-					else
-						$title = '';
-					
-					if ( !empty( $show_teaser ) ) 
-						$teaser = get_post_meta( $article->ID, '_teaser_text', true );
-					else
-						$teaser = '';
-					
-					if ( !empty( $show_byline ) ) {
-
-						$author_name = get_issuem_author_name( $article );
-						
-						$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) );
-					
-					} else {
-						
-						$byline = '';
-						
-					}
-					
-					$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
-					
-					$results .= '<li>';
-					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
-					$results .= '<div class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . $caption . '</div>';
-					$results .= '</li>';
-					
-				}
-				
+		if ( $featured_articles ) {
+			$articles = array();
+			foreach ( $featured_articles as $article ) {
+				$articles[] = IssuemArticle::from_object( $article );
 			}
-			
-			$results .= '</ul>';  //slides
-			$results .= '</div>'; //flexslider
-			$results .= '</div>'; //issuem-featured-article-slideshowholder
-					
-			$results .= "<script type='text/javascript'>
-						jQuery( window ).load( function(){
-						  jQuery( '.flexslider' ).flexslider({
-							animation: 'slide',
-							start: function(slider){
-							  jQuery('body').removeClass('loading');
-							},
-							controlNav: false,
-							directionNav: false
-						  });
-						});
-					  </script>";
-			
-		endif;
-		
-		return $results;
-		
+			return issuem_render(
+				'featured-rotator-shortcode.php',
+				array(
+					'articles' => $articles,
+					'show_title' => $show_title,
+					'show_teaser' => $show_teaser,
+					'show_byline' => $show_byline,
+					'settings' => $issuem_settings,
+				)
+			);
+		}
+
+		return '';
+
 	}
 	add_shortcode( 'issuem_featured_rotator', 'do_issuem_featured_rotator' );
 
