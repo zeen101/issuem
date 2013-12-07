@@ -42,6 +42,7 @@ define( 'ISSUEM_URL_CHILD_THEME',   get_stylesheet_directory_uri() );
  */
 function issuem_plugins_loaded() {
 
+	require_once( 'issuem-templates.php' );
 	require_once( 'issuem-class.php' );
 
 	// Instantiate the Pigeon Pack class
