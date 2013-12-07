@@ -23,13 +23,17 @@ Tags:
 if ( !defined( 'ISSUEM_STORE_URL' ) )
 	define( 'ISSUEM_STORE_URL', 					'http://issuem.com' );
 	
-define( 'ISSUEM_SLUG', 			'issuem' );
-define( 'ISSUEM_VERSION', 		'1.2.3' );
-define( 'ISSUEM_DB_VERSION', 	'1.0.0' );
-define( 'ISSUEM_URL', 			plugin_dir_url( __FILE__ ) );
-define( 'ISSUEM_PATH', 			plugin_dir_path( __FILE__ ) );
-define( 'ISSUEM_BASENAME', 		plugin_basename( __FILE__ ) );
-define( 'ISSUEM_REL_DIR', 		dirname( ISSUEM_BASENAME ) );
+define( 'ISSUEM_SLUG', 				'issuem' );
+define( 'ISSUEM_VERSION', 			'1.2.3' );
+define( 'ISSUEM_DB_VERSION', 		'1.0.0' );
+define( 'ISSUEM_URL', 				plugin_dir_url( __FILE__ ) );
+define( 'ISSUEM_PATH', 				plugin_dir_path( __FILE__ ) );
+define( 'ISSUEM_BASENAME', 			plugin_basename( __FILE__ ) );
+define( 'ISSUEM_REL_DIR', 			dirname( ISSUEM_BASENAME ) );
+define( 'ISSUEM_PATH_PARENT_THEME', get_template_directory() );
+define( 'ISSUEM_URL_PARENT_THEME',  get_template_directory_uri() );
+define( 'ISSUEM_PATH_CHILD_THEME',  get_stylesheet_directory() );
+define( 'ISSUEM_URL_CHILD_THEME',   get_stylesheet_directory_uri() );
 
 /**
  * Instantiate IssueM class, require helper files
