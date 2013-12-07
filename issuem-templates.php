@@ -45,9 +45,9 @@ if ( ! function_exists( 'issuem_get_template_path' ) ) {
      */
     function issuem_get_template_path( $file_name ) {
         $stack = array(
-            ISSUEM_PATH_CHILD_THEME,
-            ISSUEM_PATH_PARENT_THEME,
-            ISSUEM_PATH,
+            ISSUEM_PATH_CHILD_THEME . '/issuem',
+            ISSUEM_PATH_PARENT_THEME . '/issuem',
+            ISSUEM_PATH . 'templates',
         );
         return issuem_search_file_path( $file_name, $stack );
     }
