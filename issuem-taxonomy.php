@@ -120,7 +120,7 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 						|| ( !empty( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) ) {
 				
 			$sort = array();
-			$no_sort = array();
+			$count = 0;
 		
 			foreach ( $terms as $issue ) {
 				
@@ -129,7 +129,7 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 				if ( !empty( $issue_meta['issue_order'] ) )
 					$sort[ $issue_meta['issue_order'] ] = $issue;
 				else 
-					$no_sort[] = $issue;
+					$sort[ '-' . ++$count ] = $issue;
 				
 			}
 		
@@ -138,7 +138,7 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 			else
 				ksort( $sort );
 			
-			$terms = array_merge( $no_sort, $sort );
+			$terms = $sort;
 			
 		}
 		
@@ -167,7 +167,10 @@ if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
 		
 		$issue_meta = get_option( 'issuem_issue_' . $term_id . '_meta' );
 	
-		return $issue_meta[$column_name];
+		if ( !empty( $issue_meta[$column_name] ) )
+			return $issue_meta[$column_name];
+		else
+			return '';
 	
 	}
 	add_filter( "manage_issuem_issue_custom_column", 'manage_issuem_issue_custom_column', 10, 3 );

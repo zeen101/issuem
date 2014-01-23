@@ -284,6 +284,8 @@ class IssueM_Article_List extends WP_Widget {
 			echo $after_widget;	
 		
 		}
+
+		wp_reset_query();
 	
 	}
 

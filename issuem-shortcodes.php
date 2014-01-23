@@ -81,6 +81,8 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 			$cat_type = 'issuem_issue_categories';
 			
 		if ( 'true' === $use_category_order && 'issuem_issue_categories' === $cat_type ) {
+
+			$count = 0;
 			
 			if ( 'all' === $article_category ) {
 			
@@ -93,7 +95,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 					if ( !empty( $issue_cat_meta['category_order'] ) )
 						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
 					else
-						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
+						$terms[ '-' . ++$count ] = $term->slug;
 						
 				}
 				
@@ -108,13 +110,14 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 					if ( !empty( $issue_cat_meta['category_order'] ) )
 						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
 					else
-						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
+						$terms[ '-' . ++$count ] = $term->slug;
 						
 				}
 			
 			}
 			
 			krsort( $terms );
+			$articles = array();
 			
 			foreach( $terms as $term ) {
 			

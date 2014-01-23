@@ -106,7 +106,6 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 	 * Filters sortable columns
 	 *
 	 * @since 1.2.0
-	 * @todo there is a better way to do this sort
 	 * @todo misnamed originaly, should reallly be issuem_article_categories
 	 *
 	 * @param array $terms
@@ -123,7 +122,7 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 						|| ( !empty( $args['orderby'] ) && 'category_order' == $args['orderby'] ) ) ) {
 				
 			$sort = array();
-			$no_sort = array();
+			$count = 0;
 		
 			foreach ( $terms as $issue ) {
 				
@@ -132,7 +131,7 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 				if ( !empty( $issue_meta['category_order'] ) )
 					$sort[ $issue_meta['category_order'] ] = $issue;
 				else 
-					$no_sort[] = $issue;
+					$sort[ '-' . ++$count ] = $issue;
 				
 			}
 		
@@ -141,7 +140,7 @@ if ( !function_exists( 'issuem_issue_categories_sortable_column_orderby' ) )  {
 			else
 				ksort( $sort );
 			
-			$terms = array_merge( $no_sort, $sort );
+			$terms = $sort;
 			
 		}
 		

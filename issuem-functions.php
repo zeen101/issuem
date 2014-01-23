@@ -19,6 +19,7 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 	function get_newest_issuem_issue_id( $orderby = 'issue_order' ) {
 		
 		$issues = array();
+		$count = 0;
 		
 		$issuem_issues = get_terms( 'issuem_issue' );
 						
@@ -35,7 +36,7 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 						if ( !empty( $issue_meta['issue_order'] ) )
 							$issues[ $issue_meta['issue_order'] ] = $issue->term_id;
 						else
-							$issues_no_issue_order[] = $issue->term_id;
+							$issues[ '-' . ++$count ] = $issue->term_id;
 							
 						break;
 						
@@ -52,9 +53,6 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 			}
 			
 		}
-		
-		if ( 'issue_order' == $orderby && !empty( $issues_no_issue_order ) )
-			$issues = array_merge( $issues_no_issue_order, $issues );
 		
 		krsort( $issues );
 				
