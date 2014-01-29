@@ -3,7 +3,7 @@ Contributors: layotte
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 3.7
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,16 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.4 =
+* Updating POT file
+* Added new filter for leaky paywall to restrict PDF downloads
+* Fixed article category sorting bug
+* Fixed article import bug with Issue's missing meta data
+* Added fix for query reset on widgets
+* Added fix for category ordering in shortcode
+* Updating some CSS and tested up to version
+* Added option for the [issuem_archives] shortcode to generate issue urls using get_term_link instead of based on the shortcode page with a backup to the previous links in the event of an error
+
 = 1.2.3 =
 * Added integration for upcoming Issue to PDF plugin
 * General Code Cleanup
