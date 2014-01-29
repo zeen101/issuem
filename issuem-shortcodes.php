@@ -137,6 +137,23 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 				
 			}
 		
+			//And we want all articles not in a category
+			$category = array(
+				'taxonomy' 	=> $cat_type,
+				'field'		=> 'slug',
+				'terms'		=> $terms, 
+				'operator'	=> 'NOT IN',
+			);
+
+			$args['tax_query'] = array(
+                               'relation'      => 'AND',
+                                $issuem_issue,
+                                $category
+                        );
+
+                        $articles = array_merge( $articles, get_posts( $args ) );
+
+			//Now we need to get rid of duplicates (assuming an article is in more than one category
 			if ( !empty( $articles ) ) {
 				
 				foreach( $articles as $article ) {
@@ -338,7 +355,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				
 			if ( !empty( $issue_array[1]['pdf_version'] ) || !empty( $issue_meta['external_pdf_link'] ) ) {
 				
-				$pdf_url = empty( $issue_meta['external_pdf_link'] ) ? wp_get_attachment_url( $issue_array[1]['pdf_version'] ) : $issue_meta['external_pdf_link'];
+				$pdf_url = empty( $issue_meta['external_pdf_link'] ) ? apply_filters( 'issuem_pdf_attachment_url', wp_get_attachment_url( $issue_array[1]['pdf_version'] ), $issue_array[1]['pdf_version'] ) : $issue_meta['external_pdf_link'];
 				
 				$pdf_line = '<a href="' . $pdf_url . '" target="' . $issuem_settings['pdf_open_target'] . '">';
 				

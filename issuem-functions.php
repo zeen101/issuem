@@ -26,9 +26,10 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 		foreach ( $issuem_issues as $issue ) {
 				
 			$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
-			
+
 			// If issue is not a Draft, add it to the archive array;
-			if ( !empty( $issue_meta['issue_status'] ) && ( 'Draft' !== $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
+			if ( !empty( $issuem_meta ) && !empty( $issue_meta['issue_status'] ) 
+				&& ( 'Live' === $issuem_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
 				
 				switch( $orderby ) {
 					
@@ -50,12 +51,14 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 					
 				}
 					 
+			} else {
+				$issues[ '-' . ++$count ] = $issue->term_id;
 			}
 			
 		}
 		
 		krsort( $issues );
-				
+
 		return array_shift( $issues );
 		
 	}
@@ -134,15 +137,13 @@ if ( !function_exists( 'get_issuem_issue_slug' ) ) {
 			
 			$issue = get_term_by( 'id', get_newest_issuem_issue_id(), 'issuem_issue' );
 						
-			return $issue->slug;
-			
 		} else {
 	
 			$issue = get_term_by( 'id', $id, 'issuem_issue' );
 			
-			return $issue->slug;
-			
 		}
+		
+		return $issue->slug;
 		
 	}
 

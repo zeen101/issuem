@@ -81,7 +81,7 @@ class IssueM_Active_Issue extends WP_Widget {
 		}
 		
 		if ( 'on' == $instance['display_pdf_link'] && !empty( $meta_options['pdf_version'] ) )
-			$out .= '<p><a class="issuem_widget_issue_pdf_link" target="_blank" href="' . wp_get_attachment_url( $meta_options['pdf_version'] ) . '">' . $issuem_settings['pdf_title'] . '</a></p>';
+			$out .= '<p><a class="issuem_widget_issue_pdf_link" target="_blank" href="' . apply_filters( 'issuem_pdf_attachment_url', wp_get_attachment_url( $meta_options['pdf_version'] ), $meta_options['pdf_version'] ) . '">' . $issuem_settings['pdf_title'] . '</a></p>';
 		
 		if ( ! empty( $out ) ) {
 			
