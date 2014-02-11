@@ -435,6 +435,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'show_title'		=> true,
 			'show_teaser'		=> true,
 			'show_byline'		=> false,
+			'article_category'		=> 'all',
 		);
 		
 		// Merge defaults with passed atts
@@ -450,6 +451,27 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'meta_key'			=> '_featured_rotator',
 			'issuem_issue' 		=> $issue,
 		);
+		
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			$cat_type = 'category';
+		else
+			$cat_type = 'issuem_issue_categories';
+		
+		if ( !empty( $article_category ) && 'all' !== $article_category ) {
+				
+			$category = array(
+				'taxonomy' 	=> $cat_type,
+				'field' 	=> 'slug',
+				'terms' 	=> split( ',', $article_category ),
+			);	
+			
+			$args['tax_query'] = array(
+				'relation'	=> 'AND',
+				$issuem_issue,
+				$category
+			);
+			
+		}
 		
 		$featured_articles = get_posts( $args );
 		
@@ -550,6 +572,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			'order'             => 'DESC',
 			'max_images'		=> 0,
 			'issue'				=> get_active_issuem_issue(),
+			'article_category'		=> 'all',
 		);
 		
 		// Merge defaults with passed atts
@@ -566,6 +589,27 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			'issuem_issue' 		=> $issue,
 		);
 		
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			$cat_type = 'category';
+		else
+			$cat_type = 'issuem_issue_categories';
+		
+		if ( !empty( $article_category ) && 'all' !== $article_category ) {
+				
+			$category = array(
+				'taxonomy' 	=> $cat_type,
+				'field' 	=> 'slug',
+				'terms' 	=> split( ',', $article_category ),
+			);	
+			
+			$args['tax_query'] = array(
+				'relation'	=> 'AND',
+				$issuem_issue,
+				$category
+			);
+			
+		}
+						
 		$featured_articles = get_posts( $args );
 		
 		if ( $featured_articles ) : 
