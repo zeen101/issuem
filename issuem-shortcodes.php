@@ -621,38 +621,55 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			foreach( $featured_articles as $article ) {
 				
 				if ( has_post_thumbnail( $article->ID ) ) {
-					
+
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $article->ID ), 'issuem-featured-thumb-image' );
+					$image = apply_filters( 'issuem_featured_thumbs_article_image', $image, $article );
 					
-					$results .= '<div class="issuem-featured-article-thumbs-image" style="width: ' . $image[1] .'px">';
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_div', '', $article );
+					$results .= '<div class="issuem-featured-article-thumbs-image" class="floatleft" style="width: ' . $image[1] .'px">';
+					$results .= apply_filters( 'issuem_featured_thumbs_start_thumbnail_div', '', $article );
 					
-						$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . '" /></a><br />';
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_image', '', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_image', '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . '" /></a><br />', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_image', '', $article );
+					
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_category', '', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem_article_category">' . get_the_terms( $post->ID, $cats ) . '</p>', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_category', '', $article );
+
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_title', '', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_title', '<h3 class="featured-thumb-title"><a href="' . get_permalink( $article->ID ) . '">' . get_the_title( $article->ID ) . '</a></h3>', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_title', '', $article );
+
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_content', '', $article );
+					switch ( $content_type ) {
+								
+							case 'excerpt':
+								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<span class="featured-thumb-content">' . get_the_excerpt() . '</span>', $article );	
+								break;
+								
+							case 'teaser':	
+							default:					
+								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<span class="featured-thumb-content">' . get_post_meta( $article->ID, '_teaser_text', true ) . '</span>', $article );
+								break;
+								
+					}
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_content', '', $article );
+					
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_byline', '', $article );
+					if ( $issuem_settings['show_thumbnail_byline'] ) {
 						
-						$results .= '<h3 class="featured-thumb-title"><a href="' . get_permalink( $article->ID ) . '">' . get_the_title( $article->ID ) . '</a></h3>';
-	
-						switch ( $content_type ) {
-									
-								case 'excerpt':
-									$results .= '<span class="featured-thumb-content">' . get_the_excerpt() . '</span>';	
-									break;
-									
-								case 'teaser':	
-								default:					
-									$results .= '<span class="featured-thumb-content">' . get_post_meta( $article->ID, '_teaser_text', true ) . '</span>';
-									break;
-									
-						}
+						$author_name = get_issuem_author_name( $article );
 						
-						if ( $issuem_settings['show_thumbnail_byline'] ) {
-							
-							$author_name = get_issuem_author_name( $article );
-							
-							$results .= '<span class="featured-thumb-byline">' . sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) ) . '</span>';
-							
-						}
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_byline', '<span class="featured-thumb-byline">' . sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) ) . '</span>', $article );
 						
+					}
+					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_byline', '', $article );
+					
+					$results .= apply_filters( 'issuem_featured_thumbs_end_thumbnail_div', '', $article );
 					$results .= '</div>';
-					
+					$results .= apply_filters( 'issuem_featured_article_after_thumbnail_div', '', $article );
+
 					if ( 0 != $max_images && $max_images <= $count )
 						break;
 						
