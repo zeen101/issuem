@@ -635,7 +635,7 @@ if ( !function_exists( 'issuem_dropdown_categories' ) ) {
 	 * display all of the categories. When it is enabled it will use the value in
 	 * the 'depth' argument.
 	 *
-	 * @since CHANGEME
+	 * @since 1.2.6 
 	 *
 	 * @param string|array $args Optional. Override default arguments.
 	 * @return string HTML content only if 'echo' argument is 0.
@@ -730,9 +730,9 @@ if ( !function_exists( 'walk_issuem_category_dropdown_tree' ) ) {
 	 * Retrieve HTML dropdown (select) content for category list.
 	 * Adapted from WordPress' "walk_category_dropdown_tree"
 	 *
-	 * @uses Walker_CategoryDropdown to create HTML dropdown content.
-	 * @since 2.1.0
-	 * @see Walker_CategoryDropdown::walk() for parameters and return description.
+	 * @uses Walker_IssueMCategoryDropdown to create HTML dropdown content.
+	 * @since 1.2.6 
+	 * @see Walker_IssueMCategoryDropdown::walk() for parameters and return description.
 	 */
 	function walk_issuem_category_dropdown_tree() {
 		$args = func_get_args();

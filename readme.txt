@@ -3,7 +3,7 @@ Contributors: layotte
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 3.7
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,9 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.6 =
+* Fixed Article Category widget dropdown bug
+
 = 1.2.5 =
 * Fixed Issue Ordering Bug
 

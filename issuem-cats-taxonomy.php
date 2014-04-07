@@ -254,7 +254,7 @@ if ( !function_exists( 'save_issuem_article_categories_meta' ) ) {
 /**
  * Create HTML dropdown list of IssueM Article Categories.
  *
- * @since CHANGEME
+ * @since 1.2.6 
  * @uses Walker
  */
 class Walker_IssueMCategoryDropdown extends Walker {
