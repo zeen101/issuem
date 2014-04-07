@@ -602,3 +602,147 @@ if ( !function_exists( 'wp_print_r' ) ) {
     }   
 	
 }
+
+if ( !function_exists( 'issuem_dropdown_categories' ) ) {
+	
+	/**
+	 * Display or retrieve the HTML dropdown list of article categories.
+	 * Adapted from WordPress' "wp_dropdown_categories"
+	 *
+	 * The list of arguments is below:
+	 *     'show_option_all' (string) - Text to display for showing all categories.
+	 *     'show_option_none' (string) - Text to display for showing no categories.
+	 *     'orderby' (string) default is 'ID' - What column to use for ordering the
+	 * categories.
+	 *     'order' (string) default is 'ASC' - What direction to order categories.
+	 *     'show_count' (bool|int) default is 0 - Whether to show how many posts are
+	 * in the category.
+	 *     'hide_empty' (bool|int) default is 1 - Whether to hide categories that
+	 * don't have any posts attached to them.
+	 *     'child_of' (int) default is 0 - See {@link get_categories()}.
+	 *     'exclude' (string) - See {@link get_categories()}.
+	 *     'echo' (bool|int) default is 1 - Whether to display or retrieve content.
+	 *     'depth' (int) - The max depth.
+	 *     'tab_index' (int) - Tab index for select element.
+	 *     'name' (string) - The name attribute value for select element. Defaults to issuem_issue_cat.
+	 *     'id' (string) - The ID attribute value for select element. Defaults to name if omitted.
+	 *     'class' (string) - The class attribute value for select element.
+	 *     'selected' (int) - Which category ID is selected.
+	 *     'taxonomy' (string) - The name of the taxonomy to retrieve. Defaults to issuem_issue_categories.
+	 *
+	 * The 'hierarchical' argument, which is disabled by default, will override the
+	 * depth argument, unless it is true. When the argument is false, it will
+	 * display all of the categories. When it is enabled it will use the value in
+	 * the 'depth' argument.
+	 *
+	 * @since CHANGEME
+	 *
+	 * @param string|array $args Optional. Override default arguments.
+	 * @return string HTML content only if 'echo' argument is 0.
+	 */
+	function issuem_dropdown_categories( $args = '' ) {
+		$defaults = array(
+			'show_option_all' => '', 'show_option_none' => '',
+			'orderby' => 'id', 'order' => 'ASC',
+			'show_count' => 0,
+			'hide_empty' => 1, 'child_of' => 0,
+			'exclude' => '', 'echo' => 1,
+			'selected' => 0, 'hierarchical' => 0,
+			'name' => 'issuem_issue_cat', 'id' => '',
+			'class' => 'postform', 'depth' => 0,
+			'tab_index' => 0, 'taxonomy' => 'issuem_issue_categories',
+			'hide_if_empty' => false
+		);
+	
+		$defaults['selected'] = ( is_category() ) ? get_query_var( 'cat' ) : 0;
+	
+		// Back compat.
+		if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
+			_deprecated_argument( __FUNCTION__, '3.0', '' );
+			$args['taxonomy'] = 'link_category';
+		}
+	
+		$r = wp_parse_args( $args, $defaults );
+	
+		if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] ) {
+			$r['pad_counts'] = true;
+		}
+	
+		extract( $r );
+	
+		$tab_index_attribute = '';
+		if ( (int) $tab_index > 0 )
+			$tab_index_attribute = " tabindex=\"$tab_index\"";
+	
+		$categories = get_terms( $taxonomy, $r );
+		$name = esc_attr( $name );
+		$class = esc_attr( $class );
+		$id = $id ? esc_attr( $id ) : $name;
+	
+		if ( ! $r['hide_if_empty'] || ! empty($categories) )
+			$output = "<select name='$name' id='$id' class='$class' $tab_index_attribute>\n";
+		else
+			$output = '';
+	
+		if ( empty($categories) && ! $r['hide_if_empty'] && !empty($show_option_none) ) {
+			$show_option_none = apply_filters( 'list_cats', $show_option_none );
+			$output .= "\t<option value='-1' selected='selected'>$show_option_none</option>\n";
+		}
+	
+		if ( ! empty( $categories ) ) {
+	
+			if ( $show_option_all ) {
+				$show_option_all = apply_filters( 'list_cats', $show_option_all );
+				$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
+				$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
+			}
+	
+			if ( $show_option_none ) {
+				$show_option_none = apply_filters( 'list_cats', $show_option_none );
+				$selected = ( '-1' === strval($r['selected']) ) ? " selected='selected'" : '';
+				$output .= "\t<option value='-1'$selected>$show_option_none</option>\n";
+			}
+	
+			if ( $hierarchical )
+				$depth = $r['depth'];  // Walk the full depth.
+			else
+				$depth = -1; // Flat.
+	
+			$output .= walk_issuem_category_dropdown_tree( $categories, $depth, $r );
+		}
+	
+		if ( ! $r['hide_if_empty'] || ! empty($categories) )
+			$output .= "</select>\n";
+	
+		$output = apply_filters( 'issuem_dropdown_cats', $output );
+	
+		if ( $echo )
+			echo $output;
+	
+		return $output;
+	}
+
+}
+
+if ( !function_exists( 'walk_issuem_category_dropdown_tree' ) ) {
+		
+	/**
+	 * Retrieve HTML dropdown (select) content for category list.
+	 * Adapted from WordPress' "walk_category_dropdown_tree"
+	 *
+	 * @uses Walker_CategoryDropdown to create HTML dropdown content.
+	 * @since 2.1.0
+	 * @see Walker_CategoryDropdown::walk() for parameters and return description.
+	 */
+	function walk_issuem_category_dropdown_tree() {
+		$args = func_get_args();
+		// the user's options are the third parameter
+		if ( empty($args[2]['walker']) || !is_a($args[2]['walker'], 'Walker') )
+			$walker = new Walker_IssueMCategoryDropdown;
+		else
+			$walker = $args[2]['walker'];
+	
+		return call_user_func_array(array( &$walker, 'walk' ), $args );
+	}
+
+}

@@ -436,19 +436,19 @@ class IssueM_Article_Categories extends WP_Widget {
 
 		if ( $d ) {
 			$cat_args['show_option_none'] = __( 'Select Article Category', 'issuem' );
-			$cat_args['taxonomy'] = 'issuem_issue_categories';
-			wp_dropdown_categories( apply_filters('issuem_widget_categories_dropdown_args', $cat_args) );
+			issuem_dropdown_categories( apply_filters('issuem_widget_categories_dropdown_args', $cat_args) );
 ?>
 
 <script type='text/javascript'>
 /* <![CDATA[ */
-	var dropdown = document.getElementById("cat");
-	function onCatChange() {
-		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
-			location.href = "<?php echo home_url(); ?>/?cat="+dropdown.options[dropdown.selectedIndex].value;
+	var issuem_cat_dropdown = document.getElementById("issuem_issue_cat");
+	function onIssueMCatChange() {
+		if ( issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value != 0 
+		&& issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value != -1 ) {
+			location.href = "<?php echo home_url(); ?>/?issuem_issue_categories="+issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value;
 		}
 	}
-	dropdown.onchange = onCatChange;
+	issuem_cat_dropdown.onchange = onIssueMCatChange;
 /* ]]> */
 </script>
 

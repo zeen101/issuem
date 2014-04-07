@@ -93,6 +93,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 		
 			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
 			
+			//add_submenu_page( 'edit.php?post_type=article', __( 'Advanced Styles', 'issuem' ), __( 'Advanced Styles', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-css', array( $this, 'css_page' ) );
+			
 		}
 		
 		/**
@@ -801,6 +803,55 @@ default_image => '<?php _e( 'Image URL', 'issuem' ); ?>'
                 
                 <?php do_action( 'issuem_help_page' ); ?>
                 
+            </div>
+            </div>
+            </div>
+			</div>
+			<?php
+			
+		}
+		/**
+		 * Outputs the IssueM CSS page
+		 *
+		 * @since 1.3.0
+		 */
+		function css_page() {
+			
+			// Display HTML
+			?>
+			<div class=wrap>
+            <div style="width:70%;" class="postbox-container">
+            <div class="metabox-holder">	
+            <div class="meta-box-sortables ui-sortable">
+        
+                <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Advanced Styles', 'issuem' ); ?></h2>
+                
+                <div id="issuem-articles" class="postbox">
+                
+                    <div class="handlediv" title="Click to toggle"><br /></div>
+    
+                    <h3 class="hndle"><span><?php _e( 'Advanced Style Options', 'issuem' ); ?></span></h3>
+                    
+                    <div class="inside">
+                                    
+                        <table class="form-table">
+                    
+                            <tr>
+                            
+                                <td>
+                                	
+									Reset to Default Styles
+                                    
+                                </td>
+                                
+                            </tr>
+                            
+                        </table>
+                    
+                    </div>
+                    
+                </div>
+                                
             </div>
             </div>
             </div>
