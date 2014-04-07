@@ -282,12 +282,17 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 							'order'			=> 'DESC',
 							'limit'			=> 0,
 							'pdf_title'		=> $issuem_settings['pdf_title'],
-							'default_image'	=> $issuem_settings['default_issue_image']
+							'default_image'	=> $issuem_settings['default_issue_image'],
+							'args'			=> array( 'hide_empty' => 0 ),
 						);
 		extract( shortcode_atts( $defaults, $atts ) );
 		
-		$args = array( 'hide_empty' => 0 );
+		if ( is_string( $args ) ) {
+			$args = str_replace( '&amp;', '&', $args );
+			$args = str_replace( '&#038;', '&', $args );
+		}
 		
+		$args = apply_filters( 'do_issuem_archives_get_terms_args', $args );
 		$issuem_issues = get_terms( 'issuem_issue', $args );
 		$archives = array();
 		$archives_no_issue_order = array();
