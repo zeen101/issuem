@@ -34,47 +34,30 @@
 
 #issuem-featured-article-slideshowholder .ft-title {
 	padding-left: 5px; 
-	padding-right: 5
+	padding-right: 5;
     font-size: 12px;
     font-weight: bold;
 	line-height: 12pt;
 }
 
-#issuem-featured-article-thumbs-imageholder {
-	margin-left: auto;
-	margin-right: auto;	
+#issuem-featured-article-thumbs-wrap {
 	margin-bottom: 25px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.issuem-featured-article-thumb {
+	width: 29%;
+	float: left;
+	padding: 0 2%;
+}
+
+.issuem-featured-thumb-title {
 	text-align: center;
 }
 
-.issuem-featured-article-thumbs-image {
-	display: inline-block;
-	margin-left: 10px;
-	margin-right: 10px;
-	vertical-align: top;
-}
-
-.issuem-featured-article-thumbs-image img {
-	border: 1px solid black;
-}
-
-.featured-thumb-title {
-	display: block;
-	text-align: center;	
-	clear: both;
-	font-weight: bold;
-	color: #0D4880;
-    font-size: 14pt;
-    font-weight: normal;
-}
-
 .featured-thumb-content {
-	display: block;
 	text-align: center;	
-	clear: bo
-    font-size: 11pt;
-    line-height: 1;
-    padding-top: 0;
 }
 
 .featured-thumb-byline {
