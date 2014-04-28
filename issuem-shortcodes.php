@@ -335,9 +335,16 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 		else
 			ksort( $archives );
 			
+		$archive_count = count( $archives ) - 1; //we want zero based
+		
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+		if ( !empty( $limit ) ) {
+			$offset = ( $paged - 1 ) * $limit;
+			$archives = array_slice( $archives, $offset, $limit );
+		}
+			
 		$results = '<div class="issuem_archives_shortcode">';
 		
-		$count = 0;
 		foreach ( $archives as $archive => $issue_array ) {
 		
 			$issue_meta = get_option( 'issuem_issue_' . $issue_array[0]->term_id . '_meta' );
@@ -396,11 +403,30 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 			$results .= '<br />' . $pdf_line;
 		
 			$results .= '</div>';
+						
+		}
+		
+		if ( !empty( $limit ) ) {
+		
+			$url = remove_query_arg( array( 'page', 'paged' ) );
+		
+			$results .= '<div class="next_previous_archive_pagination">';
+		
+			if ( 0 === $offset ) {
+				//Previous link only
+				$results .= '<div class="alignleft"><a href="' . add_query_arg( 'paged', $paged + 1, $url ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
+				
+			} else if ( $offset >= $archive_count ) {
+				//Next link only
+				$results .= '<div class="alignright"><a href="' . add_query_arg( 'paged', $paged - 1, $url ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
+			} else {
+				//Next and Previous Links
+				$results .= '<div class="alignleft"><a href="' . add_query_arg( 'paged', $paged + 1, $url ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
+				$results .= '<div class="alignright"><a href="' . add_query_arg( 'paged', $paged - 1, $url ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
+			}
 			
-			$count++;
-			if ( 0 != $limit && $count >= $limit )
-				break;
 			
+			$results .= '</div>';
 		}
 		
 		if ( get_option( 'issuem_api_error_received' ) )
