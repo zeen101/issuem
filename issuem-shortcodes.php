@@ -412,7 +412,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 		
 			$results .= '<div class="next_previous_archive_pagination">';
 		
-			if ( 0 === $offset ) {
+			if ( 0 === $offset && $limit < $archive_count ) {
 				//Previous link only
 				$results .= '<div class="alignleft"><a href="' . add_query_arg( 'paged', $paged + 1, $url ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
 				
