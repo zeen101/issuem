@@ -201,3 +201,9 @@ div.api_error {
 	clear: both;
 	text-align: center;
 }
+
+.next_previous_archive_pagination {
+	clear: both;
+	display: block;
+	width: 100%;
+}
