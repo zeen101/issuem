@@ -614,7 +614,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 		
 		if ( $featured_articles ) : 
 			
-			$results .= '<div id="issuem-featured-article-thumbs-imageholder">';
+			$results .= '<div id="issuem-featured-article-thumbs-wrap">';
 		
 			$count = 1;
 			/* start the loop */
@@ -626,31 +626,35 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 					$image = apply_filters( 'issuem_featured_thumbs_article_image', $image, $article );
 					
 					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_div', '', $article );
-					$results .= '<div class="issuem-featured-article-thumbs-image" class="floatleft" style="width: ' . $image[1] .'px">';
+					$results .= '<div class="issuem-featured-article-thumb">';
 					$results .= apply_filters( 'issuem_featured_thumbs_start_thumbnail_div', '', $article );
 					
 					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_image', '', $article );
-					$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_image', '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . '" /></a><br />', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_image', '<a class="issuem-featured-thumbs-img" href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . '" /></a>', $article );
 					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_image', '', $article );
 					
-					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_category', '', $article );
-					$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem_article_category">' . get_the_terms( $post->ID, $cats ) . '</p>', $article );
-					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_category', '', $article );
+					
+					if ( $cats ) {
+						$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_category', '', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem-article-category">' . get_the_terms( $post->ID, $cats ) . '</p>', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_category', '', $article );
+					}
+					
 
 					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_title', '', $article );
-					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_title', '<h3 class="featured-thumb-title"><a href="' . get_permalink( $article->ID ) . '">' . get_the_title( $article->ID ) . '</a></h3>', $article );
+					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_title', '<h3 class="issuem-featured-thumb-title"><a href="' . get_permalink( $article->ID ) . '">' . get_the_title( $article->ID ) . '</a></h3>', $article );
 					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_title', '', $article );
 
 					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_content', '', $article );
 					switch ( $content_type ) {
 								
 							case 'excerpt':
-								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<span class="featured-thumb-content">' . get_the_excerpt() . '</span>', $article );	
+								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="issuem-featured-thumb-content">' . get_the_excerpt() . '</p>', $article );	
 								break;
 								
 							case 'teaser':	
 							default:					
-								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<span class="featured-thumb-content">' . get_post_meta( $article->ID, '_teaser_text', true ) . '</span>', $article );
+								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="featured-thumb-content">' . get_post_meta( $article->ID, '_teaser_text', true ) . '</p>', $article );
 								break;
 								
 					}
@@ -661,7 +665,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 						
 						$author_name = get_issuem_author_name( $article );
 						
-						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_byline', '<span class="featured-thumb-byline">' . sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) ) . '</span>', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_byline', '<p class="featured-thumb-byline">' . sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) ) . '</p>', $article );
 						
 					}
 					$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_byline', '', $article );

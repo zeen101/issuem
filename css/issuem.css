@@ -17,7 +17,7 @@
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	border: 1px solid transparent;
-}
+}i
 
 .issuem_issue_draft {
 	background: #FCF;
@@ -34,50 +34,30 @@
 
 #issuem-featured-article-slideshowholder .ft-title {
 	padding-left: 5px; 
-	padding-right: 5px;
-	font-family: Helvetica,Arial,sans-serif;
+	padding-right: 5;
     font-size: 12px;
     font-weight: bold;
 	line-height: 12pt;
 }
 
-#issuem-featured-article-thumbs-imageholder {
-	margin-left: auto;
-	margin-right: auto;	
+#issuem-featured-article-thumbs-wrap {
 	margin-bottom: 25px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.issuem-featured-article-thumb {
+	width: 29%;
+	float: left;
+	padding: 0 2%;
+}
+
+.issuem-featured-thumb-title {
 	text-align: center;
 }
 
-.issuem-featured-article-thumbs-image {
-	display: inline-block;
-	margin-left: 10px;
-	margin-right: 10px;
-	vertical-align: top;
-}
-
-.issuem-featured-article-thumbs-image img {
-	border: 1px solid black;
-}
-
-.featured-thumb-title {
-	display: block;
-	text-align: center;	
-	clear: both;
-	font-weight: bold;
-	color: #0D4880;
-    font-family: Helvetica,Arial,sans-serif;
-    font-size: 14pt;
-    font-weight: normal;
-}
-
 .featured-thumb-content {
-	display: block;
 	text-align: center;	
-	clear: both;
-	font-family: "New Times Roman",Times,serif;
-    font-size: 11pt;
-    line-height: 1;
-    padding-top: 0;
 }
 
 .featured-thumb-byline {
@@ -86,8 +66,7 @@
 	clear: both;
 	font-size: 12px;
 	line-height: 12pt;
-	text-transform: uppercase;
-	font-family: "New Times Roman",Times,serif;
+	text-transform: upperca
 	letter-spacing: 0.1em;
 }
 
@@ -116,7 +95,6 @@ p a.issuem_widget_issue_pdf_link {
 
 .issuem_article_list_widget .issuem_widget_category {
 	color: #D76A2A;
-    font-family: "New Times Roman",Times,serif;
     font-size: 9pt;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -128,7 +106,6 @@ p a.issuem_widget_issue_pdf_link {
 
 .issuem_article_list_widget .issuem_widget_link {
 	color: #0D4980;
-    font-family: Arial,Helvetica,sans-serif;
     font-size: 14pt;
     font-weight: normal;
     margin: 0;
@@ -141,8 +118,7 @@ p a.issuem_widget_issue_pdf_link {
 	color: inherit;
 }
 
-.issuem_article_list_widget .issuem_widget_teaser {
-	font-family: "New Times Roman",Times,serif;
+.issuem_article_list_widget .issuem_widget_tease
     font-size: 11pt;
     font-weight: normal;
     line-height: 1;
@@ -152,8 +128,7 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 .issuem_articles_shortcode {
-	text-align: center;	
-	font-family: "New Times Roman",Times,serif;
+	text-align: cente
 }
 
 .issuem_articles_shortcode p {
@@ -177,7 +152,6 @@ p a.issuem_widget_issue_pdf_link {
 
 .issuem_articles_shortcode .issuem_article_link {
     color: #0D4880;
-    font-family: Helvetica,Arial,sans-serif;
     font-size: 14pt;
     font-weight: normal;
 }
