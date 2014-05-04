@@ -211,7 +211,8 @@ class IssueM_Article_List extends WP_Widget {
 		$args = array(
 			'posts_per_page'    => empty( $instance['posts_per_page'] ) ? -1 : $instance['posts_per_page'],
 			'post_type'			=> 'article',
-			'orderby'			=> empty( $instance['orderby'] ) ? 'menu_order' : $instance['orderby']
+			'orderby'			=> empty( $instance['orderby'] ) ? 'menu_order' : $instance['orderby'],
+			'order' 			=> empty( $instance['order'] ) ? 'DESC' : $instance['order'],
 		);
 		
 		$issuem_issue = array(
@@ -305,7 +306,7 @@ class IssueM_Article_List extends WP_Widget {
 		$instance['article_format'] 	= $new_instance['article_format'];
 		$instance['article_category'] 	= $new_instance['article_category'];
 		$instance['orderby'] 			= $new_instance['orderby'];
-	
+		$instance['order'] 				= $new_instance['order'];
 		return $instance;
 	
 	}
@@ -329,7 +330,8 @@ class IssueM_Article_List extends WP_Widget {
 									'<p><a class="issuem_widget_link" href="%URL%">%TITLE%</a></p>' . "\n" .
 									'<p class="issuem_widget_teaser">%TEASER%</p>' . "\n",
 			'article_category'	=> 	'all',
-			'orderby'			=> 	'menu_order'
+			'orderby'			=> 	'menu_order',
+			'order'				=> 	'DESC',
 		);
 		
 		extract( wp_parse_args( (array) $instance, $defaults ) );
@@ -370,23 +372,39 @@ class IssueM_Article_List extends WP_Widget {
             <p>
 				<?php
                 $orderby_options = array( 
-                                        'none' 				=> __( 'None', 'issuem' ), 
-                                        'ID' 				=> __( 'Article ID', 'issuem' ), 
-                                        'author' 			=> __( 'Article Author', 'issuem' ), 
-                                        'title' 			=> __( 'Article Title', 'issuem' ), 
-                                        'name' 				=> __( 'Article Name', 'issuem' ), 
-                                        'date'				=> __( 'Article Publish Date', 'issuem' ), 
-                                        'modified'			=> __( 'Article Modified Date', 'issuem' ), 
-                                        'menu_order'		=> __( 'Article Order', 'issuem' ), 
-                                        'rand'				=> __( 'Random Order', 'issuem' ), 
-                                        'comment_count' 	=> __( 'Comment Count', 'issuem' )
-                                    );
+                    'none' 				=> __( 'None', 'issuem' ), 
+                    'ID' 				=> __( 'Article ID', 'issuem' ), 
+                    'author' 			=> __( 'Article Author', 'issuem' ), 
+                    'title' 			=> __( 'Article Title', 'issuem' ), 
+                    'name' 				=> __( 'Article Name', 'issuem' ), 
+                    'date'				=> __( 'Article Publish Date', 'issuem' ), 
+                    'modified'			=> __( 'Article Modified Date', 'issuem' ), 
+                    'menu_order'		=> __( 'Article Order', 'issuem' ), 
+                    'rand'				=> __( 'Random Order', 'issuem' ), 
+                    'comment_count' 	=> __( 'Comment Count', 'issuem' )
+                );
                 ?>
             
                 <label for="<?php echo $this->get_field_id('orderby'); ?>"><?php _e( 'Select Sort Order:', 'issuem' ); ?></label><br />
                 <select id="<?php echo $this->get_field_id('orderby'); ?>" name="<?php echo $this->get_field_name('orderby'); ?>">
                 <?php foreach ( $orderby_options as $orderby_key => $orderby_title ) { ?>
                     <option value="<?php echo $orderby_key; ?>" <?php selected( $orderby_key, $orderby ); ?>><?php echo $orderby_title; ?></option>
+                <?php } ?>
+                </select>
+            </p>
+            
+            <p>
+				<?php
+                $order_options = array( 
+                    'DESC' 	=> __( 'Descending', 'issuem' ), 
+                    'ASC' 	=> __( 'Ascending', 'issuem' ), 
+                );
+                ?>
+            
+                <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e( 'Select Order Direction:', 'issuem' ); ?></label><br />
+                <select id="<?php echo $this->get_field_id('order'); ?>" name="<?php echo $this->get_field_name('order'); ?>">
+                <?php foreach ( $order_options as $order_key => $order_title ) { ?>
+                    <option value="<?php echo $order_key; ?>" <?php selected( $order_key, $order ); ?>><?php echo $order_title; ?></option>
                 <?php } ?>
                 </select>
             </p>
