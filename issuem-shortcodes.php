@@ -545,7 +545,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 					$results .= '<li>';
 					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
-					$results .= '<div class="flex-caption" style="width: ' . $issuem_settings['featured_image_width'] . 'px;">' . $caption . '</div>';
+					$results .= '<div class="flex-caption"><div class="flex-caption-content">' . $caption . '</div></div>';
 					$results .= '</li>';
 					
 				}

@@ -76,10 +76,12 @@ html[xmlns] #issuem-featured-article-slideshowholder .slides {display: block;}
     bottom: 0;
     color: #FFFFFF;
     opacity: 0.7;
-    padding: 3px;
     position: absolute;
     z-index: 1000;
 	display: block;
+}
+#issuem-featured-article-slideshowholder .flex-caption .flex-caption-content {
+    padding: 3px;
 }
 
 @media screen and (max-width: 860px) {

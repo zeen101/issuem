@@ -7,6 +7,7 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Contributing author: Tyler Smith (@mbmufffin)
+ * Modified by IssueM
  */
 
 ;(function ($) {
@@ -395,6 +396,7 @@
             methods.smoothHeight();
           } else if (carousel) { //CAROUSEL:
             slider.slides.width(slider.computedW);
+            $( '.flex-caption', slider.slides ).width(slider.computedW);
             slider.update(slider.pagingCount);
             slider.setProps();
           }
@@ -405,6 +407,7 @@
             // SMOOTH HEIGHT:
             if (vars.smoothHeight) methods.smoothHeight();
             slider.newSlides.width(slider.computedW);
+            $( '.flex-caption', slider.newSlides ).width(slider.computedW);
             slider.setProps(slider.computedW, "setTotal");
           }
         }
@@ -670,6 +673,7 @@
           setTimeout(function(){
             slider.doMath();
             slider.newSlides.css({"width": slider.computedW, "float": "left", "display": "block"});
+            $( '.flex-caption', slider.newSlides ).width(slider.computedW);
             // SMOOTH HEIGHT:
             if (vars.smoothHeight) methods.smoothHeight();
           }, (type === "init") ? 100 : 0);
