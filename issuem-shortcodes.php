@@ -216,7 +216,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 	
 		else :
 	
-			$results .= '<h1 class="issuem-entry-title">' . __( 'No articles Found', 'issuem' ) . '</h1>';
+			$results .= apply_filters( 'issuem_no_articles_found_shortcode_message', '<h1 class="issuem-entry-title no-articles-found">' . __( 'No articles Found', 'issuem' ) . '</h1>' );
 	
 		endif;
 		
@@ -604,6 +604,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			'max_images'		=> 0,
 			'issue'				=> get_active_issuem_issue(),
 			'article_category'		=> 'all',
+			'show_cats'			=> false,
 		);
 		
 		// Merge defaults with passed atts
@@ -665,9 +666,9 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 					$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_image', '', $article );
 					
 					
-					if ( $cats ) {
+					if ( 'true' === $show_cats ) {
 						$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_category', '', $article );
-						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem-article-category">' . get_the_terms( $post->ID, $cats ) . '</p>', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem-article-category">' . get_the_term_list( $post->ID, $cat_type ) . '</p>', $article );
 						$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_category', '', $article );
 					}
 					
