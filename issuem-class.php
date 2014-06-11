@@ -467,13 +467,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Display HTML form for the options below
 			?>
 			<div class="wrap">
+
             <div style="width:70%;" class="postbox-container">
+            <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
             <div class="metabox-holder">	
             <div class="meta-box-sortables ui-sortable">
             
                 <form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
             
-                    <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
+                    
                     
                     <div id="modules" class="postbox">
                     
@@ -624,10 +626,34 @@ if ( ! class_exists( 'IssueM' ) ) {
                     </div>
                     
                 </form>
+
+
                 
             </div>
+
             </div>
+
             </div>
+
+            <div class="metabox-holder">
+            	<div class="meta-box-sortables ui-sortable">
+	             <div class="postbox-container column-secondary" style="width: 28%; float: right; padding-top: 50px;">
+	                <div class="postbox">
+	               		 <div class="handlediv" title="Click to toggle"><br /></div>
+	                        
+	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
+	                        
+	                        <div class="inside">
+	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://issuem.com/documentation/getting-started/">Getting Started</a> guide.</p>
+
+	                        	<p>Still have questions? <a target="_blank" href="http://issuem.com/forums/">Start a support topic</a> in our support forums.</p>
+
+	                        </div>
+
+	                </div>
+	                </div>
+	               </div>
+	               </div>
 			</div>
 			<?php
 			
