@@ -4,6 +4,16 @@ table#issuem_administrator_options {
 	width: 100%;	
 }
 
+.issuem-settings .postbox-container.column-primary {
+	width: 70%;
+}
+
+.issuem-settings .postbox-container.column-secondary {
+	width: 28%; 
+	float: right; 
+	padding-top: 50px;
+}
+
 #issuem_administrator_options tr th, #issuem_administrator_options tr td {
 	vertical-align: top;
 	padding-bottom: 25px;

@@ -456,9 +456,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			// Display HTML form for the options below
 			?>
-			<div class="wrap">
+			<div class="wrap issuem-settings">
 
-            <div style="width:70%;" class="postbox-container">
+            <div class="postbox-container column-primary">
             <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
             <div class="metabox-holder">	
             <div class="meta-box-sortables ui-sortable">
@@ -471,7 +471,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                     
                       
                         
-                        <h3 class="hndle"><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
+                        <h3><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
                         
@@ -606,7 +606,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                     <div id="modules" class="postbox">
                     
                        
-                        <h3 class="hndle"><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
+                        <h3><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
                         
@@ -633,7 +633,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 
             <div class="metabox-holder">
             	
-	             <div class="postbox-container column-secondary" style="width: 28%; float: right; padding-top: 50px;">
+	             <div class="postbox-container column-secondary">
 	                <div class="postbox">
 	               		 
 	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
@@ -899,7 +899,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                 </div>
                 
                
-                <?php // do_action( 'issuem_help_page' ); ?>
+                <?php do_action( 'issuem_help_page' ); ?>
                 
             </div>
             </div>
