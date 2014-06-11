@@ -479,7 +479,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                     
                     <div id="modules" class="postbox">
                     
-                        <div class="handlediv" title="Click to toggle"><br /></div>
+                      
                         
                         <h3 class="hndle"><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
                         
@@ -608,8 +608,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                     
                     <div id="modules" class="postbox">
                     
-                        <div class="handlediv" title="Click to toggle"><br /></div>
-                        
+                       
                         <h3 class="hndle"><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
@@ -636,11 +635,10 @@ if ( ! class_exists( 'IssueM' ) ) {
             </div>
 
             <div class="metabox-holder">
-            	<div class="meta-box-sortables ui-sortable">
+            	
 	             <div class="postbox-container column-secondary" style="width: 28%; float: right; padding-top: 50px;">
 	                <div class="postbox">
-	               		 <div class="handlediv" title="Click to toggle"><br /></div>
-	                        
+	               		 
 	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
 	                        
 	                        <div class="inside">
@@ -652,7 +650,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 	                </div>
 	                </div>
-	               </div>
+	              
 	               </div>
 			</div>
 			<?php
