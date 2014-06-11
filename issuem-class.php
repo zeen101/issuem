@@ -466,7 +466,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			// Display HTML form for the options below
 			?>
-			<div class=wrap>
+			<div class="wrap">
             <div style="width:70%;" class="postbox-container">
             <div class="metabox-holder">	
             <div class="meta-box-sortables ui-sortable">
@@ -483,7 +483,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                         <div class="inside">
                         
-                        <table id="issuem_administrator_options">
+                        <table id="issuem_administrator_options" class="form-table">
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
@@ -578,18 +578,18 @@ if ( ! class_exists( 'IssueM' ) ) {
                             </tr>
                         
                         	<tr>
-                                <th rowspan="1"> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Name', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
                             </tr>
                         
                         	<tr>
-                                <th rowspan="1"> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Categories and Tags', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
                             </tr>
 
                             <tr>
-                                <th rowspan="1"> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Links', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
                             </tr>
                             
                         </table>
