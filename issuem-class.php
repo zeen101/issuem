@@ -240,6 +240,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 			if ( 'article_page_issuem' == $hook_suffix )
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_media();
+
+
 			
 		}
 			
@@ -406,23 +409,10 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$settings['featured_thumb_height'] = $_REQUEST['featured_thumb_height'];
 				else
 					unset( $settings['featured_thumb_height'] );
-					
-				if ( !empty( $_FILES['default_issue_image']['name'] ) ) {
-		
-					require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
-					$id = media_handle_upload( 'default_issue_image', 0 ); //post id of Client Files page  
-					 
-					if ( is_wp_error( $id ) ) {  
-					
-						$errors['upload_error'] = $id;  
-						$id = false;  
-						
-					}
-					
-					list( $src, $width, $height ) = wp_get_attachment_image_src( $id, 'issuem-cover-image' );
-					$settings['custom_image_used'] = $id;
-					$settings['default_issue_image'] = $src;
-					
+
+				if ( !empty( $_REQUEST['default_issue_image'] ) ) {
+					$settings['default_issue_image'] = $_REQUEST['default_issue_image'];
+					$settings['custom_image_used'] = 1;
 				}
 				
 				if ( !empty( $_REQUEST['display_byline_as'] ) )
@@ -559,7 +549,14 @@ if ( ! class_exists( 'IssueM' ) ) {
                             
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Default Issue Image', 'issuem' ); ?></th>
-                                <td><input type="file" id="default_issue_image" class="regular-text" name="default_issue_image" value="" /><p><img src="<?php echo $settings['default_issue_image']; ?>" /></p>
+                                <td>
+                                	<input id="default_issue_image" type="text" size="36" name="default_issue_image" value="<?php echo $settings['default_issue_image']; ?>" />
+								    <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+								    <p>Enter a URL or upload an image</p>
+
+                                
+
+                                	<p><img style="max-width: 400px;" src="<?php echo $settings['default_issue_image']; ?>" /></p>
                                 
                                 <?php if ( 0 < $settings['custom_image_used'] ) { ?>
                                 <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ) . '">' . __( 'Remove Custom Default Issue Image', 'issuem' ); ?></a></p>
