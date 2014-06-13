@@ -240,6 +240,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 			if ( 'article_page_issuem' == $hook_suffix )
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_media();
+
+
 			
 		}
 			
@@ -406,23 +409,10 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$settings['featured_thumb_height'] = $_REQUEST['featured_thumb_height'];
 				else
 					unset( $settings['featured_thumb_height'] );
-					
-				if ( !empty( $_FILES['default_issue_image']['name'] ) ) {
-		
-					require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
-					$id = media_handle_upload( 'default_issue_image', 0 ); //post id of Client Files page  
-					 
-					if ( is_wp_error( $id ) ) {  
-					
-						$errors['upload_error'] = $id;  
-						$id = false;  
-						
-					}
-					
-					list( $src, $width, $height ) = wp_get_attachment_image_src( $id, 'issuem-cover-image' );
-					$settings['custom_image_used'] = $id;
-					$settings['default_issue_image'] = $src;
-					
+
+				if ( !empty( $_REQUEST['default_issue_image'] ) ) {
+					$settings['default_issue_image'] = $_REQUEST['default_issue_image'];
+					$settings['custom_image_used'] = 1;
 				}
 				
 				if ( !empty( $_REQUEST['display_byline_as'] ) )
@@ -466,24 +456,26 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			// Display HTML form for the options below
 			?>
-			<div class=wrap>
-            <div style="width:70%;" class="postbox-container">
+			<div class="wrap issuem-settings">
+
+            <div class="postbox-container column-primary">
+            <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
             <div class="metabox-holder">	
             <div class="meta-box-sortables ui-sortable">
             
                 <form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
             
-                    <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
+                    
                     
                     <div id="modules" class="postbox">
                     
-                        <div class="handlediv" title="Click to toggle"><br /></div>
+                      
                         
-                        <h3 class="hndle"><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
+                        <h3><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
                         
-                        <table id="issuem_administrator_options">
+                        <table id="issuem_administrator_options" class="form-table">
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
@@ -557,7 +549,14 @@ if ( ! class_exists( 'IssueM' ) ) {
                             
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Default Issue Image', 'issuem' ); ?></th>
-                                <td><input type="file" id="default_issue_image" class="regular-text" name="default_issue_image" value="" /><p><img src="<?php echo $settings['default_issue_image']; ?>" /></p>
+                                <td>
+                                	<input id="default_issue_image" type="text" size="36" name="default_issue_image" value="<?php echo $settings['default_issue_image']; ?>" />
+								    <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+								    <p>Enter a URL or upload an image</p>
+
+                                
+
+                                	<p><img style="max-width: 400px;" src="<?php echo $settings['default_issue_image']; ?>" /></p>
                                 
                                 <?php if ( 0 < $settings['custom_image_used'] ) { ?>
                                 <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ) . '">' . __( 'Remove Custom Default Issue Image', 'issuem' ); ?></a></p>
@@ -578,18 +577,18 @@ if ( ! class_exists( 'IssueM' ) ) {
                             </tr>
                         
                         	<tr>
-                                <th rowspan="1"> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Name', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
                             </tr>
                         
                         	<tr>
-                                <th rowspan="1"> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Categories and Tags', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
                             </tr>
 
                             <tr>
-                                <th rowspan="1"> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Links', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
                             </tr>
                             
                         </table>
@@ -606,9 +605,8 @@ if ( ! class_exists( 'IssueM' ) ) {
                     
                     <div id="modules" class="postbox">
                     
-                        <div class="handlediv" title="Click to toggle"><br /></div>
-                        
-                        <h3 class="hndle"><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
+                       
+                        <h3><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
                         
@@ -624,10 +622,33 @@ if ( ! class_exists( 'IssueM' ) ) {
                     </div>
                     
                 </form>
+
+
                 
             </div>
+
             </div>
+
             </div>
+
+            <div class="metabox-holder">
+            	
+	             <div class="postbox-container column-secondary">
+	                <div class="postbox">
+	               		 
+	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
+	                        
+	                        <div class="inside">
+	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://issuem.com/documentation/getting-started/">Getting Started</a> guide.</p>
+
+	                        	<p>Still have questions? <a target="_blank" href="http://issuem.com/forums/">Start a support topic</a> in our support forums.</p>
+
+	                        </div>
+
+	                </div>
+	                </div>
+	              
+	               </div>
 			</div>
 			<?php
 			
@@ -878,7 +899,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                 </div>
                 
                
-                <?php // do_action( 'issuem_help_page' ); ?>
+                <?php do_action( 'issuem_help_page' ); ?>
                 
             </div>
             </div>
