@@ -12,18 +12,18 @@
  
 /* Browser Resets */
 #issuem-featured-article-slideshowholder .flex-container a:active,
-#issuem-featured-article-slideshowholder .flexslider a:active,
+#issuem-featured-article-slideshowholder .issuem-flexslider a:active,
 #issuem-featured-article-slideshowholder .flex-container a:focus,
-#issuem-featured-article-slideshowholder .flexslider a:focus  {outline: none;}
+#issuem-featured-article-slideshowholder .issuem-flexslider a:focus  {outline: none;}
 #issuem-featured-article-slideshowholder .slides,
 #issuem-featured-article-slideshowholder .flex-control-nav,
 #issuem-featured-article-slideshowholder .flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
 
 /* FlexSlider Necessary Styles
 *********************************/ 
-#issuem-featured-article-slideshowholder .flexslider {margin: 0; padding: 0;}
-#issuem-featured-article-slideshowholder .flexslider .slides > li {display: none; -webkit-backface-visibility: hidden; list-style-type: none; margin: 0;} /* Hide the slides before the JS is loaded. Avoids image jumping */
-#issuem-featured-article-slideshowholder .flexslider .slides img {width: 100%; max-width: 100%; display: block; margin: 0; padding: 0; border: none;}
+#issuem-featured-article-slideshowholder .issuem-flexslider {margin: 0; padding: 0;}
+#issuem-featured-article-slideshowholder .issuem-flexslider .slides > li {display: none; -webkit-backface-visibility: hidden; list-style-type: none; margin: 0;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+#issuem-featured-article-slideshowholder .issuem-flexslider .slides img {width: 100%; max-width: 100%; display: block; margin: 0; padding: 0; border: none;}
 #issuem-featured-article-slideshowholder .flex-pauseplay span {text-transform: capitalize;}
 
 /* Clearfix for the .slides element */
@@ -39,10 +39,10 @@ html[xmlns] #issuem-featured-article-slideshowholder .slides {display: block;}
 
 /* FlexSlider Default Theme
 *********************************/
-#issuem-featured-article-slideshowholder .flexslider {background: #fff; position: relative; zoom: 1;}
+#issuem-featured-article-slideshowholder .issuem-flexslider {background: #fff; position: relative; zoom: 1;}
 #issuem-featured-article-slideshowholder .flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
 .loading #issuem-featured-article-slideshowholder .flex-viewport {max-height: 300px;}
-#issuem-featured-article-slideshowholder .flexslider .slides {zoom: 1;}
+#issuem-featured-article-slideshowholder .issuem-flexslider .slides {zoom: 1;}
 
 #issuem-featured-article-slideshowholder .carousel li {margin-right: 5px}
 
@@ -52,9 +52,9 @@ html[xmlns] #issuem-featured-article-slideshowholder .slides {display: block;}
 #issuem-featured-article-slideshowholder .flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(images/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
 #issuem-featured-article-slideshowholder .flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
 #issuem-featured-article-slideshowholder .flex-direction-nav .flex-prev {left: -36px;}
-#issuem-featured-article-slideshowholder .flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
-#issuem-featured-article-slideshowholder .flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
-#issuem-featured-article-slideshowholder .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+#issuem-featured-article-slideshowholder .issuem-flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
+#issuem-featured-article-slideshowholder .issuem-flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+#issuem-featured-article-slideshowholder .issuem-flexslider:hover .flex-next:hover, .issuem-flexslider:hover .flex-prev:hover {opacity: 1;}
 #issuem-featured-article-slideshowholder .flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
 
 /* Control Nav */

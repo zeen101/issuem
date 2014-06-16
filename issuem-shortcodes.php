@@ -509,7 +509,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 		if ( $featured_articles ) :
 			
 			$results .= '<div id="issuem-featured-article-slideshowholder">'; 
-			$results .= '<div class="flexslider">';
+			$results .= '<div class="issuem-flexslider">';
 			$results .= '<ul class="slides">';
 		
 			/* start the loop */
@@ -558,7 +558,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 			$results .= "<script type='text/javascript'>
 						jQuery( window ).load( function(){
-						  jQuery( '.flexslider' ).flexslider({
+						  jQuery( '.issuem-flexslider' ).issuem_flexslider({
 							animation: 'slide',
 							start: function(slider){
 							  jQuery('body').removeClass('loading');
