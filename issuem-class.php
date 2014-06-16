@@ -38,7 +38,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			add_action( 'admin_print_styles', array( $this, 'admin_wp_print_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 			
-			register_activation_hook( __FILE__, array( $this, 'issuem_flush_rewrite_rules' ) );
+			register_activation_hook( __FILE__, array( $this, 'activation' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
 			add_filter( 'views_edit-article', array( $this, 'display_issuem_dot_com_rss_item' ) );
