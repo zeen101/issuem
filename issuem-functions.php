@@ -143,7 +143,7 @@ if ( !function_exists( 'get_issuem_issue_slug' ) ) {
 			
 		}
 		
-		return ( ( is_object( $issue ) && isset( $issue->slug ) ) ? $issue->slug : null );
+		return ( ( is_object( $issue ) && !empty( $issue->slug ) ) ? $issue->slug : '' );
 		
 	}
 
