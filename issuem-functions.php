@@ -370,7 +370,9 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		
 		if ( preg_match( '/%CONTENT%/i', $string, $matches ) ) {
 		
-			$content = apply_filters( 'the_content', get_the_content() );
+			$content = get_the_content();
+			$content = apply_filters( 'the_content', $content );
+    			$content = str_replace( ']]>', ']]&gt;', $content );
 			$string = preg_replace( '/%CONTENT%/i', $content, $string );	
 					
 		}
