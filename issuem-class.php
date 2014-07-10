@@ -426,7 +426,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				if ( !empty( $_REQUEST['show_thumbnail_byline'] ) )
 					$settings['show_thumbnail_byline'] = $_REQUEST['show_thumbnail_byline'];
 				else
-					unset( $settings['use_wp_taxonomies'] );
+					unset( $settings['show_thumbnail_byline'] );
 				
 				if ( !empty( $_REQUEST['use_wp_taxonomies'] ) )
 					$settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
