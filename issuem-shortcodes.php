@@ -668,7 +668,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 					
 					if ( 'true' === $show_cats ) {
 						$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_category', '', $article );
-						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem-article-category">' . get_the_term_list( $post->ID, $cat_type ) . '</p>', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_category', '<p class="issuem-article-category">' . get_the_term_list( $article->ID, $cat_type ) . '</p>', $article );
 						$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_category', '', $article );
 					}
 					

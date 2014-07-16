@@ -422,6 +422,11 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$settings['issuem_author_name'] = $_REQUEST['issuem_author_name'];
 				else
 					unset( $settings['issuem_author_name'] );
+
+				if ( !empty( $_REQUEST['show_thumbnail_byline'] ) )
+					$settings['show_thumbnail_byline'] = $_REQUEST['show_thumbnail_byline'];
+				else
+					unset( $settings['show_thumbnail_byline'] );
 				
 				if ( !empty( $_REQUEST['use_wp_taxonomies'] ) )
 					$settings['use_wp_taxonomies'] = $_REQUEST['use_wp_taxonomies'];
@@ -574,6 +579,11 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 	<option value="display_name" <?php selected( 'display_name' == $settings['display_byline_as'] ); ?>>Display Name</option>
                                 </select>
                                 </td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Show Thumbnail Byline', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" <?php checked( $settings['show_thumbnail_byline'] || 'on' == $settings['show_thumbnail_byline'] ); ?>" /></td>
                             </tr>
                         
                         	<tr>

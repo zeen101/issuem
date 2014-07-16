@@ -59,6 +59,9 @@ class IssueM_Active_Issue extends WP_Widget {
 		$issue = get_active_issuem_issue();
 		$term = get_term_by( 'slug', $issue, 'issuem_issue' );
 		$meta_options = get_option( 'issuem_issue_' . $term->term_id . '_meta' );
+
+		$title = apply_filters('active_issue_widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base);
+
 		$out = '';
 		
 		if ( 'on' == $instance['display_issue_name'] )
@@ -86,6 +89,9 @@ class IssueM_Active_Issue extends WP_Widget {
 		if ( ! empty( $out ) ) {
 			
 			echo $before_widget;
+			if ( $title) {
+				echo $before_title . $title . $after_title;
+			}
 			echo '<div class="issuem_active_list_widget">';
 			echo $out; 
 			echo '</div>';
@@ -106,6 +112,7 @@ class IssueM_Active_Issue extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		
 		$instance 							= $old_instance;
+		$instance['title'] 					= $new_instance['title'];
 		$instance['display_issue_name'] 	= ( 'on' == $new_instance['display_issue_name'] ) ? 'on' : 'off';
 		$instance['display_issue_cover'] 	= ( 'on' == $new_instance['display_issue_cover'] ) ? 'on' : 'off';
 		$instance['display_pdf_link'] 		= ( 'on' == $new_instance['display_pdf_link'] ) ? 'on' : 'off';
@@ -137,6 +144,12 @@ class IssueM_Active_Issue extends WP_Widget {
 		if ( !empty( $available_issues ) ) :
 		
 			?>
+
+			<p>
+	        	<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
+	            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( strip_tags( $title ) ); ?>" />
+	        </p>
+	        
 			<p>
 	        	<label for="<?php echo $this->get_field_id('display_issue_name'); ?>"><?php _e( 'Display Issue Title?', 'issuem' ); ?></label>
                 <input class="checkbox" id="<?php echo $this->get_field_id('display_issue_name'); ?>" name="<?php echo $this->get_field_name('display_issue_name'); ?>" type="checkbox" value="on" <?php checked( 'on' == $display_issue_name ) ?> />
