@@ -44,7 +44,23 @@ You must have:
 
 == Changelog ==
 = 1.2.9 =
-* Updating STORE URL
+* Updating IssueM references to point to zeen101
+* Update show_thumbnail_byline variable
+* Add title field to IssueM Active Issue widget
+* Change object name to article instead of post for the featured thumbnail category list arguements
+* Add display thumbnail byline to issuem settings page
+* Filter the_content plus... Related to commit 854d12b79c2b7701ad1712fff6f387246ee5a218
+* Applies 'the_content' filter to article content
+* Changing merged pull request (minor update)
+* Update issuem-functions.php
+* Customizing Flexslider to deal with conflicting themes/plugins that enqueu their own version
+* Fixed activation hook function call
+* Move inline css to admin css file'
+* Replace file uploader with wp media uploader for default issue image
+* Remove toggle arrows from settings boxes
+* Add settings sidebar for additional content
+* Update layout of settings page
+* Fixing responsive issue with captions in flexslider
 
 = 1.2.8 =
 * Fixing featured thumbnail shortcode to show categories properly 
