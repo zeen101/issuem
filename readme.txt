@@ -3,7 +3,7 @@ Contributors: layotte, peterericson
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,10 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.10 =
+* Fixed readme
+* Fixed messed up constant variable name
+
 = 1.2.9 =
 * Updating IssueM references to point to zeen101
 * Update show_thumbnail_byline variable
