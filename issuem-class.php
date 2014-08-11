@@ -1101,7 +1101,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				'author'		=> 'IssueM Development Team',
 			);
 			$request = wp_remote_post( 
-				ISSUEM_STORE_URL, 
+				ZEEN101_STORE_URL, 
 				array( 
 					'timeout' => 15, 
 					'sslverify' => false, 
