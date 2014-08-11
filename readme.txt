@@ -3,7 +3,7 @@ Contributors: layotte, peterericson
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 1.2.10
+Stable tag: 1.2.11
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,9 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.11 =
+* Adding missing code to display PDF link in widget when External PDF Link is not empty and set to display PDF links
+
 = 1.2.10 =
 * Fixed readme
 * Fixed messed up constant variable name
