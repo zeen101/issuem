@@ -66,7 +66,7 @@
 	clear: both;
 	font-size: 12px;
 	line-height: 12pt;
-	text-transform: upperca
+	text-transform: uppercase;
 	letter-spacing: 0.1em;
 }
 
@@ -128,13 +128,12 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 .issuem_articles_shortcode {
-	text-align: cente
+	text-align: center;
 }
 
 .issuem_articles_shortcode p {
 	text-align: center;	
 	margin: 0;
-	line-height: 14pt;
 }
 
 .issuem_articles_shortcode .issuem_article {
@@ -157,10 +156,7 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 .issuem_articles_shortcode .issuem_article_content {
-	color: #231F20;
-    font-size: 11pt;
     font-weight: normal;
-    line-height: 1;
 }
 
 .issuem_articles_shortcode .issuem_article_byline {
@@ -180,4 +176,12 @@ div.api_error {
 	clear: both;
 	display: block;
 	width: 100%;
+}
+
+@media all and (max-width: 600px) {
+	.issuem-featured-article-thumb {
+		width: 100%;
+		float: none;
+		padding: 0 0 40px 0;
+	}
 }
