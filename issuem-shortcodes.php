@@ -544,8 +544,8 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
 					
 					$results .= '<li>';
-					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" /></a>';
-					$results .= '<div class="flex-caption"><div class="flex-caption-content">' . $caption . '</div></div>';
+					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" />';
+					$results .= '<div class="flex-caption"><div class="flex-caption-content">' . $caption . '</div></div></a>';
 					$results .= '</li>';
 					
 				}
