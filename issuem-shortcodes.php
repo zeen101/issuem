@@ -681,7 +681,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 					switch ( $content_type ) {
 								
 							case 'excerpt':
-								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="issuem-featured-thumb-content">' . get_the_excerpt() . '</p>', $article );	
+								$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="issuem-featured-thumb-content">' . get_issuem_article_excerpt( $article->ID ) . '</p>', $article );	
 								break;
 								
 							case 'teaser':	
