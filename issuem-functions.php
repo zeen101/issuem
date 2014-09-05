@@ -748,3 +748,32 @@ if ( !function_exists( 'walk_issuem_category_dropdown_tree' ) ) {
 	}
 
 }
+
+if ( !function_exists( 'get_issuem_article_excerpt' ) ) { 
+	
+	/**
+	 * Get article excerpt by id, for use outside of the loop
+	 *
+	 * @since 1.2.12
+	 *
+	 * @param int $id Article ID 
+	 * @return excerpt for the article
+	 */
+	function get_issuem_article_excerpt( $id = false ) {
+	
+		if ( !$id ) {
+				
+			return;
+			
+		} else {
+
+			$the_article = get_post($id);
+			$the_excerpt = $the_article->post_excerpt;
+
+			return $the_excerpt;
+			
+		}
+		
+	}
+
+}

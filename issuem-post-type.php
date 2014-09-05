@@ -108,7 +108,7 @@ if ( !function_exists( 'add_issuem_articles_metaboxes' ) ) {
 	 */
 	function add_issuem_articles_metaboxes() {
 		
-		add_meta_box( 'issuem_article_meta_box', __( 'IssueM Article Options', 'issuem' ), 'issuem_article_meta_box', 'article' );
+		add_meta_box( 'issuem_article_meta_box', __( 'IssueM Article Options', 'issuem' ), 'issuem_article_meta_box', 'article', 'normal', 'high' );
 		
 		do_action( 'add_issuem_articles_metaboxes' );
 		
@@ -138,21 +138,27 @@ if ( !function_exists( 'issuem_article_meta_box' ) ) {
 		
 		<div id="issuem-article-metabox">
 		
-			<table id="iam-table">
+				<p><input id="featured_rotator" type="checkbox" name="featured_rotator" <?php checked( $featured_rotator || "on" == $featured_rotator ); ?> />
+				<label for="featured_rotator"><?php _e( 'Add article to Featured Rotator', 'issuem' ); ?></label></p>
+	
+				
+				<p><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( $featured_thumb || "on" == $featured_thumb ); ?> /><label for="featured_thumb"><?php _e( 'Add article to Featured Thumbnails', 'issuem' ); ?></label></p>
                     			
-				<tr><td><label for="teaser_text"><?php _e( 'Teaser Text', 'issuem' ); ?></label></td><td><input class="regular-text" type="text" name="teaser_text" value="<?php echo $teaser_text; ?>" /></td></tr>
+				<p>
+				<label for="teaser_text"><strong><?php _e( 'Teaser Text', 'issuem' ); ?></strong></label><br>
+				
+				<input class="large-text" type="text" name="teaser_text" value="<?php echo $teaser_text; ?>" />
+				</p>
 	
 				<?php if ( !empty( $issuem_settings['issuem_author_name'] ) ) { ?>
-				<tr><td><label for="featured_thumb"><?php _e( 'IssueM Author Name', 'issuem' ); ?></label></td><td><input class="regular-text" type="text" name="issuem_author_name" value="<?php echo $issuem_author_name; ?>" /></td></tr>
+				<p><label for="featured_thumb"><strong><?php _e( 'IssueM Author Name', 'issuem' ); ?></strong></label><br>
+				<input class="regular-text" type="text" name="issuem_author_name" value="<?php echo $issuem_author_name; ?>" /></p>
 				<?php } ?>
 				
-				<tr><td colspan="2"><strong><?php _e( 'Featured Rotator Options', 'issuem' ); ?></strong></td></tr>
-				<tr><td><label for="featured_rotator"><?php _e( 'Set as Featured Rotator Article', 'issuem' ); ?></label></td><td><input id="featured_rotator" type="checkbox" name="featured_rotator" <?php checked( $featured_rotator || "on" == $featured_rotator ); ?> /></td></tr>
-	
-				<tr><td colspan="2"><strong><?php _e( 'Featured  Thumbnail Options', 'issuem' ); ?></strong></td></tr>
-				<tr><td><label for="featured_thumb"><?php _e( 'Set as Featured Thumbnail Article', 'issuem' ); ?></label></td><td><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( $featured_thumb || "on" == $featured_thumb ); ?> /></td></tr>
+			
 				
-			</table>
+				
+			
 		
 		</div>
 		
