@@ -62,19 +62,19 @@ class IssueM_Active_Issue extends WP_Widget {
 
 		$title = apply_filters('active_issue_widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base);
 
-		$out = '';
-		
-		if ( 'on' == $instance['display_issue_name'] )
-			$out .= '<p class="issuem_widget_issue_name">' . $term->name . '</p>';
-		
-		if ( 'on' == $instance['display_issue_cover'] ) {
-	
-			if ( 0 == $issuem_settings['page_for_articles'] )
+		if ( 0 == $issuem_settings['page_for_articles'] )
 				$article_page = get_bloginfo( 'wpurl' ) . '/' . apply_filters( 'issuem_page_for_articles', 'article/' );
 			else
 				$article_page = get_page_link( $issuem_settings['page_for_articles'] );
 		
-			$issue_url = add_query_arg( 'issue', $issue, $article_page );
+		$issue_url = add_query_arg( 'issue', $issue, $article_page );
+
+		$out = '';
+		
+		if ( 'on' == $instance['display_issue_name'] )
+			$out .= '<p class="issuem_widget_issue_name"><a href="' . apply_filters( 'issuem_issue_url', $issue_url, $issue, $meta_options ) . '">' . $term->name . '</a></p>';
+		
+		if ( 'on' == $instance['display_issue_cover'] ) {
 		
 			if ( !empty( $meta_options['cover_image'] ) )
 				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', $issue_url, $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image' ) . '</a></p>';
