@@ -651,9 +651,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
 	                        
 	                        <div class="inside">
-	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://issuem.com/documentation/getting-started/">Getting Started</a> guide.</p>
+	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://zeen101.com/documentation/getting-started/">Getting Started</a> guide.</p>
 
-	                        	<p>Still have questions? <a target="_blank" href="http://issuem.com/forums/">Start a support topic</a> in our support forums.</p>
+	                        	<p>Still have questions? <a target="_blank" href="http://zeen101.com/forums/">Start a support topic</a> in our support forums.</p>
 
 	                        </div>
 
