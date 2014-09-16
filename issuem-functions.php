@@ -217,7 +217,7 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 			
 		} else {
 		
-			global $wp_query;
+			global $post;
 			
 			$issuem_settings = get_issuem_settings();
 				
@@ -226,10 +226,18 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 				$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
 				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
 			
-			} else if ( !empty( $wp_query->post_type ) && 'article' != $wp_query->post_type ) {
+			} else if ( !empty( $post->post_type ) && 'article' != $post->post_type ) {
 			
 				unset( $_COOKIE['issuem_issue'] );
 				setcookie( 'issuem_issue', '', 1, '/' );
+				
+			} else if ( is_single() && !empty( $post->post_type ) && 'article' == $post->post_type ) {
+			
+				$terms = wp_get_post_terms( $post->ID, 'issuem_issue' );
+				if ( !empty( $terms ) ) {
+					$_COOKIE['issuem_issue'] = $terms[0]->slug;
+					setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
+				}		
 				
 			} else if ( is_taxonomy( 'issuem_issue' ) ) {
 				
