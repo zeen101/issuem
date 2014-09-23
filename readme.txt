@@ -2,8 +2,8 @@
 Contributors: layotte, peterericson
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 1.2.11
+Tested up to: 4.0 
+Stable tag: 1.2.12
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,18 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 1.2.12 =
+* Setting issuem_issue cookie properly for article views
+* Added issuem_issue setting for taxinomical links
+* Update support links to point to zeen101.com
+* Added link to issue name in the IssueM Active Issue widget
+* Added DATE to issuem_replacement_args to get access to post date
+* Added function to get the article excerpt by id for use in the featured thumb shortcode when the excerpt need
+* Update featured rotator so that caption is clickable
+* Added media queries to featured thumbnail layout and clean up font styling from the article list
+* Added message to IssueM Article Format section describing what it does
+* Update layout and position of IssueM Article Options on edit article page
+
 = 1.2.11 =
 * Adding missing code to display PDF link in widget when External PDF Link is not empty and set to display PDF links
 
