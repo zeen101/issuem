@@ -416,9 +416,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 
 		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
 
-			$post_date = get_the_date( $d, $post->ID );
-			
-				
+			$post_date = get_the_date( '', $post->ID );
 			$string = preg_replace( '/%DATE%/i', $post_date, $string );	
 					
 		}
