@@ -239,7 +239,7 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 					setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
 				}		
 				
-			} else if ( is_taxonomy( 'issuem_issue' ) ) {
+			} else if ( taxonomy_exists( 'issuem_issue' ) ) {
 				
 				$_COOKIE['issuem_issue'] = get_query_var( 'issuem_issue' );
 				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
