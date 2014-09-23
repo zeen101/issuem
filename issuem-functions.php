@@ -413,6 +413,15 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			$string = preg_replace( '/%BYLINE%/i', $byline, $string );	
 					
 		}
+
+		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
+
+			$post_date = get_the_date( $d, $post->ID );
+			
+				
+			$string = preg_replace( '/%DATE%/i', $post_date, $string );	
+					
+		}
 		
 		$string = apply_filters( 'issuem_custom_replacement_args', $string, $post );
 		
