@@ -67,7 +67,10 @@ class IssueM_Active_Issue extends WP_Widget {
 			else
 				$article_page = get_page_link( $issuem_settings['page_for_articles'] );
 		
-		$issue_url = add_query_arg( 'issue', $issue, $article_page );
+		$issue_url = get_term_link( $issue, 'issuem_issue' );
+        if ( !empty( $issuem_settings['use_issue_tax_links'] ) || is_wp_error( $issue_url ) ) {
+            $issue_url = add_query_arg( 'issue', $issue, $article_page );
+        }
 
 		$out = '';
 		

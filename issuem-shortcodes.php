@@ -361,9 +361,9 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				$article_page = get_page_link( $issuem_settings['page_for_articles'] );
 		
 			$issue_url = get_term_link( $issue_array[0], 'issuem_issue' );
-            if ( $issuem_settings['use_issue_tax_links'] == '' or is_wp_error( $issue_url ) ) {
-                $issue_url = add_query_arg( 'issue', $issue_array[0]->slug, $article_page );
-            }
+		    if ( !empty( $issuem_settings['use_issue_tax_links'] ) || is_wp_error( $issue_url ) ) {
+		        $issue_url = add_query_arg( 'issue', $issue_array[0], $article_page );
+		    }
 				
 			if ( !empty( $issue_array[1]['pdf_version'] ) || !empty( $issue_meta['external_pdf_link'] ) ) {
 				
