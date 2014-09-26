@@ -555,17 +555,33 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			$results .= '</ul>';  //slides
 			$results .= '</div>'; //flexslider
 			$results .= '</div>'; //issuem-featured-article-slideshowholder
+
+			if ( $issuem_settings['show_rotator_control'] ) {
+				$control = 'true';
+			} else {
+				$control = 'false';
+			}
+
+			if ( $issuem_settings['show_rotator_direction'] ) {
+				$direction = 'true';
+			} else {
+				$direction = 'false';
+			}
 					
 			$results .= "<script type='text/javascript'>
 						jQuery( window ).load( function(){
 						  jQuery( '.issuem-flexslider' ).issuem_flexslider({
-							animation: 'slide',
+							animation: '" . $issuem_settings['animation_type'] . "',
 							start: function(slider){
 							  jQuery('body').removeClass('loading');
 							},
-							controlNav: false,
-							directionNav: false
+							controlNav:" . $control . ",
+							directionNav: " . $direction . ",
 						  });
+						
+						var slideWidth = jQuery('.flex-viewport').outerWidth();
+						jQuery('.flex-caption').css('width', slideWidth );
+						  
 						});
 					  </script>";
 			
