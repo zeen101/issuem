@@ -555,6 +555,18 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			$results .= '</ul>';  //slides
 			$results .= '</div>'; //flexslider
 			$results .= '</div>'; //issuem-featured-article-slideshowholder
+
+			if ( $issuem_settings['show_rotator_control'] ) {
+				$control = 'true';
+			} else {
+				$control = 'false';
+			}
+
+			if ( $issuem_settings['show_rotator_direction'] ) {
+				$direction = 'true';
+			} else {
+				$direction = 'false';
+			}
 					
 			$results .= "<script type='text/javascript'>
 						jQuery( window ).load( function(){
@@ -563,8 +575,8 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 							start: function(slider){
 							  jQuery('body').removeClass('loading');
 							},
-							controlNav: false,
-							directionNav: false
+							controlNav:" . $control . ",
+							directionNav: " . $direction . ",
 						  });
 						});
 					  </script>";

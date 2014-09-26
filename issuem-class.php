@@ -653,13 +653,13 @@ if ( ! class_exists( 'IssueM' ) ) {
 						 <table id="issuem_administrator_options" class="form-table">
 
 						    <tr>
-                                <th rowspan="1"> <?php _e( 'Show Control Navigation', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" <?php checked( $settings['show_rotator_control'] || 'on' == $settings['show_rotator_control'] ); ?>" /></td>
+                                <th rowspan="1"> <?php _e( 'Show Pagination Navigation', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" <?php checked( $settings['show_rotator_control'] || 'on' == $settings['show_rotator_control'] ); ?>" /> The dots below the slider</td>
                             </tr>
 
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Show Direction Navigation', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" <?php checked( $settings['show_rotator_direction'] || 'on' == $settings['show_rotator_direction'] ); ?>" /></td>
+                                <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" <?php checked( $settings['show_rotator_direction'] || 'on' == $settings['show_rotator_direction'] ); ?>" />The left/right arrows</td>
                             </tr>
                         
 
