@@ -448,6 +448,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 				else
 					unset( $settings['show_rotator_direction'] );
 
+				if ( !empty( $_REQUEST['animation_type'] ) )
+					$settings['animation_type'] = $_REQUEST['animation_type'];
+
 				$this->update_settings( $settings );
 					
 				// It's not pretty, but the easiest way to get the menu to refresh after save...
@@ -626,7 +629,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                     <div id="modules" class="postbox">
                     
                        
-                        <h3><span><?php _e( 'IssueM Current Issue Rotator Options', 'issuem' ); ?></span></h3>
+                        <h3><span><?php _e( 'IssueM Featured Rotator Options', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
 						
@@ -640,6 +643,17 @@ if ( ! class_exists( 'IssueM' ) ) {
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Direction Navigation', 'issuem' ); ?></th>
                                 <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" <?php checked( $settings['show_rotator_direction'] || 'on' == $settings['show_rotator_direction'] ); ?>" />Display previous/next navigation arrows</td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Animation Type', 'issuem' ); ?></th>
+                                <td>
+                                <select id="animation_type" name="animation_type" >
+                                	<option value="slide" <?php selected( 'slide' == $settings['animation_type'] ); ?>>Slide</option>
+                                	<option value="fade" <?php selected( 'fade' == $settings['animation_type'] ); ?>>Fade</option>
+                                	
+                                </select>
+                                </td>
                             </tr>
                         
 
