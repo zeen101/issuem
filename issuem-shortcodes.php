@@ -570,7 +570,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 			$results .= "<script type='text/javascript'>
 						jQuery( window ).load( function(){
-						  jQuery( '.issuem-flexslider' ).issuem_flexslider({
+						  jQuery( '.issuem-flexslider' ).flexslider({
 							animation: 'slide',
 							start: function(slider){
 							  jQuery('body').removeClass('loading');
