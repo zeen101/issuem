@@ -438,6 +438,16 @@ if ( ! class_exists( 'IssueM' ) ) {
                 else
                     unset( $settings['use_issue_tax_links'] );
 
+                if ( !empty( $_REQUEST['show_rotator_control'] ) )
+					$settings['show_rotator_control'] = $_REQUEST['show_rotator_control'];
+				else
+					unset( $settings['show_rotator_control'] );
+
+				if ( !empty( $_REQUEST['show_rotator_direction'] ) )
+					$settings['show_rotator_direction'] = $_REQUEST['show_rotator_direction'];
+				else
+					unset( $settings['show_rotator_direction'] );
+
 				$this->update_settings( $settings );
 					
 				// It's not pretty, but the easiest way to get the menu to refresh after save...
@@ -623,6 +633,40 @@ if ( ! class_exists( 'IssueM' ) ) {
                         <p>This controls the display of the article on the issue page.</p>
                         
                         <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
+                        
+                                                  
+                        <p class="submit">
+                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
+                        </p>
+
+                        </div>
+                        
+                    </div>
+
+                     <div id="modules" class="postbox">
+                    
+                       
+                        <h3><span><?php _e( 'IssueM Current Issue Rotator Options', 'issuem' ); ?></span></h3>
+                        
+                        <div class="inside">
+						
+						 <table id="issuem_administrator_options" class="form-table">
+
+						    <tr>
+                                <th rowspan="1"> <?php _e( 'Show Control Navigation', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" <?php checked( $settings['show_rotator_control'] || 'on' == $settings['show_rotator_control'] ); ?>" /></td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Show Direction Navigation', 'issuem' ); ?></th>
+                                <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" <?php checked( $settings['show_rotator_direction'] || 'on' == $settings['show_rotator_direction'] ); ?>" /></td>
+                            </tr>
+                        
+
+                        	
+                           </table>
+
+                       
                         
                                                   
                         <p class="submit">
