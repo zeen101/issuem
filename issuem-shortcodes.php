@@ -578,7 +578,13 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 							controlNav:" . $control . ",
 							directionNav: " . $direction . ",
 						  });
+						
+						var slideWidth = jQuery('.flex-viewport').outerWidth();
+						jQuery('.flex-caption').css('width', slideWidth );
+						  
 						});
+
+						
 					  </script>";
 			
 		endif;
