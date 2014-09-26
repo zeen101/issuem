@@ -583,8 +583,6 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						jQuery('.flex-caption').css('width', slideWidth );
 						  
 						});
-
-						
 					  </script>";
 			
 		endif;

@@ -622,28 +622,8 @@ if ( ! class_exists( 'IssueM' ) ) {
                         </div>
                         
                     </div>
-                    
+
                     <div id="modules" class="postbox">
-                    
-                       
-                        <h3><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
-                        
-                        <div class="inside">
-
-                        <p>This controls the display of the article on the issue page.</p>
-                        
-                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
-                        
-                                                  
-                        <p class="submit">
-                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-                        </p>
-
-                        </div>
-                        
-                    </div>
-
-                     <div id="modules" class="postbox">
                     
                        
                         <h3><span><?php _e( 'IssueM Current Issue Rotator Options', 'issuem' ); ?></span></h3>
@@ -665,8 +645,25 @@ if ( ! class_exists( 'IssueM' ) ) {
 
                         	
                            </table>
+                        
+	                        <p class="submit">
+	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
+	                        </p>
 
+                        </div>
+
+                     </div>
+                    
+                    <div id="modules" class="postbox">
+                    
                        
+                        <h3><span><?php _e( 'IssueM Article Format', 'issuem' ); ?></span></h3>
+                        
+                        <div class="inside">
+
+                        <p>This controls the display of the article on the issue page.</p>
+                        
+                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
                         
                                                   
                         <p class="submit">
@@ -676,7 +673,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         </div>
                         
                     </div>
-                    
+
                 </form>
 
 
