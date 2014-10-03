@@ -362,7 +362,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 		
 			$issue_url = get_term_link( $issue_array[0], 'issuem_issue' );
 		    if ( !empty( $issuem_settings['use_issue_tax_links'] ) || is_wp_error( $issue_url ) ) {
-		        $issue_url = add_query_arg( 'issue', $issue_array[0], $article_page );
+		        $issue_url = add_query_arg( 'issue', $issue_array[0]->slug, $article_page );
 		    }
 				
 			if ( !empty( $issue_array[1]['pdf_version'] ) || !empty( $issue_meta['external_pdf_link'] ) ) {
