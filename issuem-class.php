@@ -476,20 +476,32 @@ if ( ! class_exists( 'IssueM' ) ) {
 			?>
 			<div class="wrap issuem-settings">
 
+			 <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Settings', 'issuem' ); ?></h2>
+
+			
+
+			
+
             <div class="postbox-container column-primary">
-            <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM General Settings', 'issuem' ); ?></h2>
-            <div class="metabox-holder">	
-            <div class="meta-box-sortables ui-sortable">
+
+            	<h2 class="nav-tab-wrapper" id="issuem-tabs">
+					<a class="nav-tab" id="general-tab" href="#top#general"><?php _e( 'General', 'issuem' );?></a>
+					<a class="nav-tab" id="styles-tab" href="#top#styles"><?php _e( 'Styles', 'issuem' );?></a>
+				</h2>
+
+            	<div class="tabwrapper">
+
+            	<form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
+
+           		<div id="general" class="issuemtab">
+	            <div class="metabox-holder">	
+	            <div class="meta-box-sortables ui-sortable">
             
-                <form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
-            
-                    
+                
                     
                     <div id="modules" class="postbox">
-                    
-                      
                         
-                        <h3><span><?php _e( 'IssueM Administrator Options', 'issuem' ); ?></span></h3>
+                        <h2 class="section-title"><span><?php _e( 'Admin Options', 'issuem' ); ?></span></h2>
                         
                         <div class="inside">
                         
@@ -611,20 +623,20 @@ if ( ! class_exists( 'IssueM' ) ) {
 
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Links', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?>" /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
+                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?> /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
                             </tr>
                             
                         </table>
                         
-                        <?php wp_nonce_field( 'issuem_general_options', 'issuem_general_options_nonce' ); ?>
-                                                  
-                        <p class="submit">
-                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-                        </p>
+	                        <?php wp_nonce_field( 'issuem_general_options', 'issuem_general_options_nonce' ); ?>
+	                                                  
+	                        <p class="submit">
+	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
+	                        </p>
 
-                        </div>
+                        </div> <!-- inside -->
                         
-                    </div>
+                    </div> <!-- postbox -->
 
                     <div id="modules" class="postbox">
                     
@@ -664,9 +676,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
 	                        </p>
 
-                        </div>
+                        </div> <!-- inside -->
 
-                     </div>
+                     </div> <!-- postbox -->
                     
                     <div id="modules" class="postbox">
                     
@@ -675,18 +687,18 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                         <div class="inside">
 
-                        <p>This controls the display of the article on the issue page.</p>
-                        
-                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
-                        
-                                                  
-                        <p class="submit">
-                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-                        </p>
+	                        <p>This controls the display of the article on the issue page.</p>
+	                        
+	                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
+	                        
+	                                                  
+	                        <p class="submit">
+	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
+	                        </p>
 
-                        </div>
+                        </div> <!-- inside -->
                         
-                    </div>
+                    </div> <!-- postbox -->
 
                 </form>
 
@@ -696,11 +708,45 @@ if ( ! class_exists( 'IssueM' ) ) {
 
             </div>
 
-            </div>
+            </div> <!-- hometab -->
 
-            <div class="metabox-holder">
+            <div id="styles" class="issuemtab">
+				<div class="metabox-holder">	
+	            <div class="meta-box-sortables ui-sortable">
+            
+                    <div id="modules" class="postbox">
+                        
+                        <h2 class="section-title"><span><?php _e( 'Styles', 'issuem' ); ?></span></h2>
+                        
+                        <div class="inside">
+                        
+                        <table id="issuem_styles" class="form-table">
+							<tr>
+                                <th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
+                                <td><?php echo wp_dropdown_pages( array( 'name' => 'page_for_articles', 'echo' => 0, 'show_option_none' => __( '&mdash; Select &mdash;' ), 'option_none_value' => '0', 'selected' => $settings['page_for_articles'] ) ); ?></td>
+                            </tr>
+                        </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+               	</div>
+			
+            </div> <!-- styles -->
+
+            </div> <!-- tabwrapper -->
+
+            </div> 
+
+            
+
+            
             	
 	             <div class="postbox-container column-secondary">
+
+	             	<div class="metabox-holder">
 	                <div class="postbox">
 	               		 
 	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
@@ -717,6 +763,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 	              
 	               </div>
 			</div>
+
+			
 			<?php
 			
 		}
