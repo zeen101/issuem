@@ -541,7 +541,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						
 					}
 
-					$styles = "";
+					$styles = ".featured_slider_title {";
 
 					$styles .= 'font-size: ' . $issuem_settings['featured_rotator_title_size'] . 'px; ';
 					if ( $issuem_settings['featured_rotator_title_weight'] == 'bold' ) {
@@ -554,10 +554,10 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						$styles .= 'font-weight: bold; font-style: italic; ';
 					}
 
-					$styles .= 'color: ' . $issuem_settings['featured_rotator_title_color'] . ';';
+					$styles .= 'color: ' . $issuem_settings['featured_rotator_title_color'] . ';}';
 
 
-					$teaser_styles = "";
+					$teaser_styles = ".featured_slider_teaser {";
 
 					$teaser_styles .= 'font-size: ' . $issuem_settings['featured_rotator_teaser_size'] . 'px; ';
 					if ( $issuem_settings['featured_rotator_teaser_weight'] == 'bold' ) {
@@ -570,10 +570,10 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						$teaser_styles .= 'font-weight: bold; font-style: italic; ';
 					}
 
-					$teaser_styles .= 'color: ' . $issuem_settings['featured_rotator_teaser_color'] . ';';
+					$teaser_styles .= 'color: ' . $issuem_settings['featured_rotator_teaser_color'] . ';}';
 
 
-					$byline_styles = "";
+					$byline_styles = ".featured_slider_byline {";
 
 					$byline_styles .= 'font-size: ' . $issuem_settings['featured_rotator_byline_size'] . 'px; ';
 					if ( $issuem_settings['featured_rotator_byline_weight'] == 'bold' ) {
@@ -586,10 +586,14 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						$byline_styles .= 'font-weight: bold; font-style: italic; ';
 					}
 
-					$byline_styles .= 'color: ' . $issuem_settings['featured_rotator_byline_color'] . ';';
+					$byline_styles .= 'color: ' . $issuem_settings['featured_rotator_byline_color'] . ';}';
+
+					$results .= '<style type="text/css" media="screen">';
+					$results .= $styles . $teaser_styles . $byline_styles;
+					$results .= '</style>';
 
 					
-					$caption = '<span class="featured_slider_title" style="' . $styles . '">' . $title . '</span> <span  class="featured_slider_teaser" style="' . $teaser_styles . '">' . $teaser . '</span> <span class="featured_slider_byline" style="' . $byline_styles . '">' . $byline . '</span>';
+					$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
 					
 					$results .= '<li>';
 					$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] .'" alt="' .strip_tags( $caption ) . '" />';
