@@ -531,7 +531,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 					
 					if ( !empty( $show_byline ) ) {
 
-						$author_name = get_issuem_author_name( $article );
+						$author_name = get_issuem_author_name( $article, true );
 						
 						$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $article->ID ) );
 					

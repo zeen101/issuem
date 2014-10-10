@@ -437,9 +437,10 @@ if ( !function_exists( 'get_issuem_author_name' ) ) {
 	 * @since 1.0.0
 	 *
 	 * @param object WordPress Post/Article object
+	 * @param $string value to show or hide link in output, 
 	 * @return string Value set for the issuem options.
 	 */
-	function get_issuem_author_name( $article ) {
+	function get_issuem_author_name( $article, $hide_link = false ) {
 		
 		$issuem_settings = get_issuem_settings();
 	
@@ -463,8 +464,12 @@ if ( !function_exists( 'get_issuem_author_name' ) ) {
 			}
 			
 			$author_name = ( !empty( $author_name ) ) ? $author_name : get_the_author_meta( 'display_name', $article->post_author );
-				
-			$author_name = '<a class="url fn n" href="' . esc_url( get_author_posts_url( $article->post_author ) ) . '" title="' . esc_attr( $author_name ) . '" rel="me">' . $author_name . '</a>';
+
+			if ( !$hide_link ) {
+
+				$author_name = '<a class="url fn n" href="' . esc_url( get_author_posts_url( $article->post_author ) ) . '" title="' . esc_attr( $author_name ) . '" rel="me">' . $author_name . '</a>';
+			
+			} 
 			
 		}
 		
