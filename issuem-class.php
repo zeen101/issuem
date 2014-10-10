@@ -488,17 +488,19 @@ if ( ! class_exists( 'IssueM' ) ) {
 				?>
 					<script type="text/javascript">
 					<!--
-					window.location = "<?php echo $_SERVER['PHP_SELF'] .'?post_type=article&page=issuem&settings_saved'; ?>"
+					window.location = "<?php echo $_SERVER['PHP_SELF'] .'?post_type=article&page=issuem&settings_saved=true'; ?>"
 					//-->
 					</script>
 				<?php
 				
 			}
+
 			
-			if ( !empty( $_POST['update_issuem_settings'] ) || !empty( $_GET['settings_saved'] ) ) {
+			
+			if ( !empty( $_REQUEST['update_issuem_settings'] ) || !empty( $_GET['settings_saved'] ) ) {
 				
 				// update settings notification ?>
-				<div class="updated"><p><strong><?php _e( 'IssueM Settings Updated.', 'issuem' );?></strong></p></div>
+				<div class="updated"><p><strong><?php _e( 'Settings updated.', 'issuem' );?></strong></p></div>
 				<?php
 				
 			}
@@ -816,6 +818,8 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <th rowspan="1"> <?php _e( 'Featured Rotator Byline', 'issuem' ); ?></th>
                                 <td> 
 
+                                // use number input with min and max
+								<input type="number" name="quantity" min="1" max="5">
                                 	<select id="featured_rotator_byline_size" name="featured_rotator_byline_size" >
                                 	<option value="12" <?php selected( '12' == $settings['featured_rotator_byline_size'] ); ?>>12</option>
                                 	<option value="14" <?php selected( '14' == $settings['featured_rotator_byline_size'] ); ?>>14</option>
