@@ -758,20 +758,8 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <th rowspan="1"> <?php _e( 'Featured Rotator Title', 'issuem' ); ?></th>
                                 <td> 
 
-                                	<select id="featured_rotator_title_size" name="featured_rotator_title_size" >
-                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_title_size'] ); ?>>12</option>
-                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_title_size'] ); ?>>14</option>
-                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_title_size'] ); ?>>16</option>
-                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_title_size'] ); ?>>18</option>
-                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_title_size'] ); ?>>20</option>
-                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_title_size'] ); ?>>22</option>
-                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_title_size'] ); ?>>24</option>
-                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_title_size'] ); ?>>26</option>
-                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_title_size'] ); ?>>28</option>
-                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_title_size'] ); ?>>30</option>
-                                	
-                                	</select>
-                                	px 
+                                <input type="number" name="featured_rotator_title_size" min="1" max="72" value="<?php echo $settings['featured_rotator_title_size']; ?>"> px 
+
                                 	<select id="featured_rotator_title_weight" name="featured_rotator_title_weight" >
                                 	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_title_weight'] ); ?>>Normal</option>
                                 	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_title_weight'] ); ?>>Bold</option>
@@ -788,20 +776,8 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <th rowspan="1"> <?php _e( 'Featured Rotator Teaser', 'issuem' ); ?></th>
                                 <td> 
 
-                                	<select id="featured_rotator_teaser_size" name="featured_rotator_teaser_size" >
-                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_teaser_size'] ); ?>>12</option>
-                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_teaser_size'] ); ?>>14</option>
-                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_teaser_size'] ); ?>>16</option>
-                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_teaser_size'] ); ?>>18</option>
-                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_teaser_size'] ); ?>>20</option>
-                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_teaser_size'] ); ?>>22</option>
-                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_teaser_size'] ); ?>>24</option>
-                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_teaser_size'] ); ?>>26</option>
-                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_teaser_size'] ); ?>>28</option>
-                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_teaser_size'] ); ?>>30</option>
-                                	
-                                	</select>
-                                	px 
+                                	<input type="number" name="featured_rotator_teaser_size" min="1" max="72" value="<?php echo $settings['featured_rotator_teaser_size']; ?>"> px 
+
                                 	<select id="featured_rotator_teaser_weight" name="featured_rotator_teaser_weight" >
                                 	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_teaser_weight'] ); ?>>Normal</option>
                                 	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_teaser_weight'] ); ?>>Bold</option>
@@ -818,22 +794,9 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <th rowspan="1"> <?php _e( 'Featured Rotator Byline', 'issuem' ); ?></th>
                                 <td> 
 
-                                // use number input with min and max
-								<input type="number" name="quantity" min="1" max="5">
-                                	<select id="featured_rotator_byline_size" name="featured_rotator_byline_size" >
-                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_byline_size'] ); ?>>12</option>
-                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_byline_size'] ); ?>>14</option>
-                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_byline_size'] ); ?>>16</option>
-                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_byline_size'] ); ?>>18</option>
-                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_byline_size'] ); ?>>20</option>
-                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_byline_size'] ); ?>>22</option>
-                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_byline_size'] ); ?>>24</option>
-                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_byline_size'] ); ?>>26</option>
-                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_byline_size'] ); ?>>28</option>
-                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_byline_size'] ); ?>>30</option>
-                                	
-                                	</select>
-                                	px 
+                                
+								<input type="number" name="featured_rotator_byline_size" min="1" max="72" value="<?php echo $settings['featured_rotator_byline_size']; ?>"> px 
+
                                 	<select id="featured_rotator_byline_weight" name="featured_rotator_byline_weight" >
                                 	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_byline_weight'] ); ?>>Normal</option>
                                 	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_byline_weight'] ); ?>>Bold</option>
