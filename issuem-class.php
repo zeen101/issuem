@@ -242,7 +242,10 @@ if ( ! class_exists( 'IssueM' ) ) {
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
 				wp_enqueue_media();
 
-
+			if ( is_admin() ) {
+				wp_enqueue_style( 'wp-color-picker' );
+				wp_enqueue_script( 'wp-color-picker' );
+			}
 			
 		}
 			
@@ -450,6 +453,34 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 				if ( !empty( $_REQUEST['animation_type'] ) )
 					$settings['animation_type'] = $_REQUEST['animation_type'];
+
+				// styles 
+				if ( !empty( $_REQUEST['featured_rotator_title_size'] ) )
+					$settings['featured_rotator_title_size'] = $_REQUEST['featured_rotator_title_size'];
+
+				if ( !empty( $_REQUEST['featured_rotator_title_weight'] ) )
+					$settings['featured_rotator_title_weight'] = $_REQUEST['featured_rotator_title_weight'];
+
+				if ( !empty( $_REQUEST['featured_rotator_title_color'] ) )
+					$settings['featured_rotator_title_color'] = $_REQUEST['featured_rotator_title_color'];
+
+				if ( !empty( $_REQUEST['featured_rotator_teaser_size'] ) )
+					$settings['featured_rotator_teaser_size'] = $_REQUEST['featured_rotator_teaser_size'];
+
+				if ( !empty( $_REQUEST['featured_rotator_teaser_weight'] ) )
+					$settings['featured_rotator_teaser_weight'] = $_REQUEST['featured_rotator_teaser_weight'];
+
+				if ( !empty( $_REQUEST['featured_rotator_teaser_color'] ) )
+					$settings['featured_rotator_teaser_color'] = $_REQUEST['featured_rotator_teaser_color'];
+
+				if ( !empty( $_REQUEST['featured_rotator_byline_size'] ) )
+					$settings['featured_rotator_byline_size'] = $_REQUEST['featured_rotator_byline_size'];
+
+				if ( !empty( $_REQUEST['featured_rotator_byline_weight'] ) )
+					$settings['featured_rotator_byline_weight'] = $_REQUEST['featured_rotator_byline_weight'];
+
+				if ( !empty( $_REQUEST['featured_rotator_byline_color'] ) )
+					$settings['featured_rotator_byline_color'] = $_REQUEST['featured_rotator_byline_color'];
 
 				$this->update_settings( $settings );
 					
@@ -700,7 +731,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                     </div> <!-- postbox -->
 
-                </form>
+             
 
 
                 
@@ -716,20 +747,111 @@ if ( ! class_exists( 'IssueM' ) ) {
             
                     <div id="modules" class="postbox">
                         
-                        <h2 class="section-title"><span><?php _e( 'Styles', 'issuem' ); ?></span></h2>
-                        
+                        <h2 class="section-title"><span><?php _e( 'Typography', 'issuem' ); ?></span></h2>
+
                         <div class="inside">
                         
                         <table id="issuem_styles" class="form-table">
 							<tr>
-                                <th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
-                                <td><?php echo wp_dropdown_pages( array( 'name' => 'page_for_articles', 'echo' => 0, 'show_option_none' => __( '&mdash; Select &mdash;' ), 'option_none_value' => '0', 'selected' => $settings['page_for_articles'] ) ); ?></td>
+                                <th rowspan="1"> <?php _e( 'Featured Rotator Title', 'issuem' ); ?></th>
+                                <td> 
+
+                                	<select id="featured_rotator_title_size" name="featured_rotator_title_size" >
+                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_title_size'] ); ?>>12</option>
+                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_title_size'] ); ?>>14</option>
+                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_title_size'] ); ?>>16</option>
+                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_title_size'] ); ?>>18</option>
+                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_title_size'] ); ?>>20</option>
+                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_title_size'] ); ?>>22</option>
+                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_title_size'] ); ?>>24</option>
+                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_title_size'] ); ?>>26</option>
+                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_title_size'] ); ?>>28</option>
+                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_title_size'] ); ?>>30</option>
+                                	
+                                	</select>
+                                	px 
+                                	<select id="featured_rotator_title_weight" name="featured_rotator_title_weight" >
+                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_title_weight'] ); ?>>Normal</option>
+                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_title_weight'] ); ?>>Bold</option>
+                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_title_weight'] ); ?>>Italic</option>
+                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_title_weight'] ); ?>>Bold/Italic</option>
+                                	
+                                	</select>
+
+                                	<input type="text" value="<?php echo $settings['featured_rotator_title_color']; ?>" id="featured_rotator_title_color" name="featured_rotator_title_color" class="color-field">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Featured Rotator Teaser', 'issuem' ); ?></th>
+                                <td> 
+
+                                	<select id="featured_rotator_teaser_size" name="featured_rotator_teaser_size" >
+                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_teaser_size'] ); ?>>12</option>
+                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_teaser_size'] ); ?>>14</option>
+                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_teaser_size'] ); ?>>16</option>
+                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_teaser_size'] ); ?>>18</option>
+                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_teaser_size'] ); ?>>20</option>
+                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_teaser_size'] ); ?>>22</option>
+                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_teaser_size'] ); ?>>24</option>
+                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_teaser_size'] ); ?>>26</option>
+                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_teaser_size'] ); ?>>28</option>
+                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_teaser_size'] ); ?>>30</option>
+                                	
+                                	</select>
+                                	px 
+                                	<select id="featured_rotator_teaser_weight" name="featured_rotator_teaser_weight" >
+                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_teaser_weight'] ); ?>>Normal</option>
+                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_teaser_weight'] ); ?>>Bold</option>
+                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_teaser_weight'] ); ?>>Italic</option>
+                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_teaser_weight'] ); ?>>Bold/Italic</option>
+                                	
+                                	</select>
+
+                                	<input type="text" value="<?php echo $settings['featured_rotator_teaser_color']; ?>" id="featured_rotator_teaser_color" name="featured_rotator_teaser_color" class="color-field">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="1"> <?php _e( 'Featured Rotator Byline', 'issuem' ); ?></th>
+                                <td> 
+
+                                	<select id="featured_rotator_byline_size" name="featured_rotator_byline_size" >
+                                	<option value="12" <?php selected( '12' == $settings['featured_rotator_byline_size'] ); ?>>12</option>
+                                	<option value="14" <?php selected( '14' == $settings['featured_rotator_byline_size'] ); ?>>14</option>
+                                	<option value="16" <?php selected( '16' == $settings['featured_rotator_byline_size'] ); ?>>16</option>
+                                	<option value="18" <?php selected( '18' == $settings['featured_rotator_byline_size'] ); ?>>18</option>
+                                	<option value="20" <?php selected( '20' == $settings['featured_rotator_byline_size'] ); ?>>20</option>
+                                	<option value="22" <?php selected( '22' == $settings['featured_rotator_byline_size'] ); ?>>22</option>
+                                	<option value="24" <?php selected( '24' == $settings['featured_rotator_byline_size'] ); ?>>24</option>
+                                	<option value="26" <?php selected( '26' == $settings['featured_rotator_byline_size'] ); ?>>26</option>
+                                	<option value="28" <?php selected( '28' == $settings['featured_rotator_byline_size'] ); ?>>28</option>
+                                	<option value="30" <?php selected( '30' == $settings['featured_rotator_byline_size'] ); ?>>30</option>
+                                	
+                                	</select>
+                                	px 
+                                	<select id="featured_rotator_byline_weight" name="featured_rotator_byline_weight" >
+                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_byline_weight'] ); ?>>Normal</option>
+                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_byline_weight'] ); ?>>Bold</option>
+                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_byline_weight'] ); ?>>Italic</option>
+                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_byline_weight'] ); ?>>Bold/Italic</option>
+                                	
+                                	</select>
+
+                                	<input type="text" value="<?php echo $settings['featured_rotator_byline_color']; ?>" id="featured_rotator_byline_color" name="featured_rotator_byline_color" class="color-field">
+                                </td>
                             </tr>
                         </table>
+
+                         	<p class="submit">
+	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
+	                        </p>
 
                         </div>
 
                     </div>
+
+                       </form>
 
                 </div>
                	</div>
@@ -740,10 +862,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 
             </div> 
 
-            
-
-            
-            	
 	             <div class="postbox-container column-secondary">
 
 	             	<div class="metabox-holder">

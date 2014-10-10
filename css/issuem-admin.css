@@ -72,3 +72,6 @@ div#issuem_rss_item a {
 	padding-left: 10px;
 }
 
+.issuem-settings .wp-picker-container {
+	display: inline;
+}

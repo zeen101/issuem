@@ -133,4 +133,6 @@ $issuem_admin(document).ready(function($) {
 	$('#' + active_tab).addClass('active');
 	$('#' + active_tab + '-tab').addClass('nav-tab-active');
 	
+	$('.color-field').wpColorPicker();
+    
 });
