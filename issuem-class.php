@@ -241,11 +241,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( 'article_page_issuem' == $hook_suffix )
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
 				wp_enqueue_media();
-
-			if ( is_admin() ) {
-				wp_enqueue_style( 'wp-color-picker' );
-				wp_enqueue_script( 'wp-color-picker' );
-			}
 			
 		}
 			
@@ -331,7 +326,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @param array IssueM settings
 \		 */
 		function update_settings( $settings ) {
-		
+			
+
 			update_option( 'issuem', $settings );
 			
 		}
@@ -454,33 +450,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				if ( !empty( $_REQUEST['animation_type'] ) )
 					$settings['animation_type'] = $_REQUEST['animation_type'];
 
-				// styles 
-				if ( !empty( $_REQUEST['featured_rotator_title_size'] ) )
-					$settings['featured_rotator_title_size'] = $_REQUEST['featured_rotator_title_size'];
-
-				if ( !empty( $_REQUEST['featured_rotator_title_weight'] ) )
-					$settings['featured_rotator_title_weight'] = $_REQUEST['featured_rotator_title_weight'];
-
-				if ( !empty( $_REQUEST['featured_rotator_title_color'] ) )
-					$settings['featured_rotator_title_color'] = $_REQUEST['featured_rotator_title_color'];
-
-				if ( !empty( $_REQUEST['featured_rotator_teaser_size'] ) )
-					$settings['featured_rotator_teaser_size'] = $_REQUEST['featured_rotator_teaser_size'];
-
-				if ( !empty( $_REQUEST['featured_rotator_teaser_weight'] ) )
-					$settings['featured_rotator_teaser_weight'] = $_REQUEST['featured_rotator_teaser_weight'];
-
-				if ( !empty( $_REQUEST['featured_rotator_teaser_color'] ) )
-					$settings['featured_rotator_teaser_color'] = $_REQUEST['featured_rotator_teaser_color'];
-
-				if ( !empty( $_REQUEST['featured_rotator_byline_size'] ) )
-					$settings['featured_rotator_byline_size'] = $_REQUEST['featured_rotator_byline_size'];
-
-				if ( !empty( $_REQUEST['featured_rotator_byline_weight'] ) )
-					$settings['featured_rotator_byline_weight'] = $_REQUEST['featured_rotator_byline_weight'];
-
-				if ( !empty( $_REQUEST['featured_rotator_byline_color'] ) )
-					$settings['featured_rotator_byline_color'] = $_REQUEST['featured_rotator_byline_color'];
+				$settings = apply_filters( 'issuem_save_settings', $settings );
 
 				$this->update_settings( $settings );
 					
@@ -519,7 +489,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 
             	<h2 class="nav-tab-wrapper" id="issuem-tabs">
 					<a class="nav-tab" id="general-tab" href="#top#general"><?php _e( 'General', 'issuem' );?></a>
-					<a class="nav-tab" id="styles-tab" href="#top#styles"><?php _e( 'Styles', 'issuem' );?></a>
+					<?php do_action( 'issuem_nav_tabs' ); ?>
 				</h2>
 
             	<div class="tabwrapper">
@@ -733,97 +703,13 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
                     </div> <!-- postbox -->
 
-             
-
-
-                
             </div>
 
             </div>
 
             </div> <!-- hometab -->
-
-            <div id="styles" class="issuemtab">
-				<div class="metabox-holder">	
-	            <div class="meta-box-sortables ui-sortable">
-            
-                    <div id="modules" class="postbox">
-                        
-                        <h2 class="section-title"><span><?php _e( 'Typography', 'issuem' ); ?></span></h2>
-
-                        <div class="inside">
-                        
-                        <table id="issuem_styles" class="form-table">
-							<tr>
-                                <th rowspan="1"> <?php _e( 'Featured Rotator Title', 'issuem' ); ?></th>
-                                <td> 
-
-                                <input type="number" name="featured_rotator_title_size" min="1" max="72" value="<?php echo $settings['featured_rotator_title_size']; ?>"> px 
-
-                                	<select id="featured_rotator_title_weight" name="featured_rotator_title_weight" >
-                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_title_weight'] ); ?>>Normal</option>
-                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_title_weight'] ); ?>>Bold</option>
-                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_title_weight'] ); ?>>Italic</option>
-                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_title_weight'] ); ?>>Bold/Italic</option>
-                                	
-                                	</select>
-
-                                	<input type="text" value="<?php echo $settings['featured_rotator_title_color']; ?>" id="featured_rotator_title_color" name="featured_rotator_title_color" class="color-field">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th rowspan="1"> <?php _e( 'Featured Rotator Teaser', 'issuem' ); ?></th>
-                                <td> 
-
-                                	<input type="number" name="featured_rotator_teaser_size" min="1" max="72" value="<?php echo $settings['featured_rotator_teaser_size']; ?>"> px 
-
-                                	<select id="featured_rotator_teaser_weight" name="featured_rotator_teaser_weight" >
-                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_teaser_weight'] ); ?>>Normal</option>
-                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_teaser_weight'] ); ?>>Bold</option>
-                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_teaser_weight'] ); ?>>Italic</option>
-                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_teaser_weight'] ); ?>>Bold/Italic</option>
-                                	
-                                	</select>
-
-                                	<input type="text" value="<?php echo $settings['featured_rotator_teaser_color']; ?>" id="featured_rotator_teaser_color" name="featured_rotator_teaser_color" class="color-field">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th rowspan="1"> <?php _e( 'Featured Rotator Byline', 'issuem' ); ?></th>
-                                <td> 
-
-                                
-								<input type="number" name="featured_rotator_byline_size" min="1" max="72" value="<?php echo $settings['featured_rotator_byline_size']; ?>"> px 
-
-                                	<select id="featured_rotator_byline_weight" name="featured_rotator_byline_weight" >
-                                	<option value="normal" <?php selected( 'normal' == $settings['featured_rotator_byline_weight'] ); ?>>Normal</option>
-                                	<option value="bold" <?php selected( 'bold' == $settings['featured_rotator_byline_weight'] ); ?>>Bold</option>
-                                	<option value="italic" <?php selected( 'italic' == $settings['featured_rotator_byline_weight'] ); ?>>Italic</option>
-                                	<option value="bold-italic" <?php selected( 'bold-italic' == $settings['featured_rotator_byline_weight'] ); ?>>Bold/Italic</option>
-                                	
-                                	</select>
-
-                                	<input type="text" value="<?php echo $settings['featured_rotator_byline_color']; ?>" id="featured_rotator_byline_color" name="featured_rotator_byline_color" class="color-field">
-                                </td>
-                            </tr>
-                        </table>
-
-                         	<p class="submit">
-	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-	                        </p>
-
-                        </div>
-
-                    </div>
-
-                       </form>
-
-                </div>
-               	</div>
 			
-            </div> <!-- styles -->
+			<?php do_action( 'issuem_settings_areas' ); ?>
 
             </div> <!-- tabwrapper -->
 

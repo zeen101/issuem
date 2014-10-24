@@ -66,6 +66,9 @@ div#issuem_rss_item a {
 
 .issuem-settings .postbox {
 	border-top: none;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
 .issuem-settings .section-title {

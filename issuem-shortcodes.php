@@ -541,58 +541,6 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 						
 					}
 
-					$styles = ".featured_slider_title {";
-
-					$styles .= 'font-size: ' . $issuem_settings['featured_rotator_title_size'] . 'px; ';
-					if ( $issuem_settings['featured_rotator_title_weight'] == 'bold' ) {
-						$styles .= 'font-weight: bold; ';
-					} else if ( $issuem_settings['featured_rotator_title_weight'] == 'normal' ) {
-						$styles .= 'font-weight: normal; ';
-					} else if ( $issuem_settings['featured_rotator_title_weight'] == 'italic' ) {
-						$styles .= 'font-style: italic; font-weight:normal; ';
-					} else if ( $issuem_settings['featured_rotator_title_weight'] == 'bold-italic' ) {
-						$styles .= 'font-weight: bold; font-style: italic; ';
-					}
-
-					$styles .= 'color: ' . $issuem_settings['featured_rotator_title_color'] . ';}';
-
-
-					$teaser_styles = ".featured_slider_teaser {";
-
-					$teaser_styles .= 'font-size: ' . $issuem_settings['featured_rotator_teaser_size'] . 'px; ';
-					if ( $issuem_settings['featured_rotator_teaser_weight'] == 'bold' ) {
-						$teaser_styles .= 'font-weight: bold; ';
-					} else if ( $issuem_settings['featured_rotator_teaser_weight'] == 'normal' ) {
-						$teaser_styles .= 'font-weight: normal; ';
-					} else if ( $issuem_settings['featured_rotator_teaser_weight'] == 'italic' ) {
-						$teaser_styles .= 'font-style: italic; font-weight:normal; ';
-					} else if ( $issuem_settings['featured_rotator_teaser_weight'] == 'bold-italic' ) {
-						$teaser_styles .= 'font-weight: bold; font-style: italic; ';
-					}
-
-					$teaser_styles .= 'color: ' . $issuem_settings['featured_rotator_teaser_color'] . ';}';
-
-
-					$byline_styles = ".featured_slider_byline {";
-
-					$byline_styles .= 'font-size: ' . $issuem_settings['featured_rotator_byline_size'] . 'px; ';
-					if ( $issuem_settings['featured_rotator_byline_weight'] == 'bold' ) {
-						$byline_styles .= 'font-weight: bold; ';
-					} else if ( $issuem_settings['featured_rotator_byline_weight'] == 'normal' ) {
-						$byline_styles .= 'font-weight: normal; ';
-					} else if ( $issuem_settings['featured_rotator_byline_weight'] == 'italic' ) {
-						$byline_styles .= 'font-style: italic; font-weight:normal; ';
-					} else if ( $issuem_settings['featured_rotator_byline_weight'] == 'bold-italic' ) {
-						$byline_styles .= 'font-weight: bold; font-style: italic; ';
-					}
-
-					$byline_styles .= 'color: ' . $issuem_settings['featured_rotator_byline_color'] . ';}';
-
-					$results .= '<style type="text/css" media="screen">';
-					$results .= $styles . $teaser_styles . $byline_styles;
-					$results .= '</style>';
-
-					
 					$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
 					
 					$results .= '<li>';
