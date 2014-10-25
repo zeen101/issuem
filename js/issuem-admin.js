@@ -111,5 +111,28 @@ $issuem_admin(document).ready(function($) {
         custom_uploader.open();
  
     });
+
+
+    $('#issuem-tabs').find('a').click(function() {
+		$('#issuem-tabs').find('a').removeClass('nav-tab-active');
+		$('.issuemtab').removeClass('active');
+
+		var id = $(this).attr('id').replace('-tab','');
+		$('#' + id).addClass('active');
+		$(this).addClass('nav-tab-active');
+	});
+
+	// init
+	var active_tab = window.location.hash.replace('#top#','');
+
+	// default to first tab
+	if ( active_tab == '' || active_tab == '#_=_') {
+		active_tab = $('.issuemtab').attr('id');
+	}
+
+	$('#' + active_tab).addClass('active');
+	$('#' + active_tab + '-tab').addClass('nav-tab-active');
 	
+	$('.color-field').wpColorPicker();
+    
 });

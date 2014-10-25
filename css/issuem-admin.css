@@ -44,3 +44,37 @@ div#issuem_rss_item a {
 	text-decoration: none;
 	font-weight: bold;
 }
+
+#wpbody-content .metabox-holder {
+	padding-top: 0;
+}
+
+.issuemtab.active {
+	display: block;
+	overflow: auto;
+	
+}
+
+.issuemtab {
+	display: none;
+}
+
+.issuem-settings .nav-tab-active {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+.issuem-settings .postbox {
+	border-top: none;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.issuem-settings .section-title {
+	padding-left: 10px;
+}
+
+.issuem-settings .wp-picker-container {
+	display: inline;
+}
