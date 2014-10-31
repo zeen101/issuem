@@ -1,5 +1,5 @@
 === IssueM ===
-Contributors: layotte, peterericson
+Contributors: layotte, peterericson, endocreative
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 4.0 
