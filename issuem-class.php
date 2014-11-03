@@ -832,200 +832,133 @@ if ( ! class_exists( 'IssueM' ) ) {
 			?>
 			<div class=wrap>
             <div style="width:70%;" class="postbox-container">
-            <div class="metabox-holder">	
-            <div class="meta-box-sortables ui-sortable">
+
         
                 <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Help', 'issuem' ); ?></h2>
 
-                  <div id="issuem-getting-started" class="postbox">
-                
-                    <div class="handlediv" title="Click to toggle"><br /></div>
+                  <div id="issuem-getting-started">
+
     
-                    <h3 class="hndle"><span><?php _e( 'Getting Started', 'issuem' ); ?></span></h3>
+                    <h3><span><?php _e( 'Getting Started', 'issuem' ); ?></span></h3>
                     
-                    <div class="inside">
-                                    
-                        <table class="form-table">
-                    
-                            <tr>
-                            
-                                <td>
 
-                                	<p><?php _e( 'The following steps will demonstrate how to get started creating your online magazine.', 'issuem' ); ?></p>
+                    	<p><?php _e( 'The following steps will demonstrate how to get started creating your online magazine.', 'issuem' ); ?></p>
 
-                                	<iframe width="560" height="315" src="//www.youtube.com/embed/lUwsQFVB5ro?rel=0" frameborder="0" allowfullscreen></iframe>
-                                	
-                                 	<h4>1. Install IssueM</h4>
+                    	<iframe width="560" height="315" src="//www.youtube.com/embed/lUwsQFVB5ro?rel=0" frameborder="0" allowfullscreen></iframe>
+                    	
+                     	<h4>1. Install IssueM</h4>
 
-										<ol>
-										<li>Go to Plugins->Add New and search for IssueM</li>
-										<li>Click "Install Now" and then "Active Plugin"</li>
-										</ol>
+							<ol>
+							<li>Go to Plugins->Add New and search for IssueM</li>
+							<li>Click "Install Now" and then "Active Plugin"</li>
+							</ol>
 
-										<h4>2. Create pages for Current Issue and Past Issues</h4>
-										<ol>
-										<li>Go to Pages->Add New</li>
-										<li>Create a page for your current issue. We recommend using "Current Issue" as the page title.</li>
-										<li>Create a page for your issue archives. We recommend using "Past Issues" as the page title.</li>
-										</ol>
+							<h4>2. Create pages for Current Issue and Past Issues</h4>
+							<ol>
+							<li>Go to Pages->Add New</li>
+							<li>Create a page for your current issue. We recommend using "Current Issue" as the page title.</li>
+							<li>Create a page for your issue archives. We recommend using "Past Issues" as the page title.</li>
+							</ol>
 
-										<h4>3. Configure IssueM Settings</h4>
-										<ol>
-										<li>Go to Articles->IssueM Settings</li>
-										<li>Choose your page for articles (your current issue page)</li>
-										<li>Choose your page for issue archives (your past issues page)</li>
-										<li>You can configure the rest of the options to your liking, or leave them in their default state.</li>
-										<li>Click "Save Settings"</li>
-										</ol>
+							<h4>3. Configure IssueM Settings</h4>
+							<ol>
+							<li>Go to Articles->IssueM Settings</li>
+							<li>Choose your page for articles (your current issue page)</li>
+							<li>Choose your page for issue archives (your past issues page)</li>
+							<li>You can configure the rest of the options to your liking, or leave them in their default state.</li>
+							<li>Click "Save Settings"</li>
+							</ol>
 
-										<h4>4. Create an Issue</h4>
-										<ol>
-										<li>Go to Articles->Issues</li>
-										<li>Enter the name of the issue (i.e. Summer 2014) and click "Add New Issues"</li>
-										<li>Click on the newly created issue title</li>
-										<li>Upload a cover image. You can adjust the dimensions of the cover image on the IssueM Settings page.</li>
-										<li>Enter any other information for the issue, if applicable</li>
-										<li>Click "Update"</li>
-										</ol>
+							<h4>4. Create an Issue</h4>
+							<ol>
+							<li>Go to Articles->Issues</li>
+							<li>Enter the name of the issue (i.e. Summer 2014) and click "Add New Issues"</li>
+							<li>Click on the newly created issue title</li>
+							<li>Upload a cover image. You can adjust the dimensions of the cover image on the IssueM Settings page.</li>
+							<li>Enter any other information for the issue, if applicable</li>
+							<li>Click "Update"</li>
+							</ol>
 
-										<h4>5. Add Articles to the Issue</h4>
-										<ol>
-										<li>Go to Articles->Add New</li>
-										<li>Enter the title and content for your article, just like a normal WordPress post</li>
-										<li>Add a featured image, if applicable</li>
-										<li>Choose the issue the article is related to in the Issues sidebar area</li>
-										<li>Adjust the IssueM Article Options at the bottom of the article, if applicable</li>
-										</ol>
+							<h4>5. Add Articles to the Issue</h4>
+							<ol>
+							<li>Go to Articles->Add New</li>
+							<li>Enter the title and content for your article, just like a normal WordPress post</li>
+							<li>Add a featured image, if applicable</li>
+							<li>Choose the issue the article is related to in the Issues sidebar area</li>
+							<li>Adjust the IssueM Article Options at the bottom of the article, if applicable</li>
+							</ol>
 
-										<h4>6. Add IssueM Active Issue Widget to Sidebar</h4>
-										<ol>
-										<li>Go to Appearance->Widgets</li>
-										<li>Drag the IssueM Active Issue widget into your sidebar</li>
-										<li>Click "Save"</li>
-										</ol>
+							<h4>6. Add IssueM Active Issue Widget to Sidebar</h4>
+							<ol>
+							<li>Go to Appearance->Widgets</li>
+							<li>Drag the IssueM Active Issue widget into your sidebar</li>
+							<li>Click "Save"</li>
+							</ol>
 
-										<h4>7. Set Issue to Published</h4>
-										<ol>
-										<li>Go to Articles->Issues</li>
-										<li>Click on the title of the issue you want to make live</li>
-										<li>Change the Issue Status dropdown to "Live"</li>
-										<li>Click "Update"</li>
-										</ol>
+							<h4>7. Set Issue to Published</h4>
+							<ol>
+							<li>Go to Articles->Issues</li>
+							<li>Click on the title of the issue you want to make live</li>
+							<li>Change the Issue Status dropdown to "Live"</li>
+							<li>Click "Update"</li>
+							</ol>
 
                                     
-                                </td>
-                                
-                            </tr>
-                            
-                        </table>
-                    
-                    </div>
+                             
+                   
 
                   </div>
 
+                   <h3><span><?php _e( 'IssueM Shortcodes', 'issuem' ); ?></span></h3>
+
+                   <p>For more help with customizing IssueM shortcodes, please read the <a href="https://zeen101.com/get-help/documentation/shortcodes/" target="_blank">documentation</a>.</p>
+
+                   <p><strong>IssueM <?php _e( 'Issue Title:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_issue_title]</code></p>
+                                    
+                    <p><?php _e( 'This shortcode will display the current issue title.', 'issuem' ); ?></p>
+
+                    <hr>
+
                 
-                
-                <div id="issuem-articles" class="postbox">
-                
-                    <div class="handlediv" title="Click to toggle"><br /></div>
-    
-                    <h3 class="hndle"><span><?php _e( '[issuem_articles] - Articles Shortcode', 'issuem' ); ?></span></h3>
-                    
-                    <div class="inside">
+					<p><strong>IssueM <?php _e( 'Article Loop:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_articles]</code></p>
                                     
-                        <table class="form-table">
-                    
-                            <tr>
-                            
-                                <td>
-                                	
-                                    IssueM <?php _e( 'Article Loop:', 'issuem' ); ?> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_articles]</code>
+                    <p><?php _e( 'This shortcode will display the list of articles in an issue.', 'issuem' ); ?></p>
+
+                    <h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+
+                    <p><em>[issuem_articles orderby="menu_order" order="ASC" show_featured="1"]</em></p>
+					
+					
+
+                    <hr>
                                     
-                                    <p><?php _e( 'This shortcode will display the list of articles in an issue.', 'issuem' ); ?></p>
+                              
+					<p><strong>IssueM <?php _e( 'Featured Article Rotator:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_rotator]</code></p>
                                     
-                                </td>
-                                
-                            </tr>
-                            
-                        </table>
+                    <p><?php _e( 'This shortcode will display a slideshow of articles that have been checked to display in the featured rotator.', 'issuem' ); ?></p>
+
+                    <h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+
+                    <p><em>[issuem_featured_rotator show_byline="true"]</em></p>
+
+                    <hr>
+
+                    <p><strong>IssueM <?php _e( 'Featured Thumbnails:', 'issuem' ); ?></strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_thumbnails]</code></code>
+
                     
-                    </div>
-                    
-                </div>
-                
-                <div id="issuem-featured-rotator" class="postbox">
-                
-                    <div class="handlediv" title="Click to toggle"><br /></div>
-    
-                    <h3 class="hndle"><span><?php _e( '[issuem_featured_rotator] - Featured Rotator Shortcode', 'issuem' ); ?></span></h3>
-                    
-                    <div class="inside">
                                     
-                        <table class="form-table">
-                    
-                            <tr>
-                            
-                                <td>
-                                                
-                                    IssueM <?php _e( 'Featured Article Rotator:', 'issuem' ); ?> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_rotator]</code>
+                    <p><?php _e( 'This shortcode will display the grid of featured article thumbnails in an issue', 'issuem' ); ?>.</p>
+
+                    <h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+
+                    <p><em>[issuem_featured_thumbnails orderby="menu_order" order="ASC"]</em></p>
+
+                    <hr>
                                     
-                                    <p><?php _e( 'This shortcode will display the list of articles in an issue.', 'issuem' ); ?></p>
+                             
+                    <p><strong>IssueM <?php _e( 'Archive Page:', 'issuem' ); ?>:</strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code></p>
                                     
-                                </td>
-                                
-                            </tr>
-                            
-                        </table>
-                    
-                    </div>
-                    
-                </div>
-                
-                <div id="issuem-featured-thumbnails" class="postbox">
-                
-                    <div class="handlediv" title="Click to toggle"><br /></div>
-    
-                    <h3 class="hndle"><span><?php _e( '[issuem_featured_thumbnails] - Featured Thumbnails Shortcode', 'issuem' ); ?></span></h3>
-                    
-                    <div class="inside">
-                                    
-                        <table class="form-table">
-                    
-                            <tr>
-                            
-                                <td>
-                                                
-                                    IssueM <?php _e( 'Featured Thumbnails:', 'issuem' ); ?> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_thumbnails]</code>
-                                    
-                                    <p><?php _e( 'This shortcode will display the grid of featured article thumbnails in an issue', 'issuem' ); ?>.</p>
-                                    
-                                </td>
-                                
-                            </tr>
-                            
-                        </table>
-                    
-                    </div>
-                    
-                </div>
-                
-                <div id="issuem-featured-thumbnails" class="postbox">
-                
-                    <div class="handlediv" title="Click to toggle"><br /></div>
-    
-                    <h3 class="hndle"><span><?php _e( '[issuem_archives] - IssueM Archive Issues', 'issuem' ); ?></span></h3>
-                    
-                    <div class="inside">
-                                    
-                        <table class="form-table">
-                    
-                            <tr>
-                            
-                                <td>
-                                                
-                                    IssueM <?php _e( 'Archive Page:', 'issuem' ); ?>: <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code>
-                                    
-                                    <p><?php _e( 'This shortcode will display the list of current and past issues.', 'issuem' ); ?></p>
+                    <p><?php _e( 'This shortcode will display the list of current and past issues.', 'issuem' ); ?></p>
                                     
                                     <h4><?php _e( 'Default Arguments:', 'issuem' ); ?></h4>
 
@@ -1054,21 +987,18 @@ if ( ! class_exists( 'IssueM' ) ) {
                                     <p><em>[issuem_archives orderby="name" order="ASC" limit=5 pdf_title="<?php _e( 'Download Now', 'issuem' ); ?>" default_image="http://yoursite.com/yourimage.jpg"]</em></p>
                                               
                                     
-                                </td>
-                                
-                            </tr>
                             
-                        </table>
                     
-                    </div>
+
                     
-                </div>
+                
+
+
                 
                
                 <?php do_action( 'issuem_help_page' ); ?>
                 
-            </div>
-            </div>
+            
             </div>
 			</div>
 			<?php
