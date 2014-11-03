@@ -716,7 +716,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	             	<div class="metabox-holder">
 	                <div class="postbox">
 	               		 
-	                        <h3 class="hndle"><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
+	                        <h3><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
 	                        
 	                        <div class="inside">
 	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://zeen101.com/documentation/getting-started/">Getting Started</a> guide.</p>
@@ -728,14 +728,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                </div>
 	                </div>
 	              
-	               </div>
-
-	                <div class="postbox-container column-secondary">
+	              
 
 	             	<div class="metabox-holder">
-	                <div class="postbox">
+	               		<div class="postbox">
 	               		 
-	                        <h3 class="hndle"><span><?php _e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
+	                        <h3><span><?php _e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
 	                        
 	                        <div class="inside">
 	                        	<p>If you find the IssueM plugin helpful, please leave us a review on WordPress.org. Your honest feedback helps us improve IssueM for everyone.</p>
@@ -746,8 +744,73 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 	                        </div>
 
-	                </div>
-	                </div>
+	                	</div>
+	                </div> 
+
+	                <div class="metabox-holder">
+	               		<div class="postbox">
+	               		 
+	                        <h3><span><?php _e( 'Zeen101 Blog', 'issuem' ); ?></span></h3>
+	                        
+	                        <div class="inside">
+	                        	<p>The Zeen101 Development Team powers IssueM and provides the #1 WordPress Platform for Publishers. </p>
+
+	                        	<?php 
+	                        		 include_once(ABSPATH . WPINC . '/feed.php');
+
+	                        		 $zeen_feed = 'https://zeen101.com/feed/';
+
+	                        		 $rss = fetch_feed( $zeen_feed );
+
+	                        		 if (!is_wp_error( $rss ) ) {
+
+
+
+	                        		  	$maxitems = $rss->get_item_quantity( 3 );
+
+	                        		  	$rss_items = $rss->get_items( 0, $maxitems ); 
+
+	                        		  	$rss_title = '<a href="'.$rss->get_permalink().'" target="_blank">'.strtoupper( $rss->get_title() ).'</a>'; 
+
+	                        		  	echo '<p><strong>' . $rss_title . '</strong></p>';
+
+	                        		  	echo '<ul>';
+
+	                        		  	if ( $maxitems == 0 ) {
+
+	                        		  	} else {
+
+	                        		  		foreach( $rss_items as $item ) {
+
+	                        		  			$item_date = human_time_diff( $item->get_date('U'), current_time('timestamp')).' '.__( 'ago', 'rc_mdm' );
+
+	                        		  			echo '<li>';
+
+	                        		  			echo '<p><a href="'.esc_url( $item->get_permalink() ).'" title="'.$item_date.'">';
+
+	                        		  			 echo esc_html( $item->get_title() ); 
+	                        		  			 echo '</a>';
+	                        		  			 echo ' <small><span class="rss-date">'.$item_date.'</span></small><br />';
+	                        		  			 $content = $item->get_content();
+	                        		  			 $content = wp_html_excerpt($content, 120) . ' ...';
+	                        		  			 echo $content;
+	                        		  			 echo '</p></li>';
+	                        		  		}
+	                        		  	}
+
+	                        		  	echo '</ul>';
+
+	                        		  }
+										
+
+	                        	?>
+
+	                        	
+
+	                        </div>
+
+	                	</div>
+	                </div> 
 	              
 	               </div>
 			</div>

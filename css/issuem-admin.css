@@ -11,7 +11,7 @@ table#issuem_administrator_options {
 .issuem-settings .postbox-container.column-secondary {
 	width: 28%; 
 	float: right; 
-	padding-top: 50px;
+	padding-top: 0px;
 }
 
 #issuem_administrator_options tr th, #issuem_administrator_options tr td {
@@ -65,7 +65,7 @@ div#issuem_rss_item a {
 }
 
 .issuem-settings .postbox {
-	border-top: none;
+	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #ccc;
 	border-left: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
