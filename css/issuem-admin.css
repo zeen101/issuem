@@ -60,8 +60,8 @@ div#issuem_rss_item a {
 }
 
 .issuem-settings .nav-tab-active {
-	background: #fff;
-	border-bottom: 1px solid #fff;
+	background: #F1F1F1;
+	border-bottom: 1px solid #F1F1F1;
 }
 
 .issuem-settings .postbox {

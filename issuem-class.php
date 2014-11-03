@@ -497,14 +497,14 @@ if ( ! class_exists( 'IssueM' ) ) {
             	<form id="issuem" method="post" action="" enctype="multipart/form-data" encoding="multipart/form-data">
 
            		<div id="general" class="issuemtab">
-	            <div class="metabox-holder">	
+	            <div>	
 	            <div class="meta-box-sortables ui-sortable">
             
                 
                     
-                    <div id="modules" class="postbox">
+                    <div id="modules">
                         
-                        <h2 class="section-title"><span><?php _e( 'Admin Options', 'issuem' ); ?></span></h2>
+                        <h3><span><?php _e( 'Admin Options', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
                         
@@ -633,15 +633,13 @@ if ( ! class_exists( 'IssueM' ) ) {
                         
 	                        <?php wp_nonce_field( 'issuem_general_options', 'issuem_general_options_nonce' ); ?>
 	                                                  
-	                        <p class="submit">
-	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-	                        </p>
+	                       
 
                         </div> <!-- inside -->
                         
                     </div> <!-- postbox -->
 
-                    <div id="modules" class="postbox">
+                    <div id="modules">
                     
                        
                         <h3><span><?php _e( 'IssueM Featured Rotator Options', 'issuem' ); ?></span></h3>
@@ -675,24 +673,22 @@ if ( ! class_exists( 'IssueM' ) ) {
                         	
                            </table>
                         
-	                        <p class="submit">
-	                            <input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ) ?>" />
-	                        </p>
+	                       
 
                         </div> <!-- inside -->
 
                      </div> <!-- postbox -->
                     
-                    <div id="modules" class="postbox">
+                    <div id="modules">
                     
                        
                         <h3><span><?php _e( 'IssueM Article Shortcode Format', 'issuem' ); ?></span></h3>
                         
                         <div class="inside">
 
-	                        <p>This controls the display of the [issuem_articles] shortcode article output on the Current Issue page.</p>
+	                        <p>This controls the article output of the [issuem_articles] shortcode on the Current Issue page.</p>
 	                        
-	                        <textarea id="article_format" class="large-text code" cols="50" rows="20" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
+	                        <textarea id="article_format" class="code" cols="75" rows="8" name="article_format"><?php echo htmlspecialchars( stripcslashes( $settings['article_format'] ) ); ?></textarea>
 	                        
 	                                                  
 	                        <p class="submit">
