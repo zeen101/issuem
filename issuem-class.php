@@ -733,6 +733,27 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                </div>
 	              
 	               </div>
+
+	                <div class="postbox-container column-secondary">
+
+	             	<div class="metabox-holder">
+	                <div class="postbox">
+	               		 
+	                        <h3 class="hndle"><span><?php _e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
+	                        
+	                        <div class="inside">
+	                        	<p>If you find the IssueM plugin helpful, please leave us a review on WordPress.org. Your honest feedback helps us improve IssueM for everyone.</p>
+
+	                        	<p><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/issuem">Rate IssueM on WordPress.org</a></p>
+
+	                        	
+
+	                        </div>
+
+	                </div>
+	                </div>
+	              
+	               </div>
 			</div>
 
 			
