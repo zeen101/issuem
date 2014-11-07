@@ -1,5 +1,5 @@
 === IssueM ===
-Contributors: layotte, peterericson, endocreative
+Contributors: layotte, pericson, endocreative
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 4.0 
@@ -9,7 +9,7 @@ The world first and easiest to use Issue Managing plugin for WordPress.
 
 == Description ==
 
-Many sites use WordPress for as a magazine or news manager. There are dozens of themes out there geared to making WordPress "look" like a issue based site. But [IssueM](http://issuem.com/) is the first plugin that truly takes the Issue based system to the next level in WordPress.
+Many sites use WordPress for as a magazine or news manager. There are dozens of themes out there geared to making WordPress "look" like a issue based site. But IssueM by [zeen101](http://zeen101.com/) is the first plugin that truly takes the Issue based system to the next level in WordPress.
 
 The IssueM plugin makes a distinction between WordPress' blogging platform and creates a new level of Articles which are associated with Issues. Issues can be drafted until they are ready for release, yet still visible on the site for Administrators, Editors, Authors, and Contributors. IssueM gives you hassle-free control over your issue based sites. IssueM also has a simple to use WordPress shortcode system, making it simple to integrate into your existing theme. Now you have the freedom to pick a theme that fits your site's needs without compromising on the flexibility of the functionality of your site.
 
@@ -20,9 +20,9 @@ Leaky Paywall w/ Stripe and PayPal Integration - Charge your customers to view y
 Post Migration Tool - Convert your old blog posts into Issue based Articles!
 Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
 
-Also, be sure to check out our [IssueM Magazine theme](https://issuem.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
+Also, be sure to check out our [IssueM Magazine theme](https://zeen101.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
 
-For support, demos and premium add-ons, please visit [IssueM.com](http://issuem.com/).
+For support, demos and premium add-ons, please visit [zeen101.com](http://zeen101.com/).
 
 == Installation ==
 
