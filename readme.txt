@@ -3,7 +3,7 @@ Contributors: layotte, pericson, endocreative
 Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
 Requires at least: 3.3
 Tested up to: 4.0 
-Stable tag: 1.2.12
+Stable tag: 2.0.0
 
 The world first and easiest to use Issue Managing plugin for WordPress.
 
@@ -43,6 +43,24 @@ You must have:
 * IssueM is GPL
 
 == Changelog ==
+= 2.0.0 =
+* Prepping for IssueM Pro integration!
+* Changing feed templates to order posts by menu_order over post_date
+* Add default settings for rotator options
+* Updating issuem.com links to go to zeen101.com
+* Update help page layout and improve documentation
+* Add RSS feed to zeen101 to IssueM settings page sidebar
+* Update layout of settings page
+* Add rate issuem widget to issuem settings page
+* Clarify description for Article Format meta box
+* Update list of wp contributors
+* Add second param to get_issuem_author_name to not output name as a link
+* Use the number input for font size inputs
+* Update settings notification so it actually displays
+* Add tabs to IssueM settings page
+* Change issue_url output to only the term slug if use tax links is checked in settings
+* Redux of feature image rotator options
+
 = 1.2.12 =
 * Setting issuem_issue cookie properly for article views
 * Added issuem_issue setting for taxinomical links
