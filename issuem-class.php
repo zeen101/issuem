@@ -308,6 +308,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 															'<p class="issuem_article_content">%EXCERPT%</p>' . "\n" .
 															'<p class="issuem_article_byline">%BYLINE%</p>' . "\n",
 								'css_style'				=> 'default',
+								'show_rotator_control'	=> '',
+								'show_rotator_direction' => '',
+								'animation_type'		=> 'slide',
+
+
+
 							);
 		
 			$defaults = apply_filters( 'issuem_default_settings', $defaults );
