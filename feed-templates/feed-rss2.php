@@ -16,7 +16,7 @@ if ( empty( $issue ) )
 $args = array(
 	'posts_per_page'	=> -1,
 	'post_type'			=> 'article',
-	'orderby'			=> 'post_date',
+	'orderby'			=> 'menu_order',
 	'order'				=> 'ASC',
 	'issuem_issue'		=> $issue
 );
