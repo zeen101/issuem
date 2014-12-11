@@ -532,10 +532,13 @@ if ( !function_exists( 'default_issue_content_filter' ) ) {
 		
 		$issuem_settings = get_issuem_settings();
 		
-		if ( $post->ID == $issuem_settings['page_for_articles'] && empty( $content ) ) 
-			$content = '[issuem_featured_rotator] [issuem_featured_thumbnails max_images="3"] [issuem_articles]';
-		else if ( $post->ID == $issuem_settings['page_for_archives'] && empty( $content ) )
-			$content = '[issuem_archives orderby="issue_order"]';
+		if ( !empty( $post ) ) {
+			if ( $post->ID == $issuem_settings['page_for_articles'] && empty( $content ) ) {
+				$content = '[issuem_featured_rotator] [issuem_featured_thumbnails max_images="3"] [issuem_articles]';
+			} else if ( $post->ID == $issuem_settings['page_for_archives'] && empty( $content ) ) {
+				$content = '[issuem_archives orderby="issue_order"]';
+			}
+		}
 		
 		return $content;
 		
