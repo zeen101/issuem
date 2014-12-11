@@ -1,49 +1,91 @@
 === IssueM ===
 Contributors: layotte, pericson, endocreative
-Tags: magazine manager, issue manager, news manager, news management, periodical manager, periodicial management, issue management, magazine management
+Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
-Tested up to: 4.0 
-Stable tag: 2.0.0
+Tested up to: 4.0
+Stable tag: 4.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The world first and easiest to use Issue Managing plugin for WordPress.
+Create, Organize, and Publish Issues with WordPress
 
 == Description ==
 
-Many sites use WordPress for as a magazine or news manager. There are dozens of themes out there geared to making WordPress "look" like a issue based site. But IssueM by [zeen101](http://zeen101.com/) is the first plugin that truly takes the Issue based system to the next level in WordPress.
+**"...IssueM is a real standout." &mdash; WPMU**
 
-The IssueM plugin makes a distinction between WordPress' blogging platform and creates a new level of Articles which are associated with Issues. Issues can be drafted until they are ready for release, yet still visible on the site for Administrators, Editors, Authors, and Contributors. IssueM gives you hassle-free control over your issue based sites. IssueM also has a simple to use WordPress shortcode system, making it simple to integrate into your existing theme. Now you have the freedom to pick a theme that fits your site's needs without compromising on the flexibility of the functionality of your site.
+IssueM is one of the cornerstones of the leading WordPress platform for publishers. 
 
-You can follow this plugins development on [GitHub](https://github.com/zeen101/issuem)
+IssueM turns WordPress into a powerful publishing platform for digital issues. Popular with alumni magazines, trade magazines, news sites, science journals, and other publishers of periodicals, IssueM brings the proven and familiar issue-based publishing model to the web. There are incredible benefits to the issue-based model of publishing:
 
-Premium Add-ons Available:
-Leaky Paywall w/ Stripe and PayPal Integration - Charge your customers to view your blog posts and/or IssueM articles. Find out more at http://LeakyPW.com
-Post Migration Tool - Convert your old blog posts into Issue based Articles!
-Advanced Search Tool - An advanced search system that lets your site visits search terms in specific articles in specific categories, tags, and/or issues!
+1. Publishers love that IssueM's issue-based digital publishing slows the pace of posting to better suit their existing workflows;</li>
+1. And, readers love the long-format, less-frantic, well-organized reading experience.
 
-Also, be sure to check out our [IssueM Magazine theme](https://zeen101.com/downloads/issuem-magazine-theme/) to help get you started today on your new online magazine!
+IssueM is packed with features—and is gaining more with every release! Upon installation, IssueM allows publishers to:
 
-For support, demos and premium add-ons, please visit [zeen101.com](http://zeen101.com/).
+* Create issues
+* Create articles and assign articles to particular issues
+* Publish an issue (and all included articles) at one time
+* Display past issues on an attractive "Past Issues" archive page
+* Display a current-issue article list anywhere on the site using a widget
+* Allow readers to search for content across all issues
+* Select featured articles to be displayed in a rotating article showcase
+* Use WordPress's scheduling ability to schedule and automate the launch of an issue
+* Present issues with an attractive ready-to-go (yet customizable) issue table of contents page
+	
+Some other benefits:
+* IssueM works with any WordPress theme.
+* IssueM is backed by the dedicated team of developers and publishers at zeen101.
+* IssueM is an active project, with new updates and features released regularly.
+* IssueM's developer, zeen101, is committed to providing stellar support.
+* IssueM is free.
+	
+Issue-based publishing on the web is gaining steam. More and more traditional publishers are learning that using their print version's issue-based publication schedule on the web—as opposed to a running stream of content—is not only not a step backwards, but it is a welcome change for readers who are often overwhelmed by streams of content. As this publishing model grows in popularity, so does the IssueM ecosystem. Currently, zeen101 offers the following add-ons and companion plugins to turbocharge and complement IssueM.
+
+* **Leaky Paywall**, when paired with IssueM, makes charging for issue subscriptions simple. Sell subscriptions to your content using any schedule (weekly, monthly, annually, etc.) and price you like. Set your "leak level" to define how many articles readers are allowed to view without a subscription for any time period you set. For example, you can allow unsubscribed readers to read 3 articles per month before a subscription is required. Leaky Paywall also allows you to set limits by content type as well. Leaky Paywall is a paid plugin.
+* **UniPress** brings your IssueM issues to iPhone and Android devices as your publication's very own app. Build a stronger relationship with your readers by providing them with a dedicated app that they can have in their pocket every day. All your issues, articles, posts, and pages flow into the UniPress app framework that zeen101 will brand as your magazine, set up, and submit to the Apple and Android app stores. It couldn't be easier. UniPress is available now. (The IssueM integration is currently under development and will be available soon.)
+* **The Ultimate Magazine Theme** is the theme zeen101 built expressly for IssueM. It makes the most of everything IssueM has to offer. The theme is responsive, loads quickly on all devices—mobile included, and showcases content like no other theme.
+* **The SimpleMag Child Theme** for IssueM is zeen101's bare-bones theme for issue-based publishers using IssueM. It is clean, simple, and easy to work with. It is based on the rock-solid SimpleMag theme from ThemeForest.
+* There is no quicker way to get your issue-based publication up and running than with IssueM and the **IssueM Magazine Theme.**
+* Native advertising is taking over web advertising. zeen101's **Sponsored Article plugin** pairs nicely with IssueM to allow issue-based publishers to jump in on the action. This plugin lets publishers change an standard article into a Sponsored Article within an issue. All Sponsored Articles are clearly and attractively marked as such so that readers know they are reading an article written by an advertiser.
+* **The Issue-to-PDF add-on** allows publishers to convert their digital issues into PDFs with the click of a button.
+* Are you converting your blog into a magazine? **The Issue Migration Tool** will migrate any post content you choose into article content, so that you can include it into your IssueM issues.
+* If you need more power in your search box, the **Advanced Issue Search add-on** allows your readers to comb through your content in a way that isn't possible with the standard WordPress content search.
 
 == Installation ==
 
 1. Upload the entire `issuem` folder to your `/wp-content/plugins/` folder.
 1. Go to the 'Plugins' page in the menu and activate the plugin.
 
-== Frequently Asked Questions ==
+== FAQ ==
 
-= What are the minimum requirements for IssueM? =
-
+**What are the minimum requirements for IssueM?**
 You must have:
-
 * WordPress 3.3 or later
 * PHP 5
 
-= How is IssueM Licensed? =
+**How is IssueM Licensed?**
+* IssueM is GPL.
 
-* IssueM is GPL
+== Screenshots ==
+1. Berkeley Science Review - Current Issue
+2. Berkeley Science Review - Older Issue
+3. Berkeley Science Review - Issue Archive
+4. Simmons Field Educator - Current Issue
+5. Simmons Field Educator - Issue Archive
+6. Einstein College of Medicine - Current Issue
+7. Einstein College of Medicine - Current Issue with past issue menu (custom programming)
+8. Einstein College of Medicine - Issue Archive
+9. Law Practice Today - Current Issue
+10. Law Practice Today - Issue Archive
+11. IssueM - issue management
+12. IssueM - add new article
+13. IssueM - plugin settings
+14. IssueM - help
 
 == Changelog ==
+
 = 2.0.0 =
+
 * Prepping for IssueM Pro integration!
 * Changing feed templates to order posts by menu_order over post_date
 * Add default settings for rotator options
@@ -62,6 +104,7 @@ You must have:
 * Redux of feature image rotator options
 
 = 1.2.12 =
+
 * Setting issuem_issue cookie properly for article views
 * Added issuem_issue setting for taxinomical links
 * Update support links to point to zeen101.com
@@ -74,13 +117,16 @@ You must have:
 * Update layout and position of IssueM Article Options on edit article page
 
 = 1.2.11 =
+
 * Adding missing code to display PDF link in widget when External PDF Link is not empty and set to display PDF links
 
 = 1.2.10 =
+
 * Fixed readme
 * Fixed messed up constant variable name
 
 = 1.2.9 =
+
 * Updating IssueM references to point to zeen101
 * Update show_thumbnail_byline variable
 * Add title field to IssueM Active Issue widget
@@ -100,11 +146,13 @@ You must have:
 * Fixing responsive issue with captions in flexslider
 
 = 1.2.8 =
-* Fixing featured thumbnail shortcode to show categories properly 
+
+* Fixing featured thumbnail shortcode to show categories properly
 * Adding filter and CSS class for no articles found message on articles shortcode
 * Add getting started video and text to issuem help page
 
 = 1.2.7 =
+
 * Adding Order Direction to IssueM Article Widget
 * Adding limit/next/previous capability to archive list
 * Fixing tested up to line in readme.txt
@@ -113,12 +161,15 @@ You must have:
 * Change featured thumbnail shortcode layout markup and remove font family styling
 
 = 1.2.6 =
+
 * Fixed Article Category widget dropdown bug
 
 = 1.2.5 =
+
 * Fixed Issue Ordering Bug
 
 = 1.2.4 =
+
 * Updating POT file
 * Added new filter for leaky paywall to restrict PDF downloads
 * Fixed article category sorting bug
@@ -129,15 +180,18 @@ You must have:
 * Added option for the [issuem_archives] shortcode to generate issue urls using get_term_link instead of based on the shortcode page with a backup to the previous links in the event of an error
 
 = 1.2.3 =
+
 * Added integration for upcoming Issue to PDF plugin
 * General Code Cleanup
 
 = 1.2.2 =
+
 * Fixed bug in Extrenal Link setting for Issues
 * Fixed bug in displaying WordPress author as First & Last name
 * Fixed some PHP docblock
 
 = 1.2.1 =
+
 * Added function/hook to add featured image to article post type, if not supported by theme
 * Rewrote flush rewrite rules activation hook for better performance
 * Fixed version number in PHP comments
@@ -145,12 +199,15 @@ You must have:
 * Added filter to set default page content for issue archive page (if no content exists)
 
 = 1.2.0 =
+
 * OpenSourceInitiative Release!
 
 = 1.1.8.1 =
+
 * Fixed typo in Editor permissions
 
 = 1.1.8 =
+
 * Fixed bug in advanced search shortcode
 * Added pre_get_posts filter call to modify the WordPress Categories/Tags query if not using IssueM Categories/Tags
 * Added shortcode to display current issue title
@@ -159,10 +216,12 @@ You must have:
 * Fixed typo in str_ireplace helper function
 
 = 1.1.7 =
+
 * Fixed bug in shortcodes when using the IssueM Category Order field. Must set use_category_order="true" in the issuem_articles shortcode.
 * Fixed bug in shortcodes not displaying the Author name when "Use IssueM Author Name instead of WordPress Author" option is set.
 
 = 1.1.6 =
+
 * Fixed bug in shortcodes defining the specific issue slug.
 * Fixed i18n text domain directory typo
 * Fixed typo in advanced search form
@@ -170,36 +229,44 @@ You must have:
 * Fixed error in issuem.pot file
 
 = 1.1.5 =
+
 * Modifed CSS styling to deal with themes overwriting the Featured Image Rotator
 * Added Spanish translation
 
 = 1.1.4 =
+
 * Modified archive shortcode to use external link setting depending on issue logic
 * Added 'archive_issue_url_external_link' filter to set the external link for as the primary article URL too
 * Added 'issuem_author_name' setting to IssueM user interface
 
 = 1.1.3 =
+
 * Fix permalink rewrite cache issue for new users
 * Added i18n support for future translations
 * Added 'issuem_author_name' filter for users who do not want to use the built-in WP-User authors
 * Switched from jqFancyTransitions jQuery slider to FlexSlider for responsive functionality
 
 = 1.1.2 =
+
 * Fixed bug in buyer's news
 
 = 1.1.1 =
+
 * Added informational buyer's news section to articles page
 * Added show_featured option to articles shortcode (off by default), to prevent articles in the rotator/thumbnails from also appearing in the article list
 
 = 1.1.0 =
+
 * Fixed bug getting new version information from IssueM API
 * Added API warnings and errors
 
 = 1.0.9 =
+
 * Fixed bug with issue order causing last Issue ID to be first regardless of order
 * Added 'article_category' argument to issuem_articles shortcode, now you can specify a single category
 
 = 1.0.8 =
+
 * Set default issue order to issue_order for widgets
 * Enabled issue order sortable column in dashboard, set it as the default sort
 * Fixed some missing l18n text
@@ -210,6 +277,7 @@ You must have:
 * Fixed bug in issuem_replacements_args workflow
 
 = 1.0.7 =
+
 * Set default issue order by issue_order instead of issue date
 * Added filter to set default page content for issue page (if no content exists)
 * Hot linked cover image to issue page in Active Issue widget
@@ -217,30 +285,36 @@ You must have:
 * Fixed Article List Widget so it displays empty issues
 
 = 1.0.6 =
+
 * Fixed bug IssueM Migration tool link showing up when it was not enabled
 * Fixed bug in Active Issue Widget, not showing default IssueM issue image when not specific issue image was set
 
 = 1.0.5 =
+
 * Added IssueM Migration Functionality, to migrate Posts to Articles
 * Fixed issuem_archives shortcode to display correctly
 * Added CSS and JavaScript auto version matching with IssueM version
 
 = 1.0.4 =
+
 * Fixed PHP Warning bug for site with no issues
 * Added ability to users with 'manage_issues' permission to see Draft issues
 * Added ability to specify an issue in the issuem_articles, issuem_featured_rotator, and issuem_featured_thumbnails shortcodes
 
 = 1.0.3 =
+
 * Fixed Verify API button
 * Fixed Archived Issue default format alignment
 * Fixed IssueM Cookie settings
 
 = 1.0.2 =
+
 * Added RSS Feed filtering, so draft issues do not show up in RSS feed and only the active issue article shows up by default
 * Added category and number of Article options to Article List widget
 * Minor bug fixes
 
 = 1.0.1 =
+
 * Beta Release
 * General Code Cleanup
 * Added ability to choose open target for PDF links
@@ -248,15 +322,5 @@ You must have:
 * Fixed template names
 
 = 1.0.0 =
+
 * Beta Release
-
-== License ==
-
-IssueM
-Copyright (C) 2011 The Complete Website, LLC.
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
