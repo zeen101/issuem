@@ -116,7 +116,12 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 			
 			}
 			
-			krsort( $terms );
+			//changed from krsort by nick-pap 28/12/14
+			if ( 'ASC' === $order )
+				ksort( $terms );
+			else
+				krsort( $terms );
+			
 			$articles = array();
 			
 			foreach( $terms as $term ) {
