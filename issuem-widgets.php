@@ -341,7 +341,7 @@ class IssueM_Article_List extends WP_Widget {
 	function form( $instance ) {
 		
 		$available_issues = get_terms( 'issuem_issue', array( 'hide_empty' => false ) );
-			
+
 		//Defaults
 		$defaults = array(
 			'title'				=> '',
@@ -357,7 +357,6 @@ class IssueM_Article_List extends WP_Widget {
 		extract( wp_parse_args( (array) $instance, $defaults ) );
 		
 		if ( !empty( $available_issues ) ) :
-		
 			?>
 			<p>
 	        	<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
@@ -370,6 +369,7 @@ class IssueM_Article_List extends WP_Widget {
                 <small>-1 = All Articles</small>
 	        </p>
 			<?php
+			$issuem_settings = get_issuem_settings();
 		
 			if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
 				$cat_type = 'category';
@@ -377,7 +377,6 @@ class IssueM_Article_List extends WP_Widget {
 				$cat_type = 'issuem_issue_categories';
 			
 			$categories = get_terms( $cat_type );
-		
 			?>  
 			<p>
 	        	<label for="<?php echo $this->get_field_id('article_category'); ?>"><?php _e( 'Select Category to Display:', 'issuem' ); ?></label><br />
