@@ -579,7 +579,7 @@ if ( !function_exists( 'issuem_dot_com_rss_feed_check' ) ) {
 		include_once( ABSPATH . WPINC . '/feed.php' );
 	
 		$output = '';
-		$feedurl = 'http://issuem.com/category/buyer-news/feed';
+		$feedurl = 'http://zeen101.com/feed/?post_type=blast&target=issuem';
 	
 		$rss = fetch_feed( $feedurl );
 	
@@ -588,10 +588,14 @@ if ( !function_exists( 'issuem_dot_com_rss_feed_check' ) ) {
 			$rss_items = $rss->get_items( 0, 1 );
 	
 			foreach ( $rss_items as $item ) {
+
+				// print_r($item);
 	
 				$last_rss_item = get_option( 'last_issuem_dot_com_rss_item' );
 				
-				$latest_rss_item = '<a href="' . $item->get_permalink() . '" target="_blank">' . esc_html( $item->get_title() ) . '</a> - ' . $item->get_description() . '... <a href="' . $item->get_permalink() . '" target="_blank">read more</a>';
+				$latest_rss_item = esc_html( $item->get_title() ) . $item->get_description();
+
+				// echo $latest_rss_item;
 	
 				if ( $last_rss_item !== $latest_rss_item )
 					update_option( 'last_issuem_dot_com_rss_item', $latest_rss_item );
@@ -602,6 +606,8 @@ if ( !function_exists( 'issuem_dot_com_rss_feed_check' ) ) {
 				
 	}
 	add_action( 'issuem_dot_com_rss_feed_check', 'issuem_dot_com_rss_feed_check' );
+
+	// add_action( 'init', 'issuem_dot_com_rss_feed_check' );
 	
 	if ( !wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
 		wp_schedule_event( time(), 'daily', 'issuem_dot_com_rss_feed_check' );

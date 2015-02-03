@@ -108,9 +108,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 		
 			if ( $last_rss_item = get_option( 'last_issuem_dot_com_rss_item', true ) ) {
 				
-				echo '<div id="issuem_rss_item">';
+				echo '<div class="notice notice-success"><p>';
 				echo $last_rss_item;
-				echo '</div>';
+				echo '</p></div>';
 				
 			}
 			
