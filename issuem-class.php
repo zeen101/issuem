@@ -42,6 +42,10 @@ if ( ! class_exists( 'IssueM' ) ) {
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
 			add_filter( 'views_edit-article', array( $this, 'display_zeen101_dot_com_rss_item' ) );
+
+			add_action( 'wp_ajax_issuem_process_notice_link', array( $this, 'ajax_process_notice_link' ) );
+
+
 			
 			if ( !empty( $settings['issuem_author_name'] ) && !is_admin() ) 
 				add_filter( 'the_author', array( $this, 'the_author' ) );
@@ -108,20 +112,24 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @param string $views
 		 */
 		function display_zeen101_dot_com_rss_item( $views ) {
-		
-			if ( $last_rss_item = get_option( 'last_zeen101_dot_com_rss_item', true ) ) {
-				
-				echo '<div class="notice notice-success">';
-				echo $last_rss_item;
-				if ( true === 'issuem_hide_rss_item' ) {
 
-				} else {
+			global $current_user;
+
+			$hide = get_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', true );
+	
+			if ( $hide == 1 ) {
+				return $views;
+			} else {
+				if ( $last_rss_item = get_option( 'last_zeen101_dot_com_rss_item', true ) ) {
+				
+					echo '<div class="notice notice-success">';
+					echo $last_rss_item;
 					echo '<p><a href="#" class="notice-link" data-notice="rss_item" data-type="dismiss">Dismiss</a></p>';
+					echo '</div>';
+					
 				}
-				
-				echo '</div>';
-				
 			}
+			
 			
 			return $views;
 			
@@ -252,6 +260,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 				wp_enqueue_media();
 
 			wp_enqueue_script( 'issuem-script', ISSUEM_URL . 'js/script.js', array( 'jquery' ), ISSUEM_VERSION );
+
+			wp_localize_script( 'issuem-script', 'issuem_ajax',
+            array( 
+            	'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            	'noticeNonce' => wp_create_nonce( 'issuem-notice-nonce')
+             ) );
 
 		}
 			
@@ -1286,6 +1300,57 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( ( $notification = get_option( 'issuem_nag' ) ) && version_compare( get_option( 'issuem_nag_version_dismissed' ), ISSUEM_VERSION, '<' ) )
 				echo '<div class="update-nag"><p>' . $notification . '</p><p><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></p></div>';
 		 
+		}
+
+		/**
+		 * Process ajax calls for notice links
+		 *
+		 * @since 2.0.3
+		 */
+		function ajax_process_notice_link() {
+
+			$nonce = $_POST['nonce'];
+
+			if ( ! wp_verify_nonce( $nonce, 'issuem-notice-nonce' ) )
+				die ( 'Busted!'); 
+
+			global $current_user;
+
+			update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', '1' );
+
+			echo get_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', true );
+
+			exit;
+
+		}
+
+		/**
+		 * Check that ajax nonces are correct
+		 *
+		 * @since 2.0.3
+		 */
+		function check_ajax_referer( $action ) {
+			
+			$result = check_ajax_referer( $action, 'nonce', false );
+			
+			if ( false === $result ) {
+				$return = array( 'issueM_error' => 1, 'body' => sprintf( __( 'Invalid nonce for: %s', 'issuem' ), $action ) );
+				$this->end_ajax( json_encode( $return ) );
+
+			}
+
+		}
+
+		/**
+		 * End ajax calls
+		 *
+		 * @since 2.0.3
+		 */
+		function end_ajax( $return = false ) {
+			
+			echo ( false === $return ) ? '' : $return;
+			exit;
+
 		}
 		
 	}

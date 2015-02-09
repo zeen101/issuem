@@ -593,8 +593,12 @@ if ( !function_exists( 'zeen101_dot_com_rss_feed_check' ) ) {
 				
 				$latest_rss_item = $item->get_content();
 	
-				if ( $last_rss_item !== $latest_rss_item )
+				if ( $last_rss_item !== $latest_rss_item ) {
+
 					update_option( 'last_zeen101_dot_com_rss_item', $latest_rss_item );
+
+					update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', '0' );
+				}
 
 			}
 	
