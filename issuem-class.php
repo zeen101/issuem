@@ -41,7 +41,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
-			add_filter( 'views_edit-article', array( $this, 'display_issuem_dot_com_rss_item' ) );
+			add_filter( 'views_edit-article', array( $this, 'display_zeen101_dot_com_rss_item' ) );
 			
 			if ( !empty( $settings['issuem_author_name'] ) && !is_admin() ) 
 				add_filter( 'the_author', array( $this, 'the_author' ) );
@@ -77,6 +77,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Clear the IssueM RSS reader if there is a schedule
 			if ( wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
 				wp_clear_scheduled_hook( 'issuem_dot_com_rss_feed_check' );
+
+			if ( wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
+				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
 				
 			 delete_option( 'issuem_flush_rewrite_rules' );
 			
@@ -98,19 +101,21 @@ if ( ! class_exists( 'IssueM' ) ) {
 		}
 		
 		/**
-		 * Displays latest RSS item from IssueM.com on Article list
+		 * Displays latest RSS item from Zeen101.com on Article list
 		 *
 		 * @since 1.0.0
 		 *
 		 * @param string $views
 		 */
-		function display_issuem_dot_com_rss_item( $views ) {
+		function display_zeen101_dot_com_rss_item( $views ) {
 		
-			if ( $last_rss_item = get_option( 'last_issuem_dot_com_rss_item', true ) ) {
+			if ( $last_rss_item = get_option( 'last_zeen101_dot_com_rss_item', true ) ) {
 				
-				echo '<div class="notice notice-success"><p>';
+				echo '<div class="notice notice-success">';
 				echo $last_rss_item;
-				echo '</p></div>';
+				echo '</div>';
+
+
 				
 			}
 			
