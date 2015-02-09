@@ -113,10 +113,13 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 				echo '<div class="notice notice-success">';
 				echo $last_rss_item;
-				echo '<p><a href="#">Dismss</a></p>';
+				if ( true === 'issuem_hide_rss_item' ) {
+
+				} else {
+					echo '<p><a href="#" class="notice-link" data-notice="rss_item" data-type="dismiss">Dismiss</a></p>';
+				}
+				
 				echo '</div>';
-
-
 				
 			}
 			
@@ -247,7 +250,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( 'article_page_issuem' == $hook_suffix )
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
 				wp_enqueue_media();
-			
+
+			wp_enqueue_script( 'issuem-script', ISSUEM_URL . 'js/script.js', array( 'jquery' ), ISSUEM_VERSION );
+
 		}
 			
 		/**
