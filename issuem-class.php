@@ -113,6 +113,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 				echo '<div class="notice notice-success">';
 				echo $last_rss_item;
+				echo '<p><a href="#">Dismss</a></p>';
 				echo '</div>';
 
 
