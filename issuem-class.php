@@ -42,6 +42,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
 			add_filter( 'views_edit-article', array( $this, 'display_zeen101_dot_com_rss_item' ) );
+			add_filter('plugin_action_links_' . ISSUEM_BASENAME, array($this, 'issuem_settings_link') );
 
 			add_action( 'wp_ajax_issuem_process_notice_link', array( $this, 'ajax_process_notice_link' ) );
 
@@ -105,6 +106,18 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			//add_submenu_page( 'edit.php?post_type=article', __( 'Advanced Styles', 'issuem' ), __( 'Advanced Styles', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-css', array( $this, 'css_page' ) );
 			
+		}
+
+		/**
+		 * Add settings link to plugin page
+		 *
+		 * @since 2.0.4
+		 */
+		function issuem_settings_link( $links ) {
+			$settings_link = '<a href="edit.php?post_type=article&page=issuem">Settings</a>'; 
+  			array_unshift($links, $settings_link); 
+  			return $links; 
+
 		}
 		
 		/**
