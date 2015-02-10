@@ -582,7 +582,7 @@ if ( !function_exists( 'zeen101_dot_com_rss_feed_check' ) ) {
 		$feedurl = 'http://zeen101.com/feed/?post_type=blast&target=issuem';
 
 		$rss = fetch_feed( $feedurl );
-	
+
 		if ( $rss && !is_wp_error( $rss ) ) {
 	
 			$rss_items = $rss->get_items( 0, 1 );
@@ -595,14 +595,16 @@ if ( !function_exists( 'zeen101_dot_com_rss_feed_check' ) ) {
 	
 				if ( $last_rss_item !== $latest_rss_item ) {
 
+					global $current_user; 
+
 					update_option( 'last_zeen101_dot_com_rss_item', $latest_rss_item );
 
-					update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', '0' );
+					update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', 0 );
 				}
 
 			}
 	
-		}
+		}	
 				
 	}
 	add_action( 'zeen101_dot_com_rss_feed_check', 'zeen101_dot_com_rss_feed_check' );

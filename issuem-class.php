@@ -1316,7 +1316,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 			global $current_user;
 
-			update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', '1' );
+			update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', 1 );
 
 			echo get_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', true );
 
