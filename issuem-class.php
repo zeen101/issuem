@@ -66,7 +66,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 */
 		function activation() {
 			
-			 add_option( 'issuem_flush_rewrite_rules', 'true' );
+			create_article_post_type();
+			flush_rewrite_rules();
 			
 		}
 	
@@ -86,6 +87,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
 				
 			 delete_option( 'issuem_flush_rewrite_rules' );
+
+			 flush_rewrite_rules();
 			
 		}
 			
