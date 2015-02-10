@@ -79,8 +79,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 		function deactivation() {
 			
 			// Clear the IssueM RSS reader if there is a schedule
-			if ( wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
-				wp_clear_scheduled_hook( 'issuem_dot_com_rss_feed_check' );
+			if ( wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
+				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
 
 			if ( wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
 				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
@@ -1101,9 +1101,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 				
 			if ( version_compare( $old_version, '1.1.2', '<' ) ) {
 				
-				delete_option( 'last_issuem_dot_com_rss_item' );
-				wp_clear_scheduled_hook( 'issuem_dot_com_rss_feed_check' );
-				issuem_dot_com_rss_feed_check();
+				delete_option( 'last_zeen101_dot_com_rss_item' );
+				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
+				zeen101_dot_com_rss_feed_check();
 				
 			}
 			
