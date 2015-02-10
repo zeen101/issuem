@@ -323,7 +323,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 *
 		 * @return array IssueM settings, merged with defaults.
-\		 */
+		 */
 		function get_settings() {
 			
 			$defaults = array( 
@@ -339,6 +339,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'featured_thumb_width'	=> 160,
 								'featured_thumb_height'	=> 120,
 								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_URL . '/images/archive-image-unavailable.jpg' ),
+								'show_thumbnail_byline' => '',
 								'custom_image_used'		=> 0,
 								'display_byline_as'		=> 'user_firstlast',
 								'issuem_author_name'	=> '',
@@ -371,7 +372,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.2.0
 		 *
 		 * @param array IssueM settings
-\		 */
+		 */
 		function update_settings( $settings ) {
 			
 
@@ -768,7 +769,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        <div class="inside">
 	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://zeen101.com/documentation/getting-started/">Getting Started</a> guide.</p>
 
-	                        	<p>Still have questions? <a target="_blank" href="http://zeen101.com/forums/">Start a support topic</a> in our support forums.</p>
+	                        	<p>Still have questions? <a target="_blank" href="https://zeen101.com/get-help/">Submit a support ticket.</a></p>
 
 	                        </div>
 
