@@ -41,7 +41,11 @@ if ( ! class_exists( 'IssueM' ) ) {
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 			
-			add_filter( 'views_edit-article', array( $this, 'display_issuem_dot_com_rss_item' ) );
+			add_filter( 'views_edit-article', array( $this, 'display_zeen101_dot_com_rss_item' ) );
+
+			add_action( 'wp_ajax_issuem_process_notice_link', array( $this, 'ajax_process_notice_link' ) );
+
+
 			
 			if ( !empty( $settings['issuem_author_name'] ) && !is_admin() ) 
 				add_filter( 'the_author', array( $this, 'the_author' ) );
@@ -77,6 +81,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 			// Clear the IssueM RSS reader if there is a schedule
 			if ( wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
 				wp_clear_scheduled_hook( 'issuem_dot_com_rss_feed_check' );
+
+			if ( wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
+				wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
 				
 			 delete_option( 'issuem_flush_rewrite_rules' );
 			
@@ -98,21 +105,31 @@ if ( ! class_exists( 'IssueM' ) ) {
 		}
 		
 		/**
-		 * Displays latest RSS item from IssueM.com on Article list
+		 * Displays latest RSS item from Zeen101.com on Article list
 		 *
 		 * @since 1.0.0
 		 *
 		 * @param string $views
 		 */
-		function display_issuem_dot_com_rss_item( $views ) {
-		
-			if ( $last_rss_item = get_option( 'last_issuem_dot_com_rss_item', true ) ) {
+		function display_zeen101_dot_com_rss_item( $views ) {
+
+			global $current_user;
+
+			$hide = get_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', true );
+	
+			if ( $hide == 1 ) {
+				return $views;
+			} else {
+				if ( $last_rss_item = get_option( 'last_zeen101_dot_com_rss_item', true ) ) {
 				
-				echo '<div id="issuem_rss_item">';
-				echo $last_rss_item;
-				echo '</div>';
-				
+					echo '<div class="notice notice-success">';
+					echo $last_rss_item;
+					echo '<p><a href="#" class="notice-link" data-notice="rss_item" data-type="dismiss">Dismiss</a></p>';
+					echo '</div>';
+					
+				}
 			}
+			
 			
 			return $views;
 			
@@ -241,7 +258,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( 'article_page_issuem' == $hook_suffix )
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
 				wp_enqueue_media();
-			
+
+			wp_enqueue_script( 'issuem-script', ISSUEM_URL . 'js/script.js', array( 'jquery' ), ISSUEM_VERSION );
+
+			wp_localize_script( 'issuem-script', 'issuem_ajax',
+            array( 
+            	'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            	'noticeNonce' => wp_create_nonce( 'issuem-notice-nonce')
+             ) );
+
 		}
 			
 		/**
@@ -1275,6 +1300,28 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( ( $notification = get_option( 'issuem_nag' ) ) && version_compare( get_option( 'issuem_nag_version_dismissed' ), ISSUEM_VERSION, '<' ) )
 				echo '<div class="update-nag"><p>' . $notification . '</p><p><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></p></div>';
 		 
+		}
+
+		/**
+		 * Process ajax calls for notice links
+		 *
+		 * @since 2.0.3
+		 */
+		function ajax_process_notice_link() {
+
+			$nonce = $_POST['nonce'];
+
+			if ( ! wp_verify_nonce( $nonce, 'issuem-notice-nonce' ) )
+				die ( 'Busted!'); 
+
+			global $current_user;
+
+			update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', 1 );
+
+			echo get_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', true );
+
+			exit;
+
 		}
 		
 	}

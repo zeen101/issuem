@@ -567,44 +567,50 @@ if ( !function_exists( 'default_issue_content_filter' ) ) {
 	
 }
 
-if ( !function_exists( 'issuem_dot_com_rss_feed_check' ) ) {
+if ( !function_exists( 'zeen101_dot_com_rss_feed_check' ) ) {
 
 	/**
-	 * Check issuem.com for new RSS items in the buy-news category feed, to update clients of latest IssueM news
+	 * Check zeen101.com for new RSS items in the issuem blast feed, to update users of latest IssueM news
 	 *
 	 * @since 1.1.1
 	 */
-	function issuem_dot_com_rss_feed_check() {
+	function zeen101_dot_com_rss_feed_check() {
 			
 		include_once( ABSPATH . WPINC . '/feed.php' );
 	
 		$output = '';
-		$feedurl = 'http://issuem.com/category/buyer-news/feed';
-	
+		$feedurl = 'http://zeen101.com/feed/?post_type=blast&target=issuem';
+
 		$rss = fetch_feed( $feedurl );
-	
+
 		if ( $rss && !is_wp_error( $rss ) ) {
 	
 			$rss_items = $rss->get_items( 0, 1 );
 	
 			foreach ( $rss_items as $item ) {
 	
-				$last_rss_item = get_option( 'last_issuem_dot_com_rss_item' );
+				$last_rss_item = get_option( 'last_zeen101_dot_com_rss_item' );
 				
-				$latest_rss_item = '<a href="' . $item->get_permalink() . '" target="_blank">' . esc_html( $item->get_title() ) . '</a> - ' . $item->get_description() . '... <a href="' . $item->get_permalink() . '" target="_blank">read more</a>';
+				$latest_rss_item = $item->get_content();
 	
-				if ( $last_rss_item !== $latest_rss_item )
-					update_option( 'last_issuem_dot_com_rss_item', $latest_rss_item );
-	
+				if ( $last_rss_item !== $latest_rss_item ) {
+
+					global $current_user; 
+
+					update_option( 'last_zeen101_dot_com_rss_item', $latest_rss_item );
+
+					update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', 0 );
+				}
+
 			}
 	
-		}
+		}	
 				
 	}
-	add_action( 'issuem_dot_com_rss_feed_check', 'issuem_dot_com_rss_feed_check' );
-	
-	if ( !wp_next_scheduled( 'issuem_dot_com_rss_feed_check' ) )
-		wp_schedule_event( time(), 'daily', 'issuem_dot_com_rss_feed_check' );
+	add_action( 'zeen101_dot_com_rss_feed_check', 'zeen101_dot_com_rss_feed_check' );
+
+	if ( !wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
+		wp_schedule_event( time(), 'daily', 'zeen101_dot_com_rss_feed_check' );
 	
 }
 
