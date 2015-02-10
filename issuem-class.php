@@ -323,7 +323,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.0.0
 		 *
 		 * @return array IssueM settings, merged with defaults.
-\		 */
+		 */
 		function get_settings() {
 			
 			$defaults = array( 
@@ -339,6 +339,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'featured_thumb_width'	=> 160,
 								'featured_thumb_height'	=> 120,
 								'default_issue_image'	=> apply_filters( 'issuem_default_issue_image', ISSUEM_URL . '/images/archive-image-unavailable.jpg' ),
+								'show_thumbnail_byline' => '',
 								'custom_image_used'		=> 0,
 								'display_byline_as'		=> 'user_firstlast',
 								'issuem_author_name'	=> '',
@@ -371,7 +372,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @since 1.2.0
 		 *
 		 * @param array IssueM settings
-\		 */
+		 */
 		function update_settings( $settings ) {
 			
 
