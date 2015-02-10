@@ -1323,35 +1323,6 @@ if ( ! class_exists( 'IssueM' ) ) {
 			exit;
 
 		}
-
-		/**
-		 * Check that ajax nonces are correct
-		 *
-		 * @since 2.0.3
-		 */
-		function check_ajax_referer( $action ) {
-			
-			$result = check_ajax_referer( $action, 'nonce', false );
-			
-			if ( false === $result ) {
-				$return = array( 'issueM_error' => 1, 'body' => sprintf( __( 'Invalid nonce for: %s', 'issuem' ), $action ) );
-				$this->end_ajax( json_encode( $return ) );
-
-			}
-
-		}
-
-		/**
-		 * End ajax calls
-		 *
-		 * @since 2.0.3
-		 */
-		function end_ajax( $return = false ) {
-			
-			echo ( false === $return ) ? '' : $return;
-			exit;
-
-		}
 		
 	}
 	
