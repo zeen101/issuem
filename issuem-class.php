@@ -627,6 +627,9 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 <?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_thumb_width" class="small-text" name="featured_thumb_width" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_thumb_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_thumb_height" class="small-text" name="featured_thumb_height" value="<?php echo htmlspecialchars( stripcslashes( $settings['featured_thumb_height'] ) ); ?>" />px
                                 </td>
                             </tr>
+                            <tr>
+                            <td></td><td><p>After changing these image settings you may need to <a target="_blank" href="https://wordpress.org/plugins/regenerate-thumbnails/">regenerate your thumbnails</a>.</p></td>
+                            </tr>
                             
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Default Issue Image', 'issuem' ); ?></th>
