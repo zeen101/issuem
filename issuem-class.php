@@ -641,9 +641,10 @@ if ( ! class_exists( 'IssueM' ) ) {
                                 
 
                                 	<p><img style="max-width: 400px;" src="<?php echo $settings['default_issue_image']; ?>" /></p>
-                                
-                                <?php if ( 0 < $settings['custom_image_used'] ) { ?>
-                                <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ) . '">' . __( 'Remove Custom Default Issue Image', 'issuem' ); ?></a></p>
+
+                                	
+                              	<?php if ( 0 < $settings['custom_image_used'] ) { ?>
+                                <p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_default_issue_image' => 1 ), $_GET ) ); __( 'Remove Custom Default Issue Image', 'issuem' ); ?>"></a></p>
                                 <?php } ?>
                                 </td>
                             </tr>
@@ -651,7 +652,7 @@ if ( ! class_exists( 'IssueM' ) ) {
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Display Byline As', 'issuem' ); ?></th>
                                 <td>
-                                <select id="display_byline_as" name="display_byline_as" >
+                                <select id="display_byline_as" name="display_byline_as">
                                 	<option value="user_firstlast" <?php selected( 'user_firstlast' == $settings['display_byline_as'] ); ?>>First & Last Name</option>
                                 	<option value="user_firstname" <?php selected( 'user_firstname' == $settings['display_byline_as'] ); ?>>First Name</option>
                                 	<option value="user_lastname" <?php selected( 'user_lastname' == $settings['display_byline_as'] ); ?>>Last Name</option>
@@ -662,22 +663,22 @@ if ( ! class_exists( 'IssueM' ) ) {
 
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Show Thumbnail Byline', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" <?php checked( $settings['show_thumbnail_byline'] || 'on' == $settings['show_thumbnail_byline'] ); ?>" /></td>
+                                <td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" value="1" <?php checked( $settings['show_thumbnail_byline'], 1 ); ?> /></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Name', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" <?php checked( $settings['issuem_author_name'] || 'on' == $settings['issuem_author_name'] ); ?>" /> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
+                                <td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" value="1" <?php checked( $settings['issuem_author_name'], 1 ); ?> /> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
                             </tr>
                         
                         	<tr>
                                 <th rowspan="1"> <?php _e( 'Categories and Tags', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" <?php checked( $settings['use_wp_taxonomies'] || 'on' == $settings['use_wp_taxonomies'] ); ?>" /> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
+                                <td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" value="1" <?php checked( $settings['use_wp_taxonomies'], 1 ); ?> /> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
                             </tr>
 
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Links', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" <?php checked( $settings['use_issue_tax_links'] || 'on' == $settings['use_issue_tax_links'] ); ?> /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
+                                <td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" value="1" <?php checked( $settings['use_issue_tax_links'], 1 ); ?> /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
                             </tr>
                             
                         </table>
@@ -701,12 +702,12 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 						    <tr>
                                 <th rowspan="1"> <?php _e( 'Pagination Navigation', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" <?php checked( $settings['show_rotator_control'] || 'on' == $settings['show_rotator_control'] ); ?>" /> Display pagination below the slider</td>
+                                <td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" value="1" <?php checked( $settings['show_rotator_control'], 1 ); ?> /> Display pagination below the slider</td>
                             </tr>
 
                             <tr>
                                 <th rowspan="1"> <?php _e( 'Direction Navigation', 'issuem' ); ?></th>
-                                <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" <?php checked( $settings['show_rotator_direction'] || 'on' == $settings['show_rotator_direction'] ); ?>" />Display previous/next navigation arrows</td>
+                                <td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" value="1" <?php checked( $settings['show_rotator_direction'], 1); ?> />Display previous/next navigation arrows</td>
                             </tr>
 
                             <tr>
