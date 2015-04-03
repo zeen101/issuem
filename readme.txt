@@ -84,6 +84,13 @@ You must have:
 
 == Changelog ==
 
+= 2.0.4 =
+* Create add-ons page to showcase available IssueM add-ons from within the plugin
+* Add helpful descriptions on the IssueM settings page
+* Clean up HTML errors
+* Update support links and information
+* Add link to settings page from plugin listing page
+
 = 2.0.3 =
 * Update styling of article notice and add the ability to dismiss the notice
 
