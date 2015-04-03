@@ -103,6 +103,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Settings', 'issuem' ), __( 'IssueM Settings', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem', array( $this, 'settings_page' ) );
 		
 			add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
+
+			add_submenu_page( 'edit.php?post_type=article', __( 'Add-Ons', 'issuem' ), __( 'Add-Ons', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-addons', array( $this, 'addons_page' ) );
 			
 			//add_submenu_page( 'edit.php?post_type=article', __( 'Advanced Styles', 'issuem' ), __( 'Advanced Styles', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-css', array( $this, 'css_page' ) );
 			
@@ -247,7 +249,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		
 			global $hook_suffix;
 			
-			if ( 'article_page_issuem' == $hook_suffix 
+			if ( 'article_page_issuem' == $hook_suffix || 'article_page_issuem-addons' == $hook_suffix
 				|| ( 'edit.php' == $hook_suffix && !empty( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
 				wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
 			
@@ -1102,6 +1104,98 @@ if ( ! class_exists( 'IssueM' ) ) {
             </div>
             </div>
 			</div>
+			<?php
+			
+		}
+
+
+		/**
+		 * Outputs the IssueM Add Ons page
+		 *
+		 * @since 2.0.4
+		 */
+		function addons_page() {
+			
+			// Display HTML
+			?>
+			<div class="wrap">
+        
+                <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Add-Ons', 'issuem' ); ?></h2>
+                <p><?php _e( 'The following are available add-ons to extend IssueM functionality.', 'issuem' ); ?></p>
+
+                <table id="issuem-addons" cellpadding="0" cellspacing="0">
+                	<tbody>
+	                    <tr>
+
+	                    	 <td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/leaky.jpg" alt="Leaky Paywall">
+									<h3>Leaky Paywall</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/leakypaywall/?ref=issuem_addons">Purchase</a>
+									<p>The #1 metered paywall solution for WordPress.</p>
+	                            </div>
+	                        </td>
+
+	                        <td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/unipress.jpg" alt="UniPress">
+									<h3>UniPress</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/unipress/?ref=issuem_addons">Purchase</a>
+									<p>UniPress is the first WordPress-to-App publishing framework. It is now simple, quick, and affordable to offer your publication as an app.</p>
+	                            </div>
+	                        </td>
+	                    
+	                       <td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/addrop.jpg" alt="Ad Dropper">
+									<h3>Ad Dropper</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/ad-dropper/?ref=issuem_addons">Purchase</a>
+									<p>Manage and track your ads easily and seamlessly.</p>
+	                            </div>
+	                        </td>
+	                        
+	                    </tr>
+
+	                    <tr>
+
+	                    	<td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/pdf.jpg" alt="Issue to PDF">
+									<h3>Issue-to-PDF</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/issue-to-pdf/?ref=issuem_addons">Purchase</a>
+									<p>The Issue-to-PDF plugin turns any issue created with the IssueM plugin into a PDF, ready to print.</p>
+	                            </div>
+	                        </td>
+
+	                        <td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/migrate.jpg" alt="Post to Issue Migration">
+									<h3>Post to Issue Migration</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/migration-tool/?ref=issuem_addons">Purchase</a>
+									<p>Need to migrate your posts into IssueM issues? Migrate posts, pages, and other post types into your selected issue.</p>
+	                            </div>
+	                        </td>
+
+	                    	 <td class="available-addon">
+	                        	<div class="available-addon-inner">
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/search.jpg" alt="Advanced Issue Search">
+									<h3>Advanced Issue Search</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-advanced-search/?ref=issuem_addons">Purchase</a>
+									<p>Give your readers a more powerful way to find your articles. One shortcode will allow readers to search by Issue, Article Category, or Keyword.</p>
+	                            </div>
+	                        </td>
+
+	                    	
+	                   
+
+	                        
+	                        
+	                    </tr>
+                    </tbody>
+                </table>
+             
+            </div>
+
 			<?php
 			
 		}
