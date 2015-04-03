@@ -1149,7 +1149,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/addrop.jpg" alt="Ad Dropper">
 									<h3>Ad Dropper</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/leakypaywall/?ref=issuem_addons">Purchase</a>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/ad-dropper/?ref=issuem_addons">Purchase</a>
 									<p>Manage and track your ads easily and seamlessly.</p>
 	                            </div>
 	                        </td>
