@@ -75,12 +75,12 @@ class IssueM_Active_Issue extends WP_Widget {
 		$out = '';
 		
 		if ( 'on' == $instance['display_issue_name'] )
-			$out .= '<p class="issuem_widget_issue_name"><a href="' . apply_filters( 'issuem_issue_url', $issue_url, $issue, $meta_options ) . '">' . $term->name . '</a></p>';
+			$out .= '<p class="issuem_widget_issue_name"><a href="' . apply_filters( 'issuem_issue_url', esc_url( $issue_url ), $issue, $meta_options ) . '">' . $term->name . '</a></p>';
 		
 		if ( 'on' == $instance['display_issue_cover'] ) {
 		
 			if ( !empty( $meta_options['cover_image'] ) )
-				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', $issue_url, $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image' ) . '</a></p>';
+				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', esc_url( $issue_url ), $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image' ) . '</a></p>';
 			else
 				$out .= '<p class="issuem_widget_issue_cover_image"><img src="' . $issuem_settings['default_issue_image'] . '" /></p>';
 				

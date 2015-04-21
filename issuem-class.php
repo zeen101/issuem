@@ -1319,7 +1319,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 			}
 		
 			if ( ( $notification = get_option( 'issuem_nag' ) ) && version_compare( get_option( 'issuem_nag_version_dismissed' ), ISSUEM_VERSION, '<' ) )
-				echo '<div class="update-nag"><p>' . $notification . '</p><p><a href="' . add_query_arg( 'remove_issuem_nag', true ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></p></div>';
+				echo '<div class="update-nag"><p>' . $notification . '</p><p><a href="' . esc_url( add_query_arg( 'remove_issuem_nag', true ) ) . '">' . __( 'Dismiss', 'issuem' ) . '</a></p></div>';
 		 
 		}
 

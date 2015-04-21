@@ -399,7 +399,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 				$image_line = '<img src="' . $default_image . '" />';
 				
 			$results .= '<p><a class="featured_archives_cover" style="width: ' . apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ) . 'px; height: ' . apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ) . 'px;" href="' . $issue_url . '">' . $image_line . '</a>';
-			$results .= '<br /><a href="' . $issue_url . '">' . $issue_array[0]->name . '</a>';
+			$results .= '<br /><a href="' . esc_url( $issue_url ) . '">' . $issue_array[0]->name . '</a>';
 			$results .= '<br />' . $pdf_line;
 		
 			$results .= '</div>';
@@ -414,15 +414,15 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 		
 			if ( 0 === $offset && $limit < $archive_count ) {
 				//Previous link only
-				$results .= '<div class="alignleft"><a href="' . add_query_arg( 'paged', $paged + 1, $url ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
+				$results .= '<div class="alignleft"><a href="' . esc_url( add_query_arg( 'paged', $paged + 1, $url ) ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
 				
 			} else if ( $offset >= $archive_count ) {
 				//Next link only
-				$results .= '<div class="alignright"><a href="' . add_query_arg( 'paged', $paged - 1, $url ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
+				$results .= '<div class="alignright"><a href="' . esc_url( add_query_arg( 'paged', $paged - 1, $url ) ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
 			} else {
 				//Next and Previous Links
-				$results .= '<div class="alignleft"><a href="' . add_query_arg( 'paged', $paged + 1, $url ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
-				$results .= '<div class="alignright"><a href="' . add_query_arg( 'paged', $paged - 1, $url ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
+				$results .= '<div class="alignleft"><a href="' . esc_url( add_query_arg( 'paged', $paged + 1, $url ) ) . '">' . __( 'Previous Archives', 'issuem' ) . '</a></div>';
+				$results .= '<div class="alignright"><a href="' . esc_url( add_query_arg( 'paged', $paged - 1, $url ) ) . '">' . __( 'Next Archives', 'issuem' ) . '</a></div>';
 			}
 			
 			
