@@ -1,4 +1,4 @@
-=== IssueM ===
+# IssueM
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
@@ -9,7 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create, Organize, and Publish Issues with WordPress
 
-== Description ==
+## Description
 
 **"...IssueM is a real standout." &mdash; WPMU**
 
@@ -51,12 +51,12 @@ Issue-based publishing on the web is gaining steam. More and more traditional pu
 * Want to convert your blog posts into issues? **[The Issue Migration Tool][https://zeen101.com/downloads/migration-tool/]** will migrate any post content you choose into article content, so that you can include it into your IssueM issues. Quickly create a special issue or start an issue based magazine or news site.
 * If you need more power in your search box, the **[Advanced Issue Search add-on][https://zeen101.com/downloads/issuem-advanced-search/]** allows your readers to comb through your content in a way that isn't possible with the standard WordPress content search.
 
-== Installation ==
+## Installation
 
 1. Upload the entire `issuem` folder to your `/wp-content/plugins/` folder.
 1. Go to the 'Plugins' page in the menu and activate the plugin.
 
-== FAQ ==
+## FAQ
 
 **What are the minimum requirements for IssueM?**
 You must have:
@@ -82,7 +82,7 @@ You must have:
 13. IssueM - plugin settings
 14. IssueM - help
 
-== Changelog ==
+## Changelog
 
 = 2.1.0 =
 * Escaping add/remove_query_arg calls properly
