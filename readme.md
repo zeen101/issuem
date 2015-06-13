@@ -1,11 +1,11 @@
 # IssueM
-Contributors: layotte, pericson, endocreative
-Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
-Requires at least: 3.3
-Tested up to: 4.2
-Stable tag: 2.1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: layotte, pericson, endocreative  
+Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine  
+Requires at least: 3.3  
+Tested up to: 4.2  
+Stable tag: 2.1.0  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 Create, Organize, and Publish Issues with WordPress
 
