@@ -36,10 +36,10 @@ class IssueM_Active_Issue extends WP_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	function IssueM_Active_Issue() {
+	function __construct() {
 		
 		$widget_ops = array( 'classname' => 'issuem_active_issue', 'description' => __( 'Displays the active IssueM Issue details', 'issuem' ) );
-		$this->WP_Widget( 'IssueM_Active_Issue', __( 'IssueM Active Issue', 'issuem' ), $widget_ops );
+		parent::__construct( 'IssueM_Active_Issue', __( 'IssueM Active Issue', 'issuem' ), $widget_ops );
 	
 	}
 	
@@ -195,11 +195,11 @@ class IssueM_Article_List extends WP_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	function IssueM_Article_List() {
+	function __construct() {
 		
 		$widget_ops = array( 'classname' => 'issuem_article_list', 'description' => __( 'Sidebar widget to display the current articles.', 'issuem' ) );
 		$control_ops = array('width' => 400, 'height' => 350);
-		$this->WP_Widget( 'IssueM_Article_List', __( 'IssueM Article List', 'issuem' ), $widget_ops, $control_ops );
+		parent::__construct( 'IssueM_Article_List', __( 'IssueM Article List', 'issuem' ), $widget_ops, $control_ops );
 	
 	}
 	
