@@ -187,11 +187,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @param object $query WordPress Query Object
 		 */
 		function add_issuem_articles_to_tag_query( $query ) {
-		
-		   if ( $query->is_main_query()
-			 && ( $query->is_tag() || $query->is_category() ) )
-			 $query->set( 'post_type', array( 'post', 'article' ) );
-		   
+			if ( $query->is_main_query() && ( $query->is_tag() || $query->is_category() ) ) {
+				$post_type = $query->get( 'post_type' );
+				if ( empty( $post_type ) ) {
+					$post_type = array( 'post', 'article' );
+				} else {
+					$post_type[] = 'article';
+				}
+				$query->set( 'post_type', $post_type );
+			}
 		}
 		
 		/**
