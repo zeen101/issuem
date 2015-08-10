@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
-Tested up to: 4.3
-Stable tag: 2.2.0
+Tested up to: 4.4
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,9 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.2.1 =
+* Modify how we add article to the post query in pre_get_posts
 
 = 2.2.0 =
 * Updating WP_Widget calls for deprecated use in WP4.3
