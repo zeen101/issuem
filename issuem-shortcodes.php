@@ -647,21 +647,20 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			$category = array(
 				'taxonomy' 	=> $cat_type,
 				'field' 	=> 'slug',
-				'terms' 	=> split( ',', $article_category ),
+				'terms' 	=> explode( ',', $article_category ),
 			);	
 			
 			$args['tax_query'] = array(
 				'relation'	=> 'AND',
-				$issue,
 				$category
 			);
 			
 		}
-						
+
 		$featured_articles = get_posts( $args );
 		
 		if ( $featured_articles ) : 
-			
+
 			$results .= '<div id="issuem-featured-article-thumbs-wrap">';
 		
 			$count = 1;
@@ -734,7 +733,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			$results .= '</div>';
 			
 		endif;
-		
+
 		return $results;
 		
 	}
