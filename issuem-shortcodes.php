@@ -652,7 +652,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			
 			$args['tax_query'] = array(
 				'relation'	=> 'AND',
-				$issuem_issue,
+				$issue,
 				$category
 			);
 			
