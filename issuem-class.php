@@ -311,15 +311,15 @@ if ( ! class_exists( 'IssueM' ) ) {
 					
 					case 'default' :
 					default : 
-						wp_enqueue_style( 'issuem_style', ISSUEM_URL . '/css/issuem.css', '', ISSUEM_VERSION );
+						wp_enqueue_style( 'issuem_style', ISSUEM_URL . 'css/issuem.css', '', ISSUEM_VERSION );
 						break;
 						
 				}
 			
 			}
 			
-			wp_enqueue_script( 'jquery-issuem-flexslider', ISSUEM_URL . '/js/jquery.flexslider-min.js', array( 'jquery' ), ISSUEM_VERSION );
-			wp_enqueue_style( 'jquery-issuem-flexslider', ISSUEM_URL . '/css/flexslider.css', '', ISSUEM_VERSION );
+			wp_enqueue_script( 'jquery-issuem-flexslider', ISSUEM_URL . 'js/jquery.flexslider-min.js', array( 'jquery' ), ISSUEM_VERSION );
+			wp_enqueue_style( 'jquery-issuem-flexslider', ISSUEM_URL . 'css/flexslider.css', '', ISSUEM_VERSION );
 		
 		}
 		
