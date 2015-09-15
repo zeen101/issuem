@@ -3,7 +3,7 @@ Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
 Tested up to: 4.4
-Stable tag: 2.2.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,12 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.3.0 =
+* Add aritcles to is_author query
+* Remove extra slash in css and js link URLs
+* Use explode instead of split to create array of article category slugs
+* Use correct variable name issue instead of issuem_issue in the featured thumbs shortcode
 
 = 2.2.1 =
 * Modify how we add article to the post query in pre_get_posts
