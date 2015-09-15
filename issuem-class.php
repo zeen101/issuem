@@ -187,7 +187,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @param object $query WordPress Query Object
 		 */
 		function add_issuem_articles_to_tag_query( $query ) {
-			if ( $query->is_main_query() && ( $query->is_tag() || $query->is_category() ) ) {
+			if ( ( $query->is_main_query() && ( $query->is_tag() || $query->is_category() ) ) || $query->is_author() ) {
 				$post_type = $query->get( 'post_type' );
 				if ( empty( $post_type ) ) {
 					$post_type = array( 'post', 'article' );
@@ -208,7 +208,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 */
 		function remove_draft_issues_from_main_query( $query ) {
 						
-			if ( !is_admin() && $query->is_main_query()
+			if ( !is_admin() && ( $query->is_main_query() || $query->is_author() )
 				&& !current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) {
 				
 				$term_ids = get_issuem_draft_issues();	
