@@ -192,7 +192,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				if ( empty( $post_type ) ) {
 					$post_type = array( 'post', 'article' );
 				} else {
-					if ( !is_array( $post_type ) {
+					if ( !is_array( $post_type ) ) {
 						$post_type = array_map( 'trim', explode( ',', $post_type ) ); 
 					}
 					$post_type[] = 'article';
