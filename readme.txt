@@ -3,7 +3,7 @@ Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
 Tested up to: 4.4
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,9 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.4.0 =
+* Check if currently set post type is a string before adding article to the preferred array type 
 
 = 2.3.0 =
 * Add aritcles to is_author query
