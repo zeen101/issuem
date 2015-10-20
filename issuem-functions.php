@@ -229,6 +229,11 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 	 * @since 1.0.0
 	 */
 	function set_issuem_cookie() {
+
+		// no reason to set the cookie if you're in the admin
+		if ( is_admin() ) {
+			return;
+		}
 		
 		if ( !empty( $_GET['issue'] ) ) {
 		
