@@ -237,7 +237,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 					$tax_query = $query->tax_query->queries;
 					$tax_query[] = $draft_issues;
 					$tax_query['relation'] = 'AND';
-				
+
 					$query->set( 'tax_query', apply_filters('issuem_draft_issue_tax_query', $tax_query ) );
 					
 				}
