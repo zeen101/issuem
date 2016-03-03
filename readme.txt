@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
-Tested up to: 4.4
-Stable tag: 2.4.0
+Tested up to: 4.5
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,13 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.5.0 =
+* Add array keys for option values on issue statuses to fix problem with translations changing the values that were being checked elsewhere
+* Add filter for issuem_active_issue_slug
+* Add filter for issuem_draft_issue_tax_query ;
+* Add filter to pre get posts draft tax query
+* Fix header output error in admin
 
 = 2.4.0 =
 * Check if currently set post type is a string before adding article to the preferred array type 
