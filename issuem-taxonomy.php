@@ -217,12 +217,12 @@ if ( !function_exists( 'get_issuem_issue_statuses' ) )  {
 	 */
 	function get_issuem_issue_statuses( $select = false ) {
 		
-		$statuses = apply_filters( 'issuem_issue_statuses', array( __( 'Draft', 'issuem' ), __( 'Live', 'issuem' ), __( 'PDF Archive', 'issuem' ) ) );
+		$statuses = apply_filters( 'issuem_issue_statuses', array( 'Draft' => __( 'Draft', 'issuem' ), 'Live' => __( 'Live', 'issuem' ), 'PDF Archive' => __( 'PDF Archive', 'issuem' ) ) );
 		
 		$html = '<select name="issue_status" id="issue_status">';
-		foreach ( $statuses as $status ) {
+		foreach ( $statuses as $key => $status ) {
 		
-			$html .= '<option value="' . $status . '" ' . selected( $select, $status, false ) . '>' . $status . '</option>';
+			$html .= '<option value="' . $key . '" ' . selected( $select, $key, false ) . '>' . $status . '</option>';
 			
 		}
 		$html .= '</select>';
