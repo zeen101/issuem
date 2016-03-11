@@ -246,8 +246,8 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 			
 			$issuem_settings = get_issuem_settings();
 				
-			if ( is_page( $issuem_settings['page_for_articles'] ) ) {
-	
+			if ( issuem_is_articles_page() ) {
+
 				$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
 				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
 			
@@ -833,6 +833,41 @@ if ( !function_exists( 'get_issuem_article_excerpt' ) ) {
 			
 		}
 		
+	}
+
+}
+
+if ( !function_exists( 'issuem_is_articles_page' ) ) { 
+
+	/**
+	 * Determines if we're currently on the Articles page
+	 * @since  2.5.1 
+	 * @return bool True if on Articles page, false otherwise
+	 */
+	function issuem_is_articles_page() {
+
+		global $wp_query;
+
+		$issuem_settings = get_issuem_settings();
+
+		$is_object_set     = isset( $wp_query->queried_object );
+		$is_object_id_set  = isset( $wp_query->queried_object_id );
+		$is_articles_page  = is_page( $issuem_settings['page_for_articles'] );
+		
+		if( ! $is_object_set ) {
+
+			unset( $wp_query->queried_object );
+
+		}
+
+		if( ! $is_object_id_set ) {
+
+			unset( $wp_query->queried_object_id );
+
+		}
+
+		return apply_filters( 'issuem_is_articles_page', $is_articles_page );
+
 	}
 
 }
