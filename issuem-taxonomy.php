@@ -55,6 +55,15 @@ if ( !function_exists( 'create_issuem_cats_taxonomy' ) ) {
 
 }
 
+
+if ( !function_exists( 'issuem_issue_term_edit_form_tag' ) ) {
+
+	function issuem_issue_term_edit_form_tag() {
+		echo ' enctype="multipart/form-data" ';
+	}
+	add_action( 'issuem_issue_term_edit_form_tag', 'issuem_issue_term_edit_form_tag' );
+}
+
 if ( !function_exists( 'issuem_issue_columns' ) ) {
 		
 	/**
@@ -114,10 +123,9 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 	function issuem_issue_sortable_column_orderby( $terms, $taxonomies, $args ) {
 	
 		global $hook_suffix;
-		
+
 		if ( 'edit-tags.php' == $hook_suffix && in_array( 'issuem_issue', $taxonomies ) 
-				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] ) 
-						|| ( !empty( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) ) {
+				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] && 'issue_order' == $args['orderby'] ) ) ) {
 				
 			$sort = array();
 			$count = 0;
