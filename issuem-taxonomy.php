@@ -125,7 +125,7 @@ if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
 		global $hook_suffix;
 
 		if ( 'edit-tags.php' == $hook_suffix && in_array( 'issuem_issue', $taxonomies ) 
-				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] && 'issue_order' == $args['orderby'] ) ) ) {
+				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) {
 				
 			$sort = array();
 			$count = 0;
