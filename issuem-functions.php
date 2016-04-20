@@ -246,8 +246,8 @@ if ( !function_exists( 'set_issuem_cookie' ) ) {
 			
 			$issuem_settings = get_issuem_settings();
 				
-			if ( issuem_is_articles_page() ) {
-
+			if ( is_page( $issuem_settings['page_for_articles'] ) ) {
+	
 				$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
 				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
 			
@@ -336,6 +336,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 			endif;
 				
+			$categories = preg_quote($categories);
+
 			$string = preg_replace( '/%CATEGORY\[?(\d*)\]?%/i', $categories, $string );	
 					
 		}
@@ -369,18 +371,22 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 				$tag_string = join( ", ", $cat_array );
 					
 			endif;
-				
+			
+			$tag_string = preg_quote($tag_string);
+
 			$string = preg_replace( '/%TAG\[?(\d*)\]?%/i', $tag_string, $string );	
 					
 		}
 		
 		if ( preg_match( '/%TEASER%/i', $string, $matches ) ) {
 			
-			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) 
+			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) {
+				$teaser = preg_quote($teaser);
 				$string = preg_replace( '/%TEASER%/i', $teaser, $string );	
-			else
+			}
+			else {
 				$string = preg_replace( '/%TEASER%/i', '%EXCERPT%', $string );	// If no Teaser Text exists, try to get an excerpt
-					
+			}	
 		}
 		
 		if ( preg_match( '/%EXCERPT\[?(\d*)\]?%/i', $string, $matches ) ) {
@@ -389,11 +395,12 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 				$excerpt = get_the_content();
 			else
 				$excerpt = $post->post_excerpt;
-			
+
+
 			$excerpt = strip_shortcodes( $excerpt );
 			$excerpt = apply_filters( 'the_content', $excerpt );
 			$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
-			
+
 			if ( !empty( $matches[1] ) )
 				$excerpt_length = $matches[1];
 			else
@@ -401,16 +408,19 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 			$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
 			$excerpt = wp_trim_words( $excerpt, $excerpt_length, $excerpt_more );
-				
+			$excerpt = preg_quote($excerpt);
+
 			$string = preg_replace( '/%EXCERPT\[?(\d*)\]?%/i', $excerpt, $string );	
-					
+
 		}
 		
 		if ( preg_match( '/%CONTENT%/i', $string, $matches ) ) {
 		
 			$content = get_the_content();
 			$content = apply_filters( 'the_content', $content );
-    			$content = str_replace( ']]>', ']]&gt;', $content );
+    		$content = str_replace( ']]>', ']]&gt;', $content );
+    		$content = preg_quote($content);
+
 			$string = preg_replace( '/%CONTENT%/i', $content, $string );	
 					
 		}
@@ -418,6 +428,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%FEATURE_IMAGE%/i', $string, $matches ) ) {
 		
 			$image = get_the_post_thumbnail( $post->ID );
+			$image = preg_quote($image);
+
 			$string = preg_replace( '/%FEATURE_IMAGE%/i', $image, $string );	
 					
 		}
@@ -425,6 +437,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%ISSUEM_FEATURE_THUMB%/i', $string, $matches ) ) {
 		
 			$image = get_the_post_thumbnail( $post->ID, 'issuem-featured-thumb-image' );
+			$image = preg_quote($image);
+
 			$string = preg_replace( '/%ISSUEM_FEATURE_THUMB%/i', $image, $string );	
 					
 		}
@@ -434,7 +448,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			$author_name = get_issuem_author_name( $post );
 			
 			$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
-				
+			$byline = preg_quote($byline);
+
 			$string = preg_replace( '/%BYLINE%/i', $byline, $string );	
 					
 		}
@@ -442,6 +457,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
 
 			$post_date = get_the_date( '', $post->ID );
+			$post_date = preg_quote($post_date);
+
 			$string = preg_replace( '/%DATE%/i', $post_date, $string );	
 					
 		}
@@ -833,41 +850,6 @@ if ( !function_exists( 'get_issuem_article_excerpt' ) ) {
 			
 		}
 		
-	}
-
-}
-
-if ( !function_exists( 'issuem_is_articles_page' ) ) { 
-
-	/**
-	 * Determines if we're currently on the Articles page
-	 * @since  2.5.1 
-	 * @return bool True if on Articles page, false otherwise
-	 */
-	function issuem_is_articles_page() {
-
-		global $wp_query;
-
-		$issuem_settings = get_issuem_settings();
-
-		$is_object_set     = isset( $wp_query->queried_object );
-		$is_object_id_set  = isset( $wp_query->queried_object_id );
-		$is_articles_page  = is_page( $issuem_settings['page_for_articles'] );
-		
-		if( ! $is_object_set ) {
-
-			unset( $wp_query->queried_object );
-
-		}
-
-		if( ! $is_object_id_set ) {
-
-			unset( $wp_query->queried_object_id );
-
-		}
-
-		return apply_filters( 'issuem_is_articles_page', $is_articles_page );
-
 	}
 
 }
