@@ -177,7 +177,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 				$category = array(
 					'taxonomy' 	=> $cat_type,
 					'field' 	=> 'slug',
-					'terms' 	=> split( ',', $article_category ),
+					'terms' 	=> explode( ',', $article_category ),
 				);	
 				
 				$args['tax_query'] = array(
