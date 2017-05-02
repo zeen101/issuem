@@ -10,7 +10,7 @@ Plugin Name: IssueM
 Plugin URI: http://issuem.com/
 Description: A feature rich magazine and newspaper issue manager plugin for WordPress.
 Author: zeen101 Development Team
-Version: 2.6.0
+Version: 2.6.1
 Author URI: http://issuem.com/
 Tags: 
 */
@@ -24,7 +24,7 @@ if ( !defined( 'ZEEN101_STORE_URL' ) )
 	define( 'ZEEN101_STORE_URL', 'http://zeen101.com' );
 	
 define( 'ISSUEM_SLUG', 			'issuem' );
-define( 'ISSUEM_VERSION', 		'2.6.0' );
+define( 'ISSUEM_VERSION', 		'2.6.1' );
 define( 'ISSUEM_DB_VERSION', 	'1.0.0' );
 define( 'ISSUEM_URL', 			plugin_dir_url( __FILE__ ) );
 define( 'ISSUEM_PATH', 			plugin_dir_path( __FILE__ ) );
