@@ -23,7 +23,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @todo Move the the_author filter to a more appopriate place
 		 * @todo Move the pre_get_posts filter to a more appopriate place
 		 */
-		function IssueM() {
+		function __construct() {
 			
 			$settings = $this->get_settings();
 			
