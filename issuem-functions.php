@@ -335,7 +335,9 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 				$categories = join( ", ", $cat_array );
 					
 			endif;
-				
+
+			$categories = preg_quote($categories);	
+			
 			$string = preg_replace( '/%CATEGORY\[?(\d*)\]?%/i', $categories, $string );	
 					
 		}
@@ -369,18 +371,20 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 				$tag_string = join( ", ", $cat_array );
 					
 			endif;
-				
+
+			$tag_string = preg_quote($tag_string);	
 			$string = preg_replace( '/%TAG\[?(\d*)\]?%/i', $tag_string, $string );	
 					
 		}
 		
 		if ( preg_match( '/%TEASER%/i', $string, $matches ) ) {
 			
-			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) 
+			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) {
+				$teaser = preg_quote($teaser);
 				$string = preg_replace( '/%TEASER%/i', $teaser, $string );	
-			else
+			} else {
 				$string = preg_replace( '/%TEASER%/i', '%EXCERPT%', $string );	// If no Teaser Text exists, try to get an excerpt
-					
+			}	
 		}
 		
 		if ( preg_match( '/%EXCERPT\[?(\d*)\]?%/i', $string, $matches ) ) {
@@ -401,7 +405,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 			$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
 			$excerpt = wp_trim_words( $excerpt, $excerpt_length, $excerpt_more );
-				
+			$excerpt = preg_quote($excerpt);	
+
 			$string = preg_replace( '/%EXCERPT\[?(\d*)\]?%/i', $excerpt, $string );	
 					
 		}
@@ -410,7 +415,9 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		
 			$content = get_the_content();
 			$content = apply_filters( 'the_content', $content );
-    			$content = str_replace( ']]>', ']]&gt;', $content );
+    		$content = str_replace( ']]>', ']]&gt;', $content );
+    		$content = preg_quote($content);
+
 			$string = preg_replace( '/%CONTENT%/i', $content, $string );	
 					
 		}
@@ -418,6 +425,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%FEATURE_IMAGE%/i', $string, $matches ) ) {
 		
 			$image = get_the_post_thumbnail( $post->ID );
+			$image = preg_quote($image);
+
 			$string = preg_replace( '/%FEATURE_IMAGE%/i', $image, $string );	
 					
 		}
@@ -425,6 +434,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%ISSUEM_FEATURE_THUMB%/i', $string, $matches ) ) {
 		
 			$image = get_the_post_thumbnail( $post->ID, 'issuem-featured-thumb-image' );
+			$image = preg_quote($image);
+
 			$string = preg_replace( '/%ISSUEM_FEATURE_THUMB%/i', $image, $string );	
 					
 		}
@@ -434,7 +445,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			$author_name = get_issuem_author_name( $post );
 			
 			$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
-				
+			$byline = preg_quote($byline);
+
 			$string = preg_replace( '/%BYLINE%/i', $byline, $string );	
 					
 		}
@@ -442,6 +454,8 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
 
 			$post_date = get_the_date( '', $post->ID );
+			$post_date = preg_quote($post_date);
+
 			$string = preg_replace( '/%DATE%/i', $post_date, $string );	
 					
 		}
