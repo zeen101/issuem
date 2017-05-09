@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 3.3
-Tested up to: 4.6
-Stable tag: 2.6.1
+Tested up to: 4.8
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,9 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.7.0 =
+* Updating constructor for PHP7
 
 = 2.6.1 =
 * Two action hooks to allow multiple article formats
