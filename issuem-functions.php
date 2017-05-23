@@ -336,7 +336,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 			endif;
 				
-			$string = preg_replace( '/%CATEGORY\[?(\d*)\]?%/i', $categories, $string );	
+			$string = preg_replace( '/%CATEGORY\[?(\d*)\]?%/i', preg_quote( $categories ), $string );	
 					
 		}
 		
@@ -370,14 +370,14 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 					
 			endif;
 				
-			$string = preg_replace( '/%TAG\[?(\d*)\]?%/i', $tag_string, $string );	
+			$string = preg_replace( '/%TAG\[?(\d*)\]?%/i', preg_quote( $tag_string ), $string );	
 					
 		}
 		
 		if ( preg_match( '/%TEASER%/i', $string, $matches ) ) {
 			
 			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) 
-				$string = preg_replace( '/%TEASER%/i', $teaser, $string );	
+				$string = preg_replace( '/%TEASER%/i', preg_quote( $teaser ), $string );	
 			else
 				$string = preg_replace( '/%TEASER%/i', '%EXCERPT%', $string );	// If no Teaser Text exists, try to get an excerpt
 					
@@ -402,7 +402,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
 			$excerpt = wp_trim_words( $excerpt, $excerpt_length, $excerpt_more );
 				
-			$string = preg_replace( '/%EXCERPT\[?(\d*)\]?%/i', $excerpt, $string );	
+			$string = preg_replace( '/%EXCERPT\[?(\d*)\]?%/i', preg_quote( $excerpt ), $string );
 					
 		}
 		
@@ -411,7 +411,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			$content = get_the_content();
 			$content = apply_filters( 'the_content', $content );
     			$content = str_replace( ']]>', ']]&gt;', $content );
-			$string = preg_replace( '/%CONTENT%/i', $content, $string );	
+			$string = preg_replace( '/%CONTENT%/i', preg_quote( $content ), $string );	
 					
 		}
 		
@@ -435,14 +435,14 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 			
 			$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
 				
-			$string = preg_replace( '/%BYLINE%/i', $byline, $string );	
+			$string = preg_replace( '/%BYLINE%/i', preg_quote( $byline ), $string );	
 					
 		}
 
 		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
 
 			$post_date = get_the_date( '', $post->ID );
-			$string = preg_replace( '/%DATE%/i', $post_date, $string );	
+			$string = preg_replace( '/%DATE%/i', preg_quote( $post_date ), $string );	
 					
 		}
 		
