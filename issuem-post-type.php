@@ -178,10 +178,9 @@ if ( !function_exists( 'save_issuem_article_meta' ) ) {
 		if ( isset( $_REQUEST['_inline_edit'] ) || isset( $_REQUEST['doing_wp_cron'] ) )
 			return;
 			
-		if ( !empty( $_POST['teaser_text'] ) )
-			update_post_meta( $post_id, '_teaser_text', $_POST['teaser_text'] );
-		else
-			delete_post_meta( $post_id, '_teaser_text' );
+		if ( isset( $_POST['teaser_text'] ) ) {
+			update_post_meta( $post_id, '_teaser_text', sanitize_text_field( $_POST['teaser_text'] ) );
+		}
 			
 		if ( !empty( $_POST['featured_rotator'] ) )
 			update_post_meta( $post_id, '_featured_rotator', $_POST['featured_rotator'] );
@@ -193,10 +192,10 @@ if ( !function_exists( 'save_issuem_article_meta' ) ) {
 		else
 			delete_post_meta( $post_id, '_featured_thumb' );
 			
-		if ( !empty( $_POST['issuem_author_name'] ) )
-			update_post_meta( $post_id, '_issuem_author_name', $_POST['issuem_author_name'] );
-		else
-			delete_post_meta( $post_id, '_issuem_author_name' );
+		if ( isset( $_POST['issuem_author_name'] ) ) {
+			update_post_meta( $post_id, '_issuem_author_name', sanitize_text_field( $_POST['issuem_author_name'] ) );
+		}
+
 			
 		do_action( 'save_issuem_article_meta', $post_id );
 				
