@@ -115,8 +115,12 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 				}
 			
 			}
+			//changed from krsort by nick-pap 28/12/14
+			if ( 'ASC' === $order )
+				ksort( $terms );
+			else
+				krsort( $terms );
 			
-			krsort( $terms );
 			$articles = array();
 			
 			foreach( $terms as $term ) {
@@ -467,6 +471,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'show_teaser'		=> true,
 			'show_byline'		=> false,
 			'article_category'		=> 'all',
+			'use_category_order' => false,
 		);
 		
 		// Merge defaults with passed atts
@@ -481,27 +486,116 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'order'				=> $order,
 			'meta_key'			=> '_featured_rotator',
 			'issuem_issue' 		=> $issue,
+			'use_category_order'=> $use_category_order,
 		);
 		
 		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
 			$cat_type = 'category';
 		else
 			$cat_type = 'issuem_issue_categories';
-		
-		if ( !empty( $article_category ) && 'all' !== $article_category ) {
+		//added use_category_order option nick-pap 3/2/2015
+		if ( 'true' === $use_category_order && 'issuem_issue_categories' === $cat_type ) {
+
+			$count = 0;
+			
+			if ( 'all' === $article_category ) {
+			
+				$all_terms = get_terms( 'issuem_issue_categories' );
 				
+				foreach( $all_terms as $term ) {
+				
+					$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term->term_id . '_meta' );
+						
+					if ( !empty( $issue_cat_meta['category_order'] ) )
+						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
+					else
+						$terms[ '-' . ++$count ] = $term->slug;
+						
+				}
+				
+			} else {
+			
+				foreach( split( ',', $article_category ) as $term_slug ) {
+					
+					$term = get_term_by( 'slug', $term_slug, 'issuem_issue_categories' );
+				
+					$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term->term_id . '_meta' );
+						
+					if ( !empty( $issue_cat_meta['category_order'] ) )
+						$terms[ $issue_cat_meta['category_order'] ] = $term->slug;
+					else
+						$terms[ '-' . ++$count ] = $term->slug;
+						
+				}
+			
+			}
+			//changed from krsort by nick-pap 28/12/14
+			if ( 'ASC' === $order )
+				ksort( $terms );
+			else
+				krsort( $terms );
+			
+			$articles = array();
+			
+			foreach( $terms as $term ) {
+				$category = array(
+					'taxonomy' 	=> $cat_type,
+					'field' 	=> 'slug',
+					'terms' 	=> $term,
+				);	
+				
+				$args['tax_query'] = array(
+					'relation'	=> 'AND',
+					$issuem_issue,
+					$category
+				);
+				
+				$articles = array_merge( $articles, get_posts( $args ) );
+			}
+		
+			//And we want all articles not in a category
 			$category = array(
 				'taxonomy' 	=> $cat_type,
-				'field' 	=> 'slug',
-				'terms' 	=> split( ',', $article_category ),
-			);	
-			
-			$args['tax_query'] = array(
-				'relation'	=> 'AND',
-				$issuem_issue,
-				$category
+				'field'		=> 'slug',
+				'terms'		=> $terms, 
+				'operator'	=> 'NOT IN',
 			);
+
+			$args['tax_query'] = array(
+                               'relation'      => 'AND',
+                                $issuem_issue,
+                                $category
+                        );
+
+                        $articles = array_merge( $articles, get_posts( $args ) );
+
+			//Now we need to get rid of duplicates (assuming an article is in more than one category
+			if ( !empty( $articles ) ) {
+				
+				foreach( $articles as $article ) {
+					$post__in[] = $article->ID;
+				}
+				
+				$args['post__in']	= array_unique( $post__in );
+				$args['orderby']	= 'post__in';
+				unset( $args['tax_query'] );
+			}
 			
+		} else {
+			if ( !empty( $article_category ) && 'all' !== $article_category ) {
+					
+				$category = array(
+					'taxonomy' 	=> $cat_type,
+					'field' 	=> 'slug',
+					'terms' 	=> split( ',', $article_category ),
+				);	
+				
+				$args['tax_query'] = array(
+					'relation'	=> 'AND',
+					$issuem_issue,
+					$category
+				);				
+			}
 		}
 		
 		$featured_articles = get_posts( $args );
