@@ -280,6 +280,8 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 				$issue_meta['cover_image'] = '';
 				update_option( 'issuem_issue_' . $tag->term_id . '_meta', $issue_meta );
 				
+				// remove this arg from the query otherwise a new image can't be uploaded
+				wp_redirect( remove_query_arg( 'remove_cover_image' ) );
 			}
 		
 			if ( !empty( $issue_meta['cover_image'] ) ) {
