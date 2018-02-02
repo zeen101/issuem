@@ -309,6 +309,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 				$issue_meta['pdf_version'] = '';
 				update_option( 'issuem_issue_' . $tag->term_id . '_meta', $issue_meta );
 				
+				wp_redirect( remove_query_arg( 'remove_pdf_version' ) );
 			}
 		
 			if ( !empty( $issue_meta['pdf_version'] ) ) {
