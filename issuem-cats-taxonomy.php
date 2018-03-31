@@ -168,7 +168,7 @@ if ( !function_exists( 'manage_issuem_article_categories_custom_column' ) ) {
 		
 		$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term_id . '_meta' );
 	
-		return $issue_cat_meta[$column_name];
+		return isset( $issue_cat_meta[$column_name] ) ? $issue_cat_meta[$column_name] : null;
 	
 	}
 	add_filter( "manage_issuem_issue_categories_custom_column", 'manage_issuem_article_categories_custom_column', 10, 3 );
