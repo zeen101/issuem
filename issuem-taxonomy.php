@@ -267,6 +267,8 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		<th valign="top" scope="row"><?php _e( 'Issue Status', 'issuem' ); ?></th>
 		<td><?php echo get_issuem_issue_statuses( $issue_meta['issue_status'] ); ?></td>
 		</tr>
+
+		<?php do_action( 'issuem_after_issue_status_setting' ); ?>
 		
 		<tr class="form-field">
 		<th valign="top" scope="row"><?php _e( 'Issue Order', 'issuem' ); ?></th>
