@@ -302,7 +302,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 			$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
 			
 			// If issue is not a Draft, add it to the archive array;
-			if ( !empty( $issue_meta['issue_status'] ) && ( 'Draft' !== $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
+			if ( !empty( $issue_meta['issue_status'] ) && ( !in_array( $issue_meta['issue_status'], get_issuem_hidden_statuses() ) || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
 			
 				switch( $orderby ) {
 					

@@ -871,3 +871,19 @@ if ( !function_exists( 'issuem_is_articles_page' ) ) {
 	}
 
 }
+
+/**
+ * Get all status that will be hidden from past issues page
+ * @since  2.7.2 
+ * @return array 
+ */
+function get_issuem_hidden_statuses() {
+
+	$hidden_statuses = array(
+		'Draft',
+		'Scheduled'
+	);
+
+	return apply_filters( 'issuem_hidden_statuses', $hidden_statuses );
+
+}

@@ -268,7 +268,7 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		<td><?php echo get_issuem_issue_statuses( $issue_meta['issue_status'] ); ?></td>
 		</tr>
 
-		<?php do_action( 'issuem_after_issue_status_setting' ); ?>
+		<?php do_action( 'issuem_after_issue_status_setting', $issue_meta ); ?>
 		
 		<tr class="form-field">
 		<th valign="top" scope="row"><?php _e( 'Issue Order', 'issuem' ); ?></th>
@@ -441,7 +441,7 @@ if ( !function_exists( 'get_issuem_draft_issues' ) )  {
 			if ( preg_match( '/issuem_issue_(\d+)_meta/', $name, $matches ) )
 				$term_ids[] = $matches[1];
 		
-		return $term_ids;
+		return apply_filters( 'issuem_draft_issue_ids', $term_ids );
 		
 	}
 
