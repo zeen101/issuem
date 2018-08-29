@@ -374,8 +374,9 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 	
 		$issue_meta = get_option( 'issuem_issue_' . $term_id . '_meta' );
 		
-		if ( !empty( $_POST['issue_status'] ) ) 
-			$issue_meta['issue_status'] = $_POST['issue_status'];
+		if ( isset( $_POST['issue_status'] ) ) {
+			$issue_meta['issue_status'] = sanitize_text_field( $_POST['issue_status'] );
+		}
 		
 		if ( !empty( $_POST['issue_order'] ) ) 
 			$issue_meta['issue_order'] = $_POST['issue_order'];
