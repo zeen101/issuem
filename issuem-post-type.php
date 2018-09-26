@@ -129,11 +129,11 @@ if ( !function_exists( 'issuem_article_meta_box' ) ) {
 		
 		<div id="issuem-article-metabox">
 		
-				<p><input id="featured_rotator" type="checkbox" name="featured_rotator" <?php checked( $featured_rotator || "on" == $featured_rotator ); ?> />
+				<p><input id="featured_rotator" type="checkbox" name="featured_rotator" <?php checked( 'on', $featured_rotator ); ?> />
 				<label for="featured_rotator"><?php _e( 'Add article to Featured Rotator', 'issuem' ); ?></label></p>
 	
 				
-				<p><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( $featured_thumb || "on" == $featured_thumb ); ?> /><label for="featured_thumb"><?php _e( 'Add article to Featured Thumbnails', 'issuem' ); ?></label></p>
+				<p><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( 'on', $featured_thumb ); ?> /><label for="featured_thumb"><?php _e( 'Add article to Featured Thumbnails', 'issuem' ); ?></label></p>
                     			
 				<p>
 				<label for="teaser_text"><strong><?php _e( 'Teaser Text', 'issuem' ); ?></strong></label><br>
@@ -170,27 +170,26 @@ if ( !function_exists( 'save_issuem_article_meta' ) ) {
 	 */
 	function save_issuem_article_meta( $post_id ) {
 	
-		// verify if this is an auto save routine. 
+			// verify if this is an auto save routine. 
 		// If it is our form has not been submitted, so we dont want to do anything
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-			return;
-			
-		if ( isset( $_REQUEST['_inline_edit'] ) || isset( $_REQUEST['doing_wp_cron'] ) )
-			return;
+		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return; 
+     
+	    // if our current user can't edit this post, bail  
+	    if( !current_user_can( 'edit_post' ) ) return;
 			
 		if ( isset( $_POST['teaser_text'] ) ) {
 			update_post_meta( $post_id, '_teaser_text', sanitize_text_field( $_POST['teaser_text'] ) );
 		}
 			
-		if ( !empty( $_POST['featured_rotator'] ) )
-			update_post_meta( $post_id, '_featured_rotator', $_POST['featured_rotator'] );
+		if ( isset( $_POST['featured_rotator'] ) )
+			update_post_meta( $post_id, '_featured_rotator', 'on' );
 		else
-			delete_post_meta( $post_id, '_featured_rotator' );
+			update_post_meta( $post_id, '_featured_rotator', 'off' );
 			
-		if ( !empty( $_POST['featured_thumb'] ) )
-			update_post_meta( $post_id, '_featured_thumb', $_POST['featured_thumb'] );
+		if ( isset( $_POST['featured_thumb'] ) )
+			update_post_meta( $post_id, '_featured_thumb', 'on' );
 		else
-			delete_post_meta( $post_id, '_featured_thumb' );
+			update_post_meta( $post_id, '_featured_thumb', 'off' );
 			
 		if ( isset( $_POST['issuem_author_name'] ) ) {
 			update_post_meta( $post_id, '_issuem_author_name', sanitize_text_field( $_POST['issuem_author_name'] ) );
