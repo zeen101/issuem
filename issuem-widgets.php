@@ -85,6 +85,8 @@ class IssueM_Active_Issue extends WP_Widget {
 				$out .= '<p class="issuem_widget_issue_cover_image"><img src="' . $issuem_settings['default_issue_image'] . '" /></p>';
 				
 		}
+
+		$out .= apply_filters( 'issuem_widget_after_issue_cover', '' );
 		
 		if ( 'on' == $instance['display_pdf_link'] ) {
 			if ( !empty( $meta_options['pdf_version'] ) )
