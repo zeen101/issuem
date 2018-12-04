@@ -274,33 +274,9 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 		<th valign="top" scope="row"><?php _e( 'Issue Order', 'issuem' ); ?></th>
 		<td><input type="text" name="issue_order" id="issue_order" value="<?php echo $issue_meta['issue_order'] ?>" /></td>
 		</tr>
-		
-		<?php
-			if ( !empty( $_GET['remove_cover_image'] ) ) {
-			
-				wp_delete_attachment( $issue_meta['cover_image'] );
-				$issue_meta['cover_image'] = '';
-				update_option( 'issuem_issue_' . $tag->term_id . '_meta', $issue_meta );
-				
-				// remove this arg from the query otherwise a new image can't be uploaded
-				wp_redirect( remove_query_arg( 'remove_cover_image' ) );
-			}
-		
-			if ( !empty( $issue_meta['cover_image'] ) ) {
-			
-				$view_image = '<p>' . wp_get_attachment_image( $issue_meta['cover_image'], 'issuem-cover-image' ) . '</p>';
-				$remove_image = '<p><a href="?' . http_build_query( wp_parse_args( array( 'remove_cover_image' => $issue_meta['cover_image'] ), $_GET ) ) . '">' . __( 'Remove Cover Image', 'issuem' ) . '</a></p>';
-			
-			} else {
-				
-				$view_image = '';
-				$remove_image = '';
-				
-			}
-		?>
-
+	
 		<tr class="form-field">
-			<th valign="top" scope="row"><?php _e( 'New Cover Image', 'issuem' ); ?></th>
+			<th valign="top" scope="row"><?php _e( 'Cover Image', 'issuem' ); ?></th>
 			<td>
 				<p class="hide-if-no-js">
 					<a title="Set Cover Image" href="javascript:;" id="set-cover-image">Set cover image</a>
@@ -403,22 +379,6 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 		if ( isset( $_POST['cover_image'] ) ) {
 			$issue_meta['cover_image'] = sanitize_text_field( $_POST['cover_image'] );
 		}
-		
-		/*
-		if ( !empty( $_FILES['cover_image']['name'] ) ) {
-			
-			require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
-			$id = media_handle_upload( 'cover_image', 0 ); //post id of Client Files page  
-			 
-			if ( is_wp_error($id) ) {  
-				$errors['upload_error'] = $id;  
-				$id = false;  
-			}
-			
-			$issue_meta['cover_image'] = $id;
-			
-		}
-		*/
 		
 		if ( !empty( $_FILES['pdf_version']['name'] ) ) {
 			
