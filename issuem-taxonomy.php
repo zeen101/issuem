@@ -298,11 +298,30 @@ if ( !function_exists( 'issuem_issue_taxonomy_edit_form_fields' ) )  {
 				
 			}
 		?>
-		
+
 		<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'Cover Image', 'issuem' ); ?></th>
-		<td><input type="file" name="cover_image" id="cover_image" value="" /><?php echo $view_image . $remove_image; ?></td>
+			<th valign="top" scope="row"><?php _e( 'New Cover Image', 'issuem' ); ?></th>
+			<td>
+				<p class="hide-if-no-js">
+					<a title="Set Cover Image" href="javascript:;" id="set-cover-image">Set cover image</a>
+				</p>
+
+				<div id="cover-image-container" class="hidden">
+					<img width="300" src="<?php echo isset( $issue_meta['cover_image'] ) ? wp_get_attachment_url( $issue_meta['cover_image'] ) : ''; ?>" />
+				</div>
+
+				<p class="hide-if-no-js hidden">
+					<a title="Remove Cover Image" href="javascript:;" id="remove-cover-image">Remove cover image</a>
+				</p>
+
+				<p id="cover-image-meta">
+					<input type="hidden" id="cover-image" name="cover_image" value="<?php echo isset( $issue_meta['cover_image'] ) ? $issue_meta['cover_image'] : ''; ?>" />
+					<input type="hidden" id="cover-image-title" name="cover-image-title" value="" />
+					<input type="hidden" id="cover-image-alt" name="cover-image-alt" value="" />
+				</p>
+			</td>
 		</tr>
+		
 		
 		<?php
 			if ( !empty( $_GET['remove_pdf_version'] ) ) {
@@ -380,7 +399,12 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 		
 		if ( !empty( $_POST['issue_order'] ) ) 
 			$issue_meta['issue_order'] = $_POST['issue_order'];
+
+		if ( isset( $_POST['cover_image'] ) ) {
+			$issue_meta['cover_image'] = sanitize_text_field( $_POST['cover_image'] );
+		}
 		
+		/*
 		if ( !empty( $_FILES['cover_image']['name'] ) ) {
 			
 			require_once(ABSPATH . 'wp-admin/includes/admin.php'); 
@@ -394,6 +418,7 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 			$issue_meta['cover_image'] = $id;
 			
 		}
+		*/
 		
 		if ( !empty( $_FILES['pdf_version']['name'] ) ) {
 			

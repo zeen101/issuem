@@ -274,8 +274,14 @@ if ( ! class_exists( 'IssueM' ) ) {
 			
 			// Hack for edit-tags to include the "enctype=multipart/form-data" argument in the edit tags HTML form, 
 		 	// for uploading issue cover images
-			if ( 'edit-tags.php' == $hook_suffix && !empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] )
+			if ( 'edit-tags.php' == $hook_suffix && !empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] ) {
 				wp_enqueue_script( 'issuem_issue-custom-tax-hacks', ISSUEM_URL . '/js/issuem_issue-custom-tax-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
+				
+			}
+
+			if ( 'term.php' == $hook_suffix && !empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] ) {
+				wp_enqueue_script( 'issuem-issue-admin', ISSUEM_URL . '/js/issuem-issue-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+			}
 				
 			if ( 'post.php' == $hook_suffix )
 				wp_enqueue_script( 'issuem_issue-edit-article-hacks', ISSUEM_URL . '/js/issuem_issue-edit-article-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
