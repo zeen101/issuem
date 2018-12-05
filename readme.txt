@@ -85,6 +85,7 @@ You must have:
 * Fix sorting by issue order in admin table
 * Update how article meta is saved during a bulk edit so that options stay
 * Add issuem_widget_after_issue_cover filter
+* Update admin logo
 
 = 2.7.2 =
 * Add filter for statuses
