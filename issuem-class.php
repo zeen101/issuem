@@ -253,12 +253,14 @@ if ( ! class_exists( 'IssueM' ) ) {
 		 * @uses wp_enqueue_style() to enqueue CSS files
 		 */
 		function admin_wp_print_styles() {
-		
+			
+			wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
+			
 			global $hook_suffix;
 			
-			if ( 'article_page_issuem' == $hook_suffix || 'article_page_issuem-addons' == $hook_suffix
-				|| ( 'edit.php' == $hook_suffix && !empty( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
-				wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
+			// if ( 'article_page_issuem' == $hook_suffix || 'article_page_issuem-addons' == $hook_suffix
+			// 	|| ( 'edit.php' == $hook_suffix && !empty( $_GET['post_type'] ) && 'article' == $_GET['post_type'] ) )
+				
 			
 		}
 	
@@ -1150,8 +1152,8 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/leaky.jpg" alt="Leaky Paywall">
 									<h3>Leaky Paywall</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/leakypaywall/?ref=issuem_addons">Purchase</a>
-									<p>The #1 metered paywall solution for WordPress.</p>
+									<a class="button" target="_blank" href="https://zeen101.com/for-developers/leakypaywall?ref=issuem_addons">Get</a>
+									<p>The best metered paywall for WordPress. Generate revenue from your amazing content.</p>
 	                            </div>
 	                        </td>
 
@@ -1159,17 +1161,17 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/unipress.jpg" alt="UniPress">
 									<h3>UniPress</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/unipress/?ref=issuem_addons">Purchase</a>
+									<a class="button" target="_blank" href="https://zeen101.com/unipress/?ref=issuem_addons">Get</a>
 									<p>UniPress is the first WordPress-to-App publishing framework. It is now simple, quick, and affordable to offer your publication as an app.</p>
 	                            </div>
 	                        </td>
 	                    
 	                       <td class="available-addon">
 	                        	<div class="available-addon-inner">
-									<img src="https://zeen101.com/wp-content/uploads/2015/03/addrop.jpg" alt="Ad Dropper">
-									<h3>Ad Dropper</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/downloads/ad-dropper/?ref=issuem_addons">Purchase</a>
-									<p>Manage and track your ads easily and seamlessly.</p>
+									<img src="https://zeen101.com/wp-content/uploads/2015/03/addrop.jpg" alt="Issue Scheduler">
+									<h3>Issue Scheduler</h3>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-issue-scheduler?ref=issuem_addons">Get</a>
+									<p>Schedule an issue to go live at a certain day and time, automatically. Never forget to make an issue live again!</p>
 	                            </div>
 	                        </td>
 	                        
@@ -1181,7 +1183,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/pdf.jpg" alt="Issue to PDF">
 									<h3>Issue-to-PDF</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/downloads/issue-to-pdf/?ref=issuem_addons">Purchase</a>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/issue-to-pdf/?ref=issuem_addons">Get</a>
 									<p>The Issue-to-PDF plugin turns any issue created with the IssueM plugin into a PDF, ready to print.</p>
 	                            </div>
 	                        </td>
@@ -1190,7 +1192,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/migrate.jpg" alt="Post to Issue Migration">
 									<h3>Post to Issue Migration</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/downloads/migration-tool/?ref=issuem_addons">Purchase</a>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/migration-tool/?ref=issuem_addons">Get</a>
 									<p>Need to migrate your posts into IssueM issues? Migrate posts, pages, and other post types into your selected issue.</p>
 	                            </div>
 	                        </td>
@@ -1199,7 +1201,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        	<div class="available-addon-inner">
 									<img src="https://zeen101.com/wp-content/uploads/2015/03/search.jpg" alt="Advanced Issue Search">
 									<h3>Advanced Issue Search</h3>
-									<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-advanced-search/?ref=issuem_addons">Purchase</a>
+									<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-advanced-search/?ref=issuem_addons">Get</a>
 									<p>Give your readers a more powerful way to find your articles. One shortcode will allow readers to search by Issue, Article Category, or Keyword.</p>
 	                            </div>
 	                        </td>

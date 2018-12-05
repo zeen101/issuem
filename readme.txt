@@ -1,9 +1,9 @@
 === IssueM ===
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
-Requires at least: 3.3
+Requires at least: 4.6
 Tested up to: 4.9.8
-Stable tag: 2.7.2
+Stable tag: 2.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,12 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.7.3 =
+* Use media uploader for cover image on an issue
+* Fix sorting by issue order in admin table
+* Update how article meta is saved during a bulk edit so that options stay
+* Add issuem_widget_after_issue_cover filter
 
 = 2.7.2 =
 * Add filter for statuses
