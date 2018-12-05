@@ -107,54 +107,37 @@ if ( !function_exists( 'issuem_issue_sortable_columns' ) ) {
 
 }
 
-if ( !function_exists( 'issuem_issue_sortable_column_orderby' ) )  {
-	
-	/**
-	 * Filters sortable columns
-	 *
-	 * @since 1.0.0
-	 * @todo there is a better way to do this sort
-	 *
-	 * @param array $terms
-	 * @param array $taxonomies
-	 * @param array $args
-	 * @return array Of sorted terms
-	 */
-	function issuem_issue_sortable_column_orderby( $terms, $taxonomies, $args ) {
-	
-		global $hook_suffix;
 
-		if ( 'edit-tags.php' == $hook_suffix && in_array( 'issuem_issue', $taxonomies ) 
-				&& ( empty( $_GET['orderby'] ) && !empty( $args['orderby'] ) && 'issue_order' == $args['orderby'] ) ) {
-				
-			$sort = array();
-			$count = 0;
-		
-			foreach ( $terms as $issue ) {
-				
-				$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
-			
-				if ( !empty( $issue_meta['issue_order'] ) )
-					$sort[ $issue_meta['issue_order'] ] = $issue;
-				else 
-					$sort[ '-' . ++$count ] = $issue;
-				
-			}
-		
-			if ( "asc" != $args['order'] )
-				krsort( $sort );
-			else
-				ksort( $sort );
-			
-			$terms = $sort;
-			
-		}
-		
-		return $terms;
-		
-	}
-	add_filter( 'get_terms', 'issuem_issue_sortable_column_orderby', 10, 3 );
+add_filter( 'terms_clauses', 'issuem_issue_filter_terms_clauses', 10, 3 );
 
+/**
+ * Filter WP_Term_Query meta query
+ *
+ * @param   object  $query  WP_Term_Query
+ * @return  object
+ */
+function issuem_issue_filter_terms_clauses( $pieces, $taxonomies, $args ) {
+
+    global $pagenow, $wpdb; 
+
+    // Require ordering
+    $orderby = ( isset( $_GET['orderby'] ) ) ? trim( sanitize_text_field( $_GET['orderby'] ) ) : ''; 
+    if ( empty( $orderby ) ) { return $pieces; }
+
+    // set taxonomy
+    $taxonomy = $taxonomies[0];
+
+    // only if current taxonomy or edit page in admin           
+    if ( !is_admin() || $pagenow !== 'edit-tags.php' || !in_array( $taxonomy, [ 'issuem_issue' ] ) ) { return $pieces; }
+
+    // and ordering matches
+    if ( $orderby === 'issue_order' ) {
+        $pieces['join']  .= ' INNER JOIN ' . $wpdb->termmeta . ' AS tm ON t.term_id = tm.term_id ';
+        $pieces['where'] .= ' AND tm.meta_key = "issue_order"'; 
+        $pieces['orderby']  = ' ORDER BY tm.meta_value '; 
+    }
+
+    return $pieces;
 }
 
 if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
@@ -174,11 +157,14 @@ if ( !function_exists( 'manage_issuem_issue_custom_column' ) )  {
 	function manage_issuem_issue_custom_column( $blank, $column_name, $term_id ) {
 		
 		$issue_meta = get_option( 'issuem_issue_' . $term_id . '_meta' );
-	
-		if ( !empty( $issue_meta[$column_name] ) )
+
+		if ( $column_name == 'issue_order' ) {
+			return get_term_meta( $term_id, 'issue_order', true );
+		} else if ( !empty( $issue_meta[$column_name] ) ) {
 			return $issue_meta[$column_name];
-		else
+		} else {
 			return '';
+		}
 	
 	}
 	add_filter( "manage_issuem_issue_custom_column", 'manage_issuem_issue_custom_column', 10, 3 );
@@ -373,8 +359,11 @@ if ( !function_exists( 'save_issuem_issue_meta' ) ) {
 			$issue_meta['issue_status'] = sanitize_text_field( $_POST['issue_status'] );
 		}
 		
-		if ( !empty( $_POST['issue_order'] ) ) 
-			$issue_meta['issue_order'] = $_POST['issue_order'];
+		if ( isset( $_POST['issue_order'] ) ) {
+			$issue_order = sanitize_text_field( $_POST['issue_order'] );
+			$issue_meta['issue_order'] = $issue_order;
+			update_term_meta( $term_id, 'issue_order', $issue_order );
+		}
 
 		if ( isset( $_POST['cover_image'] ) ) {
 			$issue_meta['cover_image'] = sanitize_text_field( $_POST['cover_image'] );
@@ -430,5 +419,38 @@ if ( !function_exists( 'get_issuem_draft_issues' ) )  {
 		return apply_filters( 'issuem_draft_issue_ids', $term_ids );
 		
 	}
+
+}
+
+
+add_action( 'admin_init', 'issuem_convert_issue_order_to_term_meta' );
+
+function issuem_convert_issue_order_to_term_meta() {
+
+	$settings = get_issuem_settings();
+
+	if ( $settings['issue_order_converted'] ) {
+		return;
+	}
+
+	$issues = get_terms( array(
+		'taxonomy' => 'issuem_issue',
+		'hide_empty' => false,
+	));
+
+	if ( count( $issues ) < 1 ) {
+		return;
+	}
+
+	foreach( $issues as $issue ) {
+
+		$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
+		$issue_order = isset( $issue_meta['issue_order'] ) ? $issue_meta['issue_order'] : '';
+		update_term_meta( $issue->term_id, 'issue_order', $issue_order );
+
+	}
+
+	$settings['issue_order_converted'] = true;
+	update_option( 'issuem', $settings );
 
 }

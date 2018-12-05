@@ -368,6 +368,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 								'show_rotator_control'	=> '',
 								'show_rotator_direction' => '',
 								'animation_type'		=> 'slide',
+								'issue_order_converted'	=> false
 
 
 
