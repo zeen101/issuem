@@ -480,6 +480,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			'orderby'			=> $orderby,
 			'order'				=> $order,
 			'meta_key'			=> '_featured_rotator',
+			'meta_value'		=> 'on',
 			'issuem_issue' 		=> $issue,
 		);
 		
@@ -634,6 +635,7 @@ if ( !function_exists( 'do_issuem_featured_thumbs' ) ) {
 			'orderby'			=> $orderby,
 			'order'				=> $order,
 			'meta_key'			=> '_featured_thumb',
+			'meta_value'		=> 'on',
 			'issuem_issue' 		=> $issue,
 		);
 		
