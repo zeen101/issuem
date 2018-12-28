@@ -794,9 +794,9 @@ if ( ! class_exists( 'IssueM' ) ) {
 	                        <h3><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
 	                        
 	                        <div class="inside">
-	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="http://zeen101.com/documentation/getting-started/">Getting Started</a> guide.</p>
+	                        	<p>Need help setting up your magazine? Please read our <a target="_blank" href="https://zeen101.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
 
-	                        	<p>Still have questions? <a target="_blank" href="https://zeen101.com/get-help/">Submit a support ticket.</a></p>
+	                        	<p>Still have questions? <a target="_blank" href="https://zeen101.com/contact/">Submit a support ticket.</a></p>
 
 	                        </div>
 
