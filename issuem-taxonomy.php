@@ -134,7 +134,7 @@ function issuem_issue_filter_terms_clauses( $pieces, $taxonomies, $args ) {
     if ( $orderby === 'issue_order' ) {
         $pieces['join']  .= ' INNER JOIN ' . $wpdb->termmeta . ' AS tm ON t.term_id = tm.term_id ';
         $pieces['where'] .= ' AND tm.meta_key = "issue_order"'; 
-        $pieces['orderby']  = ' ORDER BY tm.meta_value '; 
+        $pieces['orderby']  = ' ORDER BY CAST(tm.meta_value as SIGNED INTEGER) '; 
     }
 
     return $pieces;
