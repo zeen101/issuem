@@ -247,6 +247,49 @@ if ( !function_exists( 'do_issuem_title' ) ) {
 		
 		$defaults = array(
 			'issue' => get_active_issuem_issue(),
+			'field'	=> 'slug',
+			'clickable' => 'no'
+		);
+	
+		// Merge defaults with passed atts
+		// Extract (make each array element its own PHP var
+		extract( shortcode_atts( $defaults, $atts ) );
+		
+
+		$term = get_term_by( $field, $issue, 'issuem_issue' );
+
+		if($clickable == 'yes') {
+			$termlink = get_term_link( $term );
+
+		return '<a href="' . esc_url($termlink) . '"><div class="issuem_title">' . $term->name . '</div></a>';
+
+		}else{
+		
+		return '<div class="issuem_title">' . $term->name . '</div>';
+
+	}
+		
+	}
+	add_shortcode( 'issuem_issue_title', 'do_issuem_title' );
+
+}
+
+if ( !function_exists( 'do_issuem_description' ) ) {
+	
+	/**
+	 * Outputs Issue Title HTML from shortcode call
+	 *
+	 * @since 1.1.8
+	 *
+	 * @param array $atts Arguments passed through shortcode
+	 * @return string HTML output of Issue Title
+	 */
+	function do_issuem_description( $atts ) {
+		
+		$issuem_settings = get_issuem_settings();
+		
+		$defaults = array(
+			'issue' => get_active_issuem_issue(),
 			'field'	=> 'slug'
 		);
 	
@@ -254,12 +297,15 @@ if ( !function_exists( 'do_issuem_title' ) ) {
 		// Extract (make each array element its own PHP var
 		extract( shortcode_atts( $defaults, $atts ) );
 		
+
 		$term = get_term_by( $field, $issue, 'issuem_issue' );
+
 		
-		return '<div class="issuem_title">' . $term->name . '</div>';
+		return '<div class="issuem_description">' . $term->description . '</div>';
+
 		
 	}
-	add_shortcode( 'issuem_issue_title', 'do_issuem_title' );
+	add_shortcode( 'issuem_issue_description', 'do_issuem_description' );
 
 }
 	
