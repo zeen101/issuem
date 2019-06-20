@@ -55,6 +55,7 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 			'register_meta_box_cb' 	=> 'add_issuem_articles_metaboxes',
 			'has_archive' 			=> true,
 			'rewrite' 				=> array( 'slug' => 'article' ),
+			'show_in_rest' 			=> true,
 			'taxonomies'			=> $taxonomies,
 			'menu_icon'				=> ''
 			);
