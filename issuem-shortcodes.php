@@ -101,7 +101,7 @@ if ( !function_exists( 'do_issuem_articles' ) ) {
 				
 			} else {
 			
-				foreach( split( ',', $article_category ) as $term_slug ) {
+				foreach( explode( ',', $article_category ) as $term_slug ) {
 					
 					$term = get_term_by( 'slug', $term_slug, 'issuem_issue_categories' );
 				
@@ -494,7 +494,7 @@ if ( !function_exists( 'do_issuem_featured_rotator' ) ) {
 			$category = array(
 				'taxonomy' 	=> $cat_type,
 				'field' 	=> 'slug',
-				'terms' 	=> split( ',', $article_category ),
+				'terms' 	=> explode( ',', $article_category ),
 			);	
 			
 			$args['tax_query'] = array(
