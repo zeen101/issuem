@@ -398,7 +398,7 @@ if ( !function_exists( 'do_issuem_archives' ) ) {
 			else
 				$image_line = '<img src="' . $default_image . '" />';
 				
-			$results .= '<p><a class="featured_archives_cover" style="width: ' . apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ) . 'px; height: ' . apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ) . 'px;" href="' . $issue_url . '">' . $image_line . '</a>';
+			$results .= '<p><a class="featured_archives_cover" style="width: ' . apply_filters( 'issuem-cover-image-width', $issuem_settings['cover_image_width'] ) . 'px; height: ' . apply_filters( 'issuem-cover-image-height', $issuem_settings['cover_image_height'] ) . 'px;" href="' . apply_filters( 'issuem_archives_issue_url', $issue_url, $issue_array ) . '">' . $image_line . '</a>';
 			$results .= '<br /><a href="' . esc_url( $issue_url ) . '">' . $issue_array[0]->name . '</a>';
 			$results .= '<br />' . $pdf_line;
 		
