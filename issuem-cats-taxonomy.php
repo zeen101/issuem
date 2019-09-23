@@ -40,6 +40,7 @@ if ( !function_exists( 'create_issuem_cats_taxonomy' ) ) {
 				'labels' 		=> $labels,
 				'show_ui' 		=> true,
 				'show_tagcloud' => true,
+				'show_in_rest'  => true, 
 				'query_var' 	=> true,
 				'rewrite' 		=> array( 'slug' => 'article-categories' ),
 				'capabilities' 	=> array(

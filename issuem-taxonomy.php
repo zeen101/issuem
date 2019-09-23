@@ -39,6 +39,7 @@ if ( !function_exists( 'create_issuem_cats_taxonomy' ) ) {
 				'labels' 		=> $labels,
 				'show_ui' 		=> true,
 				'query_var' 	=> true,
+				'show_in_rest'  => true, 
 				'rewrite' 		=> array( 'slug' => 'issue' ),
 				'capabilities' 	=> array(
 						'manage_terms' 	=> 'manage_issues',
