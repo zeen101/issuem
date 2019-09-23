@@ -60,7 +60,7 @@ if ( !function_exists( 'create_article_post_type' ) ) {
 			'menu_icon'				=> ''
 			);
 	
-		register_post_type( 'article', $args );
+		register_post_type( 'article', apply_filters( 'issuem_article_post_type_args', $args ) );
 		
 	}
 	add_action( 'init', 'create_article_post_type' );
