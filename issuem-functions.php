@@ -391,7 +391,7 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 				$excerpt = $post->post_excerpt;
 			
 			$excerpt = strip_shortcodes( $excerpt );
-			$excerpt = apply_filters( 'the_content', $excerpt );
+			// $excerpt = apply_filters( 'the_content', $excerpt );
 			$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 			
 			if ( !empty( $matches[1] ) )
