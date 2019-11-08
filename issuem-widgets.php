@@ -15,11 +15,11 @@ function register_issuem_widgets() {
 	
 	$settings = get_issuem_settings();
 	
+		register_widget( 'IssueM_Article_Categories' );
 	register_widget( 'IssueM_Active_Issue' );
 	register_widget( 'IssueM_Article_List' );
 
-	if ( empty( $settings['use_wp_taxonomies'] ) ) 
-		register_widget( 'IssueM_Article_Categories' );
+	// if ( empty( $settings['use_wp_taxonomies'] ) ) 
 
 }
 add_action( 'widgets_init', 'register_issuem_widgets' );
@@ -456,7 +456,8 @@ class IssueM_Article_Categories extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array( 'classname' => 'issuem_widget_categories', 'description' => __( 'A list or dropdown of Article categories', 'issuem' ) );
-		parent::__construct('categories', __( 'Article Categories', 'issuem' ), $widget_ops);
+		parent::__construct('IssueM_Article_Categories', __( 'Article Categories', 'issuem' ), $widget_ops);
+
 	}
 
 	function widget( $args, $instance ) {
