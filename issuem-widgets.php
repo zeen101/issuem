@@ -15,11 +15,11 @@ function register_issuem_widgets() {
 	
 	$settings = get_issuem_settings();
 	
+		register_widget( 'IssueM_Article_Categories' );
 	register_widget( 'IssueM_Active_Issue' );
 	register_widget( 'IssueM_Article_List' );
 
-	if ( empty( $settings['use_wp_taxonomies'] ) ) 
-		register_widget( 'IssueM_Article_Categories' );
+	// if ( empty( $settings['use_wp_taxonomies'] ) ) 
 
 }
 add_action( 'widgets_init', 'register_issuem_widgets' );
