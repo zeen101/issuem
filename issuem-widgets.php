@@ -80,9 +80,9 @@ class IssueM_Active_Issue extends WP_Widget {
 		if ( 'on' == $instance['display_issue_cover'] ) {
 		
 			if ( !empty( $meta_options['cover_image'] ) )
-				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', esc_url( $issue_url ), $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image' ) . '</a></p>';
+				$out .= '<p class="issuem_widget_issue_cover_image"><a href="' . apply_filters( 'issuem_issue_url', esc_url( $issue_url ), $issue, $meta_options ) . '">' . wp_get_attachment_image( $meta_options['cover_image'], 'issuem-cover-image', false, array( 'alt' => $term->name ) ) . '</a></p>';
 			else
-				$out .= '<p class="issuem_widget_issue_cover_image"><img src="' . $issuem_settings['default_issue_image'] . '" /></p>';
+				$out .= '<p class="issuem_widget_issue_cover_image"><img src="' . $issuem_settings['default_issue_image'] . '" alt="' . $term->name . '" /></p>';
 				
 		}
 
@@ -94,6 +94,8 @@ class IssueM_Active_Issue extends WP_Widget {
 			else if ( !empty( $meta_options['external_pdf_link'] ) )
 				$out .= '<p><a class="issuem_widget_issue_pdf_link" target="_blank" href="' . apply_filters( 'issuem_pdf_link_url', $meta_options['external_pdf_link'] ) . '">' . $issuem_settings['pdf_title'] . '</a></p>';
 		}
+		
+		$out = apply_filters( 'issuem_widget_active_issue_output', $out, $instance, $term, $meta_options, $issue, $issuem_settings );
 
 		if ( ! empty( $out ) ) {
 			
