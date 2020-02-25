@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 4.6
-Tested up to: 5.2.2
-Stable tag: 2.8.0
+Tested up to: 5.3.2
+Stable tag: 2.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,12 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.8.1 =
+* Fix excerpt filtering when content has oembed
+* Add issuem_article_post_type_args filter for adjusting article post type before registering
+* Add article taxonomies to post type editor in block editor
+* Add issuem_archives_issue_url filter
 
 = 2.8.0 =
 * Add fix for issue order
