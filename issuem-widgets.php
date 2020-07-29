@@ -373,12 +373,17 @@ class IssueM_Article_List extends WP_Widget {
 			<?php
 			$issuem_settings = get_issuem_settings();
 		
-			if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) 
+			if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) {
 				$cat_type = 'category';
-			else
+			} else {
 				$cat_type = 'issuem_issue_categories';
+			}
 			
-			$categories = get_terms( $cat_type );
+			$categories = get_terms( array(
+			    'taxonomy' => $cat_type,
+			    'hide_empty' => false,
+			) );
+
 			?>  
 			<p>
 	        	<label for="<?php echo $this->get_field_id('article_category'); ?>"><?php _e( 'Select Category to Display:', 'issuem' ); ?></label><br />
