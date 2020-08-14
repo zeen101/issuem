@@ -288,9 +288,10 @@ if ( ! class_exists( 'IssueM' ) ) {
 			if ( 'post.php' == $hook_suffix )
 				wp_enqueue_script( 'issuem_issue-edit-article-hacks', ISSUEM_URL . '/js/issuem_issue-edit-article-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
 				
-			if ( 'article_page_issuem' == $hook_suffix )
-				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+			if ( 'article_page_issuem' == $hook_suffix ) {
+				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery', 'wp-color-picker' ), ISSUEM_VERSION );
 				wp_enqueue_media();
+			}
 
 			wp_enqueue_script( 'issuem-script', ISSUEM_URL . 'js/script.js', array( 'jquery' ), ISSUEM_VERSION );
 
