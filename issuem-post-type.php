@@ -203,3 +203,74 @@ if ( !function_exists( 'save_issuem_article_meta' ) ) {
 	add_action( 'save_post', 'save_issuem_article_meta' );
 
 }
+
+add_filter( 'manage_edit-article_columns' , 'issuem_article_admin_columns' );
+add_action( 'manage_article_posts_custom_column' , 'issuem_article_admin_custom_columns', 10, 2 );
+
+function issuem_article_admin_columns($columns) {
+
+	$columns['issue'] = __( 'Issue' );
+	$columns['category'] = __( 'Categories' );
+	$columns['tag'] = __( 'Tags' );
+	   
+	return $columns;
+
+}
+
+function issuem_article_admin_custom_columns( $column, $post_id  ) {
+
+	$issuem_settings = get_issuem_settings();
+	
+	if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) {
+		$tag_type = 'post_tag';
+		$cat_type = 'category';	
+	} else {
+		$tag_type = 'issuem_issue_tags';
+		$cat_type = 'issuem_issue_categories';
+	}
+
+	$cats = get_the_terms( $post_id, $cat_type );
+	$tags = get_the_terms( $post_id, $tag_type );
+	$issues = get_the_terms( $post_id, 'issuem_issue' );
+
+	$cat_list = '';
+	$tag_list = '';
+	$issue_list = '';
+
+	if ( !empty( $cats ) ) {
+		foreach( $cats as $cat ) {
+			$cat_list .= '<a href="' . get_term_link( $cat->term_id ) . '">' . $cat->name . '</a>, ';
+		}
+	}
+
+	if ( !empty( $tags ) ) {
+		foreach( $tags as $tag ) {
+			$tag_list .= '<a href="' . get_term_link( $tag->term_id ) . '">' . $tag->name . '</a>, ';
+		}
+	}
+
+	if ( !empty( $issues ) ) {
+		foreach( $issues as $issue ) {
+			$link = admin_url() . 'edit.php?post_type=article&issuem_issue=' . $issue->slug;
+			$issue_list .= '<a href="' . $link . '">' . $issue->name . '</a>, ';
+		}
+	}
+
+	
+
+	switch ( $column ) {
+		
+		case 'issue' :
+	       echo substr_replace( $issue_list, '', -2);
+	       break;
+
+	   case 'category' :
+	       echo substr_replace( $cat_list, '', -2);
+	       break;
+
+	   case 'tag':
+	   		echo substr_replace( $tag_list, '', -2);
+	       break;
+	}
+
+}
