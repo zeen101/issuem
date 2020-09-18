@@ -461,7 +461,8 @@ class IssueM_Article_Categories extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array( 'classname' => 'issuem_widget_categories', 'description' => __( 'A list or dropdown of Article categories', 'issuem' ) );
-		parent::__construct('categories', __( 'Article Categories', 'issuem' ), $widget_ops);
+		parent::__construct('IssueM_Article_Categories', __( 'Article Categories', 'issuem' ), $widget_ops);
+
 	}
 
 	function widget( $args, $instance ) {
