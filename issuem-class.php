@@ -525,7 +525,7 @@ if ( ! class_exists( 'IssueM' ) ) {
 				?>
 					<script type="text/javascript">
 					<!--
-					window.location = "<?php echo $_SERVER['PHP_SELF'] .'?post_type=article&page=issuem&settings_saved=true'; ?>"
+					window.location = "<?php echo admin_url('edit.php?post_type=article&page=issuem&settings_saved=true'); ?>"
 					//-->
 					</script>
 				<?php
