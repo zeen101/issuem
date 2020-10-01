@@ -283,11 +283,13 @@ if ( ! class_exists( 'IssueM' ) ) {
 
 			if ( 'term.php' == $hook_suffix && !empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] ) {
 				wp_enqueue_script( 'issuem-issue-admin', ISSUEM_URL . '/js/issuem-issue-admin.js', array( 'jquery' ), ISSUEM_VERSION );
+				wp_enqueue_media();
 			}
 				
-			if ( 'post.php' == $hook_suffix )
+			if ( 'post.php' == $hook_suffix ) {
 				wp_enqueue_script( 'issuem_issue-edit-article-hacks', ISSUEM_URL . '/js/issuem_issue-edit-article-hacks.js', array( 'jquery' ), ISSUEM_VERSION );
-				
+			}
+			
 			if ( 'article_page_issuem' == $hook_suffix ) {
 				wp_enqueue_script( 'issuem-admin', ISSUEM_URL . '/js/issuem-admin.js', array( 'jquery', 'wp-color-picker' ), ISSUEM_VERSION );
 				wp_enqueue_media();
