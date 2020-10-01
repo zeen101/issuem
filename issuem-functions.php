@@ -21,7 +21,10 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 		$issues = array();
 		$count = 0;
 		
-		$issuem_issues = get_terms( 'issuem_issue' );
+		$issuem_issues = get_terms( array(
+			'taxonomy' => 'issuem_issue',
+			'hide_empty' => false
+		) );
 						
 		foreach ( $issuem_issues as $issue ) {
 				
