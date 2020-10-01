@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 4.6
-Tested up to: 5.5
-Stable tag: 2.8.2
+Tested up to: 5.5.1
+Stable tag: 2.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,10 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.8.3 =
+* Display latest issue in widget even if it has no articles attached
+* Fix cover image setting on issue page
 
 = 2.8.2 =
 * Add admin columns on article for issue, categories, and tags
