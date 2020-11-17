@@ -422,7 +422,7 @@ if (!class_exists('IssueM')) {
 				$tab = '';
 			}
 
-			$settings_tabs = apply_filters('issuem_settings_tabs', array('general'));
+			$settings_tabs = apply_filters('issuem_settings_tabs', array('general', 'licenses'));
 			$current_tab = apply_filters('issuem_current_tab', $tab, $settings_tabs);
 
 			if ($current_tab == 'general') {
@@ -578,6 +578,9 @@ if (!class_exists('IssueM')) {
 							<a id="general-tab" href="<?php echo admin_url('edit.php?post_type=article&page=issuem'); ?>" class="nav-tab<?php if ($current_tab == 'general') { ?> nav-tab-active<?php } ?>"><?php _e('General', 'issuem'); ?></a>
 
 							<?php do_action('issuem_settings_tabs_links', $current_tab); ?>
+
+							<a href="<?php echo admin_url('edit.php?post_type=article&page=issuem&tab=licenses'); ?>" class="nav-tab<?php if ($current_tab == 'licenses') { ?> nav-tab-active<?php } ?>"><?php _e('Licenses', 'issuem'); ?></a>
+
 						</h2>
 					<?php
 					} ?>
@@ -816,6 +819,18 @@ if (!class_exists('IssueM')) {
 
 							<?php endif; // general tab 
 							?>
+
+							<?php if ($current_tab == 'licenses') : ?>
+
+								<?php do_action('issuem_before_licenses_settings'); ?>
+
+								<h2><a target="_blank" href="https://zeen101.com/downloads/category/issuem-addons/?utm_source=plugin&utm_medium=license_tab&utm_content=link&utm_campaign=settings">Find out more about our add-ons</a></h2>
+
+								<?php wp_nonce_field('verify', 'issuem_license_wpnonce'); ?>
+
+								<?php do_action('issuem_after_licenses_settings'); ?>
+
+							<?php endif; ?>
 
 						</form>
 
