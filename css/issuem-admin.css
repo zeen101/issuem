@@ -1,106 +1,117 @@
 /* CSS Document */
 
 #menu-posts-article .wp-menu-image {
-    background: url('../images/zeen-logo-gr.png') no-repeat;
-    background-size: 22px 20px;
-    background-position: 7px 7px;
-    width: 22px;
-    height: 20px;
+  background: url("../images/zeen-logo-gr.png") no-repeat;
+  background-size: 22px 20px;
+  background-position: 7px 7px;
+  width: 22px;
+  height: 20px;
 }
 
 table#issuem_administrator_options {
-	width: 100%;	
+  width: 100%;
 }
 
 .issuem-settings .postbox-container.column-primary {
-	width: 70%;
+  width: 70%;
 }
 
 .issuem-settings .postbox-container.column-secondary {
-	width: 28%; 
-	float: right; 
-	padding-top: 0px;
+  width: 28%;
+  float: right;
+  padding-top: 0px;
 }
 
-#issuem_administrator_options tr th, #issuem_administrator_options tr td {
-	vertical-align: top;
-	padding-bottom: 25px;
+#issuem_administrator_options tr th,
+#issuem_administrator_options tr td {
+  vertical-align: top;
+  padding-bottom: 25px;
 }
 
 #issuem_administrator_options tr th {
-	/*padding-top: 5px;*/
+  /*padding-top: 5px;*/
 }
 
 div#issuem_rss_item {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-    font-size: 12px;
-    line-height: 19px;
-    margin: 15px 0 20px 0;
-    padding: 10px 0 10px 75px;
-    text-align: center;
-    border-color: #E6DB55;
-    color: #555555;
-	min-height: 64px;
-	background: #FFFBCC url( '../images/issuem-64x64.png' ) no-repeat 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 12px;
+  line-height: 19px;
+  margin: 15px 0 20px 0;
+  padding: 10px 0 10px 75px;
+  text-align: center;
+  border-color: #e6db55;
+  color: #555555;
+  min-height: 64px;
+  background: #fffbcc url("../images/issuem-64x64.png") no-repeat 10px;
 }
 
 div#issuem_rss_item a {
-	text-decoration: none;
-	font-weight: bold;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #wpbody-content .metabox-holder {
-	padding-top: 0;
+  padding-top: 0;
 }
 
 .issuemtab.active {
-	display: block;
-	overflow: auto;
-	
+  display: block;
+  overflow: auto;
 }
 
 .issuemtab {
-	display: none;
+  display: none;
 }
 
 .issuem-settings .nav-tab-active {
-	background: #F1F1F1;
-	border-bottom: 1px solid #F1F1F1;
+  background: #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .issuem-settings .postbox {
-	border-top: 1px solid #CCCCCC;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .issuem-settings .section-title {
-	padding-left: 10px;
+  padding-left: 10px;
 }
 
 .issuem-settings .wp-picker-container {
-	display: inline;
+  display: inline;
 }
 
 #issuem-addons {
-
 }
 
 td.available-addon {
-	border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    max-width: 340px;
-    min-width: 250px;
-    vertical-align: top;
-    width: 33%;
-    background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  max-width: 340px;
+  min-width: 250px;
+  vertical-align: top;
+  width: 33%;
+  background: #fff;
 }
 
 div.available-addon-inner {
-	margin: 20px;
+  margin: 20px;
+}
+
+.issuem-license-key-box {
+  background: #fff;
+  padding: 15px 15px 5px 15px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  border: 1px solid #ddd;
+}
+
+.issuem-license-key-box .issuem-license-key-title {
+  margin-top: 0;
+  margin-bottom: 0;
 }
