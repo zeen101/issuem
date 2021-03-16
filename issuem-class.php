@@ -1073,46 +1073,44 @@ if (!class_exists('IssueM')) {
 
 
 
-						<p><?php _e('This shortcode will display the grid of featured article thumbnails in an issue', 'issuem'); ?>.</p>
+					<p><?php _e('This shortcode will display the grid of featured article thumbnails in an issue', 'issuem'); ?>.</p>
 
-						<h4><?php _e('Examples:', 'issuem'); ?></h4>
+					<h4><?php _e('Examples:', 'issuem'); ?></h4>
 
-						<p><em>[issuem_featured_thumbnails orderby="menu_order" order="ASC"]</em></p>
+					<p><em>[issuem_featured_thumbnails orderby="menu_order" order="ASC"]</em></p>
 
-						<hr>
-
-
-						<p><strong>IssueM <?php _e('Archive Page:', 'issuem'); ?>:</strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code></p>
-
-						<p><?php _e('This shortcode will display the list of current and past issues.', 'issuem'); ?></p>
-
-						<h4><?php _e('Default Arguments:', 'issuem'); ?></h4>
+					<hr>
 
 
-						<ul>
-							<li><em>orderby</em> - term_id</li>
-							<li><em>order</em> - DESC</li>
-							<li><em>limit</em> - 0</li>
-							<li><em>pdf_title</em> - IssueM <?php _e('Setting "PDF Title"', 'issuem'); ?></li>
-							<li><em>default_image</em> - IssueM <?php _e('Setting "Default Cover Image"', 'issuem'); ?></li>
-						</ul>
+					<p><strong>IssueM <?php _e('Archive Page:', 'issuem'); ?>:</strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code></p>
 
-						<h4><?php _e('Accepted Arguments:', 'issuem'); ?></h4>
+					<p><?php _e('This shortcode will display the list of current and past issues.', 'issuem'); ?></p>
 
-						<ul>
-							<li><em>orderby</em> - term_id, issue_order, name</li>
-							<li><em>order</em> - DESC, ASC</li>
-							<li><em>limit</em> - <?php _e('Any number 0 and greater', 'issuem'); ?></li>
-							<li><em>pdf_title</em> - <?php _e('Text', 'issuem'); ?></li>
-							<li><em>default_image</em> - <?php _e('Image URL', 'issuem'); ?></li>
-						</ul>
-
-						<h4><?php _e('Examples:', 'issuem'); ?></h4>
-
-						<p><em>[issuem_archives orderby="issue_order"]</em></p>
-						<p><em>[issuem_archives orderby="name" order="ASC" limit=5 pdf_title="<?php _e('Download Now', 'issuem'); ?>" default_image="http://yoursite.com/yourimage.jpg"]</em></p>
+					<h4><?php _e('Default Arguments:', 'issuem'); ?></h4>
 
 
+					<ul>
+						<li><em>orderby</em> - term_id</li>
+						<li><em>order</em> - DESC</li>
+						<li><em>limit</em> - 0</li>
+						<li><em>pdf_title</em> - IssueM <?php _e('Setting "PDF Title"', 'issuem'); ?></li>
+						<li><em>default_image</em> - IssueM <?php _e('Setting "Default Cover Image"', 'issuem'); ?></li>
+					</ul>
+
+					<h4><?php _e('Accepted Arguments:', 'issuem'); ?></h4>
+
+					<ul>
+						<li><em>orderby</em> - term_id, issue_order, name</li>
+						<li><em>order</em> - DESC, ASC</li>
+						<li><em>limit</em> - <?php _e('Any number 0 and greater', 'issuem'); ?></li>
+						<li><em>pdf_title</em> - <?php _e('Text', 'issuem'); ?></li>
+						<li><em>default_image</em> - <?php _e('Image URL', 'issuem'); ?></li>
+					</ul>
+
+					<h4><?php _e('Examples:', 'issuem'); ?></h4>
+
+					<p><em>[issuem_archives orderby="issue_order"]</em></p>
+					<p><em>[issuem_archives orderby="name" order="ASC" limit=5 pdf_title="<?php _e('Download Now', 'issuem'); ?>" default_image="http://yoursite.com/yourimage.jpg"]</em></p>
 
 
 
@@ -1122,7 +1120,9 @@ if (!class_exists('IssueM')) {
 
 
 
-						<?php do_action('issuem_help_page'); ?>
+
+
+					<?php do_action('issuem_help_page'); ?>
 
 
 				</div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Misc helper functions for IssueM
  *
@@ -6,7 +7,7 @@
  * @since 1.0.0
  */
 
-if ( !function_exists( 'get_newest_issuem_issue_id' ) ) { 
+if (!function_exists('get_newest_issuem_issue_id')) {
 
 	/**
 	 * Get newest IssueM issue
@@ -16,60 +17,58 @@ if ( !function_exists( 'get_newest_issuem_issue_id' ) ) {
 	 * @param string $orderby 
 	 * @return int $id
 	 */
-	function get_newest_issuem_issue_id( $orderby = 'issue_order' ) {
-		
+	function get_newest_issuem_issue_id($orderby = 'issue_order')
+	{
+
 		$issues = array();
 		$count = 0;
-		
-		$issuem_issues = get_terms( array(
+
+		$issuem_issues = get_terms(array(
 			'taxonomy' => 'issuem_issue',
 			'hide_empty' => false
-		) );
-						
-		foreach ( $issuem_issues as $issue ) {
-				
-			$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
-			
+		));
+
+		foreach ($issuem_issues as $issue) {
+
+			$issue_meta = get_option('issuem_issue_' . $issue->term_id . '_meta');
+
 			// If issue is not a Draft, add it to the archive array;
-			if ( !empty( $issue_meta ) && !empty( $issue_meta['issue_status'] ) 
-				&& ( 'Live' === $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
-				
-				switch( $orderby ) {
-					
+			if (
+				!empty($issue_meta) && !empty($issue_meta['issue_status'])
+				&& ('Live' === $issue_meta['issue_status'] || current_user_can(apply_filters('see_issuem_draft_issues', 'manage_issues')))
+			) {
+
+				switch ($orderby) {
+
 					case "issue_order":
-						if ( !empty( $issue_meta['issue_order'] ) )
-							$issues[ $issue_meta['issue_order'] ] = $issue->term_id;
+						if (!empty($issue_meta['issue_order']))
+							$issues[$issue_meta['issue_order']] = $issue->term_id;
 						else
-							$issues[ '-' . ++$count ] = $issue->term_id;
-							
+							$issues['-' . ++$count] = $issue->term_id;
+
 						break;
-						
+
 					case "name":
-						$issues[ $issue_meta['name'] ] = $issue->term_id;
+						$issues[$issue_meta['name']] = $issue->term_id;
 						break;
-					
+
 					case "term_id":
-						$issues[ $issue->term_id ] = $issue->term_id;
+						$issues[$issue->term_id] = $issue->term_id;
 						break;
-					
 				}
-					 
 			} else {
-				$issues[ '-' . ++$count ] = $issue->term_id;
+				$issues['-' . ++$count] = $issue->term_id;
 			}
-			
 		}
-		
-		krsort( $issues );
-		
-		return array_shift( $issues );
-		
+
+		krsort($issues);
+
+		return array_shift($issues);
 	}
-	
 }
 
-if ( !function_exists( 'get_issuem_issue_meta' ) ) { 
-	
+if (!function_exists('get_issuem_issue_meta')) {
+
 	/**
 	 * Get issue meta information, assumes latest issue if no id supplied
 	 *
@@ -78,24 +77,21 @@ if ( !function_exists( 'get_issuem_issue_meta' ) ) {
 	 * @param int $id Issue ID 
 	 * @return mixed Value set for the issue meta option.
 	 */
-	function get_issuem_issue_meta( $id = false ) {
-	
-		if ( !$id ) {
-				
-			return get_option( 'issuem_issue_' . get_newest_issuem_issue_id() . '_meta' );
-			
-		} else {
-		
-			return get_option( 'issuem_issue_' . $id . '_meta' );
-			
-		}
-		
-	}
+	function get_issuem_issue_meta($id = false)
+	{
 
+		if (!$id) {
+
+			return get_option('issuem_issue_' . get_newest_issuem_issue_id() . '_meta');
+		} else {
+
+			return get_option('issuem_issue_' . $id . '_meta');
+		}
+	}
 }
 
-if ( !function_exists( 'get_issuem_issue_cover' ) ) { 
-	
+if (!function_exists('get_issuem_issue_cover')) {
+
 	/**
 	 * Get issue cover image, assumes latest issue if no id supplied
 	 *
@@ -104,28 +100,25 @@ if ( !function_exists( 'get_issuem_issue_cover' ) ) {
 	 * @param int $id Issue ID 
 	 * @return string URL of cover image
 	 */
-	function get_issuem_issue_cover( $id = false ) {
-	
-		if ( !$id ) {
-					
-			$issue_meta = get_option( 'issuem_issue_' . get_newest_issuem_issue_id() . '_meta' );
-			
-			return $issue_meta['cover_image'];
-			
-		} else {
-	
-			$issue_meta = get_option( 'issuem_issue_' . $id . '_meta' );
-			
-			return $issue_meta['cover_image'];
-			
-		}
-		
-	}
+	function get_issuem_issue_cover($id = false)
+	{
 
+		if (!$id) {
+
+			$issue_meta = get_option('issuem_issue_' . get_newest_issuem_issue_id() . '_meta');
+
+			return $issue_meta['cover_image'];
+		} else {
+
+			$issue_meta = get_option('issuem_issue_' . $id . '_meta');
+
+			return $issue_meta['cover_image'];
+		}
+	}
 }
 
-if ( !function_exists( 'get_issuem_issue_slug' ) ) { 
-	
+if (!function_exists('get_issuem_issue_slug')) {
+
 	/**
 	 * Get issue slug, assumes latest issue if no id supplied
 	 *
@@ -134,26 +127,23 @@ if ( !function_exists( 'get_issuem_issue_slug' ) ) {
 	 * @param int $id Issue ID 
 	 * @return string issue slug
 	 */
-	function get_issuem_issue_slug( $id = false ) {
-	
-		if ( !$id ) {
-			
-			$issue = get_term_by( 'id', get_newest_issuem_issue_id(), 'issuem_issue' );
-						
-		} else {
-	
-			$issue = get_term_by( 'id', $id, 'issuem_issue' );
-			
-		}
-		
-		return ( ( is_object( $issue ) && !empty( $issue->slug ) ) ? $issue->slug : '' );
-		
-	}
+	function get_issuem_issue_slug($id = false)
+	{
 
+		if (!$id) {
+
+			$issue = get_term_by('id', get_newest_issuem_issue_id(), 'issuem_issue');
+		} else {
+
+			$issue = get_term_by('id', $id, 'issuem_issue');
+		}
+
+		return ((is_object($issue) && !empty($issue->slug)) ? $issue->slug : '');
+	}
 }
 
-if ( !function_exists( 'get_issuem_issue_title' ) ) { 
-	
+if (!function_exists('get_issuem_issue_title')) {
+
 	/**
 	 * Get issue title, assumes latest issue if no id supplied
 	 *
@@ -162,27 +152,24 @@ if ( !function_exists( 'get_issuem_issue_title' ) ) {
 	 * @param int $id Issue ID 
 	 * @return string issue name
 	 */
-	function get_issuem_issue_title( $id = false ) {
-	
-		if ( !$id ) {
-	
-			$issue = get_term_by( 'id', get_newest_issuem_issue_id(), 'issuem_issue' );
-			
-			return $issue->name;
-			
-		} else {
-	
-			$issue = get_term_by( 'id', $id, 'issuem_issue' );
-			
-			return $issue->name;
-			
-		}
-		
-	}
+	function get_issuem_issue_title($id = false)
+	{
 
+		if (!$id) {
+
+			$issue = get_term_by('id', get_newest_issuem_issue_id(), 'issuem_issue');
+
+			return $issue->name;
+		} else {
+
+			$issue = get_term_by('id', $id, 'issuem_issue');
+
+			return $issue->name;
+		}
+	}
 }
 
-if ( !function_exists( 'get_active_issuem_issue' ) ) { 
+if (!function_exists('get_active_issuem_issue')) {
 
 	/**
 	 * Gets active issue, set by latest issue or by cookie if user selects a specific issue
@@ -191,97 +178,94 @@ if ( !function_exists( 'get_active_issuem_issue' ) ) {
 	 *
 	 * @return string issue slug
 	 */
-	function get_active_issuem_issue() {
-	
+	function get_active_issuem_issue()
+	{
+
 		$issue_slug = false;
-	
-		if ( !empty( $_COOKIE['issuem_issue'] ) ) {
-			$issue = get_term_by( 'slug', $_COOKIE['issuem_issue'], 'issuem_issue' );
-			if ( !empty ( $issue ) ) {
-				$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
-				if ( !empty( $issue_meta ) && !empty( $issue_meta['issue_status'] ) 
-					&& ( 'Live' === $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
+
+		if (!empty($_COOKIE['issuem_issue'])) {
+			$issue = get_term_by('slug', sanitize_text_field($_COOKIE['issuem_issue']), 'issuem_issue');
+			if (!empty($issue)) {
+				$issue_meta = get_option('issuem_issue_' . $issue->term_id . '_meta');
+				if (
+					!empty($issue_meta) && !empty($issue_meta['issue_status'])
+					&& ('Live' === $issue_meta['issue_status'] || current_user_can(apply_filters('see_issuem_draft_issues', 'manage_issues')))
+				) {
 					$issue_slug = $_COOKIE['issuem_issue'];
 				}
 			}
-		} else if ( !empty( $_GET['issue'] ) ) {
-			$issue = get_term_by( 'slug', $_GET['issue'], 'issuem_issue' );
-			if ( !empty ( $issue ) ) {
-				$issue_meta = get_option( 'issuem_issue_' . $issue->term_id . '_meta' );
-				if ( !empty( $issue_meta ) && !empty( $issue_meta['issue_status'] ) 
-					&& ( 'Live' === $issue_meta['issue_status'] || current_user_can( apply_filters( 'see_issuem_draft_issues', 'manage_issues' ) ) ) ) {
-					$issue_slug = $_GET['issue'];
+		} else if (!empty($_GET['issue'])) {
+			$issue = get_term_by('slug', sanitize_text_field($_GET['issue']), 'issuem_issue');
+			if (!empty($issue)) {
+				$issue_meta = get_option('issuem_issue_' . $issue->term_id . '_meta');
+				if (
+					!empty($issue_meta) && !empty($issue_meta['issue_status'])
+					&& ('Live' === $issue_meta['issue_status'] || current_user_can(apply_filters('see_issuem_draft_issues', 'manage_issues')))
+				) {
+					$issue_slug = sanitize_text_field($_GET['issue']);
 				}
 			}
 		}
-		
-		if ( empty( $issue_slug ) ) {
+
+		if (empty($issue_slug)) {
 			$issue_slug = get_issuem_issue_slug();
 		}
-		
-		return apply_filters( 'issuem_active_issue_slug', $issue_slug );
-	}
 
+		return apply_filters('issuem_active_issue_slug', $issue_slug);
+	}
 }
 
-if ( !function_exists( 'set_issuem_cookie' ) ) { 
+if (!function_exists('set_issuem_cookie')) {
 
 	/**
 	 * Sets IssueM issue cookie
 	 *
 	 * @since 1.0.0
 	 */
-	function set_issuem_cookie() {
+	function set_issuem_cookie()
+	{
 
 		// no reason to set the cookie if you're in the admin
-		if ( is_admin() ) {
+		if (is_admin()) {
 			return;
 		}
-		
-		if ( !empty( $_GET['issue'] ) ) {
-		
-			$_COOKIE['issuem_issue'] = $_GET['issue'];
-			setcookie( 'issuem_issue', $_GET['issue'], time() + 3600, '/' );
-			
+
+		if (!empty($_GET['issue'])) {
+
+			$_COOKIE['issuem_issue'] = sanitize_text_field($_GET['issue']);
+			setcookie('issuem_issue', sanitize_text_field($_GET['issue']), time() + 3600, '/');
 		} else {
-		
+
 			global $post;
-			
+
 			$issuem_settings = get_issuem_settings();
-				
-			if ( issuem_is_articles_page() ) {
+
+			if (issuem_is_articles_page()) {
 
 				$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
-				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
-			
-			} else if ( !empty( $post->post_type ) && 'article' != $post->post_type ) {
-			
-				unset( $_COOKIE['issuem_issue'] );
-				setcookie( 'issuem_issue', '', 1, '/' );
-				
-			} else if ( is_single() && !empty( $post->post_type ) && 'article' == $post->post_type ) {
-			
-				$terms = wp_get_post_terms( $post->ID, 'issuem_issue' );
-				if ( !empty( $terms ) ) {
+				setcookie('issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/');
+			} else if (!empty($post->post_type) && 'article' != $post->post_type) {
+
+				unset($_COOKIE['issuem_issue']);
+				setcookie('issuem_issue', '', 1, '/');
+			} else if (is_single() && !empty($post->post_type) && 'article' == $post->post_type) {
+
+				$terms = wp_get_post_terms($post->ID, 'issuem_issue');
+				if (!empty($terms)) {
 					$_COOKIE['issuem_issue'] = $terms[0]->slug;
-					setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
-				}		
-				
-			} else if ( taxonomy_exists( 'issuem_issue' ) ) {
-				
-				$_COOKIE['issuem_issue'] = get_query_var( 'issuem_issue' );
-				setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
+					setcookie('issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/');
+				}
+			} else if (taxonomy_exists('issuem_issue')) {
 
+				$_COOKIE['issuem_issue'] = get_query_var('issuem_issue');
+				setcookie('issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/');
 			}
-			
 		}
-	
 	}
-	add_action( 'wp', 'set_issuem_cookie' );
-
+	add_action('wp', 'set_issuem_cookie');
 }
 
-if ( !function_exists( 'issuem_replacements_args' ) ) {
+if (!function_exists('issuem_replacements_args')) {
 
 	/**
 	 * Replaces variables with WordPress content
@@ -290,174 +274,161 @@ if ( !function_exists( 'issuem_replacements_args' ) ) {
 	 *
 	 * @param int $id User ID
 	 */
-	function issuem_replacements_args( $string, $post ) {
-		
+	function issuem_replacements_args($string, $post)
+	{
+
 		$issuem_settings = get_issuem_settings();
-		
-		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) ) {
-			
+
+		if (!empty($issuem_settings['use_wp_taxonomies'])) {
+
 			$tags = 'post_tag';
-			$cats = 'category';	
-			
+			$cats = 'category';
 		} else {
-			
+
 			$tags = 'issuem_issue_tags';
 			$cats = 'issuem_issue_categories';
-			
 		}
-		
-		$string = str_ireplace( '%TITLE%', get_the_title(), $string );
-		$string = str_ireplace( '%URL%', apply_filters( 'issuem_article_url', get_permalink( $post->ID ), $post->ID ), $string );
-		
-		if ( preg_match( '/%CATEGORY\[?(\d*)\]?%/i', $string, $matches ) ) {
-			
-			$post_cats = get_the_terms( $post->ID, $cats );
+
+		$string = str_ireplace('%TITLE%', get_the_title(), $string);
+		$string = str_ireplace('%URL%', apply_filters('issuem_article_url', get_permalink($post->ID), $post->ID), $string);
+
+		if (preg_match('/%CATEGORY\[?(\d*)\]?%/i', $string, $matches)) {
+
+			$post_cats = get_the_terms($post->ID, $cats);
 			$categories = '';
-			
-			if ( $post_cats && !is_wp_error( $post_cats ) ) :
-			
-				if ( !empty( $matches[1] ) )
+
+			if ($post_cats && !is_wp_error($post_cats)) :
+
+				if (!empty($matches[1]))
 					$max_cats = $matches[1];
 				else
 					$max_cats = 0;
-					
+
 				$cat_array = array();
 
 				$count = 1;
-				foreach ( $post_cats as $post_cat ) {
-					
+				foreach ($post_cats as $post_cat) {
+
 					$cat_array[] = $post_cat->name;
-					
-					if ( 0 != $max_cats && $max_cats <= $count )
+
+					if (0 != $max_cats && $max_cats <= $count)
 						break;
-						
+
 					$count++;
-					
 				}
-						
-				$categories = join( ", ", $cat_array );
-					
+
+				$categories = join(", ", $cat_array);
+
 			endif;
-				
-			$string = preg_replace( '/%CATEGORY\[?(\d*)\]?%/i', preg_quote( $categories ), $string );	
-					
+
+			$string = preg_replace('/%CATEGORY\[?(\d*)\]?%/i', preg_quote($categories), $string);
 		}
-		
-		if ( preg_match( '/%TAG\[?(\d*)\]?%/i', $string, $matches ) ) {
-			
-			$post_tags = get_the_terms( $post->ID, $tags );
+
+		if (preg_match('/%TAG\[?(\d*)\]?%/i', $string, $matches)) {
+
+			$post_tags = get_the_terms($post->ID, $tags);
 			$tag_string = '';
-			
-			if ( $post_tags && !is_wp_error( $post_tags ) ) :
-			
-				if ( !empty( $matches[1] ) )
+
+			if ($post_tags && !is_wp_error($post_tags)) :
+
+				if (!empty($matches[1]))
 					$max_tags = $matches[1];
 				else
-					$max_tags = 0;	
-					
+					$max_tags = 0;
+
 				$cat_array = array();
 
 				$count = 1;
-				foreach ( $post_tags as $post_tag ) {
-					
+				foreach ($post_tags as $post_tag) {
+
 					$cat_array[] = $post_tag->name;
-					
-					if ( 0 != $max_tags && $max_tags <= $count )
+
+					if (0 != $max_tags && $max_tags <= $count)
 						break;
-						
+
 					$count++;
-					
 				}
-						
-				$tag_string = join( ", ", $cat_array );
-					
+
+				$tag_string = join(", ", $cat_array);
+
 			endif;
-				
-			$string = preg_replace( '/%TAG\[?(\d*)\]?%/i', preg_quote( $tag_string ), $string );	
-					
+
+			$string = preg_replace('/%TAG\[?(\d*)\]?%/i', preg_quote($tag_string), $string);
 		}
-		
-		if ( preg_match( '/%TEASER%/i', $string, $matches ) ) {
-			
-			if ( $teaser = get_post_meta( $post->ID, '_teaser_text', true ) ) 
-				$string = preg_replace( '/%TEASER%/i', preg_quote( $teaser ), $string );	
+
+		if (preg_match('/%TEASER%/i', $string, $matches)) {
+
+			if ($teaser = get_post_meta($post->ID, '_teaser_text', true))
+				$string = preg_replace('/%TEASER%/i', preg_quote($teaser), $string);
 			else
-				$string = preg_replace( '/%TEASER%/i', '%EXCERPT%', $string );	// If no Teaser Text exists, try to get an excerpt
-					
+				$string = preg_replace('/%TEASER%/i', '%EXCERPT%', $string);	// If no Teaser Text exists, try to get an excerpt
+
 		}
-		
-		if ( preg_match( '/%EXCERPT\[?(\d*)\]?%/i', $string, $matches ) ) {
-			
-			if ( empty( $post->post_excerpt ) )
+
+		if (preg_match('/%EXCERPT\[?(\d*)\]?%/i', $string, $matches)) {
+
+			if (empty($post->post_excerpt))
 				$excerpt = get_the_content();
 			else
 				$excerpt = $post->post_excerpt;
-			
-			$excerpt = strip_shortcodes( $excerpt );
+
+			$excerpt = strip_shortcodes($excerpt);
 			// $excerpt = apply_filters( 'the_content', $excerpt );
-			$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
-			
-			if ( !empty( $matches[1] ) )
+			$excerpt = str_replace(']]>', ']]&gt;', $excerpt);
+
+			if (!empty($matches[1]))
 				$excerpt_length = $matches[1];
 			else
 				$excerpt_length = apply_filters('excerpt_length', 55);
-					
+
 			$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-			$excerpt = wp_trim_words( $excerpt, $excerpt_length, $excerpt_more );
-				
-			$string = preg_replace( '/%EXCERPT\[?(\d*)\]?%/i', preg_quote( $excerpt ), $string );
-					
+			$excerpt = wp_trim_words($excerpt, $excerpt_length, $excerpt_more);
+
+			$string = preg_replace('/%EXCERPT\[?(\d*)\]?%/i', preg_quote($excerpt), $string);
 		}
-		
-		if ( preg_match( '/%CONTENT%/i', $string, $matches ) ) {
-		
+
+		if (preg_match('/%CONTENT%/i', $string, $matches)) {
+
 			$content = get_the_content();
-			$content = apply_filters( 'the_content', $content );
-    			$content = str_replace( ']]>', ']]&gt;', $content );
-			$string = preg_replace( '/%CONTENT%/i', preg_quote( $content ), $string );	
-					
-		}
-		
-		if ( preg_match( '/%FEATURE_IMAGE%/i', $string, $matches ) ) {
-		
-			$image = get_the_post_thumbnail( $post->ID );
-			$string = preg_replace( '/%FEATURE_IMAGE%/i', $image, $string );	
-					
-		}
-		
-		if ( preg_match( '/%ISSUEM_FEATURE_THUMB%/i', $string, $matches ) ) {
-		
-			$image = get_the_post_thumbnail( $post->ID, 'issuem-featured-thumb-image' );
-			$string = preg_replace( '/%ISSUEM_FEATURE_THUMB%/i', $image, $string );	
-					
-		}
-		
-		if ( preg_match( '/%BYLINE%/i', $string, $matches ) ) {
-
-			$author_name = get_issuem_author_name( $post );
-			
-			$byline = sprintf( __( 'By %s', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
-				
-			$string = preg_replace( '/%BYLINE%/i', preg_quote( $byline ), $string );	
-					
+			$content = apply_filters('the_content', $content);
+			$content = str_replace(']]>', ']]&gt;', $content);
+			$string = preg_replace('/%CONTENT%/i', preg_quote($content), $string);
 		}
 
-		if ( preg_match( '/%DATE%/i', $string, $matches ) ) {
+		if (preg_match('/%FEATURE_IMAGE%/i', $string, $matches)) {
 
-			$post_date = get_the_date( '', $post->ID );
-			$string = preg_replace( '/%DATE%/i', preg_quote( $post_date ), $string );	
-					
+			$image = get_the_post_thumbnail($post->ID);
+			$string = preg_replace('/%FEATURE_IMAGE%/i', $image, $string);
 		}
-		
-		$string = apply_filters( 'issuem_custom_replacement_args', $string, $post );
-		
-		return stripcslashes( $string );
-		
+
+		if (preg_match('/%ISSUEM_FEATURE_THUMB%/i', $string, $matches)) {
+
+			$image = get_the_post_thumbnail($post->ID, 'issuem-featured-thumb-image');
+			$string = preg_replace('/%ISSUEM_FEATURE_THUMB%/i', $image, $string);
+		}
+
+		if (preg_match('/%BYLINE%/i', $string, $matches)) {
+
+			$author_name = get_issuem_author_name($post);
+
+			$byline = sprintf(__('By %s', 'issuem'), apply_filters('issuem_author_name', $author_name, $post->ID));
+
+			$string = preg_replace('/%BYLINE%/i', preg_quote($byline), $string);
+		}
+
+		if (preg_match('/%DATE%/i', $string, $matches)) {
+
+			$post_date = get_the_date('', $post->ID);
+			$string = preg_replace('/%DATE%/i', preg_quote($post_date), $string);
+		}
+
+		$string = apply_filters('issuem_custom_replacement_args', $string, $post);
+
+		return stripcslashes($string);
 	}
-
 }
 
-if ( !function_exists( 'get_issuem_author_name' ) ) {
+if (!function_exists('get_issuem_author_name')) {
 
 	/**
 	 * Function to get Article's Author Name
@@ -468,46 +439,40 @@ if ( !function_exists( 'get_issuem_author_name' ) ) {
 	 * @param $string value to show or hide link in output, 
 	 * @return string Value set for the issuem options.
 	 */
-	function get_issuem_author_name( $article, $hide_link = false ) {
-		
+	function get_issuem_author_name($article, $hide_link = false)
+	{
+
 		$issuem_settings = get_issuem_settings();
-	
-		if ( !empty( $issuem_settings['issuem_author_name'] ) ) {
-			
-			$author_name = get_post_meta( $article->ID, '_issuem_author_name', true );
-		
+
+		if (!empty($issuem_settings['issuem_author_name'])) {
+
+			$author_name = get_post_meta($article->ID, '_issuem_author_name', true);
 		} else {
-		
-			if ( 'user_firstlast' == $issuem_settings['display_byline_as'] ) {
-				
-				if ( ( $first_name = get_the_author_meta( 'user_firstname', $article->post_author ) ) && ( $last_name = get_the_author_meta( 'user_lastname', $article->post_author ) ) )
+
+			if ('user_firstlast' == $issuem_settings['display_byline_as']) {
+
+				if (($first_name = get_the_author_meta('user_firstname', $article->post_author)) && ($last_name = get_the_author_meta('user_lastname', $article->post_author)))
 					$author_name = $first_name . ' ' . $last_name;
 				else
 					$author_name = '';
-			
 			} else {
-				
-				$author_name = get_the_author_meta( $issuem_settings['display_byline_as'], $article->post_author );
-						
+
+				$author_name = get_the_author_meta($issuem_settings['display_byline_as'], $article->post_author);
 			}
-			
-			$author_name = ( !empty( $author_name ) ) ? $author_name : get_the_author_meta( 'display_name', $article->post_author );
 
-			if ( !$hide_link ) {
+			$author_name = (!empty($author_name)) ? $author_name : get_the_author_meta('display_name', $article->post_author);
 
-				$author_name = '<a class="url fn n" href="' . esc_url( get_author_posts_url( $article->post_author ) ) . '" title="' . esc_attr( $author_name ) . '" rel="me">' . $author_name . '</a>';
-			
-			} 
-			
+			if (!$hide_link) {
+
+				$author_name = '<a class="url fn n" href="' . esc_url(get_author_posts_url($article->post_author)) . '" title="' . esc_attr($author_name) . '" rel="me">' . $author_name . '</a>';
+			}
 		}
-		
+
 		return $author_name;
-		
 	}
-	
 }
 
-if ( !function_exists( 'get_issuem_settings' ) ) {
+if (!function_exists('get_issuem_settings')) {
 
 	/**
 	 * Helper function to get IssueM settings for current site
@@ -516,17 +481,16 @@ if ( !function_exists( 'get_issuem_settings' ) ) {
 	 *
 	 * @return mixed Value set for the issuem options.
 	 */
-	function get_issuem_settings() {
-	
+	function get_issuem_settings()
+	{
+
 		global $dl_plugin_issuem;
-		
+
 		return $dl_plugin_issuem->get_settings();
-		
 	}
-	
 }
 
-if ( !function_exists( 'update_issuem_settings' ) ) {
+if (!function_exists('update_issuem_settings')) {
 
 	/**
 	 * Helper function to get IssueM settings for current site
@@ -535,17 +499,16 @@ if ( !function_exists( 'update_issuem_settings' ) ) {
 	 *
 	 * @return mixed Value set for the issuem options.
 	 */
-	function update_issuem_settings( $settings ) {
-	
+	function update_issuem_settings($settings)
+	{
+
 		global $dl_plugin_issuem;
-		
-		$dl_plugin_issuem->update_settings( $settings );
-		
+
+		$dl_plugin_issuem->update_settings($settings);
 	}
-	
 }
 
-if ( !function_exists( 'default_issue_content_filter' ) ) {
+if (!function_exists('default_issue_content_filter')) {
 
 	/**
 	 * Default content filter, sets IssueM Page for Articles to default shortcode content if no content exists for page
@@ -554,75 +517,71 @@ if ( !function_exists( 'default_issue_content_filter' ) ) {
 	 *
 	 * @return string new content.
 	 */
-	function default_issue_content_filter( $content ) {
-		
+	function default_issue_content_filter($content)
+	{
+
 		global $post;
-		
+
 		$issuem_settings = get_issuem_settings();
-		
-		if ( !empty( $post ) ) {
-			if ( $post->ID == $issuem_settings['page_for_articles'] && empty( $content ) ) {
+
+		if (!empty($post)) {
+			if ($post->ID == $issuem_settings['page_for_articles'] && empty($content)) {
 				$content = '[issuem_featured_rotator] [issuem_featured_thumbnails max_images="3"] [issuem_articles]';
-			} else if ( $post->ID == $issuem_settings['page_for_archives'] && empty( $content ) ) {
+			} else if ($post->ID == $issuem_settings['page_for_archives'] && empty($content)) {
 				$content = '[issuem_archives orderby="issue_order"]';
 			}
 		}
-		
+
 		return $content;
-		
 	}
-	add_filter( 'the_content', 'default_issue_content_filter', 5 );
-	
+	add_filter('the_content', 'default_issue_content_filter', 5);
 }
 
-if ( !function_exists( 'zeen101_dot_com_rss_feed_check' ) ) {
+if (!function_exists('zeen101_dot_com_rss_feed_check')) {
 
 	/**
 	 * Check zeen101.com for new RSS items in the issuem blast feed, to update users of latest IssueM news
 	 *
 	 * @since 1.1.1
 	 */
-	function zeen101_dot_com_rss_feed_check() {
-			
-		include_once( ABSPATH . WPINC . '/feed.php' );
-	
+	function zeen101_dot_com_rss_feed_check()
+	{
+
+		include_once(ABSPATH . WPINC . '/feed.php');
+
 		$output = '';
 		$feedurl = 'http://zeen101.com/feed/?post_type=blast&target=issuem';
 
-		$rss = fetch_feed( $feedurl );
+		$rss = fetch_feed($feedurl);
 
-		if ( $rss && !is_wp_error( $rss ) ) {
-	
-			$rss_items = $rss->get_items( 0, 1 );
-	
-			foreach ( $rss_items as $item ) {
-	
-				$last_rss_item = get_option( 'last_zeen101_dot_com_rss_item' );
-				
+		if ($rss && !is_wp_error($rss)) {
+
+			$rss_items = $rss->get_items(0, 1);
+
+			foreach ($rss_items as $item) {
+
+				$last_rss_item = get_option('last_zeen101_dot_com_rss_item');
+
 				$latest_rss_item = $item->get_content();
-	
-				if ( $last_rss_item !== $latest_rss_item ) {
 
-					global $current_user; 
+				if ($last_rss_item !== $latest_rss_item) {
 
-					update_option( 'last_zeen101_dot_com_rss_item', $latest_rss_item );
+					global $current_user;
 
-					update_user_meta( $current_user->ID, 'issuem_rss_item_notice_link', 0 );
+					update_option('last_zeen101_dot_com_rss_item', $latest_rss_item);
+
+					update_user_meta($current_user->ID, 'issuem_rss_item_notice_link', 0);
 				}
-
 			}
-	
-		}	
-				
+		}
 	}
-	add_action( 'zeen101_dot_com_rss_feed_check', 'zeen101_dot_com_rss_feed_check' );
+	add_action('zeen101_dot_com_rss_feed_check', 'zeen101_dot_com_rss_feed_check');
 
-	if ( !wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) )
-		wp_schedule_event( time(), 'daily', 'zeen101_dot_com_rss_feed_check' );
-	
+	if (!wp_next_scheduled('zeen101_dot_com_rss_feed_check'))
+		wp_schedule_event(time(), 'daily', 'zeen101_dot_com_rss_feed_check');
 }
 
-if ( !function_exists( 'issuem_api_request' ) ) { 
+if (!function_exists('issuem_api_request')) {
 
 	/**
 	 * Helper function used to send API requests to IssueM.com
@@ -634,17 +593,16 @@ if ( !function_exists( 'issuem_api_request' ) ) {
 	 * @param string $action Action to pass to API request
 	 * @param array $args Arguments to pass to API request
 	 */
-    function issuem_api_request( $action, $args ) { 
-	
+	function issuem_api_request($action, $args)
+	{
+
 		global $dl_plugin_issuem;
-	
-		return $dl_plugin_issuem->issuem_api_request( $action, $args );
-	
-    }   
-	
+
+		return $dl_plugin_issuem->issuem_api_request($action, $args);
+	}
 }
 
-if ( !function_exists( 'wp_print_r' ) ) { 
+if (!function_exists('wp_print_r')) {
 
 	/**
 	 * Helper function used for printing out debug information
@@ -656,19 +614,18 @@ if ( !function_exists( 'wp_print_r' ) ) {
 	 * @param int $args Arguments to pass to print_r
 	 * @param bool $die TRUE to die else FALSE (default FALSE)
 	 */
-    function wp_print_r( $args, $die = false ) { 
-	
-        $echo = '<pre>' . print_r( $args, true ) . '</pre>';
-		
-        if ( $die ) die( $echo );
-        	else echo $echo;
-		
-    }   
-	
+	function wp_print_r($args, $die = false)
+	{
+
+		$echo = '<pre>' . print_r($args, true) . '</pre>';
+
+		if ($die) die($echo);
+		else echo $echo;
+	}
 }
 
-if ( !function_exists( 'issuem_dropdown_categories' ) ) {
-	
+if (!function_exists('issuem_dropdown_categories')) {
+
 	/**
 	 * Display or retrieve the HTML dropdown list of article categories.
 	 * Adapted from WordPress' "wp_dropdown_categories"
@@ -704,7 +661,8 @@ if ( !function_exists( 'issuem_dropdown_categories' ) ) {
 	 * @param string|array $args Optional. Override default arguments.
 	 * @return string HTML content only if 'echo' argument is 0.
 	 */
-	function issuem_dropdown_categories( $args = '' ) {
+	function issuem_dropdown_categories($args = '')
+	{
 		$defaults = array(
 			'show_option_all' => '', 'show_option_none' => '',
 			'orderby' => 'id', 'order' => 'ASC',
@@ -717,79 +675,78 @@ if ( !function_exists( 'issuem_dropdown_categories' ) ) {
 			'tab_index' => 0, 'taxonomy' => 'issuem_issue_categories',
 			'hide_if_empty' => false
 		);
-	
-		$defaults['selected'] = ( is_category() ) ? get_query_var( 'cat' ) : 0;
-	
+
+		$defaults['selected'] = (is_category()) ? get_query_var('cat') : 0;
+
 		// Back compat.
-		if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
-			_deprecated_argument( __FUNCTION__, '3.0', '' );
+		if (isset($args['type']) && 'link' == $args['type']) {
+			_deprecated_argument(__FUNCTION__, '3.0', '');
 			$args['taxonomy'] = 'link_category';
 		}
-	
-		$r = wp_parse_args( $args, $defaults );
-	
-		if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] ) {
+
+		$r = wp_parse_args($args, $defaults);
+
+		if (!isset($r['pad_counts']) && $r['show_count'] && $r['hierarchical']) {
 			$r['pad_counts'] = true;
 		}
-	
-		extract( $r );
-	
+
+		extract($r);
+
 		$tab_index_attribute = '';
-		if ( (int) $tab_index > 0 )
+		if ((int) $tab_index > 0)
 			$tab_index_attribute = " tabindex=\"$tab_index\"";
-	
-		$categories = get_terms( $taxonomy, $r );
-		$name = esc_attr( $name );
-		$class = esc_attr( $class );
-		$id = $id ? esc_attr( $id ) : $name;
-	
-		if ( ! $r['hide_if_empty'] || ! empty($categories) )
+
+		$categories = get_terms($taxonomy, $r);
+		$name = esc_attr($name);
+		$class = esc_attr($class);
+		$id = $id ? esc_attr($id) : $name;
+
+		if (!$r['hide_if_empty'] || !empty($categories))
 			$output = "<select name='$name' id='$id' class='$class' $tab_index_attribute>\n";
 		else
 			$output = '';
-	
-		if ( empty($categories) && ! $r['hide_if_empty'] && !empty($show_option_none) ) {
-			$show_option_none = apply_filters( 'list_cats', $show_option_none );
+
+		if (empty($categories) && !$r['hide_if_empty'] && !empty($show_option_none)) {
+			$show_option_none = apply_filters('list_cats', $show_option_none);
 			$output .= "\t<option value='-1' selected='selected'>$show_option_none</option>\n";
 		}
-	
-		if ( ! empty( $categories ) ) {
-	
-			if ( $show_option_all ) {
-				$show_option_all = apply_filters( 'list_cats', $show_option_all );
-				$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
+
+		if (!empty($categories)) {
+
+			if ($show_option_all) {
+				$show_option_all = apply_filters('list_cats', $show_option_all);
+				$selected = ('0' === strval($r['selected'])) ? " selected='selected'" : '';
 				$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
 			}
-	
-			if ( $show_option_none ) {
-				$show_option_none = apply_filters( 'list_cats', $show_option_none );
-				$selected = ( '-1' === strval($r['selected']) ) ? " selected='selected'" : '';
+
+			if ($show_option_none) {
+				$show_option_none = apply_filters('list_cats', $show_option_none);
+				$selected = ('-1' === strval($r['selected'])) ? " selected='selected'" : '';
 				$output .= "\t<option value='-1'$selected>$show_option_none</option>\n";
 			}
-	
-			if ( $hierarchical )
+
+			if ($hierarchical)
 				$depth = $r['depth'];  // Walk the full depth.
 			else
 				$depth = -1; // Flat.
-	
-			$output .= walk_issuem_category_dropdown_tree( $categories, $depth, $r );
+
+			$output .= walk_issuem_category_dropdown_tree($categories, $depth, $r);
 		}
-	
-		if ( ! $r['hide_if_empty'] || ! empty($categories) )
+
+		if (!$r['hide_if_empty'] || !empty($categories))
 			$output .= "</select>\n";
-	
-		$output = apply_filters( 'issuem_dropdown_cats', $output );
-	
-		if ( $echo )
+
+		$output = apply_filters('issuem_dropdown_cats', $output);
+
+		if ($echo)
 			echo $output;
-	
+
 		return $output;
 	}
-
 }
 
-if ( !function_exists( 'walk_issuem_category_dropdown_tree' ) ) {
-		
+if (!function_exists('walk_issuem_category_dropdown_tree')) {
+
 	/**
 	 * Retrieve HTML dropdown (select) content for category list.
 	 * Adapted from WordPress' "walk_category_dropdown_tree"
@@ -798,21 +755,21 @@ if ( !function_exists( 'walk_issuem_category_dropdown_tree' ) ) {
 	 * @since 1.2.6 
 	 * @see Walker_IssueMCategoryDropdown::walk() for parameters and return description.
 	 */
-	function walk_issuem_category_dropdown_tree() {
+	function walk_issuem_category_dropdown_tree()
+	{
 		$args = func_get_args();
 		// the user's options are the third parameter
-		if ( empty($args[2]['walker']) || !is_a($args[2]['walker'], 'Walker') )
+		if (empty($args[2]['walker']) || !is_a($args[2]['walker'], 'Walker'))
 			$walker = new Walker_IssueMCategoryDropdown;
 		else
 			$walker = $args[2]['walker'];
-	
-		return call_user_func_array(array( &$walker, 'walk' ), $args );
-	}
 
+		return call_user_func_array(array(&$walker, 'walk'), $args);
+	}
 }
 
-if ( !function_exists( 'get_issuem_article_excerpt' ) ) { 
-	
+if (!function_exists('get_issuem_article_excerpt')) {
+
 	/**
 	 * Get article excerpt by id, for use outside of the loop
 	 *
@@ -821,58 +778,52 @@ if ( !function_exists( 'get_issuem_article_excerpt' ) ) {
 	 * @param int $id Article ID 
 	 * @return excerpt for the article
 	 */
-	function get_issuem_article_excerpt( $id = false ) {
-	
-		if ( !$id ) {
-				
+	function get_issuem_article_excerpt($id = false)
+	{
+
+		if (!$id) {
+
 			return;
-			
 		} else {
 
 			$the_article = get_post($id);
 			$the_excerpt = $the_article->post_excerpt;
 
 			return $the_excerpt;
-			
 		}
-		
 	}
-
 }
 
-if ( !function_exists( 'issuem_is_articles_page' ) ) { 
+if (!function_exists('issuem_is_articles_page')) {
 
 	/**
 	 * Determines if we're currently on the Articles page
 	 * @since  2.5.1 
 	 * @return bool True if on Articles page, false otherwise
 	 */
-	function issuem_is_articles_page() {
+	function issuem_is_articles_page()
+	{
 
 		global $wp_query;
 
 		$issuem_settings = get_issuem_settings();
 
-		$is_object_set     = isset( $wp_query->queried_object );
-		$is_object_id_set  = isset( $wp_query->queried_object_id );
-		$is_articles_page  = is_page( $issuem_settings['page_for_articles'] );
-		
-		if( ! $is_object_set ) {
+		$is_object_set     = isset($wp_query->queried_object);
+		$is_object_id_set  = isset($wp_query->queried_object_id);
+		$is_articles_page  = is_page($issuem_settings['page_for_articles']);
 
-			unset( $wp_query->queried_object );
+		if (!$is_object_set) {
 
+			unset($wp_query->queried_object);
 		}
 
-		if( ! $is_object_id_set ) {
+		if (!$is_object_id_set) {
 
-			unset( $wp_query->queried_object_id );
-
+			unset($wp_query->queried_object_id);
 		}
 
-		return apply_filters( 'issuem_is_articles_page', $is_articles_page );
-
+		return apply_filters('issuem_is_articles_page', $is_articles_page);
 	}
-
 }
 
 /**
@@ -880,13 +831,13 @@ if ( !function_exists( 'issuem_is_articles_page' ) ) {
  * @since  2.7.2 
  * @return array 
  */
-function get_issuem_hidden_statuses() {
+function get_issuem_hidden_statuses()
+{
 
 	$hidden_statuses = array(
 		'Draft',
 		'Scheduled'
 	);
 
-	return apply_filters( 'issuem_hidden_statuses', $hidden_statuses );
-
+	return apply_filters('issuem_hidden_statuses', $hidden_statuses);
 }
