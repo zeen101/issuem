@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 4.6
-Tested up to: 5.5.3
-Stable tag: 2.8.4
+Tested up to: 5.8
+Stable tag: 2.8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,7 +80,10 @@ You must have:
 
 == Changelog ==
 
-* 2.8.4 =
+= 2.8.5 =
+* Sanitize parameters
+
+= 2.8.4 =
 * Add ability for 3rd party plugins to add settings tabs
 * Fix index error during post save
 
