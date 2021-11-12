@@ -344,7 +344,7 @@ if (!function_exists('do_issuem_archives')) {
 
 			?>
 
-				<div id="issue-<?php echo $issue_array[0]->term_id; ?>" class="issuem_archive <?php echo $class; ?>">
+				<div id="issue-<?php echo $issue_array[0]->term_id; ?>" class="issuem_archive issuem-archives-issue <?php echo $class; ?>">
 
 					<?php
 
@@ -398,13 +398,19 @@ if (!function_exists('do_issuem_archives')) {
 					$final_issue_url = esc_url(apply_filters('issuem_archives_issue_url', $issue_url, $issue_array));
 					?>
 
-					<p>
+					
+					<p class="issuem-archives-issue-cover">
 						<a class="featured_archives_cover" style="width: <?php echo $width; ?>px; height: <?php echo $height; ?>px;" href="<?php echo $final_issue_url; ?>"><?php echo $image_line; ?></a>
-						<br />
+					</p>
+					<p class="issuem-archives-issue-title">
 						<a href="<?php echo $final_issue_url; ?>"><?php echo $issue_array[0]->name; ?></a>
-						<br />
+					</p>
+					
+					<p class="issuem-archives-pdf-link">
 						<?php echo $pdf_line; ?>
 					</p>
+
+					<?php do_action( 'issuem_after_archive_issue', $issue_array[0]->term_id ); ?>
 
 				</div>
 			<?php
@@ -435,11 +441,6 @@ if (!function_exists('do_issuem_archives')) {
 			<?php
 			}
 			?>
-
-			<div class="api_error">
-				<p><a href="https://zeen101.com/for-developers/issuem/" target="_blank"><?php _e('Issue Management by ', 'issuem'); ?> IssueM</a></p>
-			</div>
-
 
 		</div>
 
