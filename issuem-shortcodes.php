@@ -280,7 +280,7 @@ if (!function_exists('do_issuem_archives')) {
 			$args = str_replace('&#038;', '&', $args);
 		}
 
-		$args = apply_filters('do_issuem_archives_get_terms_args', $args);
+		$args = apply_filters('do_issuem_archives_get_terms_args', $args, $atts);
 		$issuem_issues = get_terms('issuem_issue', $args);
 		$archives = array();
 		$archives_no_issue_order = array();
