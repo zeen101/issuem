@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 4.6
-Tested up to: 5.8
-Stable tag: 2.8.5
+Tested up to: 5.9
+Stable tag: 2.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Create, Organize, and Publish Issues with WordPress
 
 **"...IssueM is a real standout." &mdash; WPMU**
 
-[IssueM](https://zeen101.com/for-developers/issuem/) is one of the cornerstones of the leading WordPress platform for publishers. 
+[IssueM](https://leakypaywall.com/issuem/) is one of the cornerstones of the leading WordPress platform for publishers. 
 
 IssueM turns WordPress into a powerful publishing platform for digital issues. Popular with alumni magazines, trade magazines, news sites, science journals, and other publishers of periodicals, IssueM brings the proven and familiar issue-based publishing model to the web. There are incredible benefits to the issue-based model of publishing:
 
@@ -41,8 +41,8 @@ Some other benefits:
 	
 Issue-based publishing on the web is gaining steam. More and more traditional publishers are learning that using their print version's issue-based publication schedule on the web—as opposed to a running stream of content—is not only not a step backwards, but it is a welcome change for readers who are often overwhelmed by streams of content. As this publishing model grows in popularity, so does the IssueM ecosystem. Currently, zeen101 offers the following add-ons and companion plugins to turbocharge and complement IssueM.
 
-* **[Leaky Paywall](https://zeen101.com/for-developers/leakypaywall/)**, when paired with IssueM, makes charging for issue subscriptions simple. Sell subscriptions to your content using any schedule (weekly, monthly, annually, etc.) and price you like. Set your "leak level" to define how many articles readers are allowed to view without a subscription for any time period you set. For example, you can allow unsubscribed readers to read 3 articles per month before a subscription is required. Leaky Paywall also allows you to set limits by content type as well. Leaky Paywall is a paid plugin.
-* **[UniPress](https://getunipress.com/)** brings your IssueM issues to iPhone and Android devices as your publication's very own app. Build a stronger relationship with your readers by providing them with a dedicated app that they can have in their pocket every day. All your issues, articles, posts, and pages flow into the UniPress app framework that zeen101 will brand as your magazine, set up, and submit to the Apple and Android app stores. It couldn't be easier. UniPress is available now. (The IssueM integration is currently under development and will be available soon.)
+* **[Leaky Paywall](https://leakypaywall.com/)**, when paired with IssueM, makes charging for issue subscriptions simple. Sell subscriptions to your content using any schedule (weekly, monthly, annually, etc.) and price you like. Set your "leak level" to define how many articles readers are allowed to view without a subscription for any time period you set. For example, you can allow unsubscribed readers to read 3 articles per month before a subscription is required. Leaky Paywall also allows you to set limits by content type as well. Leaky Paywall is a paid plugin.
+* **[UniPress](https://leakypaywall.com/unipress-apps/)** brings your IssueM issues to iPhone and Android devices as your publication's very own app. Build a stronger relationship with your readers by providing them with a dedicated app that they can have in their pocket every day. All your issues, articles, posts, and pages flow into the UniPress app framework that zeen101 will brand as your magazine, set up, and submit to the Apple and Android app stores. It couldn't be easier. UniPress is available now. (The IssueM integration is currently under development and will be available soon.)
 * **[The Issue-to-PDF add-on](https://zeen101.com/downloads/issue-to-pdf/)** allows publishers to convert their digital issues into PDFs with the click of a button.
 * Want to convert your blog posts into issues? **[The Issue Migration Tool](https://zeen101.com/downloads/migration-tool/)** will migrate any post content you choose into article content, so that you can include it into your IssueM issues. Quickly create a special issue or start an issue based magazine or news site.
 * If you need more power in your search box, the **[Advanced Issue Search add-on](https://zeen101.com/downloads/issuem-advanced-search/)** allows your readers to comb through your content in a way that isn't possible with the standard WordPress content search.
@@ -56,8 +56,8 @@ Issue-based publishing on the web is gaining steam. More and more traditional pu
 
 **What are the minimum requirements for IssueM?**
 You must have:
-* WordPress 3.3 or later
-* PHP 5
+* WordPress 5.3 or later
+* PHP 7 or higher
 
 **How is IssueM Licensed?**
 * IssueM is GPL.
@@ -79,6 +79,11 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.8.6 =
+* Fix some styles
+* Add attributes to do_issuem_archives_get_terms_args filter
+* Update html on issuem archive issues
 
 = 2.8.5 =
 * Sanitize parameters
