@@ -61,7 +61,7 @@ if (!function_exists('create_article_post_type')) {
 			'rewrite' 				=> array('slug' => 'article'),
 			'show_in_rest' 			=> true,
 			'taxonomies'			=> $taxonomies,
-			'menu_icon'				=> ''
+			'menu_icon'				=> ISSUEM_URL . '/images/oie_P7fhR5VjrKGg1.png'
 		);
 
 		register_post_type('article', apply_filters('issuem_article_post_type_args', $args));

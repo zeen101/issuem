@@ -1,13 +1,5 @@
 /* CSS Document */
 
-#menu-posts-article .wp-menu-image {
-  background: url("../images/zeen-logo-gr.png") no-repeat;
-  background-size: 22px 20px;
-  background-position: 7px 7px;
-  width: 22px;
-  height: 20px;
-}
-
 table#issuem_administrator_options {
   width: 100%;
 }
