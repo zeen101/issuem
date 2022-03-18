@@ -443,8 +443,8 @@ if (!function_exists('do_issuem_archives')) {
 				</div>
 			<?php
 			}
+			do_action( 'issuem_archives_after_issues' );
 			?>
-
 		</div>
 
 <?php $content = ob_get_contents();
