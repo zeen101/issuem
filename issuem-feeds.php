@@ -6,7 +6,7 @@
  * @since 1.0.2
  */
  
-if ( !function_exists( 'do_issuem_feed_rdf' ) ) {
+if ( ! function_exists( 'do_issuem_feed_rdf' ) ) {
 	
 	/**
 	 * Load the RDF RSS 0.91 Feed template customized for IssueM Issues
@@ -22,13 +22,12 @@ if ( !function_exists( 'do_issuem_feed_rdf' ) ) {
 			remove_action( 'do_feed_rdf', 'do_feed_rdf', 10, 1 );
 			
 		}
-		
 	}
-	add_action( 'do_feed_rdf', 	'do_issuem_feed_rdf', 1, 1 );
+	add_action( 'do_feed_rdf', 'do_issuem_feed_rdf', 1, 1 );
 
 }
 
-if ( !function_exists( 'do_issuem_feed_atom' ) ) {
+if ( ! function_exists( 'do_issuem_feed_atom' ) ) {
 	
 	/**
 	 * Load either Atom comment feed or Atom posts feed template customized for IssueM Issues
@@ -39,8 +38,9 @@ if ( !function_exists( 'do_issuem_feed_atom' ) ) {
 	 */
 	function do_issuem_feed_atom( $for_comments ) {
 		
-		if ( $for_comments )
+		if ( $for_comments ) {
 			return;
+		}
 		
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 		
@@ -49,13 +49,12 @@ if ( !function_exists( 'do_issuem_feed_atom' ) ) {
 			remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
 			
 		}
-		
 	}
 	add_action( 'do_feed_atom', 'do_issuem_feed_atom', 1, 1 );
 
 }
 
-if ( !function_exists( 'do_issuem_feed_rss' ) ) {
+if ( ! function_exists( 'do_issuem_feed_rss' ) ) {
 	
 	/**
 	 * Load the RSS 1.0 feed template customized for IssueM Issues
@@ -71,13 +70,12 @@ if ( !function_exists( 'do_issuem_feed_rss' ) ) {
 			remove_action( 'do_feed_rss', 'do_feed_rss', 10, 1 );
 			
 		}
-		
 	}
-	add_action( 'do_feed_rss', 	'do_issuem_feed_rss', 1, 1 );
+	add_action( 'do_feed_rss', 'do_issuem_feed_rss', 1, 1 );
 	
 }
 
-if ( !function_exists( 'do_issuem_feed_rss2' ) ) {
+if ( ! function_exists( 'do_issuem_feed_rss2' ) ) {
 	
 	/**
 	 * Load either the RSS2 comment feed or the RSS2 posts feed template customized for IssueM Issues
@@ -88,8 +86,9 @@ if ( !function_exists( 'do_issuem_feed_rss2' ) ) {
 	 */
 	function do_issuem_feed_rss2( $for_comments ) {
 				
-		if ( $for_comments )
+		if ( $for_comments ) {
 			return;
+		}
 		
 		if ( get_query_var( 'post_type' ) == 'article' ) {
 		
@@ -98,7 +97,6 @@ if ( !function_exists( 'do_issuem_feed_rss2' ) ) {
 			remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
 			
 		}
-		
 	}
 	add_action( 'do_feed_rss2', 'do_issuem_feed_rss2', 1, 1 );
 
