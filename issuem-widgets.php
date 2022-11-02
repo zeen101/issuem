@@ -36,7 +36,7 @@ class IssueM_Active_Issue extends WP_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	function __construct() {
+	public function __construct() {
 		
 		$widget_ops = array(
 			'classname'   => 'issuem_active_issue',
@@ -53,7 +53,7 @@ class IssueM_Active_Issue extends WP_Widget {
 	 * @param array $args
 	 * @param array $instance
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		
 		extract( $args );
 	
@@ -122,7 +122,7 @@ class IssueM_Active_Issue extends WP_Widget {
 	 * @param array $new_instance
 	 * @param array $old_isntance
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		
 		$instance                        = $old_instance;
 		$instance['title']               = $new_instance['title'];
@@ -140,7 +140,7 @@ class IssueM_Active_Issue extends WP_Widget {
 	 *
 	 * @param array $instance
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 		
 		$available_issues = get_terms( 'issuem_issue', array( 'hide_empty' => false ) );
 			
@@ -199,7 +199,7 @@ class IssueM_Article_List extends WP_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	function __construct() {
+	public function __construct() {
 		
 		$widget_ops  = array(
 			'classname'   => 'issuem_article_list',
@@ -220,7 +220,7 @@ class IssueM_Article_List extends WP_Widget {
 	 * @param array $args
 	 * @param array $instance
 	 */
-	function widget( $atts, $instance ) {
+	public function widget( $atts, $instance ) {
 		
 		global $post;
 		
@@ -332,7 +332,7 @@ class IssueM_Article_List extends WP_Widget {
 	 * @param array $new_instance
 	 * @param array $old_instance
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		
 		$instance                     = $old_instance;
 		$instance['title']            = $new_instance['title'];
@@ -351,7 +351,7 @@ class IssueM_Article_List extends WP_Widget {
 	 
 	 * @param array $instance
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 		
 		$available_issues = get_terms( 'issuem_issue', array( 'hide_empty' => false ) );
 
@@ -372,13 +372,13 @@ class IssueM_Article_List extends WP_Widget {
 		if ( ! empty( $available_issues ) ) :
 			?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( strip_tags( $title ) ); ?>" />
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
+				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Number of Articles to Show:', 'issuem' ); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( strip_tags( $posts_per_page ) ); ?>" />
+				<label for="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ); ?>"><?php _e( 'Number of Articles to Show:', 'issuem' ); ?></label>
+				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'posts_per_page' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'posts_per_page' ) ); ?>" type="text" value="<?php echo esc_attr( $posts_per_page ); ?>" />
 				<small>-1 = All Articles</small>
 			</p>
 			<?php
@@ -400,11 +400,11 @@ class IssueM_Article_List extends WP_Widget {
 			?>
 			  
 			<p>
-				<label for="<?php echo $this->get_field_id( 'article_category' ); ?>"><?php _e( 'Select Category to Display:', 'issuem' ); ?></label><br />
-				<select id="<?php echo $this->get_field_id( 'article_category' ); ?>" name="<?php echo $this->get_field_name( 'article_category' ); ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'article_category' ) ); ?>"><?php _e( 'Select Category to Display:', 'issuem' ); ?></label><br />
+				<select id="<?php echo esc_attr( $this->get_field_id( 'article_category' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'article_category' ) ); ?>">
 				<option value="all" <?php selected( 'all', $article_category ); ?>><?php _e( 'All Categories', 'issuem' ); ?></option>
 				<?php foreach ( $categories as $cat ) { ?>
-					<option value="<?php echo $cat->slug; ?>" <?php selected( $cat->slug, $article_category ); ?>><?php echo $cat->name; ?></option>
+					<option value="<?php echo esc_attr( $cat->slug ); ?>" <?php selected( $cat->slug, $article_category ); ?>><?php echo esc_html( $cat->name ); ?></option>
 				<?php } ?>
 				</select>
 			</p>
@@ -425,10 +425,10 @@ class IssueM_Article_List extends WP_Widget {
 				);
 				?>
 			
-				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Select Sort Order:', 'issuem' ); ?></label><br />
-				<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php _e( 'Select Sort Order:', 'issuem' ); ?></label><br />
+				<select id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>">
 				<?php foreach ( $orderby_options as $orderby_key => $orderby_title ) { ?>
-					<option value="<?php echo $orderby_key; ?>" <?php selected( $orderby_key, $orderby ); ?>><?php echo $orderby_title; ?></option>
+					<option value="<?php echo esc_attr( $orderby_key ); ?>" <?php selected( $orderby_key, $orderby ); ?>><?php echo esc_html( $orderby_title ); ?></option>
 				<?php } ?>
 				</select>
 			</p>
@@ -441,17 +441,17 @@ class IssueM_Article_List extends WP_Widget {
 				);
 				?>
 			
-				<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Select Order Direction:', 'issuem' ); ?></label><br />
-				<select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php _e( 'Select Order Direction:', 'issuem' ); ?></label><br />
+				<select id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>">
 				<?php foreach ( $order_options as $order_key => $order_title ) { ?>
-					<option value="<?php echo $order_key; ?>" <?php selected( $order_key, $order ); ?>><?php echo $order_title; ?></option>
+					<option value="<?php echo esc_attr( $order_key ); ?>" <?php selected( $order_key, $order ); ?>><?php echo esc_html( $order_title ); ?></option>
 				<?php } ?>
 				</select>
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'article_format' ); ?>"><?php _e( 'Article Format:', 'issuem' ); ?></label><br />
-				<textarea id="<?php echo $this->get_field_id( 'article_format' ); ?>" name="<?php echo $this->get_field_name( 'article_format' ); ?>" cols="70" rows="16"><?php echo $article_format; ?></textarea>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'article_format' ) ); ?>"><?php _e( 'Article Format:', 'issuem' ); ?></label><br />
+				<textarea id="<?php echo esc_attr( $this->get_field_id( 'article_format' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'article_format' ) ); ?>" cols="70" rows="16"><?php echo wp_kses_post( $article_format ); ?></textarea>
 			</p>
 			<p><a href="/wp-admin/edit.php?post_type=article&page=issuem-help"><?php _e( 'See IssueM Help for details on article formatting', 'issuem' ); ?></a></p>
 			<?php 
@@ -472,7 +472,7 @@ class IssueM_Article_List extends WP_Widget {
  */
 class IssueM_Article_Categories extends WP_Widget {
 
-	function __construct() {
+	public function __construct() {
 		$widget_ops = array(
 			'classname'   => 'issuem_widget_categories',
 			'description' => __( 'A list or dropdown of Article categories', 'issuem' ),
@@ -480,7 +480,7 @@ class IssueM_Article_Categories extends WP_Widget {
 		parent::__construct( 'categories', __( 'Article Categories', 'issuem' ), $widget_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract( $args );
 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Article Categories', 'issuem' ) : $instance['title'], $instance, $this->id_base );
@@ -510,7 +510,7 @@ class IssueM_Article_Categories extends WP_Widget {
 	function onIssueMCatChange() {
 		if ( issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value != 0 
 		&& issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value != -1 ) {
-			location.href = "<?php echo home_url(); ?>/?issuem_issue_categories="+issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value;
+			location.href = "<?php echo esc_url( home_url() ); ?>/?issuem_issue_categories="+issuem_cat_dropdown.options[issuem_cat_dropdown.selectedIndex].value;
 		}
 	}
 	issuem_cat_dropdown.onchange = onIssueMCatChange;
@@ -533,9 +533,9 @@ class IssueM_Article_Categories extends WP_Widget {
 		echo $after_widget;
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance                 = $old_instance;
-		$instance['title']        = strip_tags( $new_instance['title'] );
+		$instance['title']        = wp_strip_all_tags( $new_instance['title'] );
 		$instance['count']        = ! empty( $new_instance['count'] ) ? 1 : 0;
 		$instance['hierarchical'] = ! empty( $new_instance['hierarchical'] ) ? 1 : 0;
 		$instance['dropdown']     = ! empty( $new_instance['dropdown'] ) ? 1 : 0;
@@ -543,7 +543,7 @@ class IssueM_Article_Categories extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		//Defaults
 		$instance     = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title        = esc_attr( $instance['title'] );
@@ -551,17 +551,17 @@ class IssueM_Article_Categories extends WP_Widget {
 		$hierarchical = ! empty( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : false;
 		$dropdown     = ! empty( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : false;
 		?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'issuem' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
-		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'dropdown' ); ?>" name="<?php echo $this->get_field_name( 'dropdown' ); ?>"<?php checked( $dropdown ); ?> />
-		<label for="<?php echo $this->get_field_id( 'dropdown' ); ?>"><?php _e( 'Display as dropdown', 'issuem' ); ?></label><br />
+		<p><input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>"<?php checked( $dropdown ); ?> />
+		<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php _e( 'Display as dropdown', 'issuem' ); ?></label><br />
 
-		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>"<?php checked( $count ); ?> />
-		<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Show product counts', 'issuem' ); ?></label><br />
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>"<?php checked( $count ); ?> />
+		<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php _e( 'Show product counts', 'issuem' ); ?></label><br />
 
-		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id( 'hierarchical' ); ?>" name="<?php echo $this->get_field_name( 'hierarchical' ); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id( 'hierarchical' ); ?>"><?php _e( 'Show hierarchy', 'issuem' ); ?></label></p>
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'hierarchical' ) ); ?>"<?php checked( $hierarchical ); ?> />
+		<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php _e( 'Show hierarchy', 'issuem' ); ?></label></p>
 		<?php
 	}
 
