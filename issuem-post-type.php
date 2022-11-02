@@ -185,7 +185,7 @@ function save_issuem_article_meta( $post_id ) {
 	}
 
 	// if our nonce isn't there, or we can't verify it, bail 
-	if( !isset( $_POST['issuem_article_meta_box_submit_field'] ) || !wp_verify_nonce( sanitize_text_field( $_POST['issuem_article_meta_box_submit_field'] ), 'issuem_article_meta_box_submit' ) ) {
+	if ( ! isset( $_POST['issuem_article_meta_box_submit_field'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['issuem_article_meta_box_submit_field'] ), 'issuem_article_meta_box_submit' ) ) {
 		return;
 	}
 

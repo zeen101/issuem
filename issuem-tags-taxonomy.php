@@ -5,7 +5,7 @@
  * @package IssueM
  * @since 1.0.0
  */
- 	
+	
 /**
  * Registers Article Category taxonomy for IssueM
  *

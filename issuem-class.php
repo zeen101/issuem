@@ -103,7 +103,6 @@ class IssueM {
 		add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
 
 		add_submenu_page( 'edit.php?post_type=article', __( 'Add-Ons', 'issuem' ), __( 'Add-Ons', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-addons', array( $this, 'addons_page' ) );
-
 	}
 
 	/**
@@ -165,7 +164,7 @@ class IssueM {
 
 			$author_name = get_post_meta( $post->ID, '_issuem_author_name', true );
 
-			if ($author_name ) {
+			if ( $author_name ) {
 				return $author_name;
 			} else {
 				return $wp_author;
@@ -537,10 +536,8 @@ class IssueM {
 	
 					$this->update_settings( $settings );
 	
-				}
-
-			}
-
+				}           
+			}       
 		} // endif for saving general tab settings
 
 

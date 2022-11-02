@@ -439,7 +439,7 @@ function get_issuem_author_name( $article, $hide_link = false ) {
 		if ( 'user_firstlast' == $issuem_settings['display_byline_as'] ) {
 
 			$first_name = get_the_author_meta( 'user_firstname', $article->post_author );
-			$last_name = get_the_author_meta( 'user_lastname', $article->post_author );
+			$last_name  = get_the_author_meta( 'user_lastname', $article->post_author );
 
 			if ( $first_name && $last_name ) {
 				$author_name = $first_name . ' ' . $last_name;
