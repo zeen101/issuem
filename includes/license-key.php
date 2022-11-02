@@ -77,16 +77,16 @@ class Issuem_License_Key {
 		?>
 
 		<div class="issuem-license-key-box">
-			<h3 class="issuem-license-key-title"><span><?php _e( $this->plugin_name, $this->plugin_slug ); ?></span></h3>
+			<h3 class="issuem-license-key-title"><span><?php esc_html_e( $this->plugin_name, $this->plugin_slug ); ?></span></h3>
 
-			<table id="<?php echo $this->plugin_prefix; ?>_license_key" class="form-table">
+			<table id="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_key" class="form-table">
 				<tr>
 					<th rowspan="1">
-						<?php _e( 'License Key', $this->plugin_slug ); ?>
+						<?php esc_html_e( 'License Key', $this->plugin_slug ); ?>
 					</th>
 
 					<td>
-						<input type="text" id="<?php echo $this->plugin_prefix; ?>_license_key" class="regular-text" name="<?php echo $this->plugin_prefix; ?>_license_key" value="<?php echo htmlspecialchars( stripcslashes( $settings['license_key'] ) ); ?>" />
+						<input type="text" id="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_key" class="regular-text" name="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_key" value="<?php echo esc_attr( $settings['license_key'] ); ?>" />
 
 						<?php 
 						if (
@@ -95,21 +95,21 @@ class Issuem_License_Key {
 						) {
 												   // license is active
 							?>
-							<span style="color:green;"><?php _e( 'active' ); ?></span>
-							<input type="submit" class="button-secondary" name="<?php echo $this->plugin_prefix; ?>_license_deactivate" value="<?php _e( 'Deactivate License', $this->plugin_slug ); ?>" />
+							<span style="color:green;"><?php esc_html_e( 'active' ); ?></span>
+							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_deactivate" value="<?php esc_attr_e( 'Deactivate License', $this->plugin_slug ); ?>" />
 
 							<?php 
 						} elseif ( $settings['license_status'] == 'invalid' ) {
 							// license is invalid
 							?>
-							<span style="color:red;"><?php _e( 'invalid' ); ?></span>
-							<input type="submit" class="button-secondary" name="<?php echo $this->plugin_prefix; ?>_license_activate" value="<?php _e( 'Activate License', $this->plugin_slug ); ?>" />
+							<span style="color:red;"><?php esc_html_e( 'invalid' ); ?></span>
+							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_activate" value="<?php esc_attr_e( 'Activate License', $this->plugin_slug ); ?>" />
 
 							<?php 
 						} else {
 							// license hasn't been entered yet
 							?>
-							<input type="submit" class="button-secondary" name="<?php echo $this->plugin_prefix; ?>_license_activate" value="<?php _e( 'Activate License', $this->plugin_slug ); ?>" />
+							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $this->plugin_prefix ); ?>_license_activate" value="<?php esc_attr_e( 'Activate License', $this->plugin_slug ); ?>" />
 
 						<?php } ?>
 
@@ -141,7 +141,7 @@ class Issuem_License_Key {
 		$settings = $this->get_settings();
 
 		if ( ! empty( $_POST[ $this->plugin_prefix . '_license_key' ] ) ) {
-			$settings['license_key'] = $_POST[ $this->plugin_prefix . '_license_key' ];
+			$settings['license_key'] = sanitize_text_field( $_POST[ $this->plugin_prefix . '_license_key' ] );
 		}
 
 		$license = trim( $settings['license_key'] );
@@ -157,7 +157,6 @@ class Issuem_License_Key {
 		$response = wp_remote_get(
 			esc_url_raw( add_query_arg( $api_params, ZEEN101_STORE_URL ) ),
 			array(
-				'timeout'   => 15,
 				'sslverify' => false,
 			) 
 		);
@@ -206,7 +205,6 @@ class Issuem_License_Key {
 		$response = wp_remote_get(
 			esc_url_raw( add_query_arg( $api_params, ZEEN101_STORE_URL ) ),
 			array(
-				'timeout'   => 15,
 				'sslverify' => false,
 			) 
 		);

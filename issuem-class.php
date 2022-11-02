@@ -842,7 +842,7 @@ class IssueM {
 
 							<?php do_action( 'issuem_before_licenses_settings' ); ?>
 
-							<h2><a target="_blank" href="https://zeen101.com/downloads/category/issuem-addons/?utm_source=plugin&utm_medium=license_tab&utm_content=link&utm_campaign=settings">Find out more about our add-ons</a></h2>
+							<h2><a target="_blank" href="https://leakypaywalll.com/downloads/category/issuem-addons/?utm_source=plugin&utm_medium=license_tab&utm_content=link&utm_campaign=settings">Find out more about our add-ons</a></h2>
 
 							<?php wp_nonce_field( 'verify', 'issuem_license_wpnonce' ); ?>
 
