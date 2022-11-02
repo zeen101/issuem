@@ -428,13 +428,13 @@ function do_issuem_archives( $atts ) {
 				if ( 0 === $offset && $limit < $archive_count ) { //Previous link only $results .='<div class="alignleft"><a href="' . esc_url( add_query_arg( 'paged' , $paged + 1, $url ) ) . '">' . __( 'Previous Archives' , 'issuem' ) . '</a></div>' ; } else if ( $offset>= $archive_count ) {
 					//Next link only
 					?>
-					<div class="alignright"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged + 1, $url ) ); ?>"> <?php _e( 'Next Archives', 'issuem' ); ?></a></div>
+					<div class="alignright"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged + 1, $url ) ); ?>"> <?php esc_html_e( 'Next Archives', 'issuem' ); ?></a></div>
 					<?php
 				} else {
 					//Next and Previous Links
 					?>
-					<div class="alignleft"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged - 1, $url ) ); ?>"><?php _e( 'Previous Archives', 'issuem' ); ?></a></div>
-					<div class="alignright"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged + 1, $url ) ); ?>"><?php _e( 'Next Archives', 'issuem' ); ?></a></div>
+					<div class="alignleft"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged - 1, $url ) ); ?>"><?php esc_html_e( 'Previous Archives', 'issuem' ); ?></a></div>
+					<div class="alignright"><a href="<?php echo esc_url( add_query_arg( 'paged', $paged + 1, $url ) ); ?>"><?php esc_html_e( 'Next Archives', 'issuem' ); ?></a></div>
 					<?php
 				}
 				?>

@@ -134,20 +134,20 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
 		<div id="issuem-article-metabox">
 
 			<p><input id="featured_rotator" type="checkbox" name="featured_rotator" <?php checked( 'on', $featured_rotator ); ?> />
-				<label for="featured_rotator"><?php _e( 'Add article to Featured Rotator', 'issuem' ); ?></label>
+				<label for="featured_rotator"><?php esc_html_e( 'Add article to Featured Rotator', 'issuem' ); ?></label>
 			</p>
 
 
-			<p><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( 'on', $featured_thumb ); ?> /><label for="featured_thumb"><?php _e( 'Add article to Featured Thumbnails', 'issuem' ); ?></label></p>
+			<p><input id="featured_thumb" type="checkbox" name="featured_thumb" <?php checked( 'on', $featured_thumb ); ?> /><label for="featured_thumb"><?php esc_html_e( 'Add article to Featured Thumbnails', 'issuem' ); ?></label></p>
 
 			<p>
-				<label for="teaser_text"><strong><?php _e( 'Teaser Text', 'issuem' ); ?></strong></label><br>
+				<label for="teaser_text"><strong><?php esc_html_e( 'Teaser Text', 'issuem' ); ?></strong></label><br>
 
 				<input class="large-text" type="text" name="teaser_text" value="<?php echo esc_attr( $teaser_text ); ?>" />
 			</p>
 
 			<?php if ( ! empty( $issuem_settings['issuem_author_name'] ) ) { ?>
-				<p><label for="featured_thumb"><strong><?php _e( 'IssueM Author Name', 'issuem' ); ?></strong></label><br>
+				<p><label for="featured_thumb"><strong><?php esc_html_e( 'IssueM Author Name', 'issuem' ); ?></strong></label><br>
 					<input class="regular-text" type="text" name="issuem_author_name" value="<?php echo esc_attr( $issuem_author_name ); ?>" />
 				</p>
 			<?php } ?>

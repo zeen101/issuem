@@ -547,7 +547,7 @@ class IssueM {
 			// update settings notification 
 			?>
 			<div class="updated">
-				<p><strong><?php _e( 'Settings updated.', 'issuem' ); ?></strong></p>
+				<p><strong><?php esc_html_e( 'Settings updated.', 'issuem' ); ?></strong></p>
 			</div>
 			<?php
 
@@ -557,7 +557,7 @@ class IssueM {
 		?>
 		<div class="wrap issuem-settings">
 
-			<h2 style='margin-bottom: 10px;'><?php _e( 'IssueM Settings', 'issuem' ); ?></h2>
+			<h2 style='margin-bottom: 10px;'><?php esc_html_e( 'IssueM Settings', 'issuem' ); ?></h2>
 
 			<div class="postbox-container column-primary">
 
@@ -570,7 +570,7 @@ class IssueM {
 																<?php 
 																if ( $current_tab == 'general' ) {
 																	?>
-								nav-tab-active<?php } ?>"><?php _e( 'General', 'issuem' ); ?></a>
+								nav-tab-active<?php } ?>"><?php esc_html_e( 'General', 'issuem' ); ?></a>
 
 						<?php do_action( 'issuem_settings_tabs_links', $current_tab ); ?>
 
@@ -578,7 +578,7 @@ class IssueM {
 											<?php 
 											if ( $current_tab == 'licenses' ) {
 												?>
-								nav-tab-active<?php } ?>"><?php _e( 'Licenses', 'issuem' ); ?></a>
+								nav-tab-active<?php } ?>"><?php esc_html_e( 'Licenses', 'issuem' ); ?></a>
 
 					</h2>
 					<?php
@@ -608,7 +608,7 @@ class IssueM {
 												<table id="issuem_administrator_options" class="form-table">
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Page for Articles', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Page for Articles', 'issuem' ); ?></th>
 														<td>
 														<?php 
 														wp_dropdown_pages(
@@ -623,7 +623,7 @@ class IssueM {
 															</td>
 													</tr>
 													<tr>
-														<th rowspan="1"> <?php _e( 'Page for Issue Archives', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Page for Issue Archives', 'issuem' ); ?></th>
 														<td>
 														<?php 
 														wp_dropdown_pages(
@@ -641,7 +641,7 @@ class IssueM {
 													<?php if ( apply_filters( 'enqueue_issuem_styles', true ) ) { ?>
 
 														<tr>
-															<th rowspan="1"> <?php _e( 'CSS Style', 'issuem' ); ?></th>
+															<th rowspan="1"> <?php esc_html_e( 'CSS Style', 'issuem' ); ?></th>
 															<td>
 																<select id='css_style' name='css_style'>
 																	<?php
@@ -659,43 +659,43 @@ class IssueM {
 													<?php } ?>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'PDF Download Link Title', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'PDF Download Link Title', 'issuem' ); ?></th>
 														<td><input type="text" id="pdf_title" class="regular-text" name="pdf_title" value="<?php echo esc_attr( $settings['pdf_title'] ); ?>" /></td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'PDF Only Title', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'PDF Only Title', 'issuem' ); ?></th>
 														<td><input type="text" id="pdf_only_title" class="regular-text" name="pdf_only_title" value="<?php echo esc_attr( $settings['pdf_only_title'] ); ?>" /></td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'PDF Link Target', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'PDF Link Target', 'issuem' ); ?></th>
 														<td>
 															<select id='pdf_open_target' name='pdf_open_target'>
-																<option value='_blank' <?php selected( '_blank', $settings['pdf_open_target'] ); ?>><?php _e( 'Open in New Window/Tab', 'issuem' ); ?></option>
-																<option value='_self' <?php selected( '_self', $settings['pdf_open_target'] ); ?>><?php _e( 'Open in Same Window/Tab', 'issuem' ); ?></option>
+																<option value='_blank' <?php selected( '_blank', $settings['pdf_open_target'] ); ?>><?php esc_html_e( 'Open in New Window/Tab', 'issuem' ); ?></option>
+																<option value='_self' <?php selected( '_self', $settings['pdf_open_target'] ); ?>><?php esc_html_e( 'Open in Same Window/Tab', 'issuem' ); ?></option>
 															</select>
 														</td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Cover Image Size', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Cover Image Size', 'issuem' ); ?></th>
 														<td>
-															<?php _e( 'Width', 'issuem' ); ?> <input type="text" id="cover_image_width" class="small-text" name="cover_image_width" value="<?php echo esc_attr( stripcslashes( $settings['cover_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="cover_image_height" class="small-text" name="cover_image_height" value="<?php echo esc_attr( stripcslashes( $settings['cover_image_height'] ) ); ?>" />px
+															<?php esc_html_e( 'Width', 'issuem' ); ?> <input type="text" id="cover_image_width" class="small-text" name="cover_image_width" value="<?php echo esc_attr( stripcslashes( $settings['cover_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php esc_html_e( 'Height', 'issuem' ); ?> <input type="text" id="cover_image_height" class="small-text" name="cover_image_height" value="<?php echo esc_attr( stripcslashes( $settings['cover_image_height'] ) ); ?>" />px
 														</td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Featured Rotator Image Size', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Featured Rotator Image Size', 'issuem' ); ?></th>
 														<td>
-															<?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_image_width" class="small-text" name="featured_image_width" value="<?php echo esc_attr( stripcslashes( $settings['featured_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_image_height" class="small-text" name="featured_image_height" value="<?php echo esc_attr( stripcslashes( $settings['featured_image_height'] ) ); ?>" />px
+															<?php esc_html_e( 'Width', 'issuem' ); ?> <input type="text" id="featured_image_width" class="small-text" name="featured_image_width" value="<?php echo esc_attr( stripcslashes( $settings['featured_image_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php esc_html_e( 'Height', 'issuem' ); ?> <input type="text" id="featured_image_height" class="small-text" name="featured_image_height" value="<?php echo esc_attr( stripcslashes( $settings['featured_image_height'] ) ); ?>" />px
 														</td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Featured Thumbnail Image Size', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Featured Thumbnail Image Size', 'issuem' ); ?></th>
 														<td>
-															<?php _e( 'Width', 'issuem' ); ?> <input type="text" id="featured_thumb_width" class="small-text" name="featured_thumb_width" value="<?php echo esc_attr( stripcslashes( $settings['featured_thumb_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php _e( 'Height', 'issuem' ); ?> <input type="text" id="featured_thumb_height" class="small-text" name="featured_thumb_height" value="<?php echo esc_attr( stripcslashes( $settings['featured_thumb_height'] ) ); ?>" />px
+															<?php esc_html_e( 'Width', 'issuem' ); ?> <input type="text" id="featured_thumb_width" class="small-text" name="featured_thumb_width" value="<?php echo esc_attr( stripcslashes( $settings['featured_thumb_width'] ) ); ?>" />px &nbsp;&nbsp;&nbsp;&nbsp; <?php esc_html_e( 'Height', 'issuem' ); ?> <input type="text" id="featured_thumb_height" class="small-text" name="featured_thumb_height" value="<?php echo esc_attr( stripcslashes( $settings['featured_thumb_height'] ) ); ?>" />px
 														</td>
 													</tr>
 													<tr>
@@ -706,7 +706,7 @@ class IssueM {
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Default Issue Image', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Default Issue Image', 'issuem' ); ?></th>
 														<td>
 															<input id="default_issue_image" type="text" size="36" name="default_issue_image" value="<?php echo esc_attr( $settings['default_issue_image'] ); ?>" />
 															<input id="upload_image_button" class="button" type="button" value="Upload Image" />
@@ -720,7 +720,7 @@ class IssueM {
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Display Byline As', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Display Byline As', 'issuem' ); ?></th>
 														<td>
 															<select id="display_byline_as" name="display_byline_as">
 																<option value="user_firstlast" <?php selected( 'user_firstlast' == $settings['display_byline_as'] ); ?>>First & Last Name</option>
@@ -732,23 +732,23 @@ class IssueM {
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Show Thumbnail Byline', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Show Thumbnail Byline', 'issuem' ); ?></th>
 														<td><input type="checkbox" id="show_thumbnail_byline" name="show_thumbnail_byline" value="1" <?php checked( $settings['show_thumbnail_byline'], 1 ); ?> /></td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Name', 'issuem' ); ?></th>
-														<td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" value="1" <?php checked( $settings['issuem_author_name'], 1 ); ?> /> <?php _e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
+														<th rowspan="1"> <?php esc_html_e( 'Name', 'issuem' ); ?></th>
+														<td><input type="checkbox" id="issuem_author_name" name="issuem_author_name" value="1" <?php checked( $settings['issuem_author_name'], 1 ); ?> /> <?php esc_html_e( 'Use IssueM Author Name instead of WordPress Author', 'issuem' ); ?></td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Categories and Tags', 'issuem' ); ?></th>
-														<td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" value="1" <?php checked( $settings['use_wp_taxonomies'], 1 ); ?> /> <?php _e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
+														<th rowspan="1"> <?php esc_html_e( 'Categories and Tags', 'issuem' ); ?></th>
+														<td><input type="checkbox" id="use_wp_taxonomies" name="use_wp_taxonomies" value="1" <?php checked( $settings['use_wp_taxonomies'], 1 ); ?> /> <?php esc_html_e( 'Use Default WordPress Category and Tag Taxonomies', 'issuem' ); ?></td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Links', 'issuem' ); ?></th>
-														<td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" value="1" <?php checked( $settings['use_issue_tax_links'], 1 ); ?> /> <?php _e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
+														<th rowspan="1"> <?php esc_html_e( 'Links', 'issuem' ); ?></th>
+														<td><input type="checkbox" id="use_issue_tax_links" name="use_issue_tax_links" value="1" <?php checked( $settings['use_issue_tax_links'], 1 ); ?> /> <?php esc_html_e( 'Use Taxonomical links instead of shortcode based links for Issues', 'issuem' ); ?></td>
 													</tr>
 
 												</table>
@@ -764,24 +764,24 @@ class IssueM {
 										<div id="modules">
 
 
-											<h3><span><?php _e( 'IssueM Featured Rotator Options', 'issuem' ); ?></span></h3>
+											<h3><span><?php esc_html_e( 'IssueM Featured Rotator Options', 'issuem' ); ?></span></h3>
 
 											<div class="inside">
 
 												<table id="issuem_administrator_options" class="form-table">
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Pagination Navigation', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Pagination Navigation', 'issuem' ); ?></th>
 														<td><input type="checkbox" id="show_rotator_control" name="show_rotator_control" value="1" <?php checked( $settings['show_rotator_control'], 1 ); ?> /> Display pagination below the slider</td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Direction Navigation', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Direction Navigation', 'issuem' ); ?></th>
 														<td><input type="checkbox" id="show_rotator_direction" name="show_rotator_direction" value="1" <?php checked( $settings['show_rotator_direction'], 1 ); ?> />Display previous/next navigation arrows</td>
 													</tr>
 
 													<tr>
-														<th rowspan="1"> <?php _e( 'Animation Type', 'issuem' ); ?></th>
+														<th rowspan="1"> <?php esc_html_e( 'Animation Type', 'issuem' ); ?></th>
 														<td>
 															<select id="animation_type" name="animation_type">
 																<option value="slide" <?php selected( 'slide' == $settings['animation_type'] ); ?>>Slide</option>
@@ -804,7 +804,7 @@ class IssueM {
 										<div id="modules">
 
 
-											<h3><span><?php _e( 'IssueM Article Shortcode Format', 'issuem' ); ?></span></h3>
+											<h3><span><?php esc_html_e( 'IssueM Article Shortcode Format', 'issuem' ); ?></span></h3>
 
 											<div class="inside">
 
@@ -819,7 +819,7 @@ class IssueM {
 												<p>Available template tags:<br> %CATEGORY%, %TAG%, %TEASER%, %EXCERPT%, %CONTENT%, %FEATURE_IMAGE%, %ISSUEM_FEATURE_THUMB%, %BYLINE%, and %DATE%</p>
 
 												<p class="submit">
-													<input class="button-primary" type="submit" name="update_issuem_settings" value="<?php _e( 'Save Settings', 'issuem' ); ?>" />
+													<input class="button-primary" type="submit" name="update_issuem_settings" value="<?php esc_attr_e( 'Save Settings', 'issuem' ); ?>" />
 												</p>
 
 											</div> <!-- inside -->
@@ -861,12 +861,12 @@ class IssueM {
 				<div class="metabox-holder">
 					<div class="postbox">
 
-						<h3><span><?php _e( 'Support', 'issuem' ); ?></span></h3>
+						<h3><span><?php esc_html_e( 'Support', 'issuem' ); ?></span></h3>
 
 						<div class="inside">
-							<p>Need help setting up your magazine? Please read our <a target="_blank" href="https://zeen101.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
+							<p>Need help setting up your magazine? Please read our <a target="_blank" href="https://leakypaywall.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
 
-							<p>Still have questions? <a target="_blank" href="https://zeen101.com/contact/">Submit a support ticket.</a></p>
+							<p>Still have questions? <a target="_blank" href="https://leakypaywall.com/contact/">Submit a support ticket.</a></p>
 
 						</div>
 
@@ -878,7 +878,7 @@ class IssueM {
 				<div class="metabox-holder">
 					<div class="postbox">
 
-						<h3><span><?php _e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
+						<h3><span><?php esc_html_e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
 
 						<div class="inside">
 							<p>If you find the IssueM plugin helpful, please leave us a review on WordPress.org. Your honest feedback helps us improve IssueM for everyone.</p>
@@ -895,7 +895,7 @@ class IssueM {
 				<div class="metabox-holder">
 					<div class="postbox">
 
-						<h3><span><?php _e( 'Zeen101 Blog', 'issuem' ); ?></span></h3>
+						<h3><span><?php esc_html_e( 'Zeen101 Blog', 'issuem' ); ?></span></h3>
 
 						<div class="inside">
 							<p>The Zeen101 Development Team powers IssueM and provides the #1 WordPress Platform for Publishers. </p>
@@ -974,15 +974,15 @@ class IssueM {
 			<div style="width:70%;" class="postbox-container">
 
 
-				<h2 style='margin-bottom: 10px;'><?php _e( 'IssueM Help', 'issuem' ); ?></h2>
+				<h2 style='margin-bottom: 10px;'><?php esc_html_e( 'IssueM Help', 'issuem' ); ?></h2>
 
 				<div id="issuem-getting-started">
 
 
-					<h3><span><?php _e( 'Getting Started', 'issuem' ); ?></span></h3>
+					<h3><span><?php esc_html_e( 'Getting Started', 'issuem' ); ?></span></h3>
 
 
-					<p><?php _e( 'The following steps will demonstrate how to get started creating your online magazine.', 'issuem' ); ?></p>
+					<p><?php esc_html_e( 'The following steps will demonstrate how to get started creating your online magazine.', 'issuem' ); ?></p>
 
 					<iframe width="560" height="315" src="//www.youtube.com/embed/lUwsQFVB5ro?rel=0" frameborder="0" allowfullscreen></iframe>
 
@@ -1049,22 +1049,22 @@ class IssueM {
 
 				</div>
 
-				<h3><span><?php _e( 'IssueM Shortcodes', 'issuem' ); ?></span></h3>
+				<h3><span><?php esc_html_e( 'IssueM Shortcodes', 'issuem' ); ?></span></h3>
 
 				<p>For more help with customizing IssueM shortcodes, please read the <a href="https://zeen101.com/get-help/documentation/shortcodes/" target="_blank">documentation</a>.</p>
 
-				<p><strong>IssueM <?php _e( 'Issue Title:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_issue_title]</code></p>
+				<p><strong>IssueM <?php esc_html_e( 'Issue Title:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_issue_title]</code></p>
 
-				<p><?php _e( 'This shortcode will display the current issue title.', 'issuem' ); ?></p>
+				<p><?php esc_html_e( 'This shortcode will display the current issue title.', 'issuem' ); ?></p>
 
 				<hr>
 
 
-				<p><strong>IssueM <?php _e( 'Article Loop:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_articles]</code></p>
+				<p><strong>IssueM <?php esc_html_e( 'Article Loop:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_articles]</code></p>
 
-				<p><?php _e( 'This shortcode will display the list of articles in an issue.', 'issuem' ); ?></p>
+				<p><?php esc_html_e( 'This shortcode will display the list of articles in an issue.', 'issuem' ); ?></p>
 
-				<h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Examples:', 'issuem' ); ?></h4>
 
 				<p><em>[issuem_articles orderby="menu_order" order="ASC" show_featured="1"]</em></p>
 
@@ -1073,58 +1073,58 @@ class IssueM {
 				<hr>
 
 
-				<p><strong>IssueM <?php _e( 'Featured Article Rotator:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_rotator]</code></p>
+				<p><strong>IssueM <?php esc_html_e( 'Featured Article Rotator:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_rotator]</code></p>
 
-				<p><?php _e( 'This shortcode will display a slideshow of articles that have been checked to display in the featured rotator.', 'issuem' ); ?></p>
+				<p><?php esc_html_e( 'This shortcode will display a slideshow of articles that have been checked to display in the featured rotator.', 'issuem' ); ?></p>
 
-				<h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Examples:', 'issuem' ); ?></h4>
 
 				<p><em>[issuem_featured_rotator show_byline="true"]</em></p>
 
 				<hr>
 
-				<p><strong>IssueM <?php _e( 'Featured Thumbnails:', 'issuem' ); ?></strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_thumbnails]</code></code>
+				<p><strong>IssueM <?php esc_html_e( 'Featured Thumbnails:', 'issuem' ); ?></strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_featured_thumbnails]</code></code>
 
 
 
-				<p><?php _e( 'This shortcode will display the grid of featured article thumbnails in an issue', 'issuem' ); ?>.</p>
+				<p><?php esc_html_e( 'This shortcode will display the grid of featured article thumbnails in an issue', 'issuem' ); ?>.</p>
 
-				<h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Examples:', 'issuem' ); ?></h4>
 
 				<p><em>[issuem_featured_thumbnails orderby="menu_order" order="ASC"]</em></p>
 
 				<hr>
 
 
-				<p><strong>IssueM <?php _e( 'Archive Page:', 'issuem' ); ?>:</strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code></p>
+				<p><strong>IssueM <?php esc_html_e( 'Archive Page:', 'issuem' ); ?>:</strong> <code style="font-size: 1.2em; background: #ffffe0;">[issuem_archives]</code></p>
 
-				<p><?php _e( 'This shortcode will display the list of current and past issues.', 'issuem' ); ?></p>
+				<p><?php esc_html_e( 'This shortcode will display the list of current and past issues.', 'issuem' ); ?></p>
 
-				<h4><?php _e( 'Default Arguments:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Default Arguments:', 'issuem' ); ?></h4>
 
 
 				<ul>
 					<li><em>orderby</em> - term_id</li>
 					<li><em>order</em> - DESC</li>
 					<li><em>limit</em> - 0</li>
-					<li><em>pdf_title</em> - IssueM <?php _e( 'Setting "PDF Title"', 'issuem' ); ?></li>
-					<li><em>default_image</em> - IssueM <?php _e( 'Setting "Default Cover Image"', 'issuem' ); ?></li>
+					<li><em>pdf_title</em> - IssueM <?php esc_html_e( 'Setting "PDF Title"', 'issuem' ); ?></li>
+					<li><em>default_image</em> - IssueM <?php esc_html_e( 'Setting "Default Cover Image"', 'issuem' ); ?></li>
 				</ul>
 
-				<h4><?php _e( 'Accepted Arguments:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Accepted Arguments:', 'issuem' ); ?></h4>
 
 				<ul>
 					<li><em>orderby</em> - term_id, issue_order, name</li>
 					<li><em>order</em> - DESC, ASC</li>
-					<li><em>limit</em> - <?php _e( 'Any number 0 and greater', 'issuem' ); ?></li>
-					<li><em>pdf_title</em> - <?php _e( 'Text', 'issuem' ); ?></li>
-					<li><em>default_image</em> - <?php _e( 'Image URL', 'issuem' ); ?></li>
+					<li><em>limit</em> - <?php esc_html_e( 'Any number 0 and greater', 'issuem' ); ?></li>
+					<li><em>pdf_title</em> - <?php esc_html_e( 'Text', 'issuem' ); ?></li>
+					<li><em>default_image</em> - <?php esc_html_e( 'Image URL', 'issuem' ); ?></li>
 				</ul>
 
-				<h4><?php _e( 'Examples:', 'issuem' ); ?></h4>
+				<h4><?php esc_html_e( 'Examples:', 'issuem' ); ?></h4>
 
 				<p><em>[issuem_archives orderby="issue_order"]</em></p>
-				<p><em>[issuem_archives orderby="name" order="ASC" limit=5 pdf_title="<?php _e( 'Download Now', 'issuem' ); ?>" default_image="http://yoursite.com/yourimage.jpg"]</em></p>
+				<p><em>[issuem_archives orderby="name" order="ASC" limit=5 pdf_title="<?php esc_attr_e( 'Download Now', 'issuem' ); ?>" default_image="http://yoursite.com/yourimage.jpg"]</em></p>
 
 
 
@@ -1156,13 +1156,13 @@ class IssueM {
 				<div class="metabox-holder">
 					<div class="meta-box-sortables ui-sortable">
 
-						<h2 style='margin-bottom: 10px;'><?php _e( 'IssueM Advanced Styles', 'issuem' ); ?></h2>
+						<h2 style='margin-bottom: 10px;'><?php esc_html_e( 'IssueM Advanced Styles', 'issuem' ); ?></h2>
 
 						<div id="issuem-articles" class="postbox">
 
 							<div class="handlediv" title="Click to toggle"><br /></div>
 
-							<h3 class="hndle"><span><?php _e( 'Advanced Style Options', 'issuem' ); ?></span></h3>
+							<h3 class="hndle"><span><?php esc_html_e( 'Advanced Style Options', 'issuem' ); ?></span></h3>
 
 							<div class="inside">
 
@@ -1202,8 +1202,8 @@ class IssueM {
 		?>
 		<div class="wrap">
 
-			<h2 style='margin-bottom: 10px;'><?php _e( 'IssueM Add-Ons', 'issuem' ); ?></h2>
-			<p><?php _e( 'The following are available add-ons to extend IssueM functionality.', 'issuem' ); ?></p>
+			<h2 style='margin-bottom: 10px;'><?php esc_html_e( 'IssueM Add-Ons', 'issuem' ); ?></h2>
+			<p><?php esc_html_e( 'The following are available add-ons to extend IssueM functionality.', 'issuem' ); ?></p>
 
 			<table id="issuem-addons" cellpadding="0" cellspacing="0">
 				<tbody>

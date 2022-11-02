@@ -123,6 +123,10 @@ if ( ! function_exists( 'issuem_issue_categories_sortable_column_orderby' ) ) {
 			$count = 0;
 		
 			foreach ( $terms as $issue ) {
+
+				if ( !$issue ) {
+					continue;
+				}
 				
 				$issue_meta = get_option( 'issuem_issue_categories_' . $issue->term_id . '_meta' );
 			
@@ -165,8 +169,13 @@ if ( ! function_exists( 'manage_issuem_article_categories_custom_column' ) ) {
 	function manage_issuem_article_categories_custom_column( $blank, $column_name, $term_id ) {
 		
 		$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term_id . '_meta' );
-	
-		return $issue_cat_meta[ $column_name ];
+
+		if ( isset( $issue_cat_meta[ $column_name ] ) ) {
+			return $issue_cat_meta[ $column_name ];
+		}
+		
+		return $blank;
+		
 	}
 	add_filter( 'manage_issuem_issue_categories_custom_column', 'manage_issuem_article_categories_custom_column', 10, 3 );
 	
@@ -184,7 +193,7 @@ if ( ! function_exists( 'issuem_article_categories_add_form_fields' ) ) {
 		?>	
 		
 		<div class="form-field">
-			<label for="category_order"><?php _e( 'Category Order', 'issuem' ); ?></label>
+			<label for="category_order"><?php esc_html_e( 'Category Order', 'issuem' ); ?></label>
 			<input type="text" name="category_order" id="category_order" />
 		</div>
 		
@@ -206,12 +215,15 @@ if ( ! function_exists( 'issuem_article_categories_edit_form_fields' ) ) {
 	   
 		$article_cat_meta = get_option( 'issuem_issue_categories_' . $tag->term_id . '_meta' );
 		
+		$order = isset( $article_cat_meta['category_order'] ) ? $article_cat_meta['category_order'] : '';
 		?>
 		
 		<tr class="form-field">
-		<th valign="top" scope="row"><label for="category_order"><?php _e( 'Category Order', 'issuem' ); ?></label></th>
-		<td><input type="text" name="category_order" id="category_order" value="<?php echo $article_cat_meta['category_order']; ?>" /></td>
+		<th valign="top" scope="row"><label for="category_order"><?php esc_html_e( 'Category Order', 'issuem' ); ?></label></th>
+		<td><input type="text" name="category_order" id="category_order" value="<?php echo esc_attr( $order ); ?>" /></td>
 		</tr>
+
+		<?php wp_nonce_field( 'issuem_article_category_submit', 'issuem_article_category_submit_field' ); ?>
 		
 		<?php
 	}
@@ -231,11 +243,23 @@ if ( ! function_exists( 'save_issuem_article_categories_meta' ) ) {
 	 * @param int $taxonomy_id Taxonomy ID
 	 */
 	function save_issuem_article_categories_meta( $term_id, $taxonomy_id ) {
+
+		if (
+
+			! isset( $_POST['issuem_article_category_submit_field'] )
+		
+			|| ! wp_verify_nonce( sanitize_text_field( $_POST['issuem_article_category_submit_field'] ), 'issuem_article_category_submit' )
+		
+		) {
+			return;
+		}
+
+		
 	
 		$issue_cat_meta = get_option( 'issuem_issue_categories_' . $term_id . '_meta' );
 		
-		if ( ! empty( $_POST['category_order'] ) ) { 
-			$issue_cat_meta['category_order'] = $_POST['category_order'];
+		if ( isset( $_POST['category_order'] ) ) { 
+			$issue_cat_meta['category_order'] = sanitize_text_field( $_POST['category_order'] );
 		}
 			
 		update_option( 'issuem_issue_categories_' . $term_id . '_meta', $issue_cat_meta );
