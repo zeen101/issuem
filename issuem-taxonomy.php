@@ -169,12 +169,23 @@ function issuem_issue_taxonomy_add_form_fields() {
 	?>
 
 	<div class="form-field">
-		<label for="issue_status"><?php _e( 'Issue Status', 'issuem' ); ?></label>
-		<?php echo get_issuem_issue_statuses(); ?>
+		<label for="issue_status"><?php esc_html_e( 'Issue Status', 'issuem' ); ?></label>
+		<?php 
+
+			$issuem_statuses = get_issuem_issue_statuses();
+
+			echo '<select name="issue_status" id="issue_status">';
+			foreach ( $issuem_statuses as $key => $status ) {
+				echo '<option value="' . esc_attr( $key ) . '" ' . selected( false, $key, false ) . '>' . esc_html( $status ) . '</option>';
+			}
+			echo '</select>';
+
+		?>
+		
 	</div>
 
 	<div class="form-field">
-		<label for="issue_order"><?php _e( 'Issue Order', 'issuem' ); ?></label>
+		<label for="issue_order"><?php esc_html_e( 'Issue Order', 'issuem' ); ?></label>
 		<input type="text" name="issue_order" id="issue_order" />
 	</div>
 
@@ -193,7 +204,7 @@ add_action( 'issuem_issue_add_form_fields', 'issuem_issue_taxonomy_add_form_fiel
  * @param string $select Currently selected option
  * @return string select HTML of available statuses
  */
-function get_issuem_issue_statuses( $select = false ) {
+function get_issuem_issue_statuses() {
 
 	$statuses = apply_filters(
 		'issuem_issue_statuses',
@@ -207,16 +218,37 @@ function get_issuem_issue_statuses( $select = false ) {
 		) 
 	);
 
-	$html = '<select name="issue_status" id="issue_status">';
-	foreach ( $statuses as $key => $status ) {
+	return $statuses;
 
-		$html .= '<option value="' . $key . '" ' . selected( $select, $key, false ) . '>' . $status . '</option>';
-	}
-	$html .= '</select>';
-
-	return $html;
 }
 
+
+add_action( 'admin_init', 'issuem_maybe_delete_issue_pdf' );
+
+function issuem_maybe_delete_issue_pdf() {
+
+	if ( !isset($_GET['remove_pdf_version'] ) ) {
+		return;
+	}
+
+	$tag_id = isset( $_GET['tag_ID'] ) ? absint( $_GET['tag_ID'] ) : '';
+
+	if ( !$tag_id ) {
+		return;
+	}
+	
+	$issue_meta = get_option( 'issuem_issue_' . $tag_id . '_meta' );
+
+	wp_delete_attachment( $issue_meta['pdf_version'] );
+	$issue_meta['pdf_version'] = '';
+	update_option( 'issuem_issue_' . $tag_id . '_meta', $issue_meta );
+
+	$url = admin_url('term.php?taxonomy=issuem_issue&tag_ID=') . $tag_id;
+
+	wp_safe_redirect( $url );
+	exit;
+	
+}
 
 /**
  * Outputs HTML for new form fields in Issue (on Edit form)
@@ -239,19 +271,33 @@ function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 	?>
 
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'Issue Status', 'issuem' ); ?></th>
-		<td><?php echo get_issuem_issue_statuses( $issue_meta['issue_status'] ); ?></td>
+		<th valign="top" scope="row"><?php esc_html_e( 'Issue Status', 'issuem' ); ?></th>
+		<td>
+
+			<?php
+
+				$issuem_statuses = get_issuem_issue_statuses();
+
+				echo '<select name="issue_status" id="issue_status">';
+				foreach ( $issuem_statuses as $key => $status ) {
+					echo '<option value="' . esc_attr( $key ) . '" ' . selected( $issue_meta['issue_status'], $key, false ) . '>' . esc_html( $status ) . '</option>';
+				}
+				echo '</select>';
+
+			?>
+			
+		</td>
 	</tr>
 
 	<?php do_action( 'issuem_after_issue_status_setting', $issue_meta ); ?>
 
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'Issue Order', 'issuem' ); ?></th>
+		<th valign="top" scope="row"><?php esc_html_e( 'Issue Order', 'issuem' ); ?></th>
 		<td><input type="text" name="issue_order" id="issue_order" value="<?php echo esc_attr( $issue_meta['issue_order'] ); ?>" /></td>
 	</tr>
 
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'Cover Image', 'issuem' ); ?></th>
+		<th valign="top" scope="row"><?php esc_html_e( 'Cover Image', 'issuem' ); ?></th>
 		<td>
 			<p class="hide-if-no-js">
 				<a title="Set Cover Image" href="javascript:;" id="set-cover-image">Set cover image</a>
@@ -273,44 +319,25 @@ function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 		</td>
 	</tr>
 
-
-	<?php
-	if ( ! empty( $_GET['remove_pdf_version'] ) ) {
-
-		wp_delete_attachment( $issue_meta['pdf_version'] );
-		$issue_meta['pdf_version'] = '';
-		update_option( 'issuem_issue_' . $tag->term_id . '_meta', $issue_meta );
-
-		wp_redirect( remove_query_arg( 'remove_pdf_version' ) );
-		exit;
-	}
-
-	if ( ! empty( $issue_meta['pdf_version'] ) ) {
-		$view_pdf   = '<p><a target="_blank" href="' . wp_get_attachment_url( $issue_meta['pdf_version'] ) . '">' . __( 'View PDF Version', 'issuem' ) . '</a></p>';
-		$remove_pdf = '<p><a href="?' . http_build_query( wp_parse_args( array( 'remove_pdf_version' => $issue_meta['pdf_version'] ), $_GET ) ) . '">' . __( 'Remove PDF Version', 'issuem' ) . '</a></p>';
-	} else {
-		$view_pdf   = '';
-		$remove_pdf = '';
-	}
-	?>
-
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'External Issue Link', 'issuem' ); ?></th>
+		<th valign="top" scope="row"><?php esc_html_e( 'External Issue Link', 'issuem' ); ?></th>
 		<td><input type="text" name="external_link" id="external_link" value="<?php echo esc_attr( $issue_meta['external_link'] ); ?>" />
 			<p class="description">Leave empty if you do not want your issue to link to an external source.</p>
 		</td>
 	</tr>
 
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'PDF Version', 'issuem' ); ?></th>
+		<th valign="top" scope="row"><?php esc_html_e( 'PDF Version', 'issuem' ); ?></th>
 		<td>
 			<input type="file" name="pdf_version" id="pdf_version" value="" />
 			<?php
 
 			if ( ! empty( $issue_meta['pdf_version'] ) ) {
 				?>
-				<p><a target="_blank" href="<?php esc_url( wp_get_attachment_url( $issue_meta['pdf_version'] ) ); ?>"> <?php _e( 'View PDF Version', 'issuem' ); ?></a></p>
-				<p><a href="?<?php echo http_build_query( wp_parse_args( array( 'remove_pdf_version' => $issue_meta['pdf_version'] ), $_GET ) ); ?>"><?php _e( 'Remove PDF Version', 'issuem' ); ?></a></p>
+				<p><a target="_blank" href="<?php echo esc_url( wp_get_attachment_url( $issue_meta['pdf_version'] ) ); ?>"> <?php esc_html_e( 'View PDF Version', 'issuem' ); ?></a></p>
+				<p><a href="<?php echo esc_url( admin_url('term.php') ); ?>?taxonomy=issuem_issue&tag_ID=<?php echo absint( $tag->term_id ); ?>&remove_pdf_version=<?php echo esc_attr( $issue_meta['pdf_version'] ); ?>">
+					<?php esc_html_e( 'Remove PDF Version', 'issuem' ); ?></a></p>
+			
 				<?php 
 			}
 			
@@ -320,7 +347,7 @@ function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 	</tr>
 
 	<tr class="form-field">
-		<th valign="top" scope="row"><?php _e( 'External PDF Link', 'issuem' ); ?></th>
+		<th valign="top" scope="row"><?php esc_html_e( 'External PDF Link', 'issuem' ); ?></th>
 		<td><input type="text" name="external_pdf_link" id="external_pdf_link" value="<?php echo esc_attr( $issue_meta['external_pdf_link'] ); ?>" />
 			<p class="description">Leave empty if you do not want your PDF to link to an external source.</p>
 		</td>

@@ -230,7 +230,7 @@ function set_issuem_cookie() {
 		if ( issuem_is_articles_page() ) {
 
 			$_COOKIE['issuem_issue'] = get_issuem_issue_slug();
-			setcookie( 'issuem_issue', $_COOKIE['issuem_issue'], time() + 3600, '/' );
+			setcookie( 'issuem_issue', sanitize_text_field( $_COOKIE['issuem_issue'] ), time() + 3600, '/' );
 		} elseif ( ! empty( $post->post_type ) && 'article' != $post->post_type ) {
 
 			unset( $_COOKIE['issuem_issue'] );
