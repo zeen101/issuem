@@ -137,7 +137,7 @@ class IssueM {
 			if ( $last_rss_item ) {
 
 				echo '<div class="notice notice-success">';
-				echo esc_html( $last_rss_item );
+				echo wp_kses_post( $last_rss_item );
 				echo '<p><a href="#" class="notice-link" data-notice="rss_item" data-type="dismiss">Dismiss</a></p>';
 				echo '</div>';
 			}
