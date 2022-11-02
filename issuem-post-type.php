@@ -127,6 +127,8 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
 		$featured_thumb     = get_post_meta( $post->ID, '_featured_thumb', true );
 		$issuem_author_name = get_post_meta( $post->ID, '_issuem_author_name', true );
 
+		wp_nonce_field( 'issuem_article_meta_box_submit', 'issuem_article_meta_box_submit_field' ); 
+
 		?>
 
 		<div id="issuem-article-metabox">
@@ -141,12 +143,12 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
 			<p>
 				<label for="teaser_text"><strong><?php _e( 'Teaser Text', 'issuem' ); ?></strong></label><br>
 
-				<input class="large-text" type="text" name="teaser_text" value="<?php echo $teaser_text; ?>" />
+				<input class="large-text" type="text" name="teaser_text" value="<?php echo esc_attr( $teaser_text ); ?>" />
 			</p>
 
 			<?php if ( ! empty( $issuem_settings['issuem_author_name'] ) ) { ?>
 				<p><label for="featured_thumb"><strong><?php _e( 'IssueM Author Name', 'issuem' ); ?></strong></label><br>
-					<input class="regular-text" type="text" name="issuem_author_name" value="<?php echo $issuem_author_name; ?>" />
+					<input class="regular-text" type="text" name="issuem_author_name" value="<?php echo esc_attr( $issuem_author_name ); ?>" />
 				</p>
 			<?php } ?>
 
@@ -161,53 +163,58 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
 	}
 }
 
-if ( ! function_exists( 'save_issuem_article_meta' ) ) {
 
-	/**
-	 * Saves Article meta
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param int $post_id WordPress post ID
-	 */
-	function save_issuem_article_meta( $post_id ) {
+/**
+ * Saves Article meta
+ *
+ * @since 1.0.0
+ *
+ * @param int $post_id WordPress post ID
+ */
+function save_issuem_article_meta( $post_id ) {
 
-		// verify if this is an auto save routine. 
-		// If it is our form has not been submitted, so we dont want to do anything
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-			return;
-		}
-
-		// if our current user can't edit this post, bail  
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			return;
-		}
-
-		if ( isset( $_POST['teaser_text'] ) ) {
-			update_post_meta( $post_id, '_teaser_text', sanitize_text_field( $_POST['teaser_text'] ) );
-		}
-
-		if ( isset( $_POST['featured_rotator'] ) ) {
-			update_post_meta( $post_id, '_featured_rotator', 'on' );
-		} else {
-			update_post_meta( $post_id, '_featured_rotator', 'off' );
-		}
-
-		if ( isset( $_POST['featured_thumb'] ) ) {
-			update_post_meta( $post_id, '_featured_thumb', 'on' );
-		} else {
-			update_post_meta( $post_id, '_featured_thumb', 'off' );
-		}
-
-		if ( isset( $_POST['issuem_author_name'] ) ) {
-			update_post_meta( $post_id, '_issuem_author_name', sanitize_text_field( $_POST['issuem_author_name'] ) );
-		}
-
-
-		do_action( 'save_issuem_article_meta', $post_id );
+	// verify if this is an auto save routine. 
+	// If it is our form has not been submitted, so we dont want to do anything
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
 	}
-	add_action( 'save_post', 'save_issuem_article_meta' );
+
+	// if our current user can't edit this post, bail  
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		return;
+	}
+
+	// if our nonce isn't there, or we can't verify it, bail 
+	if( !isset( $_POST['issuem_article_meta_box_submit_field'] ) || !wp_verify_nonce( sanitize_text_field( $_POST['issuem_article_meta_box_submit_field'] ), 'issuem_article_meta_box_submit' ) ) {
+		return;
+	}
+
+
+	if ( isset( $_POST['teaser_text'] ) ) {
+		update_post_meta( $post_id, '_teaser_text', sanitize_text_field( $_POST['teaser_text'] ) );
+	}
+
+	if ( isset( $_POST['featured_rotator'] ) ) {
+		update_post_meta( $post_id, '_featured_rotator', 'on' );
+	} else {
+		update_post_meta( $post_id, '_featured_rotator', 'off' );
+	}
+
+	if ( isset( $_POST['featured_thumb'] ) ) {
+		update_post_meta( $post_id, '_featured_thumb', 'on' );
+	} else {
+		update_post_meta( $post_id, '_featured_thumb', 'off' );
+	}
+
+	if ( isset( $_POST['issuem_author_name'] ) ) {
+		update_post_meta( $post_id, '_issuem_author_name', sanitize_text_field( $_POST['issuem_author_name'] ) );
+	}
+
+
+	do_action( 'save_issuem_article_meta', $post_id );
 }
+add_action( 'save_post', 'save_issuem_article_meta' );
+
 
 add_filter( 'manage_edit-article_columns', 'issuem_article_admin_columns' );
 add_action( 'manage_article_posts_custom_column', 'issuem_article_admin_custom_columns', 10, 2 );
@@ -265,15 +272,15 @@ function issuem_article_admin_custom_columns( $column, $post_id ) {
 	switch ( $column ) {
 
 		case 'issue':
-			echo substr_replace( $issue_list, '', -2 );
+			echo wp_kses_post( substr_replace( $issue_list, '', -2 ) );
 			break;
 
 		case 'category':
-			echo substr_replace( $cat_list, '', -2 );
+			echo wp_kses_post( substr_replace( $cat_list, '', -2 ) );
 			break;
 
 		case 'tag':
-			echo substr_replace( $tag_list, '', -2 );
+			echo wp_kses_post( substr_replace( $tag_list, '', -2 ) );
 			break;
 	}
 }
