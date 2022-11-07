@@ -99,10 +99,7 @@ class IssueM {
 	 */
 	public function admin_menu() { 
 		add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Settings', 'issuem' ), __( 'IssueM Settings', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem', array( $this, 'settings_page' ) );
-
 		add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
-
-		add_submenu_page( 'edit.php?post_type=article', __( 'Add-Ons', 'issuem' ), __( 'Add-Ons', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-addons', array( $this, 'addons_page' ) );
 	}
 
 	/**
@@ -861,94 +858,10 @@ class IssueM {
 				<div class="metabox-holder">
 					<div class="postbox">
 
-						<h3><span><?php esc_html_e( 'Support', 'issuem' ); ?></span></h3>
+						<h3><span><?php esc_html_e( 'Need help setting up your publication?', 'issuem' ); ?></span></h3>
 
 						<div class="inside">
-							<p>Need help setting up your magazine? Please read our <a target="_blank" href="https://leakypaywall.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
-
-							<p>Still have questions? <a target="_blank" href="https://leakypaywall.com/contact/">Submit a support ticket.</a></p>
-
-						</div>
-
-					</div>
-				</div>
-
-
-
-				<div class="metabox-holder">
-					<div class="postbox">
-
-						<h3><span><?php esc_html_e( 'Rate IssueM!', 'issuem' ); ?></span></h3>
-
-						<div class="inside">
-							<p>If you find the IssueM plugin helpful, please leave us a review on WordPress.org. Your honest feedback helps us improve IssueM for everyone.</p>
-
-							<p><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/issuem">Rate IssueM on WordPress.org</a></p>
-
-
-
-						</div>
-
-					</div>
-				</div>
-
-				<div class="metabox-holder">
-					<div class="postbox">
-
-						<h3><span><?php esc_html_e( 'Zeen101 Blog', 'issuem' ); ?></span></h3>
-
-						<div class="inside">
-							<p>The Zeen101 Development Team powers IssueM and provides the #1 WordPress Platform for Publishers. </p>
-
-							<?php
-							include_once ABSPATH . WPINC . '/feed.php';
-
-							$zeen_feed = 'https://zeen101.com/feed/';
-
-							$rss = fetch_feed( $zeen_feed );
-
-							if ( ! is_wp_error( $rss ) ) {
-
-
-
-								$maxitems = $rss->get_item_quantity( 3 );
-
-								$rss_items = $rss->get_items( 0, $maxitems );
-
-								$rss_title = '<a href="' . $rss->get_permalink() . '" target="_blank">' . strtoupper( $rss->get_title() ) . '</a>';
-
-								echo '<p><strong>' . esc_html( $rss_title ) . '</strong></p>';
-
-								echo '<ul>';
-
-								if ( $maxitems > 0 ) {
-
-									foreach ( $rss_items as $item ) {
-
-										$item_date = human_time_diff( $item->get_date( 'U' ), current_time( 'timestamp' ) ) . ' ' . __( 'ago', 'rc_mdm' );
-
-										echo '<li>';
-
-										echo '<p><a href="' . esc_url( $item->get_permalink() ) . '" title="' . esc_attr( $item_date ) . '">';
-
-										echo esc_html( $item->get_title() );
-										echo '</a>';
-										echo ' <small><span class="rss-date">' . esc_html( $item_date ) . '</span></small><br />';
-										$content = $item->get_content();
-										$content = wp_html_excerpt( $content, 120 ) . ' ...';
-										echo esc_html( $content );
-										echo '</p></li>';
-									}
-								} 
-
-								echo '</ul>';
-							}
-
-
-							?>
-
-
-
+							<p>Please read our <a target="_blank" href="https://leakypaywall.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
 						</div>
 
 					</div>
@@ -1043,15 +956,9 @@ class IssueM {
 						<li>Click "Update"</li>
 					</ol>
 
-
-
-
-
 				</div>
 
 				<h3><span><?php esc_html_e( 'IssueM Shortcodes', 'issuem' ); ?></span></h3>
-
-				<p>For more help with customizing IssueM shortcodes, please read the <a href="https://zeen101.com/get-help/documentation/shortcodes/" target="_blank">documentation</a>.</p>
 
 				<p><strong>IssueM <?php esc_html_e( 'Issue Title:', 'issuem' ); ?> </strong><code style="font-size: 1.2em; background: #ffffe0;">[issuem_issue_title]</code></p>
 
@@ -1188,96 +1095,6 @@ class IssueM {
 				</div>
 			</div>
 		</div>
-		<?php
-	}
-
-
-	/**
-	 * Outputs the IssueM Add Ons page
-	 *
-	 * @since 2.0.4
-	 */
-	public function addons_page() { 
-		// Display HTML
-		?>
-		<div class="wrap">
-
-			<h2 style='margin-bottom: 10px;'><?php esc_html_e( 'IssueM Add-Ons', 'issuem' ); ?></h2>
-			<p><?php esc_html_e( 'The following are available add-ons to extend IssueM functionality.', 'issuem' ); ?></p>
-
-			<table id="issuem-addons" cellpadding="0" cellspacing="0">
-				<tbody>
-					<tr>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/leaky.jpg" alt="Leaky Paywall">
-								<h3>Leaky Paywall</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/for-developers/leakypaywall?ref=issuem_addons">Get</a>
-								<p>The best metered paywall for WordPress. Generate revenue from your amazing content.</p>
-							</div>
-						</td>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/unipress.jpg" alt="UniPress">
-								<h3>UniPress</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/unipress/?ref=issuem_addons">Get</a>
-								<p>UniPress is the first WordPress-to-App publishing framework. It is now simple, quick, and affordable to offer your publication as an app.</p>
-							</div>
-						</td>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/addrop.jpg" alt="Issue Scheduler">
-								<h3>Issue Scheduler</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-issue-scheduler?ref=issuem_addons">Get</a>
-								<p>Schedule an issue to go live at a certain day and time, automatically. Never forget to make an issue live again!</p>
-							</div>
-						</td>
-
-					</tr>
-
-					<tr>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/pdf.jpg" alt="Issue to PDF">
-								<h3>Issue-to-PDF</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/downloads/issue-to-pdf/?ref=issuem_addons">Get</a>
-								<p>The Issue-to-PDF plugin turns any issue created with the IssueM plugin into a PDF, ready to print.</p>
-							</div>
-						</td>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/migrate.jpg" alt="Post to Issue Migration">
-								<h3>Post to Issue Migration</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/downloads/migration-tool/?ref=issuem_addons">Get</a>
-								<p>Need to migrate your posts into IssueM issues? Migrate posts, pages, and other post types into your selected issue.</p>
-							</div>
-						</td>
-
-						<td class="available-addon">
-							<div class="available-addon-inner">
-								<img src="https://zeen101.com/wp-content/uploads/2015/03/search.jpg" alt="Advanced Issue Search">
-								<h3>Advanced Issue Search</h3>
-								<a class="button" target="_blank" href="https://zeen101.com/downloads/issuem-advanced-search/?ref=issuem_addons">Get</a>
-								<p>Give your readers a more powerful way to find your articles. One shortcode will allow readers to search by Issue, Article Category, or Keyword.</p>
-							</div>
-						</td>
-
-
-
-
-
-
-					</tr>
-				</tbody>
-			</table>
-
-		</div>
-
 		<?php
 	}
 
