@@ -3,7 +3,7 @@ Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 2.8.8
+Stable tag: 2.8.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.8.9 =
+* Remove external dependencies from plugin
 
 = 2.8.8 =
 * Code cleanup
