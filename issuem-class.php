@@ -839,7 +839,7 @@ class IssueM {
 
 							<?php do_action( 'issuem_before_licenses_settings' ); ?>
 
-							<h2><a target="_blank" href="https://leakypaywalll.com/downloads/category/issuem-addons/?utm_source=plugin&utm_medium=license_tab&utm_content=link&utm_campaign=settings">Find out more about our add-ons</a></h2>
+							<h2><a target="_blank" href="https://leakypaywall.com/downloads/category/issuem-addons/?utm_source=plugin&utm_medium=license_tab&utm_content=link&utm_campaign=settings">Find out more about our add-ons</a></h2>
 
 							<?php wp_nonce_field( 'verify', 'issuem_license_wpnonce' ); ?>
 
@@ -861,7 +861,7 @@ class IssueM {
 						<h3><span><?php esc_html_e( 'Need help setting up your publication?', 'issuem' ); ?></span></h3>
 
 						<div class="inside">
-							<p>Please read our <a target="_blank" href="https://leakypaywall.helpscoutdocs.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
+							<p>Please read our <a target="_blank" href="https://docs.leakypaywall.com/article/84-getting-started-with-issuem">Getting Started</a> guide.</p>
 						</div>
 
 					</div>
