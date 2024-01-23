@@ -14,7 +14,7 @@ if ( ! function_exists( 'create_article_post_type' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	function create_article_post_type() { 
+	function create_article_post_type() {
 		$issuem_settings = get_issuem_settings();
 
 		if ( ! empty( $issuem_settings['use_wp_taxonomies'] ) ) {
@@ -78,7 +78,7 @@ if ( ! function_exists( 'create_article_post_type' ) ) {
 
 if ( ! function_exists( 'issuem_article_add_post_thumbnails' ) ) {
 
-	function issuem_article_add_post_thumbnails() { 
+	function issuem_article_add_post_thumbnails() {
 		$supported_post_types = get_theme_support( 'post-thumbnails' );
 
 		if ( false === $supported_post_types ) {
@@ -102,7 +102,7 @@ if ( ! function_exists( 'add_issuem_articles_metaboxes' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	function add_issuem_articles_metaboxes() { 
+	function add_issuem_articles_metaboxes() {
 		add_meta_box( 'issuem_article_meta_box', __( 'IssueM Article Options', 'issuem' ), 'issuem_article_meta_box', 'article', 'normal', 'high' );
 
 		do_action( 'add_issuem_articles_metaboxes' );
@@ -127,7 +127,7 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
 		$featured_thumb     = get_post_meta( $post->ID, '_featured_thumb', true );
 		$issuem_author_name = get_post_meta( $post->ID, '_issuem_author_name', true );
 
-		wp_nonce_field( 'issuem_article_meta_box_submit', 'issuem_article_meta_box_submit_field' ); 
+		wp_nonce_field( 'issuem_article_meta_box_submit', 'issuem_article_meta_box_submit_field' );
 
 		?>
 
@@ -173,18 +173,18 @@ if ( ! function_exists( 'issuem_article_meta_box' ) ) {
  */
 function save_issuem_article_meta( $post_id ) {
 
-	// verify if this is an auto save routine. 
+	// verify if this is an auto save routine.
 	// If it is our form has not been submitted, so we dont want to do anything
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 
-	// if our current user can't edit this post, bail  
+	// if our current user can't edit this post, bail
 	if ( ! current_user_can( 'edit_posts' ) ) {
 		return;
 	}
 
-	// if our nonce isn't there, or we can't verify it, bail 
+	// if our nonce isn't there, or we can't verify it, bail
 	if ( ! isset( $_POST['issuem_article_meta_box_submit_field'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['issuem_article_meta_box_submit_field'] ), 'issuem_article_meta_box_submit' ) ) {
 		return;
 	}

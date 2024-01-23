@@ -23,7 +23,7 @@ class IssueM {
 	 * @todo Move the the_author filter to a more appopriate place
 	 * @todo Move the pre_get_posts filter to a more appopriate place
 	 */
-	public function __construct() { 
+	public function __construct() {
 		$settings = $this->get_settings();
 
 		add_image_size( 'issuem-cover-image', apply_filters( 'issuem_cover_image_width', $settings['cover_image_width'] ), apply_filters( 'issuem_cover_image_height', $settings['cover_image_height'] ), true );
@@ -66,7 +66,7 @@ class IssueM {
 	 * @since 1.0.0
 	 *
 	 */
-	public function activation() { 
+	public function activation() {
 		create_article_post_type();
 		flush_rewrite_rules();
 	}
@@ -77,7 +77,7 @@ class IssueM {
 	 * @since 1.1.1
 	 *
 	 */
-	public function deactivation() { 
+	public function deactivation() {
 		// Clear the IssueM RSS reader if there is a schedule
 		if ( wp_next_scheduled( 'zeen101_dot_com_rss_feed_check' ) ) {
 			wp_clear_scheduled_hook( 'zeen101_dot_com_rss_feed_check' );
@@ -97,7 +97,7 @@ class IssueM {
 	 *
 	 * @since 1.0.0
 	 */
-	public function admin_menu() { 
+	public function admin_menu() {
 		add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Settings', 'issuem' ), __( 'IssueM Settings', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem', array( $this, 'settings_page' ) );
 		add_submenu_page( 'edit.php?post_type=article', __( 'IssueM Help', 'issuem' ), __( 'IssueM Help', 'issuem' ), apply_filters( 'manage_issuem_settings', 'manage_issuem_settings' ), 'issuem-help', array( $this, 'help_page' ) );
 	}
@@ -244,7 +244,7 @@ class IssueM {
 	 * @since 1.0.0
 	 * @uses wp_enqueue_style() to enqueue CSS files
 	 */
-	public function admin_wp_print_styles() { 
+	public function admin_wp_print_styles() {
 		wp_enqueue_style( 'issuem_admin_style', ISSUEM_URL . '/css/issuem-admin.css', '', ISSUEM_VERSION );
 	}
 
@@ -256,7 +256,7 @@ class IssueM {
 	 */
 	public function admin_wp_enqueue_scripts( $hook_suffix ) {
 
-		// Hack for edit-tags to include the "enctype=multipart/form-data" argument in the edit tags HTML form, 
+		// Hack for edit-tags to include the "enctype=multipart/form-data" argument in the edit tags HTML form,
 		// for uploading issue cover images
 		if ( 'edit-tags.php' == $hook_suffix && ! empty( $_GET['taxonomy'] ) && 'issuem_issue' == $_GET['taxonomy'] ) {
 			wp_enqueue_script( 'issuem_issue-custom-tax-hacks', ISSUEM_URL . '/js/issuem_issue-custom-tax-hacks.js', array( 'jquery' ), ISSUEM_VERSION, true );
@@ -295,7 +295,7 @@ class IssueM {
 	 * @uses wp_enqueue_script() to enqueue JS files
 	 * @uses wp_enqueue_style() to enqueue CSS files
 	 */
-	public function frontend_scripts() { 
+	public function frontend_scripts() {
 		$settings = $this->get_settings();
 
 		if ( apply_filters( 'enqueue_issuem_styles', 'true' ) ) {
@@ -323,7 +323,7 @@ class IssueM {
 	 *
 	 * @return array IssueM settings, merged with defaults.
 	 */
-	public function get_settings() { 
+	public function get_settings() {
 		$defaults = array(
 			'page_for_articles'      => 0,
 			'page_for_archives'      => 0,
@@ -383,7 +383,7 @@ class IssueM {
 	 * @since 1.0
 	 * @todo perform the save function earlier
 	 */
-	public function settings_page() { 
+	public function settings_page() {
 		// Get the user options
 		$settings = $this->get_settings();
 
@@ -401,16 +401,16 @@ class IssueM {
 		if ( $current_tab == 'general' ) {
 
 			if ( isset( $_POST['issuem_general_options_nonce'] ) && wp_verify_nonce( sanitize_text_field( $_POST['issuem_general_options_nonce'] ), 'issuem_general_options' ) ) {
-				
+
 				if ( ! empty( $_REQUEST['remove_default_issue_image'] ) ) {
 
 					wp_delete_attachment( sanitize_text_field( $_REQUEST['remove_default_issue_image'] ) );
-	
+
 					unset( $settings['default_issue_image'] );
 					unset( $settings['custom_image_used'] );
-	
+
 					$this->update_settings( $settings );
-	
+
 					$settings = $this->get_settings();
 				}
 
@@ -419,129 +419,129 @@ class IssueM {
 					if ( ! empty( $_POST['page_for_articles'] ) ) {
 						$settings['page_for_articles'] = sanitize_text_field( $_POST['page_for_articles'] );
 					}
-	
+
 					if ( ! empty( $_POST['page_for_archives'] ) ) {
 						$settings['page_for_archives'] = sanitize_text_field( $_POST['page_for_archives'] );
 					}
-	
+
 					if ( ! empty( $_POST['css_style'] ) ) {
 						$settings['css_style'] = sanitize_text_field( $_POST['css_style'] );
 					}
-	
+
 					if ( ! empty( $_POST['pdf_title'] ) ) {
 						$settings['pdf_title'] = sanitize_text_field( $_POST['pdf_title'] );
 					}
-	
+
 					if ( ! empty( $_POST['pdf_only_title'] ) ) {
 						$settings['pdf_only_title'] = sanitize_text_field( $_POST['pdf_only_title'] );
 					}
-	
+
 					if ( ! empty( $_POST['pdf_open_target'] ) ) {
 						$settings['pdf_open_target'] = sanitize_text_field( $_POST['pdf_open_target'] );
 					}
-	
+
 					if ( ! empty( $_POST['article_format'] ) ) {
 						$settings['article_format'] = wp_kses_post( $_POST['article_format'] );
 					}
-	
+
 					if ( ! empty( $_POST['cover_image_width'] ) ) {
 						$settings['cover_image_width'] = sanitize_text_field( $_POST['cover_image_width'] );
 					} else {
 						unset( $settings['cover_image_width'] );
 					}
-	
+
 					if ( ! empty( $_POST['cover_image_height'] ) ) {
 						$settings['cover_image_height'] = sanitize_text_field( $_POST['cover_image_height'] );
 					} else {
 						unset( $settings['cover_image_height'] );
 					}
-	
+
 					if ( ! empty( $_POST['featured_image_width'] ) ) {
 						$settings['featured_image_width'] = sanitize_text_field( $_POST['featured_image_width'] );
 					} else {
 						unset( $settings['featured_image_width'] );
 					}
-	
+
 					if ( ! empty( $_POST['featured_image_height'] ) ) {
 						$settings['featured_image_height'] = sanitize_text_field( $_POST['featured_image_height'] );
 					} else {
 						unset( $settings['featured_image_height'] );
 					}
-	
+
 					if ( ! empty( $_POST['featured_thumb_width'] ) ) {
 						$settings['featured_thumb_width'] = sanitize_text_field( $_POST['featured_thumb_width'] );
 					} else {
 						unset( $settings['featured_thumb_width'] );
 					}
-	
+
 					if ( ! empty( $_POST['featured_thumb_height'] ) ) {
 						$settings['featured_thumb_height'] = sanitize_text_field( $_POST['featured_thumb_height'] );
 					} else {
 						unset( $settings['featured_thumb_height'] );
 					}
-	
+
 					if ( ! empty( $_POST['default_issue_image'] ) ) {
 						$settings['default_issue_image'] = sanitize_text_field( $_POST['default_issue_image'] );
 						$settings['custom_image_used']   = 1;
 					}
-	
+
 					if ( ! empty( $_POST['display_byline_as'] ) ) {
 						$settings['display_byline_as'] = sanitize_text_field( $_POST['display_byline_as'] );
 					}
-	
+
 					if ( ! empty( $_POST['issuem_author_name'] ) ) {
 						$settings['issuem_author_name'] = sanitize_text_field( $_POST['issuem_author_name'] );
 					} else {
 						unset( $settings['issuem_author_name'] );
 					}
-	
+
 					if ( ! empty( $_POST['show_thumbnail_byline'] ) ) {
 						$settings['show_thumbnail_byline'] = sanitize_text_field( $_POST['show_thumbnail_byline'] );
 					} else {
 						unset( $settings['show_thumbnail_byline'] );
 					}
-	
+
 					if ( ! empty( $_POST['use_wp_taxonomies'] ) ) {
 						$settings['use_wp_taxonomies'] = sanitize_text_field( $_POST['use_wp_taxonomies'] );
 					} else {
 						unset( $settings['use_wp_taxonomies'] );
 					}
-	
+
 					if ( ! empty( $_POST['use_issue_tax_links'] ) ) {
 						$settings['use_issue_tax_links'] = sanitize_text_field( $_POST['use_issue_tax_links'] );
 					} else {
 						unset( $settings['use_issue_tax_links'] );
 					}
-	
+
 					if ( ! empty( $_POST['show_rotator_control'] ) ) {
 						$settings['show_rotator_control'] = sanitize_text_field( $_POST['show_rotator_control'] );
 					} else {
 						unset( $settings['show_rotator_control'] );
 					}
-	
+
 					if ( ! empty( $_POST['show_rotator_direction'] ) ) {
 						$settings['show_rotator_direction'] = sanitize_text_field( $_POST['show_rotator_direction'] );
 					} else {
 						unset( $settings['show_rotator_direction'] );
 					}
-	
+
 					if ( ! empty( $_POST['animation_type'] ) ) {
 						$settings['animation_type'] = sanitize_text_field( $_POST['animation_type'] );
 					}
-	
+
 					$settings = apply_filters( 'issuem_save_settings', $settings );
-	
+
 					$this->update_settings( $settings );
-	
-				}           
-			}       
+
+				}
+			}
 		} // endif for saving general tab settings
 
 
 
 		if ( ! empty( $_REQUEST['update_issuem_settings'] ) || ! empty( $_GET['settings_saved'] ) ) {
 
-			// update settings notification 
+			// update settings notification
 			?>
 			<div class="updated">
 				<p><strong><?php esc_html_e( 'Settings updated.', 'issuem' ); ?></strong></p>
@@ -558,13 +558,13 @@ class IssueM {
 
 			<div class="postbox-container column-primary">
 
-				<?php 
+				<?php
 				if ( in_array( $current_tab, $settings_tabs ) ) {
 					?>
 					<h2 class="nav-tab-wrapper" id="issuem-tabs">
 
 						<a id="general-tab" href="<?php echo esc_url( admin_url( 'edit.php?post_type=article&page=issuem' ) ); ?>" class="nav-tab
-																<?php 
+																<?php
 																if ( $current_tab == 'general' ) {
 																	?>
 								nav-tab-active<?php } ?>"><?php esc_html_e( 'General', 'issuem' ); ?></a>
@@ -572,14 +572,14 @@ class IssueM {
 						<?php do_action( 'issuem_settings_tabs_links', $current_tab ); ?>
 
 						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=article&page=issuem&tab=licenses' ) ); ?>" class="nav-tab
-											<?php 
+											<?php
 											if ( $current_tab == 'licenses' ) {
 												?>
 								nav-tab-active<?php } ?>"><?php esc_html_e( 'Licenses', 'issuem' ); ?></a>
 
 					</h2>
 					<?php
-				} 
+				}
 				?>
 
 
@@ -607,30 +607,30 @@ class IssueM {
 													<tr>
 														<th rowspan="1"> <?php esc_html_e( 'Page for Articles', 'issuem' ); ?></th>
 														<td>
-														<?php 
+														<?php
 														wp_dropdown_pages(
 															array(
 																'name'              => 'page_for_articles',
 																'show_option_none'  => esc_attr__( '&mdash; Select &mdash;' ),
 																'option_none_value' => '0',
 																'selected'          => esc_attr( $settings['page_for_articles'] ),
-															) 
-														); 
+															)
+														);
 														?>
 															</td>
 													</tr>
 													<tr>
 														<th rowspan="1"> <?php esc_html_e( 'Page for Issue Archives', 'issuem' ); ?></th>
 														<td>
-														<?php 
+														<?php
 														wp_dropdown_pages(
 															array(
 																'name'              => 'page_for_archives',
 																'show_option_none'  => esc_attr__( '&mdash; Select &mdash;' ),
 																'option_none_value' => '0',
 																'selected'          => esc_attr( $settings['page_for_archives'] ),
-															) 
-														); 
+															)
+														);
 														?>
 															</td>
 													</tr>
@@ -831,8 +831,8 @@ class IssueM {
 
 							<?php do_action( 'issuem_settings_areas' ); ?>
 
-							<?php 
-						endif; // general tab 
+							<?php
+						endif; // general tab
 						?>
 
 						<?php if ( $current_tab == 'licenses' ) : ?>
@@ -880,7 +880,7 @@ class IssueM {
 	 * @since 1.0.0
 	 * @uses do_action() On 'help_page' for addons
 	 */
-	public function help_page() { 
+	public function help_page() {
 		// Display HTML
 		?>
 		<div class=wrap>
@@ -1055,7 +1055,7 @@ class IssueM {
 	 *
 	 * @since 1.3.0
 	 */
-	public function css_page() { 
+	public function css_page() {
 		// Display HTML
 		?>
 		<div class=wrap>
@@ -1103,7 +1103,7 @@ class IssueM {
 	 *
 	 * @since 1.0.0
 	 */
-	public function upgrade() { 
+	public function upgrade() {
 		$settings = $this->get_settings();
 
 		if ( ! empty( $settings['version'] ) ) {
@@ -1162,7 +1162,7 @@ class IssueM {
 		$role->add_cap( 'publish_issues' );
 
 		$role = get_role( 'editor' );
-		
+
 		// Articles
 		$role->add_cap( 'edit_articles' );
 		$role->add_cap( 'edit_others_articles' );
@@ -1184,7 +1184,7 @@ class IssueM {
 		$role->add_cap( 'publish_issues' );
 
 		$role = get_role( 'author' );
-	
+
 		// Articles
 		$role->add_cap( 'edit_articles' );
 		$role->add_cap( 'edit_published_articles' );
@@ -1197,7 +1197,7 @@ class IssueM {
 		$role->add_cap( 'publish_issues' );
 
 		$role = get_role( 'contributor' );
-		
+
 		// Articles
 		$role->add_cap( 'edit_articles' );
 		$role->add_cap( 'delete_articles' );
@@ -1276,7 +1276,7 @@ class IssueM {
 	 * @since 1.0.0
 	 * @uses apply_filters on 'issuem_css_styles' hook, for extending IssueM
 	 */
-	public function get_css_styles() { 
+	public function get_css_styles() {
 		$styles = array(
 			'default' => __( 'Default', 'issuem' ),
 			'none'    => __( 'None', 'issuem' ),
@@ -1291,7 +1291,7 @@ class IssueM {
 	 *
 	 * @since 1.0.0
 	 */
-	public function issuem_notification() { 
+	public function issuem_notification() {
 
 		if ( ! empty( $_GET['remove_issuem_nag'] ) ) {
 			delete_option( 'issuem_nag' );
@@ -1310,7 +1310,7 @@ class IssueM {
 	 *
 	 * @since 2.0.3
 	 */
-	public function ajax_process_notice_link() { 
+	public function ajax_process_notice_link() {
 
 		if ( ! isset( $_POST['nonce'] ) ) {
 			return;

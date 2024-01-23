@@ -202,7 +202,7 @@ function do_issuem_articles( $atts, $article_format = null ) {
 		if ( get_option( 'issuem_api_error_received' ) ) {
 			$results .= '';
 		}
-			
+
 		$post = $old_post;
 
 	else :
@@ -331,7 +331,7 @@ function do_issuem_archives( $atts ) {
 
 	<div class="issuem_archives_shortcode">
 
-		<?php 
+		<?php
 		foreach ( $archives as $archive => $issue_array ) {
 
 			$issue_meta = get_option( 'issuem_issue_' . $issue_array[0]->term_id . '_meta' );
@@ -365,7 +365,7 @@ function do_issuem_archives( $atts ) {
 
 					$pdf_url = empty( $issue_meta['external_pdf_link'] ) ? apply_filters( 'issuem_pdf_attachment_url', wp_get_attachment_url( $issue_array[1]['pdf_version'] ), $issue_array[1]['pdf_version'] ) : $issue_meta['external_pdf_link'];
 
-					$pdf_line = '<a href="' . $pdf_url . '" target="' . $issuem_settings['pdf_open_target'] . '">';
+					$pdf_line = '<p class="issue-download-pdf-link"><a href="' . $pdf_url . '" target="' . $issuem_settings['pdf_open_target'] . '">';
 
 					if ( 'PDF Archive' == $issue_array[1]['issue_status'] ) {
 
@@ -376,11 +376,15 @@ function do_issuem_archives( $atts ) {
 						$pdf_line .= empty( $pdf_title ) ? $issuem_settings['pdf_title'] : $pdf_title;
 					}
 
-					$pdf_line .= '</a>';
+					$pdf_line .= '</a></p>';
 				} else {
 
-					$pdf_line = apply_filters( 'issuem_pdf_version', '&nbsp;', $pdf_title, $issue_array[0] );
+					$pdf_line = '&nbsp;';
+
+
 				}
+
+				$pdf_line = apply_filters('issuem_pdf_version', $pdf_line, $pdf_title, $issue_array[0]);
 
 				if ( ! empty( $issue_meta['external_link'] ) ) {
 					$issue_url = apply_filters( 'archive_issue_url_external_link', $issue_meta['external_link'], $issue_url );
@@ -398,14 +402,14 @@ function do_issuem_archives( $atts ) {
 				$final_issue_url = esc_url( apply_filters( 'issuem_archives_issue_url', $issue_url, $issue_array ) );
 				?>
 
-				
+
 				<p class="issuem-archives-issue-cover">
 					<a class="featured_archives_cover" style="width: <?php echo esc_attr( $width ); ?>px; height: <?php echo esc_attr( $height ); ?>px;" href="<?php echo esc_url( $final_issue_url ); ?>"><?php echo wp_kses_post( $image_line ); ?></a>
 				</p>
 				<p class="issuem-archives-issue-title">
 					<a href="<?php echo esc_url( $final_issue_url ); ?>"><?php echo esc_html( $issue_array[0]->name ); ?></a>
 				</p>
-				
+
 				<p class="issuem-archives-pdf-link">
 					<?php echo wp_kses_post( $pdf_line ); ?>
 				</p>
@@ -419,7 +423,7 @@ function do_issuem_archives( $atts ) {
 		if ( ! empty( $limit ) ) {
 			$url = remove_query_arg( array( 'page', 'paged' ) );
 
-			
+
 			?>
 
 			<div class="next_previous_archive_pagination">
@@ -446,7 +450,7 @@ function do_issuem_archives( $atts ) {
 		?>
 	</div>
 
-	<?php 
+	<?php
 	$content = ob_get_contents();
 	ob_end_clean();
 
@@ -590,10 +594,10 @@ function do_issuem_featured_rotator( $atts ) {
 						controlNav:" . $control . ',
 						directionNav: ' . $direction . ",
 						});
-					
+
 					var slideWidth = jQuery('.flex-viewport').outerWidth();
 					jQuery('.flex-caption').css('width', slideWidth );
-						
+
 					});
 					</script>";
 

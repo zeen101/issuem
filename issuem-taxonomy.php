@@ -12,7 +12,7 @@
  *
  * @since 1.0.0
  */
-function create_issue_taxonomy() { 
+function create_issue_taxonomy() {
 	$labels = array(
 
 		'name'              => __( 'Issues', 'issuem' ),
@@ -117,7 +117,7 @@ function issuem_issue_filter_terms_clauses( $pieces, $taxonomies, $args ) {
 	// set taxonomy
 	$taxonomy = $taxonomies[0];
 
-	// only if current taxonomy or edit page in admin           
+	// only if current taxonomy or edit page in admin
 	if ( ! is_admin() || $pagenow !== 'edit-tags.php' || ! in_array( $taxonomy, array( 'issuem_issue' ) ) ) {
 		return $pieces;
 	}
@@ -165,12 +165,12 @@ add_filter( 'manage_issuem_issue_custom_column', 'manage_issuem_issue_custom_col
  *
  * @since 1.0.0
  */
-function issuem_issue_taxonomy_add_form_fields() { 
+function issuem_issue_taxonomy_add_form_fields() {
 	?>
 
 	<div class="form-field">
 		<label for="issue_status"><?php esc_html_e( 'Issue Status', 'issuem' ); ?></label>
-		<?php 
+		<?php
 
 			$issuem_statuses = get_issuem_issue_statuses();
 
@@ -181,7 +181,7 @@ function issuem_issue_taxonomy_add_form_fields() {
 			echo '</select>';
 
 		?>
-		
+
 	</div>
 
 	<div class="form-field">
@@ -213,9 +213,9 @@ function get_issuem_issue_statuses() {
 			'Live'        => __( 'Live', 'issuem' ),
 			'PDF Archive' => __(
 				'PDF Archive',
-				'issuem' 
+				'issuem'
 			),
-		) 
+		)
 	);
 
 	return $statuses;
@@ -236,7 +236,7 @@ function issuem_maybe_delete_issue_pdf() {
 	if ( !$tag_id ) {
 		return;
 	}
-	
+
 	$issue_meta = get_option( 'issuem_issue_' . $tag_id . '_meta' );
 
 	wp_delete_attachment( $issue_meta['pdf_version'] );
@@ -247,7 +247,7 @@ function issuem_maybe_delete_issue_pdf() {
 
 	wp_safe_redirect( $url );
 	exit;
-	
+
 }
 
 /**
@@ -285,7 +285,7 @@ function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 				echo '</select>';
 
 			?>
-			
+
 		</td>
 	</tr>
 
@@ -337,10 +337,10 @@ function issuem_issue_taxonomy_edit_form_fields( $tag, $taxonomy ) {
 				<p><a target="_blank" href="<?php echo esc_url( wp_get_attachment_url( $issue_meta['pdf_version'] ) ); ?>"> <?php esc_html_e( 'View PDF Version', 'issuem' ); ?></a></p>
 				<p><a href="<?php echo esc_url( admin_url('term.php') ); ?>?taxonomy=issuem_issue&tag_ID=<?php echo absint( $tag->term_id ); ?>&remove_pdf_version=<?php echo esc_attr( $issue_meta['pdf_version'] ); ?>">
 					<?php esc_html_e( 'Remove PDF Version', 'issuem' ); ?></a></p>
-			
-				<?php 
+
+				<?php
 			}
-			
+
 			echo esc_html( apply_filters( 'issuem_pdf_version', '', __( 'Issue-to-PDF Generated PDF', 'issuem' ), $tag ) );
 			?>
 		</td>
@@ -398,7 +398,7 @@ function save_issuem_issue_meta( $term_id, $taxonomy_id ) {
 	if ( ! empty( $_FILES['pdf_version']['name'] ) ) {
 
 		require_once ABSPATH . 'wp-admin/includes/admin.php';
-		$id = media_handle_upload( 'pdf_version', 0 ); //post id of Client Files page  
+		$id = media_handle_upload( 'pdf_version', 0 ); //post id of Client Files page
 
 		if ( is_wp_error( $id ) ) {
 			$errors['upload_error'] = $id;
@@ -424,7 +424,7 @@ add_action( 'edited_issuem_issue', 'save_issuem_issue_meta', 10, 2 );
  *
  * @return array Draft Issues
  */
-function get_issuem_draft_issues() { 
+function get_issuem_draft_issues() {
 	global $wpdb;
 
 	$term_ids = array();
@@ -444,7 +444,7 @@ function get_issuem_draft_issues() {
 
 add_action( 'admin_init', 'issuem_convert_issue_order_to_term_meta' );
 
-function issuem_convert_issue_order_to_term_meta() { 
+function issuem_convert_issue_order_to_term_meta() {
 	$settings = get_issuem_settings();
 
 	if ( $settings['issue_order_converted'] ) {
