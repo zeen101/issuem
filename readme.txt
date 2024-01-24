@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 5.6
-Tested up to: 6.1
-Stable tag: 2.8.9
+Tested up to: 6.4.2
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Create, Organize, and Publish Issues with WordPress
 
 **"...IssueM is a real standout." &mdash; WPMU**
 
-[IssueM](https://leakypaywall.com/issuem/) is one of the cornerstones of the leading WordPress platform for publishers. 
+[IssueM](https://leakypaywall.com/issuem/) is one of the cornerstones of the leading WordPress platform for publishers.
 
 IssueM turns WordPress into a powerful publishing platform for digital issues. Popular with alumni magazines, trade magazines, news sites, science journals, and other publishers of periodicals, IssueM brings the proven and familiar issue-based publishing model to the web. There are incredible benefits to the issue-based model of publishing:
 
@@ -31,14 +31,14 @@ IssueM is packed with features—and is gaining more with every release! Upon in
 * Select featured articles to be displayed in a rotating article showcase
 * Use WordPress's scheduling ability to schedule and automate the launch of an issue
 * Present issues with an attractive ready-to-go (yet customizable) issue table of contents page
-	
+
 Some other benefits:
 * IssueM works with any WordPress theme.
 * IssueM is backed by the dedicated team of developers and publishers at zeen101.
 * IssueM is an active project, with new updates and features released regularly.
 * IssueM's developer, zeen101, is committed to providing stellar support.
 * IssueM is free.
-	
+
 Issue-based publishing on the web is gaining steam. More and more traditional publishers are learning that using their print version's issue-based publication schedule on the web—as opposed to a running stream of content—is not only not a step backwards, but it is a welcome change for readers who are often overwhelmed by streams of content. As this publishing model grows in popularity, so does the IssueM ecosystem. Currently, zeen101 offers the following add-ons and companion plugins to turbocharge and complement IssueM.
 
 * **[Leaky Paywall](https://leakypaywall.com/)**, when paired with IssueM, makes charging for issue subscriptions simple. Sell subscriptions to your content using any schedule (weekly, monthly, annually, etc.) and price you like. Set your "leak level" to define how many articles readers are allowed to view without a subscription for any time period you set. For example, you can allow unsubscribed readers to read 3 articles per month before a subscription is required. Leaky Paywall also allows you to set limits by content type as well. Leaky Paywall is a paid plugin.
@@ -79,6 +79,10 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.9.0 =
+* Update display of pdf line in archives shortcode
+* Update links
 
 = 2.8.9 =
 * Remove external dependencies from plugin
@@ -160,7 +164,7 @@ You must have:
 * Fix header output error in admin
 
 = 2.4.0 =
-* Check if currently set post type is a string before adding article to the preferred array type 
+* Check if currently set post type is a string before adding article to the preferred array type
 
 = 2.3.0 =
 * Add aritcles to is_author query

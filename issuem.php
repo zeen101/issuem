@@ -11,7 +11,7 @@ Plugin Name: IssueM
 Plugin URI: https://leakypaywall.com/issuem/
 Description: A feature rich magazine and newspaper issue manager plugin for WordPress.
 Author: ZEEN101
-Version: 2.8.9
+Version: 2.9.0
 Author URI: https://leakypaywall.com/
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, WordPress magazine
 */
@@ -24,10 +24,10 @@ Tags: issue management, issue manager, magazine management, magazine manager, ne
 if ( ! defined( 'ZEEN101_STORE_URL' ) ) {
 	define( 'ZEEN101_STORE_URL', 'https://zeen101.com' );
 }
-	
+
 
 define( 'ISSUEM_SLUG', 'issuem' );
-define( 'ISSUEM_VERSION', '2.8.9' );
+define( 'ISSUEM_VERSION', '2.9.0' );
 define( 'ISSUEM_DB_VERSION', '1.0.0' );
 define( 'ISSUEM_URL', plugin_dir_url( __FILE__ ) );
 define( 'ISSUEM_PATH', plugin_dir_path( __FILE__ ) );
@@ -39,7 +39,7 @@ define( 'ISSUEM_REL_DIR', dirname( ISSUEM_BASENAME ) );
  *
  * @since 1.2.0
  */
-function issuem_plugins_loaded() { 
+function issuem_plugins_loaded() {
 	require_once 'issuem-class.php';
 
 	// Instantiate the Pigeon Pack class
