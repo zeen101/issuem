@@ -469,6 +469,7 @@ add_shortcode( 'issuem_archives', 'do_issuem_archives' );
  * @return string HTML output of Issue Featured Rotator Images
  */
 function do_issuem_featured_rotator( $atts ) {
+
 	global $post;
 	$results = '';
 
@@ -536,6 +537,7 @@ function do_issuem_featured_rotator( $atts ) {
 			if ( has_post_thumbnail( $article->ID ) ) {
 
 				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $article->ID ), 'issuem-featured-rotator-image' );
+				$alt_text = get_post_meta(get_post_thumbnail_id($article->ID), '_wp_attachment_image_alt', true);
 
 				if ( ! empty( $show_title ) ) {
 					$title = get_the_title( $article->ID );
@@ -562,8 +564,8 @@ function do_issuem_featured_rotator( $atts ) {
 				$caption = '<span class="featured_slider_title">' . $title . '</span> <span  class="featured_slider_teaser">' . $teaser . '</span> <span class="featured_slider_byline">' . $byline . '</span>';
 
 				$results .= '<li>';
-				$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" alt="' . wp_strip_all_tags( $caption ) . '" />';
-				$results .= '<div class="flex-caption"><div class="flex-caption-content">' . $caption . '</div></div></a>';
+				$results .= '<a href="' . get_permalink( $article->ID ) . '"><img src="' . esc_url( $image[0] ) . '" alt="' . esc_attr( $alt_text) . '" />';
+				$results .= '<div class="flex-caption"><div class="flex-caption-content">' . wp_kses_post( $caption ) . '</div></div></a>';
 				$results .= '</li>';
 			}
 		}
@@ -683,6 +685,7 @@ function do_issuem_featured_thumbs( $atts ) {
 			if ( has_post_thumbnail( $article->ID ) ) {
 
 				$image = wp_get_attachment_image_src( get_post_thumbnail_id( $article->ID ), 'issuem-featured-thumb-image' );
+				$alt_text = get_post_meta(get_post_thumbnail_id($article->ID), '_wp_attachment_image_alt', true);
 				$image = apply_filters( 'issuem_featured_thumbs_article_image', $image, $article );
 
 				$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_div', '', $article );
@@ -690,7 +693,7 @@ function do_issuem_featured_thumbs( $atts ) {
 				$results .= apply_filters( 'issuem_featured_thumbs_start_thumbnail_div', '', $article );
 
 				$results .= apply_filters( 'issuem_featured_thumbs_before_thumbnail_image', '', $article );
-				$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_image', '<a class="issuem-featured-thumbs-img" href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . get_post_meta( $article->ID, '_teaser_text', true ) . '" /></a>', $article );
+				$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_image', '<a class="issuem-featured-thumbs-img" href="' . get_permalink( $article->ID ) . '"><img src="' . $image[0] . '" width="' . $image[1] . '" height="' . $image[2] . '" alt="' . esc_attr( $alt_text ) . '" /></a>', $article );
 				$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_image', '', $article );
 
 
@@ -714,7 +717,7 @@ function do_issuem_featured_thumbs( $atts ) {
 
 					case 'teaser':
 					default:
-						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="featured-thumb-content">' . get_post_meta( $article->ID, '_teaser_text', true ) . '</p>', $article );
+						$results .= apply_filters( 'issuem_featured_thumbs_thumbnail_content', '<p class="featured-thumb-content">' . esc_html(get_post_meta( $article->ID, '_teaser_text', true )) . '</p>', $article );
 						break;
 				}
 				$results .= apply_filters( 'issuem_featured_thumbs_after_thumbnail_content', '', $article );
