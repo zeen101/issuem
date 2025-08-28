@@ -13,7 +13,7 @@
  *
  * @since 1.0.0
  *
- * @param string $orderby 
+ * @param string $orderby
  * @return int $id
  */
 function get_newest_issuem_issue_id( $orderby = 'issue_order' ) {
@@ -74,7 +74,7 @@ function get_newest_issuem_issue_id( $orderby = 'issue_order' ) {
  *
  * @since 1.0.0
  *
- * @param int $id Issue ID 
+ * @param int $id Issue ID
  * @return mixed Value set for the issue meta option.
  */
 function get_issuem_issue_meta( $id = false ) {
@@ -95,7 +95,7 @@ function get_issuem_issue_meta( $id = false ) {
  *
  * @since 1.0.0
  *
- * @param int $id Issue ID 
+ * @param int $id Issue ID
  * @return string URL of cover image
  */
 function get_issuem_issue_cover( $id = false ) {
@@ -120,7 +120,7 @@ function get_issuem_issue_cover( $id = false ) {
  *
  * @since 1.0.0
  *
- * @param int $id Issue ID 
+ * @param int $id Issue ID
  * @return string issue slug
  */
 function get_issuem_issue_slug( $id = false ) {
@@ -143,7 +143,7 @@ function get_issuem_issue_slug( $id = false ) {
  *
  * @since 1.0.0
  *
- * @param int $id Issue ID 
+ * @param int $id Issue ID
  * @return string issue name
  */
 function get_issuem_issue_title( $id = false ) {
@@ -170,7 +170,7 @@ function get_issuem_issue_title( $id = false ) {
  *
  * @return string issue slug
  */
-function get_active_issuem_issue() { 
+function get_active_issuem_issue() {
 	$issue_slug = false;
 
 	if ( ! empty( $_COOKIE['issuem_issue'] ) ) {
@@ -211,7 +211,7 @@ function get_active_issuem_issue() {
  *
  * @since 1.0.0
  */
-function set_issuem_cookie() { 
+function set_issuem_cookie() {
 	// no reason to set the cookie if you're in the admin
 	if ( is_admin() ) {
 		return;
@@ -224,8 +224,6 @@ function set_issuem_cookie() {
 	} else {
 
 		global $post;
-
-		$issuem_settings = get_issuem_settings();
 
 		if ( issuem_is_articles_page() ) {
 
@@ -350,7 +348,7 @@ function issuem_replacements_args( $string, $post ) {
 			$string = preg_replace( '/%TEASER%/i', preg_quote( $teaser ), $string );
 		} else {
 			$string = preg_replace( '/%TEASER%/i', '%EXCERPT%', $string );    // If no Teaser Text exists, try to get an excerpt
-		}       
+		}
 	}
 
 	if ( preg_match( '/%EXCERPT\[?(\d*)\]?%/i', $string, $matches ) ) {
@@ -424,7 +422,7 @@ function issuem_replacements_args( $string, $post ) {
  * @since 1.0.0
  *
  * @param object WordPress Post/Article object
- * @param $string value to show or hide link in output, 
+ * @param $string value to show or hide link in output,
  * @return string Value set for the issuem options.
  */
 function get_issuem_author_name( $article, $hide_link = false ) {
@@ -470,7 +468,7 @@ function get_issuem_author_name( $article, $hide_link = false ) {
  *
  * @return mixed Value set for the issuem options.
  */
-function get_issuem_settings() { 
+function get_issuem_settings() {
 	global $dl_plugin_issuem;
 
 	return $dl_plugin_issuem->get_settings();
@@ -524,10 +522,9 @@ add_filter( 'the_content', 'default_issue_content_filter', 5 );
  *
  * @since 1.1.1
  */
-function zeen101_dot_com_rss_feed_check() { 
+function zeen101_dot_com_rss_feed_check() {
 	include_once ABSPATH . WPINC . '/feed.php';
 
-	$output  = '';
 	$feedurl = 'http://leakypaywall.com/feed/?post_type=blast&target=issuem';
 
 	$rss = fetch_feed( $feedurl );
@@ -606,7 +603,7 @@ function issuem_api_request( $action, $args ) {
  * display all of the categories. When it is enabled it will use the value in
  * the 'depth' argument.
  *
- * @since 1.2.6 
+ * @since 1.2.6
  *
  * @param string|array $args Optional. Override default arguments.
  * @return string HTML content only if 'echo' argument is 0.
@@ -712,7 +709,7 @@ function issuem_dropdown_categories( $args = '' ) {
  * Adapted from WordPress' "walk_category_dropdown_tree"
  *
  * @uses Walker_IssueMCategoryDropdown to create HTML dropdown content.
- * @since 1.2.6 
+ * @since 1.2.6
  * @see Walker_IssueMCategoryDropdown::walk() for parameters and return description.
  */
 function walk_issuem_category_dropdown_tree() {
@@ -732,7 +729,7 @@ function walk_issuem_category_dropdown_tree() {
  *
  * @since 1.2.12
  *
- * @param int $id Article ID 
+ * @param int $id Article ID
  * @return excerpt for the article
  */
 function get_issuem_article_excerpt( $id = false ) {
@@ -751,10 +748,10 @@ function get_issuem_article_excerpt( $id = false ) {
 
 /**
  * Determines if we're currently on the Articles page
- * @since  2.5.1 
+ * @since  2.5.1
  * @return bool True if on Articles page, false otherwise
  */
-function issuem_is_articles_page() { 
+function issuem_is_articles_page() {
 	global $wp_query;
 
 	$issuem_settings = get_issuem_settings();
@@ -779,10 +776,10 @@ function issuem_is_articles_page() {
 
 /**
  * Get all status that will be hidden from past issues page
- * @since  2.7.2 
- * @return array 
+ * @since  2.7.2
+ * @return array
  */
-function get_issuem_hidden_statuses() { 
+function get_issuem_hidden_statuses() {
 	$hidden_statuses = array(
 		'Draft',
 		'Scheduled',
