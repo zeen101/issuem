@@ -2,8 +2,8 @@
 Contributors: layotte, pericson, endocreative
 Tags: issue management, issue manager, magazine management, magazine manager, news management, news manager, periodical manager, periodicial management, publishing, magazine publishing, issue publisher, wordpress magazine
 Requires at least: 5.6
-Tested up to: 6.4.2
-Stable tag: 2.9.0
+Tested up to: 6.8.2
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,10 @@ You must have:
 14. IssueM - help
 
 == Changelog ==
+
+= 2.9.1 =
+* Update tested up to version
+* Add sanitization for alt text on featured image shortcodes
 
 = 2.9.0 =
 * Update display of pdf line in archives shortcode
