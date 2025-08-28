@@ -1,19 +1,48 @@
-# Copyright (C) 2014 IssueM
-# This file is distributed under the same license as the IssueM package.
+# Copyright (C) 2025 ZEEN101
+# This file is distributed under the same license as the IssueM plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: IssueM 1.2.3\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/issuem\n"
-"POT-Creation-Date: 2014-01-29 13:42:47+00:00\n"
+"Project-Id-Version: IssueM 2.9.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/issuem\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2025-08-28T22:05:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: issuem\n"
 
-#: issuem-cats-taxonomy.php:21 issuem-cats-taxonomy.php:31
-#: issuem-widgets.php:420 issuem-widgets.php:426
+#. Plugin Name of the plugin
+#: issuem.php
+msgid "IssueM"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: issuem.php
+msgid "https://leakypaywall.com/issuem/"
+msgstr ""
+
+#. Description of the plugin
+#: issuem.php
+msgid "A feature rich magazine and newspaper issue manager plugin for WordPress."
+msgstr ""
+
+#. Author of the plugin
+#: issuem.php
+msgid "ZEEN101"
+msgstr ""
+
+#. Author URI of the plugin
+#: issuem.php
+msgid "https://leakypaywall.com/"
+msgstr ""
+
+#: issuem-cats-taxonomy.php:21
+#: issuem-cats-taxonomy.php:31
+#: issuem-widgets.php:481
+#: issuem-widgets.php:487
 msgid "Article Categories"
 msgstr ""
 
@@ -53,578 +82,617 @@ msgstr ""
 msgid "New Article Category"
 msgstr ""
 
-#: issuem-cats-taxonomy.php:73 issuem-cats-taxonomy.php:190
-#: issuem-cats-taxonomy.php:216
+#: issuem-cats-taxonomy.php:73
+#: issuem-cats-taxonomy.php:196
+#: issuem-cats-taxonomy.php:222
 msgid "Category Order"
 msgstr ""
 
-#: issuem-class.php:92
+#: issuem-class.php:101
+#: issuem-class.php:557
 msgid "IssueM Settings"
 msgstr ""
 
-#: issuem-class.php:94 issuem-class.php:649
+#: issuem-class.php:102
+#: issuem-class.php:890
 msgid "IssueM Help"
 msgstr ""
 
-#: issuem-class.php:288
+#: issuem-class.php:330
 msgid "Download PDF"
 msgstr ""
 
-#: issuem-class.php:289
+#: issuem-class.php:331
 msgid "PDF Only"
 msgstr ""
 
-#: issuem-class.php:460
-msgid "IssueM Settings Updated."
+#: issuem-class.php:547
+msgid "Settings updated."
 msgstr ""
 
-#: issuem-class.php:474
-msgid "IssueM General Settings"
+#: issuem-class.php:570
+msgid "General"
 msgstr ""
 
-#: issuem-class.php:480
-msgid "IssueM Administrator Options"
+#: issuem-class.php:578
+msgid "Licenses"
 msgstr ""
 
-#: issuem-class.php:487
+#: issuem-class.php:608
 msgid "Page for Articles"
 msgstr ""
 
-#: issuem-class.php:488 issuem-class.php:492
-msgid "&mdash; Select &mdash;"
-msgstr ""
-
-#: issuem-class.php:491
+#: issuem-class.php:623
 msgid "Page for Issue Archives"
 msgstr ""
 
-#: issuem-class.php:498
+#: issuem-class.php:641
 msgid "CSS Style"
 msgstr ""
 
-#: issuem-class.php:516
+#: issuem-class.php:659
 msgid "PDF Download Link Title"
 msgstr ""
 
-#: issuem-class.php:521
+#: issuem-class.php:664
 msgid "PDF Only Title"
 msgstr ""
 
-#: issuem-class.php:526
+#: issuem-class.php:669
 msgid "PDF Link Target"
 msgstr ""
 
-#: issuem-class.php:529
+#: issuem-class.php:672
 msgid "Open in New Window/Tab"
 msgstr ""
 
-#: issuem-class.php:530
+#: issuem-class.php:673
 msgid "Open in Same Window/Tab"
 msgstr ""
 
-#: issuem-class.php:536
+#: issuem-class.php:679
 msgid "Cover Image Size"
 msgstr ""
 
-#: issuem-class.php:538 issuem-class.php:545 issuem-class.php:552
+#: issuem-class.php:681
+#: issuem-class.php:688
+#: issuem-class.php:695
 msgid "Width"
 msgstr ""
 
-#: issuem-class.php:538 issuem-class.php:545 issuem-class.php:552
+#: issuem-class.php:681
+#: issuem-class.php:688
+#: issuem-class.php:695
 msgid "Height"
 msgstr ""
 
-#: issuem-class.php:543
+#: issuem-class.php:686
 msgid "Featured Rotator Image Size"
 msgstr ""
 
-#: issuem-class.php:550
+#: issuem-class.php:693
 msgid "Featured Thumbnail Image Size"
 msgstr ""
 
-#: issuem-class.php:557
+#: issuem-class.php:706
 msgid "Default Issue Image"
 msgstr ""
 
-#: issuem-class.php:561
-msgid "Remove Custom Default Issue Image"
-msgstr ""
-
-#: issuem-class.php:567
+#: issuem-class.php:720
 msgid "Display Byline As"
 msgstr ""
 
-#: issuem-class.php:579
+#: issuem-class.php:732
+msgid "Show Thumbnail Byline"
+msgstr ""
+
+#: issuem-class.php:737
+msgid "Name"
+msgstr ""
+
+#: issuem-class.php:738
 msgid "Use IssueM Author Name instead of WordPress Author"
 msgstr ""
 
-#: issuem-class.php:584
+#: issuem-class.php:742
+msgid "Categories and Tags"
+msgstr ""
+
+#: issuem-class.php:743
 msgid "Use Default WordPress Category and Tag Taxonomies"
 msgstr ""
 
-#: issuem-class.php:589
+#: issuem-class.php:747
+msgid "Links"
+msgstr ""
+
+#: issuem-class.php:748
 msgid "Use Taxonomical links instead of shortcode based links for Issues"
 msgstr ""
 
-#: issuem-class.php:598 issuem-class.php:617
-msgid "Save Settings"
-msgstr ""
-
-#: issuem-class.php:609
-msgid "IssueM Article Format"
-msgstr ""
-
-#: issuem-class.php:655
-msgid "[issuem_articles] - Articles Shortcode"
-msgstr ""
-
-#: issuem-class.php:665
-msgid "Article Loop:"
-msgstr ""
-
-#: issuem-class.php:667 issuem-class.php:695
-msgid "This shortcode will display the list of articles in an issue."
-msgstr ""
-
-#: issuem-class.php:683
-msgid "[issuem_featured_rotator] - Featured Rotator Shortcode"
-msgstr ""
-
-#: issuem-class.php:693
-msgid "Featured Article Rotator:"
-msgstr ""
-
-#: issuem-class.php:711
-msgid "[issuem_featured_thumbnails] - Featured Thumbnails Shortcode"
-msgstr ""
-
-#: issuem-class.php:721
-msgid "Featured Thumbnails:"
-msgstr ""
-
-#: issuem-class.php:723
-msgid ""
-"This shortcode will display the grid of featured article thumbnails in an "
-"issue"
-msgstr ""
-
-#: issuem-class.php:739
-msgid "[issuem_archives] - IssueM Archive Issues"
-msgstr ""
-
-#: issuem-class.php:749
-msgid "Archive Page:"
-msgstr ""
-
-#: issuem-class.php:751
-msgid "This shortcode will display the list of current and past issues."
-msgstr ""
-
-#: issuem-class.php:755
-msgid "Default Arguments:"
-msgstr ""
-
-#: issuem-class.php:760
-msgid "Setting \"PDF Title\""
-msgstr ""
-
-#: issuem-class.php:761
-msgid "Setting \"Default Cover Image\""
-msgstr ""
-
-#: issuem-class.php:763
-msgid "Accepted Arguments:"
-msgstr ""
-
-#: issuem-class.php:766
-msgid "(for Descending or Ascending)"
-msgstr ""
-
-#: issuem-class.php:767
-msgid "Any number 0 and greater"
-msgstr ""
-
-#: issuem-class.php:768
-msgid "Text"
-msgstr ""
-
-#: issuem-class.php:769
-msgid "Image URL"
+#: issuem-class.php:764
+msgid "IssueM Featured Rotator Options"
 msgstr ""
 
 #: issuem-class.php:771
+msgid "Pagination Navigation"
+msgstr ""
+
+#: issuem-class.php:776
+msgid "Direction Navigation"
+msgstr ""
+
+#: issuem-class.php:781
+msgid "Animation Type"
+msgstr ""
+
+#: issuem-class.php:804
+msgid "IssueM Article Shortcode Format"
+msgstr ""
+
+#: issuem-class.php:819
+msgid "Save Settings"
+msgstr ""
+
+#: issuem-class.php:861
+msgid "Need help setting up your publication?"
+msgstr ""
+
+#: issuem-class.php:895
+msgid "Getting Started"
+msgstr ""
+
+#: issuem-class.php:898
+msgid "The following steps will demonstrate how to get started creating your online magazine."
+msgstr ""
+
+#: issuem-class.php:961
+msgid "IssueM Shortcodes"
+msgstr ""
+
+#: issuem-class.php:963
+msgid "Issue Title:"
+msgstr ""
+
+#: issuem-class.php:965
+msgid "This shortcode will display the current issue title."
+msgstr ""
+
+#: issuem-class.php:970
+msgid "Article Loop:"
+msgstr ""
+
+#: issuem-class.php:972
+msgid "This shortcode will display the list of articles in an issue."
+msgstr ""
+
+#: issuem-class.php:974
+#: issuem-class.php:987
+#: issuem-class.php:999
+#: issuem-class.php:1031
 msgid "Examples:"
 msgstr ""
 
-#: issuem-class.php:774
+#: issuem-class.php:983
+msgid "Featured Article Rotator:"
+msgstr ""
+
+#: issuem-class.php:985
+msgid "This shortcode will display a slideshow of articles that have been checked to display in the featured rotator."
+msgstr ""
+
+#: issuem-class.php:993
+msgid "Featured Thumbnails:"
+msgstr ""
+
+#: issuem-class.php:997
+msgid "This shortcode will display the grid of featured article thumbnails in an issue"
+msgstr ""
+
+#: issuem-class.php:1006
+msgid "Archive Page:"
+msgstr ""
+
+#: issuem-class.php:1008
+msgid "This shortcode will display the list of current and past issues."
+msgstr ""
+
+#: issuem-class.php:1010
+msgid "Default Arguments:"
+msgstr ""
+
+#: issuem-class.php:1017
+msgid "Setting \"PDF Title\""
+msgstr ""
+
+#: issuem-class.php:1018
+msgid "Setting \"Default Cover Image\""
+msgstr ""
+
+#: issuem-class.php:1021
+msgid "Accepted Arguments:"
+msgstr ""
+
+#: issuem-class.php:1026
+msgid "Any number 0 and greater"
+msgstr ""
+
+#: issuem-class.php:1027
+msgid "Text"
+msgstr ""
+
+#: issuem-class.php:1028
+msgid "Image URL"
+msgstr ""
+
+#: issuem-class.php:1034
 msgid "Download Now"
 msgstr ""
 
-#: issuem-class.php:792
-msgid "Custom Cover Image Size"
+#: issuem-class.php:1066
+msgid "IssueM Advanced Styles"
 msgstr ""
 
-#: issuem-class.php:796
-msgid "To customize the height and width of the featured images."
+#: issuem-class.php:1072
+msgid "Advanced Style Options"
 msgstr ""
 
-#: issuem-class.php:1001
+#: issuem-class.php:1281
 msgid "Default"
 msgstr ""
 
-#: issuem-class.php:1002 issuem-widgets.php:373
+#: issuem-class.php:1282
+#: issuem-widgets.php:416
 msgid "None"
 msgstr ""
 
-#: issuem-class.php:1025
+#: issuem-class.php:1304
 msgid "Dismiss"
 msgstr ""
 
-#: issuem-functions.php:396 issuem-shortcodes.php:483
-#: issuem-shortcodes.php:606
+#: issuem-functions.php:401
+#: issuem-shortcodes.php:558
+#: issuem-shortcodes.php:730
+#, php-format
 msgid "By %s"
 msgstr ""
 
-#: issuem-post-type.php:26 issuem-post-type.php:37
+#: issuem-post-type.php:27
+#: issuem-post-type.php:38
 msgid "Articles"
 msgstr ""
 
-#: issuem-post-type.php:27
+#: issuem-post-type.php:28
 msgid "Article"
 msgstr ""
 
-#: issuem-post-type.php:28 issuem-post-type.php:29
+#: issuem-post-type.php:29
+#: issuem-post-type.php:30
 msgid "Add New Article"
 msgstr ""
 
-#: issuem-post-type.php:30
+#: issuem-post-type.php:31
 msgid "Edit Article"
 msgstr ""
 
-#: issuem-post-type.php:31
+#: issuem-post-type.php:32
 msgid "New Article"
 msgstr ""
 
-#: issuem-post-type.php:32
+#: issuem-post-type.php:33
 msgid "View Article"
 msgstr ""
 
-#: issuem-post-type.php:33
+#: issuem-post-type.php:34
 msgid "Search Articles"
 msgstr ""
 
-#: issuem-post-type.php:34
+#: issuem-post-type.php:35
 msgid "No articles found"
 msgstr ""
 
-#: issuem-post-type.php:35
+#: issuem-post-type.php:36
 msgid "No articles found in trash"
 msgstr ""
 
-#: issuem-post-type.php:43
+#: issuem-post-type.php:44
 msgid "IssueM Articles"
 msgstr ""
 
-#: issuem-post-type.php:111
+#: issuem-post-type.php:106
 msgid "IssueM Article Options"
 msgstr ""
 
-#: issuem-post-type.php:143
+#: issuem-post-type.php:137
+msgid "Add article to Featured Rotator"
+msgstr ""
+
+#: issuem-post-type.php:141
+msgid "Add article to Featured Thumbnails"
+msgstr ""
+
+#: issuem-post-type.php:144
 msgid "Teaser Text"
 msgstr ""
 
-#: issuem-post-type.php:146
+#: issuem-post-type.php:150
 msgid "IssueM Author Name"
 msgstr ""
 
-#: issuem-post-type.php:149
-msgid "Featured Rotator Options"
-msgstr ""
-
-#: issuem-post-type.php:150
-msgid "Set as Featured Rotator Article"
-msgstr ""
-
-#: issuem-post-type.php:152
-msgid "Featured  Thumbnail Options"
-msgstr ""
-
-#: issuem-post-type.php:153
-msgid "Set as Featured Thumbnail Article"
-msgstr ""
-
-#: issuem-shortcodes.php:213 issuem-shortcodes.php:402
-msgid "Issue Management by "
-msgstr ""
-
-#: issuem-shortcodes.php:219
+#: issuem-shortcodes.php:210
 msgid "No articles Found"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:21 issuem-tags-taxonomy.php:31
+#: issuem-shortcodes.php:435
+#: issuem-shortcodes.php:441
+msgid "Next Archives"
+msgstr ""
+
+#: issuem-shortcodes.php:440
+msgid "Previous Archives"
+msgstr ""
+
+#: issuem-tags-taxonomy.php:19
+#: issuem-tags-taxonomy.php:29
 msgid "Article Tags"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:22
+#: issuem-tags-taxonomy.php:20
 msgid "Article Tag"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:23
+#: issuem-tags-taxonomy.php:21
 msgid "Search Article Tags"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:24
+#: issuem-tags-taxonomy.php:22
 msgid "All Article Tags"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:25
+#: issuem-tags-taxonomy.php:23
 msgid "Parent Article Tag"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:26
+#: issuem-tags-taxonomy.php:24
 msgid "Parent Article Tag:"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:27
+#: issuem-tags-taxonomy.php:25
 msgid "Edit Article Tag"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:28
+#: issuem-tags-taxonomy.php:26
 msgid "Update Article Tag"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:29
+#: issuem-tags-taxonomy.php:27
 msgid "Add New Article Tag"
 msgstr ""
 
-#: issuem-tags-taxonomy.php:30
+#: issuem-tags-taxonomy.php:28
 msgid "New Article Tag"
 msgstr ""
 
-#: issuem-taxonomy.php:20 issuem-taxonomy.php:30
+#: issuem-taxonomy.php:18
+#: issuem-taxonomy.php:28
 msgid "Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:21
+#: issuem-taxonomy.php:19
 msgid "Issue"
 msgstr ""
 
-#: issuem-taxonomy.php:22
+#: issuem-taxonomy.php:20
 msgid "Search Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:23
+#: issuem-taxonomy.php:21
 msgid "All Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:24
+#: issuem-taxonomy.php:22
 msgid "Parent Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:25
+#: issuem-taxonomy.php:23
 msgid "Parent Issues:"
 msgstr ""
 
-#: issuem-taxonomy.php:26
+#: issuem-taxonomy.php:24
 msgid "Edit Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:27
+#: issuem-taxonomy.php:25
 msgid "Update Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:28
+#: issuem-taxonomy.php:26
 msgid "Add New Issues"
 msgstr ""
 
-#: issuem-taxonomy.php:29
+#: issuem-taxonomy.php:27
 msgid "New Issue"
 msgstr ""
 
-#: issuem-taxonomy.php:70 issuem-taxonomy.php:197 issuem-taxonomy.php:264
+#: issuem-taxonomy.php:70
+#: issuem-taxonomy.php:188
+#: issuem-taxonomy.php:295
 msgid "Issue Order"
 msgstr ""
 
-#: issuem-taxonomy.php:71 issuem-taxonomy.php:192 issuem-taxonomy.php:259
+#: issuem-taxonomy.php:71
+#: issuem-taxonomy.php:172
+#: issuem-taxonomy.php:274
 msgid "Issue Status"
 msgstr ""
 
-#: issuem-taxonomy.php:220
+#: issuem-taxonomy.php:212
 msgid "Draft"
 msgstr ""
 
-#: issuem-taxonomy.php:220
+#: issuem-taxonomy.php:213
 msgid "Live"
 msgstr ""
 
-#: issuem-taxonomy.php:220
+#: issuem-taxonomy.php:214
 msgid "PDF Archive"
 msgstr ""
 
-#: issuem-taxonomy.php:280
-msgid "Remove Cover Image"
-msgstr ""
-
-#: issuem-taxonomy.php:291
+#: issuem-taxonomy.php:300
 msgid "Cover Image"
 msgstr ""
 
-#: issuem-taxonomy.php:306
-msgid "View PDF Version"
-msgstr ""
-
-#: issuem-taxonomy.php:307
-msgid "Remove PDF Version"
-msgstr ""
-
-#: issuem-taxonomy.php:318
+#: issuem-taxonomy.php:323
 msgid "External Issue Link"
 msgstr ""
 
-#: issuem-taxonomy.php:325
+#: issuem-taxonomy.php:330
 msgid "PDF Version"
 msgstr ""
 
-#: issuem-taxonomy.php:330
+#: issuem-taxonomy.php:337
+msgid "View PDF Version"
+msgstr ""
+
+#: issuem-taxonomy.php:339
+msgid "Remove PDF Version"
+msgstr ""
+
+#: issuem-taxonomy.php:344
 msgid "Issue-to-PDF Generated PDF"
 msgstr ""
 
-#: issuem-taxonomy.php:336
+#: issuem-taxonomy.php:350
 msgid "External PDF Link"
 msgstr ""
 
-#: issuem-widgets.php:41
+#: issuem-widgets.php:43
 msgid "Displays the active IssueM Issue details"
 msgstr ""
 
-#: issuem-widgets.php:42
+#: issuem-widgets.php:45
 msgid "IssueM Active Issue"
 msgstr ""
 
-#: issuem-widgets.php:141
-msgid "Display Issue Title?"
-msgstr ""
-
-#: issuem-widgets.php:146
-msgid "Display Issue Cover Image?"
-msgstr ""
-
-#: issuem-widgets.php:151
-msgid "Display Issue PDF Link?"
-msgstr ""
-
-#: issuem-widgets.php:158 issuem-widgets.php:403
-msgid "You have to create a issue before you can use this widget."
-msgstr ""
-
-#: issuem-widgets.php:180
-msgid "Sidebar widget to display the current articles."
-msgstr ""
-
-#: issuem-widgets.php:182
-msgid "IssueM Article List"
-msgstr ""
-
-#: issuem-widgets.php:341 issuem-widgets.php:489
+#: issuem-widgets.php:162
+#: issuem-widgets.php:376
+#: issuem-widgets.php:556
 msgid "Title:"
 msgstr ""
 
-#: issuem-widgets.php:346
-msgid "Number of Articles to Show:"
+#: issuem-widgets.php:167
+msgid "Display Issue Title?"
 msgstr ""
 
-#: issuem-widgets.php:361
-msgid "Select Category to Display:"
+#: issuem-widgets.php:172
+msgid "Display Issue Cover Image?"
 msgstr ""
 
-#: issuem-widgets.php:363
-msgid "All Categories"
+#: issuem-widgets.php:177
+msgid "Display Issue PDF Link?"
 msgstr ""
 
-#: issuem-widgets.php:374
-msgid "Article ID"
+#: issuem-widgets.php:184
+#: issuem-widgets.php:462
+msgid "You have to create a issue before you can use this widget."
 msgstr ""
 
-#: issuem-widgets.php:375
-msgid "Article Author"
+#: issuem-widgets.php:207
+msgid "Sidebar widget to display the current articles."
 msgstr ""
 
-#: issuem-widgets.php:376
-msgid "Article Title"
-msgstr ""
-
-#: issuem-widgets.php:377
-msgid "Article Name"
-msgstr ""
-
-#: issuem-widgets.php:378
-msgid "Article Publish Date"
-msgstr ""
-
-#: issuem-widgets.php:379
-msgid "Article Modified Date"
-msgstr ""
-
-#: issuem-widgets.php:380
-msgid "Article Order"
+#: issuem-widgets.php:213
+msgid "IssueM Article List"
 msgstr ""
 
 #: issuem-widgets.php:381
-msgid "Random Order"
+msgid "Number of Articles to Show:"
 msgstr ""
 
-#: issuem-widgets.php:382
-msgid "Comment Count"
+#: issuem-widgets.php:404
+msgid "Select Category to Display:"
 msgstr ""
 
-#: issuem-widgets.php:386
-msgid "Select Sort Order:"
+#: issuem-widgets.php:406
+msgid "All Categories"
 msgstr ""
 
-#: issuem-widgets.php:395
-msgid "Article Format:"
+#: issuem-widgets.php:417
+msgid "Article ID"
 msgstr ""
 
-#: issuem-widgets.php:398
-msgid "See IssueM Help for details on article formatting"
+#: issuem-widgets.php:418
+msgid "Article Author"
 msgstr ""
 
 #: issuem-widgets.php:419
+msgid "Article Title"
+msgstr ""
+
+#: issuem-widgets.php:420
+msgid "Article Name"
+msgstr ""
+
+#: issuem-widgets.php:421
+msgid "Article Publish Date"
+msgstr ""
+
+#: issuem-widgets.php:422
+msgid "Article Modified Date"
+msgstr ""
+
+#: issuem-widgets.php:423
+msgid "Article Order"
+msgstr ""
+
+#: issuem-widgets.php:424
+msgid "Random Order"
+msgstr ""
+
+#: issuem-widgets.php:425
+msgid "Comment Count"
+msgstr ""
+
+#: issuem-widgets.php:429
+msgid "Select Sort Order:"
+msgstr ""
+
+#: issuem-widgets.php:440
+msgid "Descending"
+msgstr ""
+
+#: issuem-widgets.php:441
+msgid "Ascending"
+msgstr ""
+
+#: issuem-widgets.php:445
+msgid "Select Order Direction:"
+msgstr ""
+
+#: issuem-widgets.php:454
+msgid "Article Format:"
+msgstr ""
+
+#: issuem-widgets.php:457
+msgid "See IssueM Help for details on article formatting"
+msgstr ""
+
+#: issuem-widgets.php:479
 msgid "A list or dropdown of Article categories"
 msgstr ""
 
-#: issuem-widgets.php:438
+#: issuem-widgets.php:505
 msgid "Select Article Category"
 msgstr ""
 
-#: issuem-widgets.php:493
+#: issuem-widgets.php:560
 msgid "Display as dropdown"
 msgstr ""
 
-#: issuem-widgets.php:496
+#: issuem-widgets.php:563
 msgid "Show product counts"
 msgstr ""
 
-#: issuem-widgets.php:499
+#: issuem-widgets.php:566
 msgid "Show hierarchy"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "IssueM"
-msgstr ""
-
-#. #-#-#-#-#  issuem.pot (IssueM 1.2.3)  #-#-#-#-#
-#. Plugin URI of the plugin/theme
-#. #-#-#-#-#  issuem.pot (IssueM 1.2.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-msgid "http://issuem.com/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"A feature rich magazine and newspaper issue manager plugin for WordPress."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "IssueM Development Team"
 msgstr ""
